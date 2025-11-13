@@ -1,26 +1,106 @@
+/* Import external fonts - must come before all other rules */
+@import url("https://fonts.googleapis.com/css2?family=Lust+Script+Inline&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/@monaspace/fonts@latest/css/monaspace-neon.css");
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #cfc8cf;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-heading: var(--font-bungee);
+  --font-subheading: "Monaspace Neon", monospace;
+  --font-body: var(--font-space-grotesk);
+  --font-accent: "Lust Script Inline", cursive;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Custom color palette - accessible via bg-neon-pink, text-neon-pink, etc. */
+  --color-neon-pink: #fc05b9;
+  --color-night-navy: #201e30;
+  --color-muted-indigo: #3f395b;
+  --color-cool-white: #cfc8cf;
+  --color-neon-blue: #4e79a7;
+  --color-deep-pink-purple: #84596c;
+
+  /* Override default colors for dark theme */
+  --color-white: #cfc8cf;
+  --color-black: #000000;
+  --color-gray-50: #cfc8cf;
+  --color-gray-100: #cfc8cf;
+  --color-gray-200: #cfc8cf;
+  --color-gray-300: #cfc8cf;
+  --color-gray-400: #cfc8cf;
+  --color-gray-500: #3f395b;
+  --color-gray-600: #3f395b;
+  --color-gray-700: #201e30;
+  --color-gray-800: #201e30;
+  --color-gray-900: #000000;
+  --color-blue-500: #4e79a7;
+  --color-blue-600: #4e79a7;
+  --color-pink-500: #fc05b9;
+  --color-pink-600: #84596c;
+  --color-purple-500: #fc05b9;
+  --color-purple-600: #84596c;
+  --color-indigo-500: #3f395b;
+  --color-green-500: #4e79a7;
+  --color-green-600: #4e79a7;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #000000;
+  color: #cfc8cf;
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Font utility classes */
+.font-heading {
+  font-family: var(--font-heading), sans-serif;
+}
+
+.font-subheading {
+  font-family: var(--font-subheading);
+}
+
+.font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+/* Default heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 400;
+}
+
+/* Subheadings use Monaspace Neon */
+h2.font-subheading,
+h3.font-subheading,
+.subheading {
+  font-family: var(--font-subheading);
+}
+
+/* Bouncing arrow animation */
+@keyframes bounce-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.bounce-down {
+  animation: bounce-down 1.5s ease-in-out infinite;
 }
