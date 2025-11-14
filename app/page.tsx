@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { ContentReveal } from "@/components/ContentReveal";
 import { ImageParallax } from "@/components/ImageParallax";
 import { PinnedHero } from "@/components/PinnedHero";
 import { VideoScroll } from "@/components/VideoScroll";
 import { VimeoVideo } from "@/components/VimeoVideo";
+import { VimeoVideoModal } from "@/components/VimeoVideoModal";
 import { Header } from "@/components/Header";
 import {
   ScrollCarousel,
@@ -14,6 +16,18 @@ import {
 } from "@/components";
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalVideoUrl, setModalVideoUrl] = useState("");
+
+  const openVideoModal = (videoUrl: string) => {
+    setModalVideoUrl(videoUrl);
+    setIsModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <main className="min-h-screen bg-black">
       <Header />
@@ -79,177 +93,133 @@ export default function Home() {
       </section>
 
       <section className="relative">
-        <ImageParallax
-          imageSrc="/images/kikits.jpg"
-          strength={0.5}
-          className="min-h-[600px]"
-        >
-          <div className="text-center text-white z-20 bg-black/50 backdrop-blur-sm px-8 py-12 rounded-lg max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">What We Do</h2>
-            <p className="text-xl md:text-2xl opacity-90">
-              A creative-technology powerhouse delivering everything modern
-              businesses need to grow fast and stand out.
-            </p>
-          </div>
-        </ImageParallax>
+        <PinnedHero
+          backgroundVideo="https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
+          title="Maya & Spark"
+          subtitle="Find Your Way. Light the Moment."
+          body='In this emotionally uplifting animated short, we follow Maya—a quiet first-time attendee navigating a crowded event hall—until a single scan changes everything. When she connects with Kikits, a glowing spark of possibility comes to life, guiding her through the noise and into meaningful connection. As each step becomes brighter and more rewarding, Maya&apos;s journey transforms from confusion to confidence. With heartfelt animation and a touch of magic, "Find Your Way. Light the Moment." captures how every small action, when guided by the right incentive, can unlock unforgettable experiences. Powered by Kikits.'
+          ctaLabel="Watch Video"
+          ctaOnClick={() =>
+            openVideoModal(
+              "https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
+            )
+          }
+          scrollDistance={1400}
+          startOffset="top top"
+          textPosition="center"
+          textAlign="center"
+        />
       </section>
 
       {/* What We Do Section */}
-      <section id="what-we-do" className="relative bg-black z-10">
-        <ScrollCarousel
-          sticky={true}
-          animationDirection="opacity"
-          animationDuration={1.5}
-          stagger={0.4}
-          scrollDistance={4000}
-          startOffset="top top"
-          className="relative z-10"
-          scrollThrottle="slow"
-        >
-          <ScrollCarouselItems>
-            {/* Websites & Apps - Video on Right */}
-            <ScrollCarouselItem
-              animation="right"
-              backgroundImage="/images/kikits.jpg"
-              backgroundOpacity={0.5}
-            >
-              <div className="max-w-7xl w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div className="bg-black/50 p-8 rounded-xl">
-                    <h3 className="text-4xl md:text-6xl font-bold text-[#FFFFFF] mb-6 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
-                      Websites & Apps
-                    </h3>
-                    <p className="text-lg text-[#FFFFFF] leading-relaxed shadow-md">
-                      Custom web apps, mobile apps, platforms, and digital
-                      experiences. Built with high-performance engineering from
-                      <span className="text-[#FFFFFF]">NWA Apps.</span>
-                    </p>
-                  </div>
-                  <div>
-                    <VimeoVideo
-                      vimeoUrl="https://vimeo.com/1105184966?fl=ip&fe=ec"
-                      className="rounded-xl shadow-2xl overflow-hidden"
-                    />
-                  </div>
+      <section className="relative py-32 px-4 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <ContentReveal direction="right" duration={1.2} startOffset="top 80%">
+            <div className="relative max-w-7xl mx-auto px-4">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="bg-black/50 p-8 rounded-xl">
+                  <h3 className="text-4xl md:text-6xl font-bold text-[#FFFFFF] mb-6 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
+                    Websites & Apps
+                  </h3>
+                  <p className="text-lg text-[#FFFFFF] leading-relaxed shadow-md">
+                    Custom web apps, mobile apps, platforms, and digital
+                    experiences. Built with high-performance engineering from
+                    <span className="text-[#FFFFFF]">NWA Apps.</span>
+                  </p>
+                </div>
+                <div>
+                  <VimeoVideo
+                    vimeoUrl="https://vimeo.com/1105184966?fl=ip&fe=ec"
+                    className="rounded-xl shadow-2xl overflow-hidden"
+                  />
                 </div>
               </div>
-            </ScrollCarouselItem>
+            </div>
+          </ContentReveal>
+        </div>
+      </section>
 
-            {/* AI Solutions - Video on Left */}
-            <ScrollCarouselItem animation="left">
-              <div className="max-w-7xl w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div className="order-2 md:order-1">
-                    <VimeoVideo
-                      vimeoUrl="https://vimeo.com/1126858733?fl=ip&fe=ec"
-                      className="rounded-xl shadow-2xl overflow-hidden"
-                    />
-                  </div>
-                  <div className="order-1 md:order-2">
-                    <div className="w-16 h-16 bg-[#3F395B] rounded-lg mb-6 flex items-center justify-center">
-                      <svg
-                        className="w-8 h-8 text-[#CFC8CF]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
-                      AI Solutions
-                    </h3>
-                    <p className="text-lg text-gray-400 leading-relaxed">
-                      Custom AI tools, automation, integrations, data systems,
-                      and intelligent dashboards.
-                    </p>
-                  </div>
+      {/* AI Solutions - Video on Left */}
+      <section className="relative py-32 px-4 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <ContentReveal direction="left" duration={1.2} startOffset="top 80%">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="order-2 md:order-1">
+                  <VimeoVideo
+                    vimeoUrl="https://vimeo.com/1126858733?fl=ip&fe=ec"
+                    className="rounded-xl shadow-2xl overflow-hidden"
+                  />
+                </div>
+                <div className="order-1 md:order-2">
+                  <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
+                    AI Solutions
+                  </h3>
+                  <p className="text-lg text-gray-400 leading-relaxed">
+                    Custom AI tools, automation, integrations, data systems, and
+                    intelligent dashboards.
+                  </p>
                 </div>
               </div>
-            </ScrollCarouselItem>
+            </div>
+          </ContentReveal>
+        </div>
+      </section>
 
-            {/* Video & Storytelling - Video on Right */}
-            <ScrollCarouselItem animation="right">
-              <div className="max-w-7xl w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <div className="w-16 h-16 bg-[#fc05b9] rounded-lg mb-6 flex items-center justify-center">
-                      <svg
-                        className="w-8 h-8 text-[#CFC8CF]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
-                      Video & Storytelling
-                    </h3>
-                    <p className="text-lg text-gray-400 leading-relaxed">
-                      AI videos, explainers, brand stories, animation, and
-                      creative campaigns powered by Planet Goodtimes.
-                    </p>
-                  </div>
-                  <div>
-                    <VimeoVideo
-                      vimeoUrl="https://vimeo.com/1110591196?fl=ip&fe=ec"
-                      className="rounded-xl shadow-2xl overflow-hidden"
-                    />
-                  </div>
+      {/* Video & Storytelling - Video on Right */}
+      <section className="relative py-32 px-4 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <ContentReveal direction="right" duration={1.2} startOffset="top 80%">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
+                    Video & Storytelling
+                  </h3>
+                  <p className="text-lg text-gray-400 leading-relaxed">
+                    AI videos, explainers, brand stories, animation, and
+                    creative campaigns powered by Planet Goodtimes.
+                  </p>
+                </div>
+                <div>
+                  <VimeoVideo
+                    vimeoUrl="https://vimeo.com/1110591196?fl=ip&fe=ec"
+                    className="rounded-xl shadow-2xl overflow-hidden"
+                  />
                 </div>
               </div>
-            </ScrollCarouselItem>
+            </div>
+          </ContentReveal>
+        </div>
+      </section>
 
-            {/* Events & Engagement - Video on Left */}
-            <ScrollCarouselItem animation="scale">
-              <div className="max-w-7xl w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div className="order-2 md:order-1">
-                    <VimeoVideo
-                      vimeoUrl="https://vimeo.com/1105184966?fl=ip&fe=ec"
-                      className="rounded-xl shadow-2xl overflow-hidden"
-                    />
-                  </div>
-                  <div className="order-1 md:order-2">
-                    <div className="w-16 h-16 bg-[#4E79A7] rounded-lg mb-6 flex items-center justify-center">
-                      <svg
-                        className="w-8 h-8 text-[#CFC8CF]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
-                      Events & Engagement
-                    </h3>
-                    <p className="text-lg text-gray-400 leading-relaxed">
-                      Smart ticketing, member engagement, and QR-powered
-                      experiences with Kikits.
-                    </p>
-                  </div>
+      {/* Commercial Story Telling - Video on Left */}
+      <section className="relative py-32 px-4 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <ContentReveal direction="scale" duration={1.2} startOffset="top 80%">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="order-2 md:order-1">
+                  <VimeoVideo
+                    vimeoUrl="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
+                    className="rounded-xl shadow-2xl overflow-hidden"
+                  />
+                </div>
+                <div className="order-1 md:order-2">
+                  <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
+                    Commercial Story Telling
+                  </h3>
+                  <p className="text-lg text-gray-400 leading-relaxed">
+                    Elevate your brand with powerful commercial storytelling
+                    that connects, inspires, and drives results. We craft
+                    memorable campaigns that turn audiences into loyal
+                    customers.
+                  </p>
                 </div>
               </div>
-            </ScrollCarouselItem>
-          </ScrollCarouselItems>
-        </ScrollCarousel>
+            </div>
+          </ContentReveal>
+        </div>
       </section>
 
       {/* Parallax Section */}
@@ -268,120 +238,6 @@ export default function Home() {
             </p>
           </div>
         </ImageParallax>
-      </section>
-
-      {/* Our Ecosystem Section */}
-      <section id="ecosystem" className="relative bg-[#201E30] z-0">
-        <ScrollCarousel
-          sticky={true}
-          animationDirection="opacity"
-          animationDuration={1.5}
-          stagger={0.5}
-          scrollDistance={2000}
-          startOffset="top top"
-          scrollThrottle="slow"
-        >
-          <ScrollCarouselItems>
-            {/* NWA Apps */}
-            <ScrollCarouselItem
-              animation="right"
-              background="bg-gradient-to-br from-[#201E30] to-[#3F395B]"
-            >
-              <div className="max-w-6xl w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <Image
-                      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                      alt="NWA Apps"
-                      width={800}
-                      height={600}
-                      className="rounded-xl shadow-2xl"
-                    />
-                  </div>
-                  <div className="text-[#CFC8CF]">
-                    <h3 className="text-4xl md:text-6xl font-bold mb-6">
-                      NWA Apps
-                    </h3>
-                    <p className="text-xl text-[#4E79A7] mb-4 font-semibold">
-                      The engineering engine.
-                    </p>
-                    <p className="text-lg text-gray-300 leading-relaxed">
-                      Platforms, apps, SaaS, and system architecture.
-                      Engineering, platforms, product development, SaaS systems,
-                      and custom software.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </ScrollCarouselItem>
-
-            {/* Planet Goodtimes */}
-            <ScrollCarouselItem
-              animation="left"
-              background="bg-gradient-to-br from-[#84596C] to-[#3F395B]"
-            >
-              <div className="max-w-6xl w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div className="order-2 md:order-1 text-[#CFC8CF]">
-                    <h3 className="text-4xl md:text-6xl font-bold mb-6">
-                      Planet Goodtimes
-                    </h3>
-                    <p className="text-xl text-[#fc05b9] mb-4 font-semibold">
-                      The storytelling machine.
-                    </p>
-                    <p className="text-lg text-gray-300 leading-relaxed">
-                      Creative storytelling, video production, brand campaigns,
-                      content strategy, and AI media. We bring stories to life
-                      through powerful visuals and compelling narratives.
-                    </p>
-                  </div>
-                  <div className="order-1 md:order-2">
-                    <Image
-                      src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80"
-                      alt="Planet Goodtimes"
-                      width={800}
-                      height={600}
-                      className="rounded-xl shadow-2xl"
-                    />
-                  </div>
-                </div>
-              </div>
-            </ScrollCarouselItem>
-
-            {/* Kikits */}
-            <ScrollCarouselItem
-              animation="scale"
-              background="bg-gradient-to-br from-[#3F395B] to-[#201E30]"
-            >
-              <div className="max-w-6xl w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <Image
-                      src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80"
-                      alt="Kikits"
-                      width={800}
-                      height={600}
-                      className="rounded-xl shadow-2xl"
-                    />
-                  </div>
-                  <div className="text-[#CFC8CF]">
-                    <h3 className="text-4xl md:text-6xl font-bold mb-6">
-                      Kikits
-                    </h3>
-                    <p className="text-xl text-[#4E79A7] mb-4 font-semibold">
-                      The event infrastructure.
-                    </p>
-                    <p className="text-lg text-gray-300 leading-relaxed">
-                      Next-generation ticketing, member management, QR scanning,
-                      entitlements, and event intelligence. Powering seamless
-                      event experiences.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </ScrollCarouselItem>
-          </ScrollCarouselItems>
-        </ScrollCarousel>
       </section>
 
       {/* Why It Matters Section */}
@@ -742,6 +598,13 @@ export default function Home() {
           </ContentReveal>
         </div>
       </footer>
+
+      {/* Vimeo Video Modal */}
+      <VimeoVideoModal
+        isOpen={isModalOpen}
+        onClose={closeVideoModal}
+        vimeoUrl={modalVideoUrl}
+      />
     </main>
   );
 }

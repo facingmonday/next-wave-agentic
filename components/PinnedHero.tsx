@@ -17,11 +17,13 @@ export interface PinnedHeroProps {
   subtitle?: string;
   body: string;
   ctaLabel: string;
-  ctaHref: string;
+  ctaHref?: string; // Optional if ctaOnClick is provided
+  ctaOnClick?: () => void; // Optional custom click handler
   scrollDistance?: number; // Height in pixels for the scroll section
   startOffset?: string; // When pinning starts
   textPosition?: "left" | "center" | "right";
   textAlign?: "left" | "center" | "right";
+  clearOnLeave?: boolean; // If true, clears content when scrolling past. Defaults to false (keeps content visible)
   className?: string;
 }
 
@@ -33,10 +35,12 @@ export function PinnedHero({
   body,
   ctaLabel,
   ctaHref,
+  ctaOnClick,
   scrollDistance = 1000,
   startOffset = "top top",
   textPosition = "left",
   textAlign = "left",
+  clearOnLeave = false,
   className = "",
 }: PinnedHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -44,7 +48,7 @@ export function PinnedHero({
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const bodyRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -190,14 +194,17 @@ export function PinnedHero({
           gsap.set(content, { autoAlpha: 1 });
           tl.progress(progress);
         } else {
-          // If not active, ensure content is hidden
-          tl.progress(0);
-          gsap.set(content, { autoAlpha: 0 });
-          gsap.set([title, subtitle, body, cta], {
-            opacity: 0,
-            y: 50,
-            visibility: "hidden",
-          });
+          // If clearOnLeave is true, hide content when not active
+          if (clearOnLeave) {
+            tl.progress(0);
+            gsap.set(content, { autoAlpha: 0 });
+            gsap.set([title, subtitle, body, cta], {
+              opacity: 0,
+              y: 50,
+              visibility: "hidden",
+            });
+          }
+          // If clearOnLeave is false, keep content visible (do nothing)
         }
       },
       onEnter: () => {
@@ -206,8 +213,18 @@ export function PinnedHero({
         tl.progress(0);
       },
       onLeave: () => {
-        // When leaving forwards (scrolled past), keep final state
-        // Content can stay visible after animation completes
+        // When leaving forwards (scrolled past)
+        if (clearOnLeave) {
+          // Hide content if clearOnLeave is true
+          tl.progress(0);
+          gsap.set(content, { autoAlpha: 0 });
+          gsap.set([title, subtitle, body, cta], {
+            opacity: 0,
+            y: 50,
+            visibility: "hidden",
+          });
+        }
+        // If clearOnLeave is false, keep final state (content stays visible)
       },
       onLeaveBack: () => {
         // When leaving backwards (scrolled back up), hide content
@@ -265,8 +282,10 @@ export function PinnedHero({
     body,
     ctaLabel,
     ctaHref,
+    ctaOnClick,
     scrollDistance,
     startOffset,
+    clearOnLeave,
   ]);
 
   // Get text position classes
@@ -309,6 +328,7 @@ export function PinnedHero({
               muted={true}
               controls={false}
               responsive={false}
+              background={true}
               className="absolute inset-0 w-full h-full"
             />
             {/* Overlay for better text readability */}
@@ -338,7 +358,7 @@ export function PinnedHero({
           <div className={`max-w-2xl ${getTextAlignClasses()}`}>
             <h1
               ref={titleRef}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4"
+              className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
               style={{
                 opacity: 0,
                 transform: "translateY(50px)",
@@ -350,7 +370,7 @@ export function PinnedHero({
             {subtitle && (
               <p
                 ref={subtitleRef}
-                className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-6"
+                className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
                 style={{
                   opacity: 0,
                   transform: "translateY(50px)",
@@ -362,7 +382,7 @@ export function PinnedHero({
             )}
             <p
               ref={bodyRef}
-              className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed"
+              className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
               style={{
                 opacity: 0,
                 transform: "translateY(50px)",
@@ -371,18 +391,33 @@ export function PinnedHero({
             >
               {body}
             </p>
-            <a
-              ref={ctaRef}
-              href={ctaHref}
-              className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
-              style={{
-                opacity: 0,
-                transform: "translateY(50px)",
-                visibility: "hidden",
-              }}
-            >
-              {ctaLabel}
-            </a>
+            {ctaOnClick ? (
+              <button
+                ref={ctaRef as React.RefObject<HTMLButtonElement>}
+                onClick={ctaOnClick}
+                className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
+                style={{
+                  opacity: 0,
+                  transform: "translateY(50px)",
+                  visibility: "hidden",
+                }}
+              >
+                {ctaLabel}
+              </button>
+            ) : (
+              <a
+                ref={ctaRef as React.RefObject<HTMLAnchorElement>}
+                href={ctaHref}
+                className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
+                style={{
+                  opacity: 0,
+                  transform: "translateY(50px)",
+                  visibility: "hidden",
+                }}
+              >
+                {ctaLabel}
+              </a>
+            )}
           </div>
         </div>
       </div>
