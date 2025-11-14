@@ -71,7 +71,7 @@ export default function Home() {
       >
         <div className="text-center text-white z-20">
           <h1 className="text-6xl md:text-8xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
-            Welcome to NWA
+            AI Story Telling
           </h1>
           <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
         </div>
