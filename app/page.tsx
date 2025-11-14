@@ -46,21 +46,6 @@ export default function Home() {
           <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
         </div>
       </VideoScroll>
-      <section className="relative">
-        <ImageParallax
-          imageSrc="/images/kikits.jpg"
-          strength={0.5}
-          className="min-h-[600px]"
-        >
-          <div className="text-center text-white z-20 bg-black/50 backdrop-blur-sm px-8 py-12 rounded-lg max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">What We Do</h2>
-            <p className="text-xl md:text-2xl opacity-90">
-              A creative-technology powerhouse delivering everything modern
-              businesses need to grow fast and stand out.
-            </p>
-          </div>
-        </ImageParallax>
-      </section>
       <VideoScroll
         totalFrames={192}
         framesPath="/frame2"
@@ -97,7 +82,7 @@ export default function Home() {
           backgroundVideo="https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
           title="Maya & Spark"
           subtitle="Find Your Way. Light the Moment."
-          body='In this emotionally uplifting animated short, we follow Maya—a quiet first-time attendee navigating a crowded event hall—until a single scan changes everything. When she connects with Kikits, a glowing spark of possibility comes to life, guiding her through the noise and into meaningful connection. As each step becomes brighter and more rewarding, Maya&apos;s journey transforms from confusion to confidence. With heartfelt animation and a touch of magic, "Find Your Way. Light the Moment." captures how every small action, when guided by the right incentive, can unlock unforgettable experiences. Powered by Kikits.'
+          body="In this emotionally uplifting animated short, we follow Maya, a quiet first-time attendee navigating a crowded event hall, until a single scan changes everything."
           ctaLabel="Watch Video"
           ctaOnClick={() =>
             openVideoModal(
@@ -112,7 +97,7 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section className="relative py-32 px-4 bg-black">
+      <section className="relative py-16 md:py-32 px-4 bg-black">
         <div className="max-w-7xl mx-auto">
           <ContentReveal direction="right" duration={1.2} startOffset="top 80%">
             <div className="relative max-w-7xl mx-auto px-4">
@@ -140,7 +125,7 @@ export default function Home() {
       </section>
 
       {/* AI Solutions - Video on Left */}
-      <section className="relative py-32 px-4 bg-black">
+      <section className="relative py-16 md:py-32 px-4 bg-black">
         <div className="max-w-7xl mx-auto">
           <ContentReveal direction="left" duration={1.2} startOffset="top 80%">
             <div className="max-w-7xl mx-auto px-4">
@@ -167,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* Video & Storytelling - Video on Right */}
-      <section className="relative py-32 px-4 bg-black">
+      <section className="relative py-16 md:py-32 px-4 bg-black">
         <div className="max-w-7xl mx-auto">
           <ContentReveal direction="right" duration={1.2} startOffset="top 80%">
             <div className="max-w-7xl mx-auto px-4">
@@ -194,7 +179,7 @@ export default function Home() {
       </section>
 
       {/* Commercial Story Telling - Video on Left */}
-      <section className="relative py-32 px-4 bg-black">
+      <section className="relative py-16 md:py-32 px-4 bg-black">
         <div className="max-w-7xl mx-auto">
           <ContentReveal direction="scale" duration={1.2} startOffset="top 80%">
             <div className="max-w-7xl mx-auto px-4">
@@ -238,147 +223,6 @@ export default function Home() {
             </p>
           </div>
         </ImageParallax>
-      </section>
-
-      {/* Why It Matters Section */}
-      <section className="py-4 px-4 bg-black">
-        <PinnedHero
-          backgroundImage="/images/kikits.jpg"
-          title="Next Wave Agentic"
-          subtitle="Building the future of creativity, technology, and storytelling in Northwest Arkansas"
-          body="Websites, apps, AI solutions, video production, branding, marketing, and event innovation — all under one unified ecosystem."
-          ctaLabel="Start a Project"
-          ctaHref="#contact"
-          scrollDistance={1400}
-          startOffset="top top"
-          textPosition="center"
-          textAlign="center"
-        />
-      </section>
-
-      {/* Featured Work Section */}
-      <section id="work" className="relative bg-black py-32">
-        <ScrollCarousel
-          sticky={true}
-          animationDirection="opacity"
-          animationDuration={1.5}
-          stagger={0.4}
-          scrollDistance={2000}
-          startOffset="center center"
-        >
-          <ScrollCarouselItems>
-            {/* NWA Apps Projects */}
-            <ScrollCarouselItem animation="opacity">
-              <div className="flex flex-col md:flex-row items-center gap-12 px-4 max-w-6xl w-full">
-                <div className="flex-shrink-0 w-full md:w-1/2">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80"
-                    alt="NWA Apps Projects"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto rounded-lg shadow-2xl"
-                  />
-                </div>
-                <div className="flex-1 text-white">
-                  <h2 className="text-5xl md:text-7xl font-bold mb-6">
-                    NWA Apps
-                  </h2>
-                  <p className="text-xl md:text-2xl opacity-90 mb-8">
-                    Featured Projects
-                  </p>
-                  <ul className="space-y-4 text-lg">
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-3">•</span>
-                      <span>CityView CMS</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-3">•</span>
-                      <span>Lineup Booking</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-3">•</span>
-                      <span>Supply Chain Simulation</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </ScrollCarouselItem>
-
-            {/* Planet Goodtimes Projects */}
-            <ScrollCarouselItem animation="right">
-              <div className="flex flex-col md:flex-row items-center gap-12 px-4 max-w-6xl w-full">
-                <div className="flex-shrink-0 w-full md:w-1/2 order-2 md:order-1">
-                  <Image
-                    src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80"
-                    alt="Planet Goodtimes Projects"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto rounded-lg shadow-2xl"
-                  />
-                </div>
-                <div className="flex-1 text-white order-1 md:order-2">
-                  <h2 className="text-5xl md:text-7xl font-bold mb-6">
-                    Planet Goodtimes
-                  </h2>
-                  <p className="text-xl md:text-2xl opacity-90 mb-8">
-                    Creative Campaigns
-                  </p>
-                  <ul className="space-y-4 text-lg">
-                    <li className="flex items-start">
-                      <span className="text-[#fc05b9] mr-3">•</span>
-                      <span>AI campaigns</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#fc05b9] mr-3">•</span>
-                      <span>Brand storytelling videos</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#fc05b9] mr-3">•</span>
-                      <span>Character-driven animations</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </ScrollCarouselItem>
-
-            {/* Kikits Projects */}
-            <ScrollCarouselItem animation="scale">
-              <div className="flex flex-col md:flex-row items-center gap-12 px-4 max-w-6xl w-full">
-                <div className="flex-shrink-0 w-full md:w-1/2">
-                  <Image
-                    src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80"
-                    alt="Kikits Projects"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto rounded-lg shadow-2xl"
-                  />
-                </div>
-                <div className="flex-1 text-white">
-                  <h2 className="text-5xl md:text-7xl font-bold mb-6">
-                    Kikits
-                  </h2>
-                  <p className="text-xl md:text-2xl opacity-90 mb-8">
-                    Event Solutions
-                  </p>
-                  <ul className="space-y-4 text-lg">
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-3">•</span>
-                      <span>Event entry & scanning</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-3">•</span>
-                      <span>VIP experiences</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-3">•</span>
-                      <span>Multi-tier ticket systems</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </ScrollCarouselItem>
-          </ScrollCarouselItems>
-        </ScrollCarousel>
       </section>
 
       {/* Who We Serve Section */}

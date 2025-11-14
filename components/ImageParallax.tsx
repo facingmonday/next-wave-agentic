@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export interface ImageParallaxProps {
   imageSrc: string;
@@ -17,11 +17,11 @@ export interface ImageParallaxProps {
 export function ImageParallax({
   imageSrc,
   strength = 0.5,
-  startOffset = 'top bottom',
-  endOffset = 'bottom top',
-  className = '',
+  startOffset = "top bottom",
+  endOffset = "bottom top",
+  className = "",
   children,
-  alt = '',
+  alt = "",
 }: ImageParallaxProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -54,12 +54,23 @@ export function ImageParallax({
   }, [imageSrc, strength, startOffset, endOffset]);
 
   return (
-    <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
+    <div
+      ref={containerRef}
+      className={`relative overflow-hidden ${className}`}
+      style={{
+        height: "100vh",
+        minHeight: "100vh",
+      }}
+    >
       <img
         ref={imageRef}
         src={imageSrc}
         alt={alt}
         className="w-full h-full object-cover"
+        style={{
+          height: "100vh",
+          objectFit: "cover",
+        }}
       />
       {children && (
         <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -69,4 +80,3 @@ export function ImageParallax({
     </div>
   );
 }
-

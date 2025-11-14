@@ -315,12 +315,25 @@ export function PinnedHero({
     }
   };
 
+  // When background is provided, use exactly 100vh on both mobile and desktop
+  const hasBackground = backgroundVideo || backgroundImage;
+
   return (
     <div className={`relative w-full ${className}`}>
-      <div ref={containerRef} className="relative w-full min-h-screen bg-black">
+      <div
+        ref={containerRef}
+        className="relative w-full bg-black"
+        style={{
+          height: hasBackground ? "100vh" : "auto",
+          minHeight: hasBackground ? "100vh" : "100vh",
+        }}
+      >
         {/* Background Video or Image */}
         {backgroundVideo ? (
-          <div data-background className="absolute inset-0 z-0 opacity-50">
+          <div
+            data-background
+            className="absolute inset-0 z-0 opacity-50 overflow-hidden"
+          >
             <VimeoVideo
               vimeoUrl={backgroundVideo}
               autoplay={true}
@@ -329,10 +342,10 @@ export function PinnedHero({
               controls={false}
               responsive={false}
               background={true}
-              className="absolute inset-0 w-full h-full"
+              className=""
             />
             {/* Overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/40 z-10" />
           </div>
         ) : backgroundImage ? (
           <div
@@ -353,7 +366,11 @@ export function PinnedHero({
         {/* Content */}
         <div
           ref={contentRef}
-          className={`relative z-10 min-h-screen flex items-center px-4 md:px-8 lg:px-16 ${getTextPositionClasses()}`}
+          className={`relative z-10 flex items-center px-4 md:px-8 lg:px-16 ${getTextPositionClasses()}`}
+          style={{
+            height: hasBackground ? "100vh" : "auto",
+            minHeight: hasBackground ? "100vh" : "100vh",
+          }}
         >
           <div className={`max-w-2xl ${getTextAlignClasses()}`}>
             <h1

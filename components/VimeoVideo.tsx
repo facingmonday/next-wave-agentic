@@ -74,15 +74,38 @@ export function VimeoVideo({
     );
   }
 
-  return (
-    <div className={`${responsive ? "relative w-full" : ""} ${className}`}>
-      <div
-        className={`${
-          responsive ? "relative w-full h-0 pb-[56.25%]" : "w-full h-full"
-        }`}
-      >
+  // When used as background (not responsive), fill the full container
+  if (!responsive || background) {
+    return (
+      <div className={`absolute inset-0 w-full h-full ${className}`}>
         <iframe
-          key={videoId} // Stable key based on videoId prevents unnecessary recreation
+          key={videoId}
+          src={iframeSrc}
+          className="absolute inset-0 w-full h-full"
+          style={{
+            width: "100vw",
+            height: "56.25vw", // 16:9 aspect ratio based on width
+            minHeight: "100vh", // Ensure it covers full height on mobile
+            minWidth: "177.77vh", // Ensure it covers full width when height is constraint
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title="Vimeo video player"
+        />
+      </div>
+    );
+  }
+
+  // Responsive version (original behavior)
+  return (
+    <div className={`relative w-full ${className}`}>
+      <div className="relative w-full h-0 pb-[56.25%]">
+        <iframe
+          key={videoId}
           src={iframeSrc}
           className="absolute top-0 left-0 w-full h-full rounded-lg"
           frameBorder="0"

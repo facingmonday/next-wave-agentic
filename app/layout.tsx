@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import { Bungee, Space_Grotesk } from "next/font/google";
+import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/lib/smooth-scroll";
 
-const bungee = Bungee({
-  variable: "--font-bungee",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const exo2 = Exo_2({
+  variable: "--font-exo2",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Next Wave Agentic",
-  description: "Where creativity, technology, and storytelling are built locally and launched globally.",
+  description:
+    "Where creativity, technology, and storytelling are built locally and launched globally.",
 };
 
 export default function RootLayout({
@@ -27,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${bungee.variable} ${spaceGrotesk.variable} antialiased`}
-      >
+      <body className={`${exo2.variable} antialiased`}>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

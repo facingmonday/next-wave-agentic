@@ -138,17 +138,54 @@ export function VideoScroll({
 
         const rect = container.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
+        const isMobile = window.innerWidth < 768;
 
-        // Always fit to container width, calculate height based on image aspect ratio
         const containerWidth = rect.width;
+        const containerHeight = rect.height || window.innerHeight;
         const imageAspect = image.width / image.height;
-        const canvasHeight = containerWidth / imageAspect;
+
+        let canvasWidth: number;
+        let canvasHeight: number;
+        let drawWidth: number;
+        let drawHeight: number;
+        let drawX: number;
+        let drawY: number;
+
+        if (isMobile && sticky) {
+          // On mobile with sticky: use 100vh with cover behavior (crop/zoom)
+          canvasWidth = containerWidth;
+          canvasHeight = containerHeight; // Use container height (100vh)
+
+          // Cover behavior: fill the canvas, crop excess
+          const canvasAspect = canvasWidth / canvasHeight;
+          if (imageAspect > canvasAspect) {
+            // Image is wider - fit to height, crop sides
+            drawHeight = canvasHeight;
+            drawWidth = canvasHeight * imageAspect;
+            drawX = (canvasWidth - drawWidth) / 2;
+            drawY = 0;
+          } else {
+            // Image is taller - fit to width, crop top/bottom
+            drawWidth = canvasWidth;
+            drawHeight = canvasWidth / imageAspect;
+            drawX = 0;
+            drawY = (canvasHeight - drawHeight) / 2;
+          }
+        } else {
+          // Desktop or non-sticky: fit to width, maintain aspect ratio
+          canvasWidth = containerWidth;
+          canvasHeight = containerWidth / imageAspect;
+          drawWidth = canvasWidth;
+          drawHeight = canvasHeight;
+          drawX = 0;
+          drawY = 0;
+        }
 
         // Set canvas size
-        canvas.width = containerWidth * dpr;
+        canvas.width = canvasWidth * dpr;
         canvas.height = canvasHeight * dpr;
-        ctx.scale(dpr, dpr);
-        canvas.style.width = `${containerWidth}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        canvas.style.width = `${canvasWidth}px`;
         canvas.style.height = `${canvasHeight}px`;
 
         // Update overlay and content height to match canvas
@@ -158,16 +195,13 @@ export function VideoScroll({
         if (contentRef.current) {
           contentRef.current.style.height = `${canvasHeight}px`;
         }
-        // Update sticky container height to match canvas
-        if (containerRef.current && sticky) {
-          containerRef.current.style.height = `${canvasHeight}px`;
-        }
+        // Don't override container height when sticky - keep it at 100vh
 
         // Clear canvas
-        ctx.clearRect(0, 0, containerWidth, canvasHeight);
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-        // Draw image fitting to width (full width, maintain aspect ratio)
-        ctx.drawImage(image, 0, 0, containerWidth, canvasHeight);
+        // Draw image with appropriate behavior
+        ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
       }
     },
     [images, totalFrames, sticky]
@@ -197,15 +231,50 @@ export function VideoScroll({
 
       const rect = container.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
+      const isMobile = window.innerWidth < 768;
+
       const containerWidth = rect.width || window.innerWidth;
+      const containerHeight = rect.height || window.innerHeight;
       const imageAspect = firstFrameImg.width / firstFrameImg.height;
-      const canvasHeight = containerWidth / imageAspect;
+
+      let canvasWidth: number;
+      let canvasHeight: number;
+      let drawWidth: number;
+      let drawHeight: number;
+      let drawX: number;
+      let drawY: number;
+
+      if (isMobile && sticky) {
+        // On mobile with sticky: use 100vh with cover behavior
+        canvasWidth = containerWidth;
+        canvasHeight = containerHeight;
+
+        const canvasAspect = canvasWidth / canvasHeight;
+        if (imageAspect > canvasAspect) {
+          drawHeight = canvasHeight;
+          drawWidth = canvasHeight * imageAspect;
+          drawX = (canvasWidth - drawWidth) / 2;
+          drawY = 0;
+        } else {
+          drawWidth = canvasWidth;
+          drawHeight = canvasWidth / imageAspect;
+          drawX = 0;
+          drawY = (canvasHeight - drawHeight) / 2;
+        }
+      } else {
+        canvasWidth = containerWidth;
+        canvasHeight = containerWidth / imageAspect;
+        drawWidth = canvasWidth;
+        drawHeight = canvasHeight;
+        drawX = 0;
+        drawY = 0;
+      }
 
       // Set canvas size
-      canvas.width = containerWidth * dpr;
+      canvas.width = canvasWidth * dpr;
       canvas.height = canvasHeight * dpr;
-      ctx.scale(dpr, dpr);
-      canvas.style.width = `${containerWidth}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      canvas.style.width = `${canvasWidth}px`;
       canvas.style.height = `${canvasHeight}px`;
 
       // Update overlay and content height to match canvas
@@ -215,13 +284,11 @@ export function VideoScroll({
       if (contentRef.current) {
         contentRef.current.style.height = `${canvasHeight}px`;
       }
-      if (containerRef.current && sticky) {
-        containerRef.current.style.height = `${canvasHeight}px`;
-      }
+      // Don't override container height when sticky - keep it at 100vh
 
       // Draw first frame
-      ctx.clearRect(0, 0, containerWidth, canvasHeight);
-      ctx.drawImage(firstFrameImg, 0, 0, containerWidth, canvasHeight);
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      ctx.drawImage(firstFrameImg, drawX, drawY, drawWidth, drawHeight);
     };
 
     // Load first frame immediately
@@ -276,6 +343,7 @@ export function VideoScroll({
       <div
         ref={wrapperRef}
         style={{
+          // Wrapper height controls how long the section stays scrollable
           height: `${scrollDistance}px`,
           position: "relative",
         }}
@@ -291,6 +359,8 @@ export function VideoScroll({
             justifyContent: "center",
             alignItems: "flex-start",
             width: "100%",
+            // Visible area is always one full viewport
+            height: "100vh",
           }}
         >
           {/* Canvas for video frames */}
@@ -302,6 +372,7 @@ export function VideoScroll({
               top: 0,
               left: 0,
               width: "100%",
+              height: "100vh",
               zIndex: 0,
             }}
           />
@@ -310,6 +381,7 @@ export function VideoScroll({
           <div
             ref={overlayRef}
             className="absolute top-0 left-0 w-full bg-black/30 z-10"
+            style={{ height: "100vh" }}
           />
 
           {/* Content */}
@@ -317,6 +389,7 @@ export function VideoScroll({
             <div
               ref={contentRef}
               className={`absolute top-0 left-0 z-20 w-full flex px-4 md:px-8 lg:px-16 ${getContentAlignmentClasses()}`}
+              style={{ height: "100vh" }}
             >
               <div className={getContentTextAlignClasses()}>{children}</div>
             </div>
