@@ -59,6 +59,7 @@ export function VimeoVideo({
     if (muted) params.append("muted", "1");
     if (!controls) params.append("controls", "0");
     if (background) params.append("background", "1");
+    if (autoplay) params.append("playsinline", "1");
 
     return embedUrl + params.toString();
   }, [videoId, autoplay, loop, muted, controls, background]);
