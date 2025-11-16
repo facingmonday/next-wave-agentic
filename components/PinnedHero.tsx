@@ -116,7 +116,7 @@ export function PinnedHero({
         trigger: container,
         start: "top bottom", // When top of container hits bottom of viewport
         end: "bottom top", // When bottom of container hits top of viewport
-        scrub: 1,
+        scrub: true, // Smooth scrubbing
         onUpdate: (self) => {
           const progress = self.progress;
 
@@ -150,8 +150,13 @@ export function PinnedHero({
       });
     }
 
-    // Create timeline FOR CONTENT ONLY
-    const tl = gsap.timeline();
+    // Create timeline FOR CONTENT ONLY with GPU acceleration
+    const tl = gsap.timeline({
+      defaults: {
+        force3D: true, // GPU acceleration
+        lazy: false, // Don't defer updates
+      },
+    });
 
     // Title appears (0-20% of scroll)
     tl.to(
@@ -162,6 +167,7 @@ export function PinnedHero({
         visibility: "visible",
         duration: 0.2,
         ease: "power3.out",
+        force3D: true,
       },
       0
     );
@@ -176,6 +182,7 @@ export function PinnedHero({
           visibility: "visible",
           duration: 0.2,
           ease: "power3.out",
+          force3D: true,
         },
         0.2
       );
@@ -190,6 +197,7 @@ export function PinnedHero({
         visibility: "visible",
         duration: 0.2,
         ease: "power3.out",
+        force3D: true,
       },
       0.4
     );
@@ -203,6 +211,7 @@ export function PinnedHero({
         visibility: "visible",
         duration: 0.4,
         ease: "power3.out",
+        force3D: true,
       },
       0.6
     );
@@ -214,7 +223,8 @@ export function PinnedHero({
       end: `+=${scrollDistance}`,
       pin: true,
       pinSpacing: true,
-      scrub: 1, // Smooth scrubbing
+      scrub: true, // Smooth scrubbing (defaults to 0.5, smoother than 1)
+      anticipatePin: 1, // Anticipate pinning for smoother transitions
       onUpdate: (self) => {
         const progress = self.progress;
         // Only update timeline if we're in the active scroll range
@@ -407,8 +417,9 @@ export function PinnedHero({
               className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
               style={{
                 opacity: 0,
-                transform: "translateY(50px)",
+                transform: "translateY(50px) translateZ(0)",
                 visibility: "hidden",
+                willChange: "transform, opacity",
               }}
             >
               {title}
@@ -419,8 +430,9 @@ export function PinnedHero({
                 className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
                 style={{
                   opacity: 0,
-                  transform: "translateY(50px)",
+                  transform: "translateY(50px) translateZ(0)",
                   visibility: "hidden",
+                  willChange: "transform, opacity",
                 }}
               >
                 {subtitle}
@@ -431,8 +443,9 @@ export function PinnedHero({
               className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
               style={{
                 opacity: 0,
-                transform: "translateY(50px)",
+                transform: "translateY(50px) translateZ(0)",
                 visibility: "hidden",
+                willChange: "transform, opacity",
               }}
             >
               {body}
@@ -444,8 +457,9 @@ export function PinnedHero({
                 className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
                 style={{
                   opacity: 0,
-                  transform: "translateY(50px)",
+                  transform: "translateY(50px) translateZ(0)",
                   visibility: "hidden",
+                  willChange: "transform, opacity",
                 }}
               >
                 {ctaLabel}
@@ -457,8 +471,9 @@ export function PinnedHero({
                 className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
                 style={{
                   opacity: 0,
-                  transform: "translateY(50px)",
+                  transform: "translateY(50px) translateZ(0)",
                   visibility: "hidden",
+                  willChange: "transform, opacity",
                 }}
               >
                 {ctaLabel}

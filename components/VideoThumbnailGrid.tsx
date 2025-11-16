@@ -38,7 +38,11 @@ export function VideoThumbnailGrid({
           </div>
 
           {/* Thumbnails grid */}
-          <div className={`grid grid-cols-2 gap-4 ${isVideoRight ? "order-1" : "order-2"}`}>
+          <div
+            className={`grid grid-cols-2 gap-4 ${
+              isVideoRight ? "order-1" : "order-2"
+            }`}
+          >
             {thumbnails.map((thumbnail) => (
               <div
                 key={thumbnail.id}
@@ -75,4 +79,3 @@ export function VideoThumbnailGrid({
     </section>
   );
 }
-

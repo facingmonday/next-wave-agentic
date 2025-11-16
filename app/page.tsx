@@ -218,28 +218,28 @@ export default function Home() {
           vimeoUrl="https://vimeo.com/1126858733?fl=ip&fe=ec"
           thumbnails={[
             {
-              id: "1",
+              id: "character_1",
               image: "/images/projects/pedal-pals/benny.jpg",
               title: "Benny",
               description:
                 "Meet Benny, one of the Pedal Pals characters bringing safe cycling culture to Bentonville.",
             },
             {
-              id: "2",
+              id: "character_2",
               image: "/images/projects/pedal-pals/ricky.jpg",
               title: "Ricky",
               description:
                 "Ricky represents the community spirit and passion for safe cycling in Northwest Arkansas.",
             },
             {
-              id: "3",
+              id: "character_3",
               image: "/images/projects/pedal-pals/carrie.jpg",
               title: "Carrie",
               description:
                 "Carrie embodies the values of safety, community, and connection that Pedal Pals promotes.",
             },
             {
-              id: "4",
+              id: "character_4",
               image: "/images/projects/pedal-pals/sheldon.jpg",
               title: "Shelby",
               description:
@@ -280,28 +280,28 @@ export default function Home() {
           vimeoUrl="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
           thumbnails={[
             {
-              id: "1",
+              id: "social_1",
               image: "/images/projects/uniting-wealth-partners/oil.jpeg",
               title: "Financial Anxiety",
               description:
                 "By showing Carol, Mike, and Brad confidently attempting DIY tasks they clearly don't understand, the video triggers immediate recognition and laughter.",
             },
             {
-              id: "2",
+              id: "social_2",
               image: "/images/projects/uniting-wealth-partners/drain.jpeg",
               title: "Universal Emotional",
               description:
                 "Everyone has tried (and failed) to fix something they weren't qualified to fix. These relatable moments become a perfect metaphor for financial confusion.",
             },
             {
-              id: "3",
+              id: "social_3",
               image: "/images/projects/uniting-wealth-partners/deck.jpeg",
               title: "Reframes Guilt",
               description:
                 "The core insight lands because the humor isn't mocking — it's empathetic. Each character is portrayed with confidence, pride, and charm.",
             },
             {
-              id: "4",
+              id: "social_4",
               image: "/images/projects/uniting-wealth-partners/scott.jpeg",
               title: "Clarity",
               description:
@@ -335,28 +335,28 @@ export default function Home() {
           vimeoUrl="https://vimeo.com/1110591196?fl=ip&fe=ec"
           thumbnails={[
             {
-              id: "1",
+              id: "product_1",
               image: "/images/projects/kikits/spokesperson.jpeg",
               title: "Create a Spokesperson",
               description:
                 "Create a spokesperson for your brand that is engaging and relatable then use them for the voice over and video content.",
             },
             {
-              id: "4",
+              id: "product_2",
               image: "/images/projects/kikits/explain.jpeg",
               title: "Explain Your Product",
               description:
                 "Optimized video content designed for maximum engagement across social platforms.",
             },
             {
-              id: "3",
+              id: "product_3",
               image: "/images/projects/kikits/show.jpeg",
               title: "Showcase Your Product",
               description:
                 "Showcase your product in a clear, engaging way that showcases your product's features and benefits.",
             },
             {
-              id: "4",
+              id: "product_4",
               image: "/images/projects/kikits/relate.jpeg",
               title: "Relate to Your Audience",
               description:
