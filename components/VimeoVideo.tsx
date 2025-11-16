@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 export interface VimeoVideoProps {
   vimeoUrl: string;
@@ -11,6 +11,8 @@ export interface VimeoVideoProps {
   controls?: boolean;
   responsive?: boolean;
   background?: boolean;
+  /** When true, attempts to pause the Vimeo player via postMessage */
+  paused?: boolean;
 }
 
 /**
@@ -42,7 +44,9 @@ export function VimeoVideo({
   controls = true,
   responsive = true,
   background = false,
+  paused = false,
 }: VimeoVideoProps) {
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const videoId = useMemo(() => extractVimeoId(vimeoUrl), [vimeoUrl]);
 
   // Build embed URL - memoized to prevent unnecessary recalculations
@@ -75,6 +79,25 @@ export function VimeoVideo({
     );
   }
 
+  // Control playback via postMessage when pause/resume is requested
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const iframe = iframeRef.current;
+    if (!iframe || !iframe.contentWindow) return;
+
+    const method = paused ? "pause" : autoplay ? "play" : null;
+    if (!method) return;
+
+    try {
+      iframe.contentWindow.postMessage(
+        JSON.stringify({ method }),
+        "*"
+      );
+    } catch {
+      // Fail silently if postMessage is not available
+    }
+  }, [paused, autoplay, videoId]);
+
   // When used as background (not responsive), fill the full container
   if (!responsive || background) {
     return (
@@ -82,6 +105,7 @@ export function VimeoVideo({
         <iframe
           key={videoId}
           src={iframeSrc}
+          ref={iframeRef}
           className="absolute inset-0 w-full h-full"
           style={{
             width: "100vw",
@@ -108,6 +132,7 @@ export function VimeoVideo({
         <iframe
           key={videoId}
           src={iframeSrc}
+          ref={iframeRef}
           className="absolute top-0 left-0 w-full h-full rounded-lg"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"

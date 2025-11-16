@@ -1,31 +1,13 @@
-"use client";
-
-import { useState } from "react";
 import { ContentReveal } from "@/components/ContentReveal";
 import { PinnedHero } from "@/components/PinnedHero";
 import { VideoScroll } from "@/components/VideoScroll";
 import { VimeoVideo } from "@/components/VimeoVideo";
-import { VimeoVideoModal } from "@/components/VimeoVideoModal";
 import { Header } from "@/components/Header";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { ServicesGrid } from "@/components/ServicesGrid";
-import { WhoWeAre } from "@/components/WhoWeAre";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
-import { Portfolio } from "@/components";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalVideoUrl, setModalVideoUrl] = useState("");
-
-  const openVideoModal = (videoUrl: string) => {
-    setModalVideoUrl(videoUrl);
-    setIsModalOpen(true);
-  };
-
-  const closeVideoModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <main className="min-h-screen bg-black">
       <Header />
@@ -164,12 +146,6 @@ export default function Home() {
           subtitle="Find Your Way. Light the Moment."
           body="In this emotionally uplifting animated short, we follow Maya, a quiet first-time attendee navigating a crowded event hall, until a single scan changes everything."
           ctaLabel="Watch Video"
-          ctaOnClick={() =>
-            openVideoModal(
-              "https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
-            )
-          }
-          pauseBackgroundVideo={isModalOpen}
           scrollDistance={2400}
           startOffset="top top"
           textPosition="center"
@@ -226,10 +202,6 @@ export default function Home() {
           textPosition="center"
           textAlign="center"
           ctaLabel="Watch Video"
-          ctaOnClick={() =>
-            openVideoModal("https://vimeo.com/1126858733?fl=ip&fe=ec")
-          }
-          pauseBackgroundVideo={isModalOpen}
         />
       </section>
 
@@ -295,12 +267,6 @@ export default function Home() {
           textPosition="center"
           textAlign="center"
           ctaLabel="Watch Video"
-          ctaOnClick={() =>
-            openVideoModal(
-              "https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
-            )
-          }
-          pauseBackgroundVideo={isModalOpen}
         />
       </section>
 
@@ -364,14 +330,10 @@ export default function Home() {
           subtitle="AI-Powered Creative Campaigns"
           body="AI videos, explainers, brand stories, animation, and creative campaigns powered by Planet Goodtimes."
           ctaLabel="Watch Video"
-          ctaOnClick={() =>
-            openVideoModal("https://vimeo.com/1110591196?fl=ip&fe=ec")
-          }
           scrollDistance={2400}
           startOffset="top top"
           textPosition="center"
           textAlign="center"
-          pauseBackgroundVideo={isModalOpen}
         />
       </section>
 
@@ -575,13 +537,6 @@ export default function Home() {
           </ContentReveal>
         </div>
       </footer>
-
-      {/* Vimeo Video Modal */}
-      <VimeoVideoModal
-        isOpen={isModalOpen}
-        onClose={closeVideoModal}
-        vimeoUrl={modalVideoUrl}
-      />
     </main>
   );
 }
