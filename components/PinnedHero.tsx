@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { VimeoVideo } from "./VimeoVideo";
@@ -49,6 +49,35 @@ export function PinnedHero({
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const bodyRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
+  const [shouldAutoplay, setShouldAutoplay] = useState(false);
+
+  // Intersection Observer to detect when component is about to enter viewport
+  useEffect(() => {
+    if (!containerRef.current || !backgroundVideo) return;
+
+    const container = containerRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Start playing when component is about to enter viewport (200px before)
+          if (entry.isIntersecting) {
+            setShouldAutoplay(true);
+            observer.disconnect(); // Only trigger once
+          }
+        });
+      },
+      {
+        rootMargin: "200px 0px", // Trigger 200px before entering viewport
+        threshold: 0,
+      }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [backgroundVideo]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -336,7 +365,7 @@ export function PinnedHero({
           >
             <VimeoVideo
               vimeoUrl={backgroundVideo}
-              autoplay={true}
+              autoplay={shouldAutoplay}
               loop={true}
               muted={true}
               controls={false}
