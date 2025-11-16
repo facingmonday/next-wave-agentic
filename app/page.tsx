@@ -111,6 +111,36 @@ export default function Home() {
         ]}
       />
 
+      <section className="relative">
+        <VideoScroll
+          totalFrames={273}
+          framesPath="/bentonville-watertower"
+          frameFilePattern="bentonville-watertower-%03d.jpg"
+          scrollDistance={5000}
+          sticky={true}
+          contentAlignment="center"
+        >
+          <div className="text-center text-white z-20">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
+              Made in Bentonville
+            </h1>
+            <p className="text-xl md:text-2xl opacity-90">
+              The City of the Future
+            </p>
+          </div>
+        </VideoScroll>
+      </section>
+
+      <section className="relative py-16 md:py-32 px-4 bg-black z-10">
+        <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
+          Our Projects
+        </h1>
+        <p className="text-lg text-gray-400 leading-relaxed text-center">
+          We are proud to be part of the Bentonville community and to have
+          worked on some amazing projects.
+        </p>
+      </section>
+
       {/* Hero Section */}
       <section className="relative">
         <PinnedHero

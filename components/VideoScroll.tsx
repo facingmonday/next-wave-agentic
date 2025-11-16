@@ -52,7 +52,6 @@ export function VideoScroll({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const firstFrameLoadedRef = useRef(false);
 
   // Determine padding based on total frames
   const padding = Math.ceil(Math.log10(totalFrames + 1));
@@ -120,122 +119,33 @@ export function VideoScroll({
   // Transform scroll progress to frame index (1 to totalFrames)
   const currentIndex = useTransform(scrollYProgress, [0, 1], [1, totalFrames]);
 
-  // Render function - draws the current frame to canvas
-  const render = useCallback(
-    (index: number) => {
+  const drawImageToCanvas = useCallback(
+    (image: HTMLImageElement) => {
+      if (!image || !image.complete || image.naturalWidth === 0) return;
+
       const canvas = canvasRef.current;
-      if (!canvas) return;
-
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-
-      const frameIndex = Math.max(1, Math.min(totalFrames, Math.round(index)));
-      const image = images[frameIndex - 1];
-
-      if (image && image.complete && image.naturalWidth > 0) {
-        const container = containerRef.current;
-        if (!container) return;
-
-        const rect = container.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        const isMobile = window.innerWidth < 768;
-
-        const containerWidth = rect.width;
-        const containerHeight = rect.height || window.innerHeight;
-        const imageAspect = image.width / image.height;
-
-        let canvasWidth: number;
-        let canvasHeight: number;
-        let drawWidth: number;
-        let drawHeight: number;
-        let drawX: number;
-        let drawY: number;
-
-        if (isMobile && sticky) {
-          // On mobile with sticky: use 100vh with cover behavior (crop/zoom)
-          canvasWidth = containerWidth;
-          canvasHeight = containerHeight; // Use container height (100vh)
-
-          // Cover behavior: fill the canvas, crop excess
-          const canvasAspect = canvasWidth / canvasHeight;
-          if (imageAspect > canvasAspect) {
-            // Image is wider - fit to height, crop sides
-            drawHeight = canvasHeight;
-            drawWidth = canvasHeight * imageAspect;
-            drawX = (canvasWidth - drawWidth) / 2;
-            drawY = 0;
-          } else {
-            // Image is taller - fit to width, crop top/bottom
-            drawWidth = canvasWidth;
-            drawHeight = canvasWidth / imageAspect;
-            drawX = 0;
-            drawY = (canvasHeight - drawHeight) / 2;
-          }
-        } else {
-          // Desktop or non-sticky: fit to width, maintain aspect ratio
-          canvasWidth = containerWidth;
-          canvasHeight = containerWidth / imageAspect;
-          drawWidth = canvasWidth;
-          drawHeight = canvasHeight;
-          drawX = 0;
-          drawY = 0;
-        }
-
-        // Set canvas size
-        canvas.width = canvasWidth * dpr;
-        canvas.height = canvasHeight * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        canvas.style.width = `${canvasWidth}px`;
-        canvas.style.height = `${canvasHeight}px`;
-
-        // Update overlay and content height to match canvas
-        if (overlayRef.current) {
-          overlayRef.current.style.height = `${canvasHeight}px`;
-        }
-        if (contentRef.current) {
-          contentRef.current.style.height = `${canvasHeight}px`;
-        }
-        // Don't override container height when sticky - keep it at 100vh
-
-        // Clear canvas
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-        // Draw image with appropriate behavior
-        ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
-      }
-    },
-    [images, totalFrames, sticky]
-  );
-
-  // Update canvas when scroll index changes
-  useMotionValueEvent(currentIndex, "change", (latest) => {
-    render(Number(latest.toFixed()));
-  });
-
-  // Preload and draw first frame immediately on mount
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const firstFrameImg = new Image();
-    firstFrameImg.onload = () => {
-      firstFrameLoadedRef.current = true;
-      // Draw first frame immediately once loaded
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-
       const container = containerRef.current;
-      if (!container) return;
+      if (!canvas || !container) return;
 
-      const rect = container.getBoundingClientRect();
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
       const dpr = window.devicePixelRatio || 1;
       const isMobile = window.innerWidth < 768;
 
-      const containerWidth = rect.width || window.innerWidth;
-      const containerHeight = rect.height || window.innerHeight;
-      const imageAspect = firstFrameImg.width / firstFrameImg.height;
+      let containerWidth: number;
+      let containerHeight: number;
+
+      if (sticky) {
+        containerWidth = window.innerWidth;
+        containerHeight = window.innerHeight;
+      } else {
+        const rect = container.getBoundingClientRect();
+        containerWidth = rect.width || window.innerWidth;
+        containerHeight = rect.height || window.innerHeight;
+      }
+
+      const imageAspect = image.width / image.height;
 
       let canvasWidth: number;
       let canvasHeight: number;
@@ -245,11 +155,10 @@ export function VideoScroll({
       let drawY: number;
 
       if (isMobile && sticky) {
-        // On mobile with sticky: use 100vh with cover behavior
         canvasWidth = containerWidth;
         canvasHeight = containerHeight;
-
         const canvasAspect = canvasWidth / canvasHeight;
+
         if (imageAspect > canvasAspect) {
           drawHeight = canvasHeight;
           drawWidth = canvasHeight * imageAspect;
@@ -270,33 +179,67 @@ export function VideoScroll({
         drawY = 0;
       }
 
-      // Set canvas size
       canvas.width = canvasWidth * dpr;
       canvas.height = canvasHeight * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       canvas.style.width = `${canvasWidth}px`;
       canvas.style.height = `${canvasHeight}px`;
 
-      // Update overlay and content height to match canvas
       if (overlayRef.current) {
         overlayRef.current.style.height = `${canvasHeight}px`;
       }
       if (contentRef.current) {
         contentRef.current.style.height = `${canvasHeight}px`;
       }
-      // Don't override container height when sticky - keep it at 100vh
 
-      // Draw first frame
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      ctx.drawImage(firstFrameImg, drawX, drawY, drawWidth, drawHeight);
+      ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+    },
+    [sticky]
+  );
+
+  // Render function - draws the current frame to canvas
+  const render = useCallback(
+    (index: number) => {
+      const frameIndex = Math.max(1, Math.min(totalFrames, Math.round(index)));
+      const image = images[frameIndex - 1];
+
+      if (image) {
+        drawImageToCanvas(image);
+      }
+    },
+    [images, totalFrames, drawImageToCanvas]
+  );
+
+  // Update canvas when scroll index changes
+  useMotionValueEvent(currentIndex, "change", (latest) => {
+    render(Number(latest.toFixed()));
+  });
+
+  // Render the very first frame as soon as it's available (independent of scroll)
+  useEffect(() => {
+    let isCancelled = false;
+    const firstFrameImage = new Image();
+
+    firstFrameImage.onload = () => {
+      if (!isCancelled) {
+        drawImageToCanvas(firstFrameImage);
+      }
     };
 
-    // Load first frame immediately
-    firstFrameImg.src = getFrameFileName(1);
+    firstFrameImage.onerror = () => {
+      // If loading fails, try using the preloaded array as fallback
+      if (!isCancelled && images[0]) {
+        drawImageToCanvas(images[0]);
+      }
+    };
 
-    // Also call render as fallback
-    render(1);
-  }, [render, getFrameFileName, sticky]);
+    firstFrameImage.src = getFrameFileName(1);
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [drawImageToCanvas, getFrameFileName, images]);
 
   // Handle window resize
   useEffect(() => {
@@ -342,6 +285,7 @@ export function VideoScroll({
     return (
       <div
         ref={wrapperRef}
+        className="relative"
         style={{
           // Wrapper height controls how long the section stays scrollable
           height: `${scrollDistance}px`,
@@ -361,6 +305,7 @@ export function VideoScroll({
             width: "100%",
             // Visible area is always one full viewport
             height: "100vh",
+            zIndex: 1,
           }}
         >
           {/* Canvas for video frames */}
