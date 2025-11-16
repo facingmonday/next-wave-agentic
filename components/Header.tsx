@@ -14,7 +14,13 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <header
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        background:
+          "linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.2) 50%, transparent 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -30,26 +36,8 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 md:gap-8">
             <a
-              href="#what-we-do"
-              className="text-sm md:text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium"
-            >
-              What We Do
-            </a>
-            <a
-              href="#ecosystem"
-              className="text-sm md:text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium"
-            >
-              Ecosystem
-            </a>
-            <a
-              href="#work"
-              className="text-sm md:text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium"
-            >
-              Work
-            </a>
-            <a
               href="#contact"
-              className="text-sm md:text-base bg-[#fc05b9] text-[#CFC8CF] px-4 py-2 rounded-lg hover:bg-[#fc05b9]/90 transition-colors font-medium"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium"
             >
               Contact
             </a>

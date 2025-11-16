@@ -16,7 +16,7 @@ export interface PinnedHeroProps {
   title: string;
   subtitle?: string;
   body: string;
-  ctaLabel: string;
+  ctaLabel?: string;
   ctaHref?: string; // Optional if ctaOnClick is provided
   ctaOnClick?: () => void; // Optional custom click handler
   scrollDistance?: number; // Height in pixels for the scroll section
@@ -408,7 +408,7 @@ export function PinnedHero({
             >
               {body}
             </p>
-            {ctaOnClick ? (
+            {ctaOnClick && ctaLabel ? (
               <button
                 ref={ctaRef as React.RefObject<HTMLButtonElement>}
                 onClick={ctaOnClick}
@@ -421,7 +421,7 @@ export function PinnedHero({
               >
                 {ctaLabel}
               </button>
-            ) : (
+            ) : ctaHref ? (
               <a
                 ref={ctaRef as React.RefObject<HTMLAnchorElement>}
                 href={ctaHref}
@@ -434,7 +434,7 @@ export function PinnedHero({
               >
                 {ctaLabel}
               </a>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

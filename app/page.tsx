@@ -9,6 +9,9 @@ import { VideoScroll } from "@/components/VideoScroll";
 import { VimeoVideo } from "@/components/VimeoVideo";
 import { VimeoVideoModal } from "@/components/VimeoVideoModal";
 import { Header } from "@/components/Header";
+import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
+import { ServicesGrid } from "@/components/ServicesGrid";
+import { WhoWeAre } from "@/components/WhoWeAre";
 import {
   ScrollCarousel,
   ScrollCarouselItems,
@@ -46,37 +49,69 @@ export default function Home() {
           <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
         </div>
       </VideoScroll>
-      <VideoScroll
-        totalFrames={192}
-        framesPath="/frame2"
-        frameFilePattern="frame2-%03d.jpg"
-        scrollDistance={5000}
-        sticky={true}
-        contentAlignment="center"
-      >
-        <div className="text-center text-white z-20">
-          <h1 className="text-6xl md:text-8xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
-            AI Story Telling
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
-        </div>
-      </VideoScroll>
-      {/* Hero Section */}
-      <section className="relative">
-        <PinnedHero
-          backgroundVideo="https://vimeo.com/1136559533?share=copy&fl=sv&fe=ci"
-          title="Next Wave Agentic"
-          subtitle="Building the future of creativity, technology, and storytelling in Northwest Arkansas"
-          body="Websites, apps, AI solutions, video production, branding, marketing, and event innovation — all under one unified ecosystem."
-          ctaLabel="Start a Project"
-          ctaHref="#contact"
-          scrollDistance={1400}
-          startOffset="top top"
-          textPosition="center"
-          textAlign="center"
-        />
-      </section>
+      {/* Services Section */}
+      <ServicesGrid
+        heroTitle="AI Creativity "
+        heroSubtitle="Meets Real-World Impact"
+        heroDescription="Next Wave Agentic is your all-in-one studio for AI-generated video, brand strategy, web and app development, experiential events, and automated marketing systems. We build the technology and the stories that power the next generation of businesses."
+        primaryCtaLabel="Start a Project"
+        secondaryCtaLabel="Explore Our Work"
+        services={[
+          {
+            id: "1",
+            image: "/images/projects/kikits/MayaAndSpark.jpg",
+            title: "AI Video & Storytelling Studio",
+            description:
+              "Cinematic AI-generated videos in Pixar-style 3D, comic-book animation, and realistic avatars. We craft full campaigns, episodic narratives, and brand films optimized for social, web, and advertising.",
+            ctaLabel: "Explore AI Video Styles",
+          },
+          {
+            id: "2",
+            image: "/images/projects/pedal-pals/crystal.jpg",
+            title: "Brand Identity & Creative Direction",
+            description:
+              "Complete brand identity from logos and palettes to typography, voice, and visual language. AI accelerates exploration while human creative direction ensures consistency and long-term recognizability.",
+            ctaLabel: "Build a Cohesive Brand",
+          },
+          {
+            id: "3",
+            image: "/images/projects/kikits/KikitsPhone.jpg",
+            title: "AI-Enhanced Web & App Development",
+            description:
+              "High-performance websites and mobile apps built with React, Next.js, and TypeScript. Features include AI search, automated content flows, dashboards, and custom integrations.",
+            ctaLabel: "View Development Capabilities",
+          },
+          {
+            id: "4",
+            image:
+              "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+            title: "Experiential Events & Interactive Media",
+            description:
+              "AI-driven event experiences with dynamic QR systems, real-time visuals, and narrative-driven interactions. From VIP activations to festivals, we create adaptive event ecosystems.",
+            ctaLabel: "See Event Innovations",
+          },
+          {
+            id: "5",
+            image:
+              "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+            title: "Marketing Systems & Automation",
+            description:
+              "Automated marketing systems that handle content creation, email flows, video generation, SEO, and social scheduling. Always-on systems that multiply output while reducing workload.",
+            ctaLabel: "Automate Your Marketing",
+          },
+          {
+            id: "6",
+            image:
+              "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+            title: "Enterprise AI Consulting & Custom Solutions",
+            description:
+              "Enterprise AI solutions including internal tools, intelligent assistants, automated workflows, and custom model integrations. We engineer scalable solutions from apps to fully AI-powered operations.",
+            ctaLabel: "Build Custom AI Tools",
+          },
+        ]}
+      />
 
+      {/* Hero Section */}
       <section className="relative">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
@@ -89,7 +124,7 @@ export default function Home() {
               "https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
             )
           }
-          scrollDistance={1400}
+          scrollDistance={2400}
           startOffset="top top"
           textPosition="center"
           textAlign="center"
@@ -104,17 +139,18 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="bg-black/50 p-8 rounded-xl">
                   <h3 className="text-4xl md:text-6xl font-bold text-[#FFFFFF] mb-6 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
-                    Websites & Apps
+                    AI Storytelling
                   </h3>
                   <p className="text-lg text-[#FFFFFF] leading-relaxed shadow-md">
-                    Custom web apps, mobile apps, platforms, and digital
-                    experiences. Built with high-performance engineering from
-                    <span className="text-[#FFFFFF]">NWA Apps.</span>
+                    Cinematic AI-generated videos in Pixar-style 3D, comic-book
+                    animation, and realistic avatars. We craft full campaigns,
+                    episodic narratives, and brand films optimized for social,
+                    web, and advertising.
                   </p>
                 </div>
                 <div>
                   <VimeoVideo
-                    vimeoUrl="https://vimeo.com/1105184966?fl=ip&fe=ec"
+                    vimeoUrl="https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
                     className="rounded-xl shadow-2xl overflow-hidden"
                   />
                 </div>
@@ -124,160 +160,238 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AI Solutions - Video on Left */}
       <section className="relative py-16 md:py-32 px-4 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <ContentReveal direction="left" duration={1.2} startOffset="top 80%">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="order-2 md:order-1">
-                  <VimeoVideo
-                    vimeoUrl="https://vimeo.com/1126858733?fl=ip&fe=ec"
-                    className="rounded-xl shadow-2xl overflow-hidden"
-                  />
-                </div>
-                <div className="order-1 md:order-2">
-                  <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
-                    AI Solutions
-                  </h3>
-                  <p className="text-lg text-gray-400 leading-relaxed">
-                    Custom AI tools, automation, integrations, data systems, and
-                    intelligent dashboards.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ContentReveal>
-        </div>
+        <PinnedHero
+          backgroundVideo="https://vimeo.com/1126858733?fl=ip&fe=ec"
+          title="Pedal Pals"
+          subtitle="Ride Smart. Ride Safe. Ride Together."
+          body="Pedal Pals is a community-driven initiative that aims to create a safer and more connected cycling culture in Bentonville. We are a team of volunteers who are passionate about promoting safe cycling and creating a more connected community."
+          scrollDistance={2400}
+          startOffset="top top"
+          textPosition="center"
+          textAlign="center"
+          ctaLabel="Watch Video"
+          ctaOnClick={() =>
+            openVideoModal("https://vimeo.com/1126858733?fl=ip&fe=ec")
+          }
+        />
       </section>
 
-      {/* Video & Storytelling - Video on Right */}
-      <section className="relative py-16 md:py-32 px-4 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <ContentReveal direction="right" duration={1.2} startOffset="top 80%">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
-                    Video & Storytelling
-                  </h3>
-                  <p className="text-lg text-gray-400 leading-relaxed">
-                    AI videos, explainers, brand stories, animation, and
-                    creative campaigns powered by Planet Goodtimes.
-                  </p>
-                </div>
-                <div>
-                  <VimeoVideo
-                    vimeoUrl="https://vimeo.com/1110591196?fl=ip&fe=ec"
-                    className="rounded-xl shadow-2xl overflow-hidden"
-                  />
-                </div>
-              </div>
-            </div>
-          </ContentReveal>
-        </div>
-      </section>
-
-      {/* Commercial Story Telling - Video on Left */}
-      <section className="relative py-16 md:py-32 px-4 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <ContentReveal direction="scale" duration={1.2} startOffset="top 80%">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="order-2 md:order-1">
-                  <VimeoVideo
-                    vimeoUrl="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
-                    className="rounded-xl shadow-2xl overflow-hidden"
-                  />
-                </div>
-                <div className="order-1 md:order-2">
-                  <h3 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
-                    Commercial Story Telling
-                  </h3>
-                  <p className="text-lg text-gray-400 leading-relaxed">
-                    Elevate your brand with powerful commercial storytelling
-                    that connects, inspires, and drives results. We craft
-                    memorable campaigns that turn audiences into loyal
-                    customers.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ContentReveal>
-        </div>
-      </section>
-
-      {/* Parallax Section */}
       <section className="relative">
-        <ImageParallax
-          imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80"
-          strength={0.5}
-          className="min-h-[600px]"
-        >
-          <div className="text-center text-white z-20 bg-black/50 backdrop-blur-sm px-8 py-12 rounded-lg max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">
-              Our Ecosystem
-            </h2>
-            <p className="text-xl md:text-2xl opacity-90">
-              The Future is Next Wave Agentic
-            </p>
-          </div>
-        </ImageParallax>
+        <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
+          Character Development
+        </h1>
+        <p className="text-lg text-gray-400 leading-relaxed text-center">
+          Character development, storytelling, and brand development.
+        </p>
+        <VideoThumbnailGrid
+          vimeoUrl="https://vimeo.com/1126858733?fl=ip&fe=ec"
+          thumbnails={[
+            {
+              id: "1",
+              image: "/images/projects/pedal-pals/benny.jpg",
+              title: "Benny",
+              description:
+                "Meet Benny, one of the Pedal Pals characters bringing safe cycling culture to Bentonville.",
+            },
+            {
+              id: "2",
+              image: "/images/projects/pedal-pals/ricky.jpg",
+              title: "Ricky",
+              description:
+                "Ricky represents the community spirit and passion for safe cycling in Northwest Arkansas.",
+            },
+            {
+              id: "3",
+              image: "/images/projects/pedal-pals/carrie.jpg",
+              title: "Carrie",
+              description:
+                "Carrie embodies the values of safety, community, and connection that Pedal Pals promotes.",
+            },
+            {
+              id: "4",
+              image: "/images/projects/pedal-pals/sheldon.jpg",
+              title: "Shelby",
+              description:
+                "Shelby is part of the Pedal Pals team working to promote proper bike safety equipment.",
+            },
+          ]}
+        />
       </section>
 
-      {/* Who We Serve Section */}
-      <section className="py-32 px-4 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <ContentReveal direction="up" duration={1.2}>
-            <h2 className="text-5xl md:text-7xl font-bold text-[#CFC8CF] mb-4 text-center">
-              Who We Serve
-            </h2>
-            <p className="text-xl text-gray-400 mb-16 text-center max-w-3xl mx-auto">
-              From startups to enterprises, we help organizations of all sizes
-              achieve their digital goals.
-            </p>
-          </ContentReveal>
-          <ContentReveal direction="up" duration={1} stagger={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                "Small businesses",
-                "Startups",
-                "Event organizers",
-                "Nonprofits",
-                "Enterprises",
-                "Government",
-                "Creators",
-                "Universities",
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-[#201E30] to-[#3F395B] p-8 rounded-xl border-2 border-[#3F395B] hover:border-[#4E79A7] hover:shadow-lg transition-all text-center"
-                >
-                  <p className="text-lg font-semibold text-[#CFC8CF]">{item}</p>
-                </div>
-              ))}
-            </div>
-          </ContentReveal>
-        </div>
+      <section className="relative py-16 md:py-32 px-4 bg-black">
+        <PinnedHero
+          backgroundVideo="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
+          title="Guilty"
+          subtitle="You Don't Have to Feel Guilty."
+          body="We launch with relatable humor that disarms the viewer immediately. By showing everyday people proudly attempting things they clearly don't understand we invite laughter and recognition."
+          scrollDistance={2400}
+          startOffset="top top"
+          textPosition="center"
+          textAlign="center"
+          ctaLabel="Watch Video"
+          ctaOnClick={() =>
+            openVideoModal(
+              "https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
+            )
+          }
+        />
       </section>
 
-      {/* Parallax Section */}
       <section className="relative">
-        <ImageParallax
-          imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80"
-          strength={0.5}
-          className="min-h-[600px]"
-        >
-          <div className="text-center text-white z-20 bg-black/50 backdrop-blur-sm px-8 py-12 rounded-lg max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">
-              Ideas born here. Experiences built everywhere.
-            </h2>
-            <p className="text-xl md:text-2xl opacity-90">
-              The Future is Next Wave Agentic
-            </p>
-          </div>
-        </ImageParallax>
+        <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
+          Social Media Content
+        </h1>
+        <p className="text-lg text-gray-400 leading-relaxed text-center">
+          For Uniting Wealth Partners, we created a series of social media
+          content to promote the company and their services.
+        </p>
+        <VideoThumbnailGrid
+          vimeoUrl="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
+          thumbnails={[
+            {
+              id: "1",
+              image: "/images/projects/uniting-wealth-partners/oil.jpeg",
+              title: "Financial Anxiety",
+              description:
+                "By showing Carol, Mike, and Brad confidently attempting DIY tasks they clearly don't understand, the video triggers immediate recognition and laughter.",
+            },
+            {
+              id: "2",
+              image: "/images/projects/uniting-wealth-partners/drain.jpeg",
+              title: "Universal Emotional",
+              description:
+                "Everyone has tried (and failed) to fix something they weren't qualified to fix. These relatable moments become a perfect metaphor for financial confusion.",
+            },
+            {
+              id: "3",
+              image: "/images/projects/uniting-wealth-partners/deck.jpeg",
+              title: "Reframes Guilt",
+              description:
+                "The core insight lands because the humor isn't mocking — it's empathetic. Each character is portrayed with confidence, pride, and charm.",
+            },
+            {
+              id: "4",
+              image: "/images/projects/uniting-wealth-partners/scott.jpeg",
+              title: "Clarity",
+              description:
+                "The video strategically moves from quick comedic beats into a warm, sincere tone as the narrator introduces UWP.",
+            },
+          ]}
+        />
       </section>
+
+      {/* Product Promotion - PinnedHero */}
+      <section className="relative">
+        <PinnedHero
+          backgroundVideo="https://vimeo.com/1110591196?fl=ip&fe=ec"
+          title="Product Promotion"
+          subtitle="AI-Powered Creative Campaigns"
+          body="AI videos, explainers, brand stories, animation, and creative campaigns powered by Planet Goodtimes."
+          ctaLabel="Watch Video"
+          ctaOnClick={() =>
+            openVideoModal("https://vimeo.com/1110591196?fl=ip&fe=ec")
+          }
+          scrollDistance={2400}
+          startOffset="top top"
+          textPosition="center"
+          textAlign="center"
+        />
+      </section>
+
+      {/* Product Promotion - VideoThumbnailGrid */}
+      <section className="relative">
+        <VideoThumbnailGrid
+          vimeoUrl="https://vimeo.com/1110591196?fl=ip&fe=ec"
+          thumbnails={[
+            {
+              id: "1",
+              image: "/images/projects/kikits/spokesperson.jpeg",
+              title: "Create a Spokesperson",
+              description:
+                "Create a spokesperson for your brand that is engaging and relatable then use them for the voice over and video content.",
+            },
+            {
+              id: "4",
+              image: "/images/projects/kikits/explain.jpeg",
+              title: "Explain Your Product",
+              description:
+                "Optimized video content designed for maximum engagement across social platforms.",
+            },
+            {
+              id: "3",
+              image: "/images/projects/kikits/show.jpeg",
+              title: "Showcase Your Product",
+              description:
+                "Showcase your product in a clear, engaging way that showcases your product's features and benefits.",
+            },
+            {
+              id: "4",
+              image: "/images/projects/kikits/relate.jpeg",
+              title: "Relate to Your Audience",
+              description:
+                "Relate to your audience by showing them how your product can help them solve their problems.",
+            },
+          ]}
+        />
+      </section>
+      {/* Who We Are Section */}
+      <WhoWeAre
+        heading="Meet the Creative Minds Behind the Lens"
+        description="Our team is a collective of visionary directors, cinematographers, editors, and storytellers who turn concepts into cinematic experiences."
+        ctaLabel="View All Team"
+        ctaHref="#"
+        teamMembers={[
+          {
+            id: "1",
+            image:
+              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+            name: "Daniel Reyes",
+            title: "Creative Director",
+            socialLinks: {
+              instagram: "#",
+              facebook: "#",
+              twitter: "#",
+            },
+          },
+          {
+            id: "2",
+            image:
+              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+            name: "Maya Chen",
+            title: "Director of Photography",
+            socialLinks: {
+              instagram: "#",
+              facebook: "#",
+              twitter: "#",
+            },
+          },
+          {
+            id: "3",
+            image:
+              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+            name: "Sasha Morgan",
+            title: "Scriptwriter",
+            socialLinks: {
+              instagram: "#",
+              facebook: "#",
+              twitter: "#",
+            },
+          },
+          {
+            id: "4",
+            image:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+            name: "Leo Fernandez",
+            title: "Lead Video Editor",
+            socialLinks: {
+              instagram: "#",
+              facebook: "#",
+              twitter: "#",
+            },
+          },
+        ]}
+      />
 
       {/* Contact Section */}
       <section id="contact" className="py-32 px-4 bg-[#201E30]">

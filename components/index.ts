@@ -35,3 +35,9 @@ export type { ScrollCarouselItemProps } from "./ScrollCarouselItem";
 
 export { VimeoVideo } from "./VimeoVideo";
 export type { VimeoVideoProps } from "./VimeoVideo";
+
+export { ServicesGrid } from "./ServicesGrid";
+export type { ServicesGridProps, Service } from "./ServicesGrid";
+
+export { WhoWeAre } from "./WhoWeAre";
+export type { WhoWeAreProps, TeamMember } from "./WhoWeAre";
