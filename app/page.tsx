@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { ContentReveal } from "@/components/ContentReveal";
-import { ImageParallax } from "@/components/ImageParallax";
 import { PinnedHero } from "@/components/PinnedHero";
 import { VideoScroll } from "@/components/VideoScroll";
 import { VimeoVideo } from "@/components/VimeoVideo";
@@ -12,11 +10,8 @@ import { Header } from "@/components/Header";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { WhoWeAre } from "@/components/WhoWeAre";
-import {
-  ScrollCarousel,
-  ScrollCarouselItems,
-  ScrollCarouselItem,
-} from "@/components";
+import { FuturisticBackground } from "@/components/FuturisticBackground";
+import { Portfolio } from "@/components";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,66 +45,77 @@ export default function Home() {
         </div>
       </VideoScroll>
       {/* Services Section */}
-      <ServicesGrid
-        heroTitle="AI Creativity "
-        heroSubtitle="Meets Real-World Impact"
-        heroDescription="Next Wave Agentic is your all-in-one studio for AI-generated video, brand strategy, web and app development, experiential events, and automated marketing systems. We build the technology and the stories that power the next generation of businesses."
-        primaryCtaLabel="Start a Project"
-        secondaryCtaLabel="Explore Our Work"
-        services={[
-          {
-            id: "1",
-            image: "/images/projects/kikits/MayaAndSpark.jpg",
-            title: "AI Video & Storytelling Studio",
-            description:
-              "Cinematic AI-generated videos in Pixar-style 3D, comic-book animation, and realistic avatars. We craft full campaigns, episodic narratives, and brand films optimized for social, web, and advertising.",
-            ctaLabel: "Explore AI Video Styles",
-          },
-          {
-            id: "2",
-            image: "/images/projects/pedal-pals/crystal.jpg",
-            title: "Brand Identity & Creative Direction",
-            description:
-              "Complete brand identity from logos and palettes to typography, voice, and visual language. AI accelerates exploration while human creative direction ensures consistency and long-term recognizability.",
-            ctaLabel: "Build a Cohesive Brand",
-          },
-          {
-            id: "3",
-            image: "/images/projects/kikits/KikitsPhone.jpg",
-            title: "AI-Enhanced Web & App Development",
-            description:
-              "High-performance websites and mobile apps built with React, Next.js, and TypeScript. Features include AI search, automated content flows, dashboards, and custom integrations.",
-            ctaLabel: "View Development Capabilities",
-          },
-          {
-            id: "4",
-            image:
-              "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
-            title: "Experiential Events & Interactive Media",
-            description:
-              "AI-driven event experiences with dynamic QR systems, real-time visuals, and narrative-driven interactions. From VIP activations to festivals, we create adaptive event ecosystems.",
-            ctaLabel: "See Event Innovations",
-          },
-          {
-            id: "5",
-            image:
-              "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-            title: "Marketing Systems & Automation",
-            description:
-              "Automated marketing systems that handle content creation, email flows, video generation, SEO, and social scheduling. Always-on systems that multiply output while reducing workload.",
-            ctaLabel: "Automate Your Marketing",
-          },
-          {
-            id: "6",
-            image:
-              "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-            title: "Enterprise AI Consulting & Custom Solutions",
-            description:
-              "Enterprise AI solutions including internal tools, intelligent assistants, automated workflows, and custom model integrations. We engineer scalable solutions from apps to fully AI-powered operations.",
-            ctaLabel: "Build Custom AI Tools",
-          },
-        ]}
-      />
+      <section className="relative bg-black">
+        <FuturisticBackground
+          pattern="waves"
+          intensity="moderate"
+          showOrbs={false}
+          primaryColor="#fc05b9"
+          secondaryColor="#4E79A7"
+          tertiaryColor="#84596c"
+          lineCount={10}
+        />
+        <ServicesGrid
+          heroTitle="AI Creativity "
+          heroSubtitle="Meets Real-World Impact"
+          heroDescription="Next Wave Agentic is your all-in-one studio for AI-generated video, brand strategy, web and app development, experiential events, and automated marketing systems. We build the technology and the stories that power the next generation of businesses."
+          primaryCtaLabel="Start a Project"
+          secondaryCtaLabel="Explore Our Work"
+          services={[
+            {
+              id: "1",
+              image: "/images/projects/kikits/MayaAndSpark.jpg",
+              title: "AI Video & Storytelling Studio",
+              description:
+                "Cinematic AI-generated videos in Pixar-style 3D, comic-book animation, and realistic avatars. We craft full campaigns, episodic narratives, and brand films optimized for social, web, and advertising.",
+              ctaLabel: "Explore AI Video Styles",
+            },
+            {
+              id: "2",
+              image: "/images/projects/pedal-pals/crystal.jpg",
+              title: "Brand Identity & Creative Direction",
+              description:
+                "Complete brand identity from logos and palettes to typography, voice, and visual language. AI accelerates exploration while human creative direction ensures consistency and long-term recognizability.",
+              ctaLabel: "Build a Cohesive Brand",
+            },
+            {
+              id: "3",
+              image: "/images/projects/kikits/KikitsPhone.jpg",
+              title: "AI-Enhanced Web & App Development",
+              description:
+                "High-performance websites and mobile apps built with React, Next.js, and TypeScript. Features include AI search, automated content flows, dashboards, and custom integrations.",
+              ctaLabel: "View Development Capabilities",
+            },
+            {
+              id: "4",
+              image:
+                "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+              title: "Experiential Events & Interactive Media",
+              description:
+                "AI-driven event experiences with dynamic QR systems, real-time visuals, and narrative-driven interactions. From VIP activations to festivals, we create adaptive event ecosystems.",
+              ctaLabel: "See Event Innovations",
+            },
+            {
+              id: "5",
+              image:
+                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+              title: "Marketing Systems & Automation",
+              description:
+                "Automated marketing systems that handle content creation, email flows, video generation, SEO, and social scheduling. Always-on systems that multiply output while reducing workload.",
+              ctaLabel: "Automate Your Marketing",
+            },
+            {
+              id: "6",
+              image:
+                "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+              title: "Enterprise AI Consulting & Custom Solutions",
+              description:
+                "Enterprise AI solutions including internal tools, intelligent assistants, automated workflows, and custom model integrations. We engineer scalable solutions from apps to fully AI-powered operations.",
+              ctaLabel: "Build Custom AI Tools",
+            },
+          ]}
+        />
+      </section>
 
       <section className="relative">
         <VideoScroll
@@ -131,7 +137,16 @@ export default function Home() {
         </VideoScroll>
       </section>
 
-      <section className="relative py-16 md:py-32 px-4 bg-black z-10">
+      <section className="relative py-16 md:py-32 px-4">
+        <FuturisticBackground
+          pattern="flowing"
+          intensity="moderate"
+          showOrbs={false}
+          primaryColor="#fc05b9"
+          secondaryColor="#4E79A7"
+          tertiaryColor="#84596c"
+          lineCount={10}
+        />
         <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
           Our Projects
         </h1>
@@ -154,6 +169,7 @@ export default function Home() {
               "https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
             )
           }
+          pauseBackgroundVideo={isModalOpen}
           scrollDistance={2400}
           startOffset="top top"
           textPosition="center"
@@ -162,7 +178,16 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section className="relative py-16 md:py-32 px-4 bg-black">
+      <section className="relative py-16 md:py-32 px-4">
+        <FuturisticBackground
+          pattern="flowing"
+          intensity="moderate"
+          showOrbs={false}
+          primaryColor="#fc05b9"
+          secondaryColor="#4E79A7"
+          tertiaryColor="#84596c"
+          lineCount={10}
+        />
         <div className="max-w-7xl mx-auto">
           <ContentReveal direction="right" duration={1.2} startOffset="top 80%">
             <div className="relative max-w-7xl mx-auto px-4">
@@ -204,10 +229,20 @@ export default function Home() {
           ctaOnClick={() =>
             openVideoModal("https://vimeo.com/1126858733?fl=ip&fe=ec")
           }
+          pauseBackgroundVideo={isModalOpen}
         />
       </section>
 
       <section className="relative">
+        <FuturisticBackground
+          pattern="flowing"
+          intensity="moderate"
+          showOrbs={false}
+          primaryColor="#fc05b9"
+          secondaryColor="#4E79A7"
+          tertiaryColor="#84596c"
+          lineCount={10}
+        />
         <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
           Character Development
         </h1>
@@ -265,10 +300,20 @@ export default function Home() {
               "https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
             )
           }
+          pauseBackgroundVideo={isModalOpen}
         />
       </section>
 
       <section className="relative">
+        <FuturisticBackground
+          pattern="flowing"
+          intensity="moderate"
+          showOrbs={false}
+          primaryColor="#fc05b9"
+          secondaryColor="#4E79A7"
+          tertiaryColor="#84596c"
+          lineCount={10}
+        />
         <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
           Social Media Content
         </h1>
@@ -326,6 +371,7 @@ export default function Home() {
           startOffset="top top"
           textPosition="center"
           textAlign="center"
+          pauseBackgroundVideo={isModalOpen}
         />
       </section>
 
@@ -365,63 +411,6 @@ export default function Home() {
           ]}
         />
       </section>
-      {/* Who We Are Section */}
-      <WhoWeAre
-        heading="Meet the Creative Minds Behind the Lens"
-        description="Our team is a collective of visionary directors, cinematographers, editors, and storytellers who turn concepts into cinematic experiences."
-        ctaLabel="View All Team"
-        ctaHref="#"
-        teamMembers={[
-          {
-            id: "1",
-            image:
-              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-            name: "Daniel Reyes",
-            title: "Creative Director",
-            socialLinks: {
-              instagram: "#",
-              facebook: "#",
-              twitter: "#",
-            },
-          },
-          {
-            id: "2",
-            image:
-              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-            name: "Maya Chen",
-            title: "Director of Photography",
-            socialLinks: {
-              instagram: "#",
-              facebook: "#",
-              twitter: "#",
-            },
-          },
-          {
-            id: "3",
-            image:
-              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
-            name: "Sasha Morgan",
-            title: "Scriptwriter",
-            socialLinks: {
-              instagram: "#",
-              facebook: "#",
-              twitter: "#",
-            },
-          },
-          {
-            id: "4",
-            image:
-              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-            name: "Leo Fernandez",
-            title: "Lead Video Editor",
-            socialLinks: {
-              instagram: "#",
-              facebook: "#",
-              twitter: "#",
-            },
-          },
-        ]}
-      />
 
       {/* Contact Section */}
       <section id="contact" className="py-32 px-4 bg-[#201E30]">

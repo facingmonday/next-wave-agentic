@@ -24,6 +24,8 @@ export interface PinnedHeroProps {
   textPosition?: "left" | "center" | "right";
   textAlign?: "left" | "center" | "right";
   clearOnLeave?: boolean; // If true, clears content when scrolling past. Defaults to false (keeps content visible)
+  /** When true, background video will be paused/unmounted (e.g., while a modal is open) */
+  pauseBackgroundVideo?: boolean;
   className?: string;
 }
 
@@ -41,6 +43,7 @@ export function PinnedHero({
   textPosition = "left",
   textAlign = "left",
   clearOnLeave = false,
+  pauseBackgroundVideo = false,
   className = "",
 }: PinnedHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -151,10 +154,46 @@ export function PinnedHero({
     }
 
     // Create timeline FOR CONTENT ONLY with GPU acceleration
+    // Let ScrollTrigger drive the timeline directly (avoids manual progress updates that can cause jitter)
     const tl = gsap.timeline({
       defaults: {
         force3D: true, // GPU acceleration
         lazy: false, // Don't defer updates
+      },
+      scrollTrigger: {
+        trigger: container,
+        start: startOffset,
+        end: `+=${scrollDistance}`,
+        pin: true,
+        pinSpacing: true,
+        scrub: true, // Smooth scrubbing
+        anticipatePin: 0, // Disable anticipatePin to reduce "jump" when entering
+        onEnter: () => {
+          // Ensure content wrapper is visible while active
+          gsap.set(content, { autoAlpha: 1 });
+        },
+        onLeave: () => {
+          // When leaving forwards (scrolled past)
+          if (clearOnLeave) {
+            // Hide content if clearOnLeave is true
+            gsap.set(content, { autoAlpha: 0 });
+            gsap.set([title, subtitle, body, cta], {
+              opacity: 0,
+              y: 50,
+              visibility: "hidden",
+            });
+          }
+          // If clearOnLeave is false, keep final state (content stays visible)
+        },
+        onLeaveBack: () => {
+          // When leaving backwards (scrolled back up), always reset to hidden
+          gsap.set(content, { autoAlpha: 0 });
+          gsap.set([title, subtitle, body, cta], {
+            opacity: 0,
+            y: 50,
+            visibility: "hidden",
+          });
+        },
       },
     });
 
@@ -216,99 +255,9 @@ export function PinnedHero({
       0.6
     );
 
-    // Create ScrollTrigger for CONTENT animation (pinned)
-    const contentTrigger = ScrollTrigger.create({
-      trigger: container,
-      start: startOffset,
-      end: `+=${scrollDistance}`,
-      pin: true,
-      pinSpacing: true,
-      scrub: true, // Smooth scrubbing (defaults to 0.5, smoother than 1)
-      anticipatePin: 1, // Anticipate pinning for smoother transitions
-      onUpdate: (self) => {
-        const progress = self.progress;
-        // Only update timeline if we're in the active scroll range
-        if (self.isActive) {
-          // Ensure content wrapper is visible while active
-          gsap.set(content, { autoAlpha: 1 });
-          tl.progress(progress);
-        } else {
-          // If clearOnLeave is true, hide content when not active
-          if (clearOnLeave) {
-            tl.progress(0);
-            gsap.set(content, { autoAlpha: 0 });
-            gsap.set([title, subtitle, body, cta], {
-              opacity: 0,
-              y: 50,
-              visibility: "hidden",
-            });
-          }
-          // If clearOnLeave is false, keep content visible (do nothing)
-        }
-      },
-      onEnter: () => {
-        // When entering the trigger zone, start from beginning
-        gsap.set(content, { autoAlpha: 1 });
-        tl.progress(0);
-      },
-      onLeave: () => {
-        // When leaving forwards (scrolled past)
-        if (clearOnLeave) {
-          // Hide content if clearOnLeave is true
-          tl.progress(0);
-          gsap.set(content, { autoAlpha: 0 });
-          gsap.set([title, subtitle, body, cta], {
-            opacity: 0,
-            y: 50,
-            visibility: "hidden",
-          });
-        }
-        // If clearOnLeave is false, keep final state (content stays visible)
-      },
-      onLeaveBack: () => {
-        // When leaving backwards (scrolled back up), hide content
-        tl.progress(0);
-        gsap.set(content, { autoAlpha: 0 });
-        gsap.set([title, subtitle, body, cta], {
-          opacity: 0,
-          y: 50,
-          visibility: "hidden",
-        });
-      },
-    });
-
-    // Initial check: ensure content is hidden if section hasn't reached trigger point
-    const checkInitialState = () => {
-      if (!contentTrigger.isActive) {
-        // If scroll trigger is not active, ensure content is hidden
-        gsap.set(content, { autoAlpha: 0 });
-        gsap.set([title, subtitle, body, cta], {
-          opacity: 0,
-          y: 50,
-          visibility: "hidden",
-        });
-        tl.progress(0);
-      }
-      // Background state is managed by its own trigger
-      if (
-        !backgroundVideo &&
-        background &&
-        backgroundTrigger &&
-        !backgroundTrigger.isActive
-      ) {
-        gsap.set(background, { autoAlpha: 0 });
-      }
-    };
-
-    // Check initial state after ScrollTrigger has calculated positions
-    ScrollTrigger.addEventListener("refresh", checkInitialState);
-    setTimeout(checkInitialState, 100);
-
     // Cleanup
     return () => {
-      ScrollTrigger.removeEventListener("refresh", checkInitialState);
       tl.kill();
-      contentTrigger.kill();
       if (backgroundTrigger) {
         backgroundTrigger.kill();
       }
@@ -373,16 +322,20 @@ export function PinnedHero({
             data-background
             className="absolute inset-0 z-0 opacity-50 overflow-hidden"
           >
-            <VimeoVideo
-              vimeoUrl={backgroundVideo}
-              autoplay={shouldAutoplay}
-              loop={true}
-              muted={true}
-              controls={false}
-              responsive={false}
-              background={true}
-              className=""
-            />
+            {/* When pauseBackgroundVideo is true (e.g., video modal open),
+                unmount the Vimeo iframe so background playback stops */}
+            {!pauseBackgroundVideo && (
+              <VimeoVideo
+                vimeoUrl={backgroundVideo}
+                autoplay={shouldAutoplay}
+                loop={true}
+                muted={true}
+                controls={false}
+                responsive={false}
+                background={true}
+                className=""
+              />
+            )}
             {/* Overlay for better text readability */}
             <div className="absolute inset-0 bg-black/40 z-10" />
           </div>

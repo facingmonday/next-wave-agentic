@@ -41,8 +41,8 @@ export function ServicesGrid({
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section className="relative py-16 md:py-32 px-4 bg-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-16 md:py-32 px-4">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Hero Section */}
         <div className="mb-16 md:mb-24 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-4 uppercase">

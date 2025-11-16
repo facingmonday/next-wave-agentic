@@ -42,7 +42,7 @@ export function WhoWeAre({
   return (
     <section className="py-16 md:py-32 px-4 bg-black">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           {/* Left Section - Text Content */}
           <div>
             <h2 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 uppercase">
@@ -153,4 +153,3 @@ export function WhoWeAre({
     </section>
   );
 }
-
