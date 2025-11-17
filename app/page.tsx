@@ -119,7 +119,7 @@ export default function Home() {
         </VideoScroll>
       </section>
 
-      <section className="relative py-16 md:py-32 px-4">
+      <section className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -154,7 +154,7 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section className="relative py-16 md:py-32 px-4">
+      <section className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -191,7 +191,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-16 md:py-32 px-4 bg-black">
+      <section className="relative py-16 md:py-32 bg-black">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1126858733?fl=ip&fe=ec"
           title="Pedal Pals"
@@ -256,7 +256,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="relative py-16 md:py-32 px-4 bg-black">
+      <section className="relative py-16 md:py-32 bg-black">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
           title="Guilty"
