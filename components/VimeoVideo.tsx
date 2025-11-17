@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export interface VimeoVideoProps {
   vimeoUrl: string;
@@ -13,6 +13,8 @@ export interface VimeoVideoProps {
   background?: boolean;
   /** When true, attempts to pause the Vimeo player via postMessage */
   paused?: boolean;
+  /** Optional React node to show while the Vimeo iframe is loading/buffering */
+  fallbackBackground?: React.ReactNode;
 }
 
 /**
@@ -45,9 +47,11 @@ export function VimeoVideo({
   responsive = true,
   background = false,
   paused = false,
+  fallbackBackground,
 }: VimeoVideoProps) {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const videoId = useMemo(() => extractVimeoId(vimeoUrl), [vimeoUrl]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Build embed URL - memoized to prevent unnecessary recalculations
   // The stable key={videoId} on the iframe prevents React from recreating it
@@ -102,6 +106,18 @@ export function VimeoVideo({
   if (!responsive || background) {
     return (
       <div className={`absolute inset-0 w-full h-full ${className}`}>
+        {/* Fallback while the Vimeo iframe loads/buffers */}
+        {!isLoaded && (
+          <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
+            {fallbackBackground ?? (
+              <div className="flex flex-col items-center justify-center gap-2 text-white/70 text-sm">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                <span>Loading background…</span>
+              </div>
+            )}
+          </div>
+        )}
+
         <iframe
           key={videoId}
           src={iframeSrc}
@@ -120,6 +136,7 @@ export function VimeoVideo({
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
           title="Vimeo video player"
+          onLoad={() => setIsLoaded(true)}
         />
       </div>
     );
@@ -129,6 +146,18 @@ export function VimeoVideo({
   return (
     <div className={`relative w-full ${className}`}>
       <div className="relative w-full h-0 pb-[56.25%]">
+        {/* Fallback while the Vimeo iframe loads/buffers */}
+        {!isLoaded && (
+          <div className="absolute inset-0 z-0 flex items-center justify-center bg-black rounded-lg">
+            {fallbackBackground ?? (
+              <div className="flex flex-col items-center justify-center gap-2 text-white/70 text-sm">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                <span>Loading video…</span>
+              </div>
+            )}
+          </div>
+        )}
+
         <iframe
           key={videoId}
           src={iframeSrc}
@@ -138,6 +167,7 @@ export function VimeoVideo({
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
           title="Vimeo video player"
+          onLoad={() => setIsLoaded(true)}
         />
       </div>
     </div>

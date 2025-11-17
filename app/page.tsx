@@ -6,6 +6,43 @@ import { Header } from "@/components/Header";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
+import { Portfolio } from "@/components/Portfolio";
+import type { PortfolioItem } from "@/components/PortfolioCarousel";
+
+const portfolioItems: PortfolioItem[] = [
+  {
+    id: "maya-spark",
+    image: "/images/projects/kikits/MayaAndSpark.jpg",
+    title: "Maya & Spark",
+    description:
+      "An emotionally uplifting animated short and event experience that blends AI storytelling with real-world interaction.",
+    tags: ["AI Video", "Event Experience", "Storytelling"],
+  },
+  {
+    id: "pedal-pals",
+    image: "/images/projects/pedal-pals/crystal.jpg",
+    title: "Pedal Pals",
+    description:
+      "A community-driven cycling safety campaign featuring original characters, worldbuilding, and educational content.",
+    tags: ["Community", "Campaign", "Character Design"],
+  },
+  {
+    id: "uwp-guilty",
+    image: "/images/projects/uniting-wealth-partners/oil.jpeg",
+    title: "Uniting Wealth Partners – Guilty",
+    description:
+      "A relatable, humor-forward campaign that reframes financial guilt and builds trust through storytelling.",
+    tags: ["Social Content", "Financial Services", "Campaign"],
+  },
+  {
+    id: "kikits-product",
+    image: "/images/projects/kikits/spokesperson.jpeg",
+    title: "Kikits Product Launch",
+    description:
+      "A suite of AI-powered spokesperson and product videos designed for high-performing social and web campaigns.",
+    tags: ["Product Video", "Spokesperson", "AI Production"],
+  },
+] as const;
 
 export default function Home() {
   return (
@@ -118,6 +155,15 @@ export default function Home() {
           </div>
         </VideoScroll>
       </section>
+
+      {/* Portfolio Section */}
+      <Portfolio
+        title="Featured Work"
+        description="A selection of campaigns, films, and digital experiences crafted at the intersection of AI, storytelling, and product strategy."
+        // 4s between slides for a relaxed autoplay pace
+        autoScrollSpeed={4000}
+        items={portfolioItems}
+      />
 
       <section className="relative py-16 md:py-32">
         <FuturisticBackground

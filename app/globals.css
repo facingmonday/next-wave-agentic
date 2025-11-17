@@ -99,3 +99,20 @@ h6 {
 .bounce-down {
   animation: bounce-down 1.5s ease-in-out infinite;
 }
+
+/* Swiper pagination styling for portfolio carousel */
+.portfolio-swiper .swiper-pagination {
+  position: relative;
+  bottom: 0 !important;
+  margin-top: 1.5rem;
+}
+
+.portfolio-swiper .swiper-pagination-bullet {
+  background: #fc05b9;
+  opacity: 0.4;
+}
+
+.portfolio-swiper .swiper-pagination-bullet-active {
+  background: #fc05b9;
+  opacity: 1;
+}

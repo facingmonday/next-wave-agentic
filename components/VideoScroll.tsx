@@ -24,7 +24,7 @@
  */
 
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export interface VideoScrollProps {
   totalFrames: number; // Total number of frames (e.g., 192)
@@ -33,6 +33,10 @@ export interface VideoScrollProps {
   scrollDistance?: number; // Height of scroll container (in pixels)
   sticky?: boolean; // If true, component stays pinned/sticky while scrolling through frames
   contentAlignment?: "left" | "center" | "right";
+  /** Optional React node to show behind the canvas while frames are loading (e.g. blurred poster) */
+  fallbackBackground?: React.ReactNode;
+  /** Number of frames that must be loaded before we consider the sequence \"ready\" */
+  minimumReadyFrames?: number;
   children?: React.ReactNode;
   className?: string;
 }
@@ -44,6 +48,8 @@ export function VideoScroll({
   scrollDistance = 5000,
   sticky = false,
   contentAlignment = "center",
+  fallbackBackground,
+  minimumReadyFrames = 32,
   children,
   className = "",
 }: VideoScrollProps) {
@@ -52,6 +58,12 @@ export function VideoScroll({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const [loadedFrameCount, setLoadedFrameCount] = useState(0);
+  const [hasTimedOut, setHasTimedOut] = useState(false);
+  const [hasStartedLoading, setHasStartedLoading] = useState(false);
+
+  const isReady = loadedFrameCount >= Math.min(minimumReadyFrames, totalFrames);
 
   // Determine padding based on total frames
   const padding = Math.ceil(Math.log10(totalFrames + 1));
@@ -89,23 +101,28 @@ export function VideoScroll({
     [framesPath, frameFilePattern, padding]
   );
 
-  // Preload all frame images
+  // Preload all frame images with load tracking, but only after we've started loading
   const images = useMemo(() => {
     // Only run in browser environment
-    if (typeof window === "undefined") {
+    if (typeof window === "undefined" || !hasStartedLoading) {
       return [];
     }
 
     const loadedImages: HTMLImageElement[] = [];
+    let loadedCount = 0;
 
     for (let i = 1; i <= totalFrames; i++) {
       const img = new Image();
       img.src = getFrameFileName(i);
+      img.onload = () => {
+        loadedCount += 1;
+        setLoadedFrameCount(loadedCount);
+      };
       loadedImages.push(img);
     }
 
     return loadedImages;
-  }, [totalFrames, getFrameFileName]);
+  }, [totalFrames, getFrameFileName, hasStartedLoading]);
 
   // Setup scroll tracking
   // When sticky, track scroll within the wrapper container (parent of sticky element)
@@ -219,6 +236,8 @@ export function VideoScroll({
   // Render the very first frame as soon as it's available (independent of scroll)
   useEffect(() => {
     let isCancelled = false;
+    if (!hasStartedLoading) return;
+
     const firstFrameImage = new Image();
 
     firstFrameImage.onload = () => {
@@ -239,7 +258,51 @@ export function VideoScroll({
     return () => {
       isCancelled = true;
     };
-  }, [drawImageToCanvas, getFrameFileName, images]);
+  }, [drawImageToCanvas, getFrameFileName, images, hasStartedLoading]);
+
+  // Timeout for very slow networks – after this we keep showing fallback instead of a broken canvas
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!hasStartedLoading) return;
+
+    const timeout = window.setTimeout(() => {
+      setHasTimedOut(true);
+    }, 3000);
+
+    return () => window.clearTimeout(timeout);
+  }, [hasStartedLoading]);
+
+  // Start loading frames slightly before the section enters the viewport
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (hasStartedLoading) return;
+
+    const target = sticky ? wrapperRef.current : containerRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Trigger when the section is about to come into view
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            setHasStartedLoading(true);
+          }
+        });
+      },
+      {
+        root: null,
+        // Start loading when the section is within ~150% viewport height
+        rootMargin: "150% 0px 150% 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(target);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasStartedLoading, sticky]);
 
   // Handle window resize
   useEffect(() => {
@@ -305,9 +368,20 @@ export function VideoScroll({
             width: "100%",
             // Visible area is always one full viewport
             height: "100vh",
-            zIndex: 1,
           }}
         >
+          {/* Fallback background / poster while frames are still loading */}
+          {!isReady && !hasTimedOut && (
+            <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
+              {fallbackBackground ?? (
+                <div className="flex flex-col items-center justify-center gap-2 text-white/70 text-sm">
+                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                  <span>Loading experience…</span>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Canvas for video frames */}
           <canvas
             ref={canvasRef}
@@ -325,17 +399,17 @@ export function VideoScroll({
           {/* Overlay for better content visibility - matches canvas height */}
           <div
             ref={overlayRef}
-            className="absolute top-0 left-0 w-full bg-black/30 z-10"
+            className="absolute top-0 left-0 w-full bg-black/30"
             style={{ height: "100vh" }}
           />
 
           {/* Content */}
           {children && (
-            <div
-              ref={contentRef}
-              className={`absolute top-0 left-0 z-20 w-full flex px-4 md:px-8 lg:px-16 ${getContentAlignmentClasses()}`}
-              style={{ height: "100vh" }}
-            >
+              <div
+                ref={contentRef}
+                className={`absolute top-0 left-0 w-full flex px-4 md:px-8 lg:px-16 ${getContentAlignmentClasses()}`}
+                style={{ height: "100vh" }}
+              >
               <div className={getContentTextAlignClasses()}>{children}</div>
             </div>
           )}
@@ -358,6 +432,18 @@ export function VideoScroll({
         position: "relative",
       }}
     >
+      {/* Fallback background / poster while frames are still loading */}
+      {!isReady && !hasTimedOut && (
+        <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
+          {fallbackBackground ?? (
+            <div className="flex flex-col items-center justify-center gap-2 text-white/70 text-sm">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              <span>Loading experience…</span>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Canvas for video frames */}
       <canvas
         ref={canvasRef}
