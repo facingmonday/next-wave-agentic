@@ -138,9 +138,9 @@ export default function Home() {
 
       <section className="relative">
         <VideoScroll
-          totalFrames={273}
-          framesPath="/bentonville-watertower"
-          frameFilePattern="bentonville-watertower-%03d.jpg"
+          totalFrames={192}
+          framesPath="/images/bentonville-watertower"
+          frameFilePattern="bentonville-watertower-drone-%03d.jpg"
           scrollDistance={5000}
           sticky={true}
           contentAlignment="center"
