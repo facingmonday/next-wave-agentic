@@ -49,7 +49,16 @@ export { WhoWeAre } from "./WhoWeAre";
 export type { WhoWeAreProps, TeamMember } from "./WhoWeAre";
 
 export { PortfolioCarousel } from "./PortfolioCarousel";
-export type { PortfolioCarouselProps, PortfolioItem } from "./PortfolioCarousel";
+export type {
+  PortfolioCarouselProps,
+  PortfolioItem,
+} from "./PortfolioCarousel";
 
 export { Portfolio } from "./Portfolio";
 export type { PortfolioProps } from "./Portfolio";
+
+export { HorizontalScrollCarousel } from "./HorizontalScrollCarousel";
+export type {
+  HorizontalScrollCarouselProps,
+  HorizontalScrollCarouselItem,
+} from "./HorizontalScrollCarousel";
