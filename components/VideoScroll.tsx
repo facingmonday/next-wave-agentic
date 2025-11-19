@@ -23,7 +23,12 @@
  *    </VideoScroll>
  */
 
-import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export interface VideoScrollProps {
@@ -33,6 +38,10 @@ export interface VideoScrollProps {
   scrollDistance?: number; // Height of scroll container (in pixels)
   sticky?: boolean; // If true, component stays pinned/sticky while scrolling through frames
   contentAlignment?: "left" | "center" | "right";
+  /** Optional scroll-linked animation for the overlaid content (e.g. fade + slide) */
+  contentAnimationDirection?: "none" | "up" | "down" | "left" | "right";
+  /** If true, content will fade in/out with scroll in addition to any slide animation */
+  contentFade?: boolean;
   /** Optional React node to show behind the canvas while frames are loading (e.g. blurred poster) */
   fallbackBackground?: React.ReactNode;
   /** Number of frames that must be loaded before we consider the sequence \"ready\" */
@@ -48,6 +57,8 @@ export function VideoScroll({
   scrollDistance = 5000,
   sticky = false,
   contentAlignment = "center",
+  contentAnimationDirection = "none",
+  contentFade = false,
   fallbackBackground,
   minimumReadyFrames = 32,
   children,
@@ -135,6 +146,33 @@ export function VideoScroll({
 
   // Transform scroll progress to frame index (1 to totalFrames)
   const currentIndex = useTransform(scrollYProgress, [0, 1], [1, totalFrames]);
+
+  // Scroll-linked animation for overlaid content
+  const contentOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.85, 1],
+    contentFade ? [0, 1, 1, 0] : [1, 1, 1, 1]
+  );
+
+  const contentY = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    contentAnimationDirection === "up"
+      ? [40, 0, -40]
+      : contentAnimationDirection === "down"
+      ? [-40, 0, 40]
+      : [0, 0, 0]
+  );
+
+  const contentX = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    contentAnimationDirection === "left"
+      ? [40, 0, -40]
+      : contentAnimationDirection === "right"
+      ? [-40, 0, 40]
+      : [0, 0, 0]
+  );
 
   const drawImageToCanvas = useCallback(
     (image: HTMLImageElement) => {
@@ -405,13 +443,18 @@ export function VideoScroll({
 
           {/* Content */}
           {children && (
-              <div
-                ref={contentRef}
-                className={`absolute top-0 left-0 w-full flex px-4 md:px-8 lg:px-16 ${getContentAlignmentClasses()}`}
-                style={{ height: "100vh" }}
-              >
+            <motion.div
+              ref={contentRef}
+              className={`absolute top-0 left-0 w-full flex px-4 md:px-8 lg:px-16 ${getContentAlignmentClasses()}`}
+              style={{
+                height: "100vh",
+                opacity: contentOpacity,
+                x: contentX,
+                y: contentY,
+              }}
+            >
               <div className={getContentTextAlignClasses()}>{children}</div>
-            </div>
+            </motion.div>
           )}
         </div>
       </div>
@@ -465,12 +508,17 @@ export function VideoScroll({
 
       {/* Content */}
       {children && (
-        <div
+        <motion.div
           ref={contentRef}
           className={`absolute top-0 left-0 z-20 w-full flex px-4 md:px-8 lg:px-16 ${getContentAlignmentClasses()}`}
+          style={{
+            opacity: contentOpacity,
+            x: contentX,
+            y: contentY,
+          }}
         >
           <div className={getContentTextAlignClasses()}>{children}</div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

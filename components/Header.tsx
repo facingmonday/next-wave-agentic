@@ -36,6 +36,12 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 md:gap-8">
             <a
+              href="/bentonville"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Bentonville
+            </a>
+            <a
               href="#contact"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium"
             >
@@ -78,6 +84,13 @@ export function Header() {
         }`}
       >
         <nav className="flex flex-col px-4 py-6 space-y-4">
+          <a
+            href="/bentonville"
+            onClick={closeMenu}
+            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+          >
+            Bentonville
+          </a>
           <a
             href="#what-we-do"
             onClick={closeMenu}
