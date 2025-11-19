@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,22 +26,46 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="text-2xl md:text-3xl font-bold text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-heading"
             >
               NWA
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 md:gap-8">
-            <a
+            <Link
+              href="/storytelling"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Storytelling
+            </Link>
+            <Link
+              href="/software"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Software
+            </Link>
+            <Link
+              href="/projects"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Projects
+            </Link>
+            <Link
+              href="/engagement"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Engagement
+            </Link>
+            <Link
               href="/bentonville"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
             >
               Bentonville
-            </a>
+            </Link>
             <a
               href="#contact"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium"
@@ -84,34 +109,41 @@ export function Header() {
         }`}
       >
         <nav className="flex flex-col px-4 py-6 space-y-4">
-          <a
+          <Link
+            href="/storytelling"
+            onClick={closeMenu}
+            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+          >
+            Storytelling
+          </Link>
+          <Link
+            href="/software"
+            onClick={closeMenu}
+            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+          >
+            Software
+          </Link>
+          <Link
+            href="/projects"
+            onClick={closeMenu}
+            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+          >
+            Projects
+          </Link>
+          <Link
+            href="/engagement"
+            onClick={closeMenu}
+            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+          >
+            Engagement
+          </Link>
+          <Link
             href="/bentonville"
             onClick={closeMenu}
             className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
           >
             Bentonville
-          </a>
-          <a
-            href="#what-we-do"
-            onClick={closeMenu}
-            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
-          >
-            What We Do
-          </a>
-          <a
-            href="#ecosystem"
-            onClick={closeMenu}
-            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
-          >
-            Ecosystem
-          </a>
-          <a
-            href="#work"
-            onClick={closeMenu}
-            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
-          >
-            Work
-          </a>
+          </Link>
           <a
             href="#contact"
             onClick={closeMenu}
