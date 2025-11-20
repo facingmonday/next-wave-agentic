@@ -9,6 +9,7 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
+import { VideoGallery } from "@/components/VideoGallery";
 
 const portfolioItems: PortfolioItem[] = [
   {
@@ -136,7 +137,6 @@ export default function Home() {
           ]}
         /> */}
         <HorizontalScrollCarousel
-          backgroundImage="/images/projects/kikits/MayaAndSpark.jpg"
           items={[
             {
               image: "/images/projects/kikits/MayaAndSpark.jpg",
@@ -315,7 +315,7 @@ export default function Home() {
         <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
           Character Development
         </h1>
-        <p className="text-lg text-gray-400 leading-relaxed text-center">
+        <p className="text-lg text-gray-400 leading-relaxed text-center mb-6">
           Character development, storytelling, and brand development.
         </p>
         <VideoThumbnailGrid
