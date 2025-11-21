@@ -10,6 +10,7 @@ import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
 import { VideoGallery } from "@/components/VideoGallery";
+import StoryPath from "@/components/StoryPath";
 
 const portfolioItems: PortfolioItem[] = [
   {
@@ -65,16 +66,46 @@ export default function Home() {
           <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
         </div>
       </VideoScroll>
+      <section className="relative">
+        <StoryPath
+          steps={[
+            {
+              title: "1. Discovery",
+              body: "We identified the core problems with the old event workflow...",
+              background: "/bg/kikits-discovery.jpg",
+            },
+            {
+              title: "2. Architecture",
+              body: "We designed the fact system, scanners, access logic, and flows...",
+              background: "/bg/kikits-architecture.jpg",
+            },
+            {
+              title: "3. Build",
+              body: "Checkout flow, dashboards, Apple Wallet, scanning system...",
+              background: "/bg/kikits-build.jpg",
+            },
+            {
+              title: "4. Storytelling",
+              body: "Spark, Maya, brand voice, creative direction...",
+              background: "/bg/kikits-stories.jpg",
+            },
+            {
+              title: "5. Launch",
+              body: "Onboarding, community rollout, events, analytics...",
+              background: "/bg/kikits-launch.jpg",
+            },
+          ]}
+        />
+      </section>
       {/* Services Section */}
       <section className="relative bg-black">
         <FuturisticBackground
-          pattern="waves"
-          intensity="moderate"
-          showOrbs={false}
           primaryColor="#fc05b9"
           secondaryColor="#4E79A7"
           tertiaryColor="#84596c"
-          lineCount={10}
+          lineCount={6}
+          lineThickness="medium"
+          intensity="moderate"
         />
         {/* <ServicesGrid
           heroTitle="AI Creativity "

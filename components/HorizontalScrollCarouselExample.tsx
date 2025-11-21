@@ -37,6 +37,9 @@ export function HorizontalScrollCarousel({
 }: HorizontalScrollCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const ballRef = useRef<HTMLDivElement | null>(null);
+  const trailRef = useRef<SVGPolylineElement | null>(null);
+  const trailHistoryRef = useRef<number[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect mobile on mount and resize
@@ -65,6 +68,17 @@ export function HorizontalScrollCarousel({
     ) as NodeListOf<HTMLElement>;
 
     if (!slides.length) return;
+
+    // Initialize ball and trail
+    const ball = ballRef.current;
+    const trail = trailRef.current;
+    if (ball) {
+      gsap.set(ball, { y: 0 });
+    }
+    if (trail) {
+      trailHistoryRef.current = [];
+      trail.setAttribute("points", "0,115 40,115 80,115 120,115 160,115");
+    }
 
     // Ensure each slide is full viewport width
     slides.forEach((slide) => {
@@ -118,11 +132,7 @@ export function HorizontalScrollCarousel({
         }
       }
 
-      // 0 → 0.5 = entering and composing at center
-      // 0.5 → 1 = exiting, text/body fade first, image last
-
       // Image: delayed start, then fast catch-up, then fades out last
-      // First slide: skip fade-in, only fade-out
       if (image) {
         if (!isFirstSlide) {
           tl.to(
@@ -133,10 +143,9 @@ export function HorizontalScrollCarousel({
               ease: "power2.out",
               duration: 0.9,
             },
-            0.3 // starts after title has already begun moving
+            0.3
           );
         }
-        // Fade out animation applies to all slides including first
         tl.to(
           image,
           {
@@ -144,12 +153,11 @@ export function HorizontalScrollCarousel({
             ease: "power2.in",
             duration: 0.5,
           },
-          isFirstSlide ? 0.7 : 0.85 // fade out earlier for first slide
+          isFirstSlide ? 0.7 : 0.85
         );
       }
 
-      // Subtitle: fades in behind image, exits before image
-      // First slide: skip fade-in, only fade-out
+      // Subtitle
       if (subtitle) {
         if (!isFirstSlide) {
           tl.to(
@@ -163,7 +171,6 @@ export function HorizontalScrollCarousel({
             0.75
           );
         }
-        // Fade out animation applies to all slides including first
         tl.to(
           subtitle,
           {
@@ -175,8 +182,7 @@ export function HorizontalScrollCarousel({
         );
       }
 
-      // Button: paired with subtitle
-      // First slide: skip fade-in, only fade-out
+      // Button
       if (button) {
         if (!isFirstSlide) {
           tl.to(
@@ -190,7 +196,6 @@ export function HorizontalScrollCarousel({
             0.3
           );
         }
-        // Fade out animation applies to all slides including first
         tl.to(
           button,
           {
@@ -202,8 +207,7 @@ export function HorizontalScrollCarousel({
         );
       }
 
-      // Body text: comes in last, fades out first
-      // First slide: skip fade-in, only fade-out
+      // Body text
       if (body) {
         if (!isFirstSlide) {
           tl.to(
@@ -214,10 +218,9 @@ export function HorizontalScrollCarousel({
               ease: "power2.out",
               duration: 0.7,
             },
-            0.35 // starts after image and subtitle are moving in
+            0.35
           );
         }
-        // Fade out animation applies to all slides including first
         tl.to(
           body,
           {
@@ -225,7 +228,7 @@ export function HorizontalScrollCarousel({
             ease: "power2.in",
             duration: 0.5,
           },
-          isFirstSlide ? 0.55 : 0.7 // fades before subtitle/button/image
+          isFirstSlide ? 0.55 : 0.7
         );
       }
 
@@ -273,10 +276,61 @@ export function HorizontalScrollCarousel({
             0
           );
 
-          // TITLE & SLIDE MOTION (unchanged): map progress → wrapper x
+          // TITLE & SLIDE MOTION: map progress → wrapper x
           gsap.set(wrapper, {
             x: -self.progress * currentMaxTranslateX,
           });
+
+          // BOUNCING BALL + TRAIL ANIMATION
+          const ball = ballRef.current;
+          const trail = trailRef.current;
+
+          // Number of bounces per full scroll (adjust for desired bounce frequency)
+          const bouncesPerScroll = items.length * 2; // 2 bounces per slide
+          const bounceCycle = self.progress * bouncesPerScroll;
+          const bouncePhase = bounceCycle * Math.PI * 2;
+
+          // 0..1 normalized bounce
+          const bounceNormalized = Math.abs(Math.sin(bouncePhase));
+          const bounceHeight = 125; // Maximum bounce height in pixels
+          const bounceY = bounceNormalized * bounceHeight;
+
+          if (ball) {
+            gsap.set(ball, {
+              y: -bounceY,
+              ease: "power2.out",
+            });
+          }
+
+          // Trail: history of recent bounce positions with more curvature
+          if (trail) {
+            const history = trailHistoryRef.current;
+            const maxPoints = 12; // more points for smoother curve
+
+            history.push(bounceNormalized);
+            if (history.length > maxPoints) {
+              history.splice(0, history.length - maxPoints);
+            }
+
+            const pointCount = history.length;
+            const width = 160; // matches SVG viewBox width
+            const baseLineY = 115; // midline in the SVG (adjusted to move trail up)
+            // Match ball's bounce height exactly (ball bounces 125px)
+            const amplitudePx = 125;
+
+            const stepX = pointCount > 1 ? width / (pointCount - 1) : 0;
+
+            const points = history
+              .map((v, i) => {
+                const x = i * stepX;
+                // Apply the bounce value directly to create more pronounced curve
+                const y = baseLineY - v * amplitudePx;
+                return `${x},${y}`;
+              })
+              .join(" ");
+
+            trail.setAttribute("points", points || "0,115 160,115");
+          }
 
           // PER-SLIDE ANIMATIONS (image/text stagger)
           if (!slideTimelines.length || items.length <= 1) return;
@@ -297,7 +351,6 @@ export function HorizontalScrollCarousel({
             if (localProgress > 1) localProgress = 1;
 
             // First slide: keep at 0 progress (fully visible) until it starts leaving
-            // Only allow progress to increase when scrolling past the first slide
             if (index === 0 && t < 0.5) {
               localProgress = 0;
             }
@@ -392,6 +445,46 @@ export function HorizontalScrollCarousel({
       ref={containerRef}
       className={`relative w-full h-screen overflow-hidden ${className}`}
     >
+      {/* Bouncing Ball + Trail - bottom left, ball shifted right to leave room for trail */}
+      <div
+        className="fixed left-8 bottom-8 z-50 flex items-center pointer-events-none"
+        aria-hidden="true"
+      >
+        {/* Trail showing recent bounce history with curvature */}
+        <svg className="w-36 h-[250px]" viewBox="0 -10 160 270">
+          <defs>
+            <linearGradient
+              id="trailGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="50%" stopColor="white" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="white" stopOpacity="0.8" />
+            </linearGradient>
+          </defs>
+          <polyline
+            ref={trailRef}
+            fill="none"
+            stroke="url(#trailGradient)"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeDasharray="4 4"
+            points="0,115 40,115 80,115 120,115 160,115"
+          />
+        </svg>
+
+        {/* Ball, shifted right from the trail */}
+        <div
+          ref={ballRef}
+          className="ml-2 w-15 h-15 rounded-full bg-white/90 shadow-lg"
+          style={{ willChange: "transform" }}
+        />
+      </div>
+
       <div
         ref={wrapperRef}
         className="relative z-10 h-full flex"

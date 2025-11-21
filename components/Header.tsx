@@ -37,10 +37,10 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 md:gap-8">
             <Link
-              href="/storytelling"
+              href="/strategy"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
             >
-              Storytelling
+              Strategy
             </Link>
             <Link
               href="/software"
@@ -49,10 +49,10 @@ export function Header() {
               Software
             </Link>
             <Link
-              href="/projects"
+              href="/storytelling"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
             >
-              Projects
+              Stories
             </Link>
             <Link
               href="/engagement"
@@ -61,10 +61,10 @@ export function Header() {
               Engagement
             </Link>
             <Link
-              href="/bentonville"
+              href="/experiences"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
             >
-              Bentonville
+              Experiences
             </Link>
             <a
               href="#contact"
@@ -110,11 +110,11 @@ export function Header() {
       >
         <nav className="flex flex-col px-4 py-6 space-y-4">
           <Link
-            href="/storytelling"
+            href="/strategy"
             onClick={closeMenu}
             className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
           >
-            Storytelling
+            Strategy
           </Link>
           <Link
             href="/software"
@@ -124,11 +124,11 @@ export function Header() {
             Software
           </Link>
           <Link
-            href="/projects"
+            href="/storytelling"
             onClick={closeMenu}
             className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
           >
-            Projects
+            Stories
           </Link>
           <Link
             href="/engagement"
@@ -138,11 +138,11 @@ export function Header() {
             Engagement
           </Link>
           <Link
-            href="/bentonville"
+            href="/experiences"
             onClick={closeMenu}
             className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
           >
-            Bentonville
+            Experiences
           </Link>
           <a
             href="#contact"
