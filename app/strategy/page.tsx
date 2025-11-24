@@ -249,62 +249,6 @@ export default function StrategyPage() {
           </ContentReveal>
         </div>
       </section>
-
-      {/* Kikits Strategy Example */}
-      <section className="relative py-16 md:py-32">
-        <FuturisticBackground
-          pattern="flowing"
-          intensity="moderate"
-          showOrbs={false}
-          primaryColor="#fc05b9"
-          secondaryColor="#4E79A7"
-          tertiaryColor="#84596c"
-          lineCount={10}
-        />
-        <div className="max-w-7xl mx-auto px-4">
-          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Kikits: A Multi-Faceted Strategy
-              </h2>
-              <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Kikits demonstrates how strategy connects across all our
-                services. Here's how we approached it from a strategic planning
-                perspective:
-              </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  UI/UX Planning
-                </h3>
-                <p className="text-gray-300">
-                  Designed user flows, wireframes, and interaction patterns for
-                  the event discovery and ticketing platform.
-                </p>
-              </div>
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Platform Architecture
-                </h3>
-                <p className="text-gray-300">
-                  Planned the technical infrastructure, database schema, and API
-                  design to support scalable event management.
-                </p>
-              </div>
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Go-to-Market Strategy
-                </h3>
-                <p className="text-gray-300">
-                  Developed launch plans, user acquisition strategies, and
-                  growth frameworks for the platform.
-                </p>
-              </div>
-            </div>
-          </ContentReveal>
-        </div>
-      </section>
     </main>
   );
 }

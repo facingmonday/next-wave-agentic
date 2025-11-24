@@ -320,54 +320,6 @@ export default function StorytellingPage() {
           </ContentReveal>
         </div>
       </section>
-
-      {/* Kikits Stories Summary */}
-      <section className="relative py-16 md:py-32">
-        <div className="max-w-7xl mx-auto px-4">
-          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Kikits: Storytelling Across Formats
-              </h2>
-              <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Kikits demonstrates how storytelling appears across our work.
-                Here's how we told the Kikits story:
-              </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Video Campaigns
-                </h3>
-                <p className="text-gray-300">
-                  Maya & Spark animated short and product spokesperson videos
-                  that bring the brand to life through character-driven
-                  narratives.
-                </p>
-              </div>
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Brand Characters
-                </h3>
-                <p className="text-gray-300">
-                  Maya and Spark serve as brand ambassadors, appearing in
-                  campaigns and helping users connect emotionally with the
-                  platform.
-                </p>
-              </div>
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Narrative Structure
-                </h3>
-                <p className="text-gray-300">
-                  AI-generated story frameworks that transform product features
-                  into emotional journeys and user experiences.
-                </p>
-              </div>
-            </div>
-          </ContentReveal>
-        </div>
-      </section>
     </main>
   );
 }

@@ -9,8 +9,6 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
-import { VideoGallery } from "@/components/VideoGallery";
-import StoryPath from "@/components/StoryPath";
 
 const portfolioItems: PortfolioItem[] = [
   {
@@ -20,6 +18,7 @@ const portfolioItems: PortfolioItem[] = [
     description:
       "An emotionally uplifting animated short and event experience that blends AI storytelling with real-world interaction.",
     tags: ["AI Video", "Event Experience", "Storytelling"],
+    href: "/projects/maya-spark",
   },
   {
     id: "pedal-pals",
@@ -28,6 +27,16 @@ const portfolioItems: PortfolioItem[] = [
     description:
       "A community-driven cycling safety campaign featuring original characters, worldbuilding, and educational content.",
     tags: ["Community", "Campaign", "Character Design"],
+    href: "/projects/pedal-pals",
+  },
+  {
+    id: "MRS",
+    image: "/images/MRS/MRS.png",
+    title: "Miller Risk Solutions",
+    description:
+      "A comprehensive risk management platform that helps businesses identify, assess, and mitigate risks.",
+    tags: ["Risk Management", "Platform", "AI"],
+    href: "/projects/mrs",
   },
   {
     id: "uwp-guilty",
@@ -44,6 +53,7 @@ const portfolioItems: PortfolioItem[] = [
     description:
       "A suite of AI-powered spokesperson and product videos designed for high-performing social and web campaigns.",
     tags: ["Product Video", "Spokesperson", "AI Production"],
+    href: "/projects/kikits",
   },
 ] as const;
 
@@ -66,37 +76,6 @@ export default function Home() {
           <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
         </div>
       </VideoScroll>
-      <section className="relative">
-        <StoryPath
-          steps={[
-            {
-              title: "1. Discovery",
-              body: "We identified the core problems with the old event workflow...",
-              background: "/bg/kikits-discovery.jpg",
-            },
-            {
-              title: "2. Architecture",
-              body: "We designed the fact system, scanners, access logic, and flows...",
-              background: "/bg/kikits-architecture.jpg",
-            },
-            {
-              title: "3. Build",
-              body: "Checkout flow, dashboards, Apple Wallet, scanning system...",
-              background: "/bg/kikits-build.jpg",
-            },
-            {
-              title: "4. Storytelling",
-              body: "Spark, Maya, brand voice, creative direction...",
-              background: "/bg/kikits-stories.jpg",
-            },
-            {
-              title: "5. Launch",
-              body: "Onboarding, community rollout, events, analytics...",
-              background: "/bg/kikits-launch.jpg",
-            },
-          ]}
-        />
-      </section>
       {/* Services Section */}
       <section className="relative bg-black">
         <FuturisticBackground
@@ -346,7 +325,7 @@ export default function Home() {
         <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
           Character Development
         </h1>
-        <p className="text-lg text-gray-400 leading-relaxed text-center mb-6">
+        <p className="text-lg text-gray-400 leading-relaxed text-center">
           Character development, storytelling, and brand development.
         </p>
         <VideoThumbnailGrid

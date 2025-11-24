@@ -25,6 +25,7 @@ export interface VideoGalleryProps {
   titleClassName?: string;
   subtitleClassName?: string;
   buttonClassName?: string;
+  showThumbnails?: boolean;
 }
 
 export function VideoGallery({
@@ -33,6 +34,7 @@ export function VideoGallery({
   titleClassName = "text-white",
   subtitleClassName = "text-white",
   buttonClassName = "inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors",
+  showThumbnails = true,
 }: VideoGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -295,89 +297,91 @@ export function VideoGallery({
       </div>
 
       {/* Bottom: Thumbnail scroller */}
-      <motion.div
-        ref={thumbnailsRef}
-        className="mt-10 flex items-center gap-4"
-        variants={thumbnailsVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
-        {/* Thumbnails row */}
-        <div
-          ref={scrollerRef}
-          className="flex-1 overflow-x-auto scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent"
+      {showThumbnails && (
+        <motion.div
+          ref={thumbnailsRef}
+          className="mt-10 flex items-center gap-4"
+          variants={thumbnailsVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
-          <div className="flex gap-4 min-w-max">
-            {videos.map((video, index) => {
-              const isActive = index === activeIndex;
-              const isHovered = hoveredIndex === index;
-              return (
-                <motion.div
-                  key={video.id ?? index}
-                  variants={thumbnailItemVariants}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                >
-                  <button
-                    type="button"
-                    onClick={() => handleThumbnailClick(index)}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    className={`group flex flex-col items-center w-[270px] flex-shrink-0 focus:outline-none`}
+          {/* Thumbnails row */}
+          <div
+            ref={scrollerRef}
+            className="flex-1 overflow-x-auto scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent"
+          >
+            <div className="flex gap-4 min-w-max">
+              {videos.map((video, index) => {
+                const isActive = index === activeIndex;
+                const isHovered = hoveredIndex === index;
+                return (
+                  <motion.div
+                    key={video.id ?? index}
+                    variants={thumbnailItemVariants}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
                   >
-                    <div
-                      className={`relative w-full rounded-3xl bg-slate-100 aspect-[4/3] overflow-hidden ${
-                        isActive ? "border border-slate-300 shadow-md" : ""
-                      }`}
+                    <button
+                      type="button"
+                      onClick={() => handleThumbnailClick(index)}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      className={`group flex flex-col items-center w-[270px] flex-shrink-0 focus:outline-none`}
                     >
-                      {video.thumbnailUrl ? (
-                        // thumbnail image
-                        <Image
-                          src={video.thumbnailUrl}
-                          alt={video.title}
-                          width={270}
-                          height={203}
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        // placeholder surface
-                        <div className="h-full w-full flex items-center justify-center">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-slate-400">
-                            <div
-                              className="ml-0.5 h-0 w-0 border-y-[6px] border-y-transparent 
-                                       border-l-[10px] border-l-slate-600"
-                            />
-                          </div>
-                        </div>
-                      )}
-
-                      {/* active ring */}
-                      {isActive && (
-                        <div className="pointer-events-none absolute inset-0 rounded-3xl ring-2 ring-slate-900/70" />
-                      )}
-
-                      {/* Hover overlay - slides up from bottom */}
                       <div
-                        className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/70 to-transparent backdrop-blur-sm transition-all duration-300 ease-out rounded-b-3xl ${
-                          isHovered
-                            ? "translate-y-0 opacity-100"
-                            : "translate-y-full opacity-0"
+                        className={`relative w-full rounded-3xl bg-slate-100 aspect-[4/3] overflow-hidden ${
+                          isActive ? "border border-slate-300 shadow-md" : ""
                         }`}
                       >
-                        <div className="p-4 text-center">
-                          <h3 className="text-lg md:text-xl font-bold text-white">
-                            {video.title}
-                          </h3>
+                        {video.thumbnailUrl ? (
+                          // thumbnail image
+                          <Image
+                            src={video.thumbnailUrl}
+                            alt={video.title}
+                            width={270}
+                            height={203}
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          // placeholder surface
+                          <div className="h-full w-full flex items-center justify-center">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-slate-400">
+                              <div
+                                className="ml-0.5 h-0 w-0 border-y-[6px] border-y-transparent 
+                                       border-l-[10px] border-l-slate-600"
+                              />
+                            </div>
+                          </div>
+                        )}
+
+                        {/* active ring */}
+                        {isActive && (
+                          <div className="pointer-events-none absolute inset-0 rounded-3xl ring-2 ring-slate-900/70" />
+                        )}
+
+                        {/* Hover overlay - slides up from bottom */}
+                        <div
+                          className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/70 to-transparent backdrop-blur-sm transition-all duration-300 ease-out rounded-b-3xl ${
+                            isHovered
+                              ? "translate-y-0 opacity-100"
+                              : "translate-y-full opacity-0"
+                          }`}
+                        >
+                          <div className="p-4 text-center">
+                            <h3 className="text-lg md:text-xl font-bold text-white">
+                              {video.title}
+                            </h3>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </button>
-                </motion.div>
-              );
-            })}
+                    </button>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 }

@@ -32,7 +32,7 @@ const softwareProjects: SoftwareProject[] = [
     name: "Kikits",
     description:
       "An event discovery and ticketing platform that connects users with local events. Built with React, Next.js, and TypeScript, featuring real-time event updates, seamless ticket purchasing, and user-friendly event management tools.",
-    image: "/images/projects/kikits/kikits-app.jpg",
+    image: "/images/projects/kikits/kikitsPhone.jpg",
     link: "https://kikits.com",
     technologies: ["React", "Next.js", "TypeScript", "Event Management"],
   },
@@ -41,8 +41,8 @@ const softwareProjects: SoftwareProject[] = [
     name: "Lineup",
     description:
       "A comprehensive event management and ticketing software platform. We architected the system to handle event creation, ticket sales, attendee management, and analytics. The platform supports both web and mobile experiences with a scalable backend infrastructure.",
-    image: "/images/projects/kikits/KikitsPhone.jpg", // Placeholder - update with actual Lineup screenshot
-    link: "https://lineup.com",
+    image: "/images/lineup-booking/lineUpDudes.png",
+    link: "https://www.lineupbooking.com/",
     technologies: [
       "System Architecture",
       "Event Management",
@@ -51,34 +51,22 @@ const softwareProjects: SoftwareProject[] = [
     ],
   },
   {
-    id: "uwp",
-    name: "Uniting Wealth Partners",
+    id: "mrs",
+    name: "Miller Risk Solutions",
     description:
-      "A financial services website designed to build trust and engagement. The platform features educational content, client resources, and a modern interface that makes financial planning more approachable and accessible.",
-    image: "/images/projects/uniting-wealth-partners/oil.jpeg", // Placeholder - update with actual UWP website screenshot
-    link: "https://unitingwealthpartners.com",
-    technologies: [
-      "Web Development",
-      "Financial Services",
-      "Content Management",
-    ],
+      "A risk management platform designed to help businesses identify, assess, and mitigate risks.",
+    image: "/images/MRS/MRsImage.png",
+    link: "https://www.millerrisk.com/",
+    technologies: ["Web Development", "Risk Management", "Content Management"],
   },
   {
     id: "planet-good-times",
     name: "Planet Good Times",
     description:
       "A creative platform and event hub that showcases events, experiences, and creative content. The site integrates event listings, video galleries, and community features to create an engaging digital experience for event-goers and creators.",
-    image: "/images/projects/kikits/MayaAndSpark.jpg", // Placeholder - update with actual PGT screenshot
+    image: "/images/planet-goodtimes/GoodTimesLogo.png",
     link: "https://planetgoodtimes.com",
     technologies: ["Event Platform", "Content Management", "Video Integration"],
-  },
-  {
-    id: "bmc",
-    name: "BMC Platform",
-    description:
-      "A custom platform developed for BMC to manage events, communications, and community engagement. The system includes event planning tools, attendee management, and integrated marketing features to support their event operations.",
-    image: "/images/projects/pedal-pals/crystal.jpg", // Placeholder - update with actual BMC screenshot
-    technologies: ["Event Management", "Community Platform", "Marketing Tools"],
   },
 ];
 
@@ -178,52 +166,6 @@ export default function SoftwarePage() {
                   </div>
                 </div>
               ))}
-            </div>
-          </ContentReveal>
-        </div>
-      </section>
-
-      {/* Kikits Software Example */}
-      <section className="relative py-16 md:py-32 bg-black">
-        <div className="max-w-7xl mx-auto px-4">
-          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Kikits: The Platform
-              </h2>
-              <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Kikits represents our software development work - a complete
-                event discovery and ticketing platform built from the ground up.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Event Discovery
-                </h3>
-                <p className="text-gray-300">
-                  Users can browse, search, and filter events by category,
-                  location, and date with an intuitive interface.
-                </p>
-              </div>
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Ticketing System
-                </h3>
-                <p className="text-gray-300">
-                  Seamless ticket purchasing flow with secure payment processing
-                  and instant confirmation.
-                </p>
-              </div>
-              <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
-                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Event Management
-                </h3>
-                <p className="text-gray-300">
-                  Event organizers can create, manage, and track their events
-                  with comprehensive analytics and tools.
-                </p>
-              </div>
             </div>
           </ContentReveal>
         </div>

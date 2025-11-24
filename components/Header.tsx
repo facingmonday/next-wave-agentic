@@ -5,6 +5,7 @@ import Link from "next/link";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -66,6 +67,56 @@ export function Header() {
             >
               Experiences
             </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsProjectsOpen(true)}
+              onMouseLeave={() => setIsProjectsOpen(false)}
+            >
+              <button
+                type="button"
+                className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors flex items-center gap-1"
+                tabIndex={0}
+              >
+                Projects
+              </button>
+              {/* Dropdown menu */}
+              <div
+                className={`absolute left-0 top-full pt-2 min-w-[180px] transition-all duration-200 z-40 ${
+                  isProjectsOpen
+                    ? "opacity-100 visible pointer-events-auto"
+                    : "opacity-0 invisible pointer-events-none"
+                }`}
+              >
+                <div className="bg-[#2a2632] border border-[#4E79A7]/50 rounded-lg shadow-lg">
+                  <div className="flex flex-col py-2">
+                    <Link
+                      href="/projects/pedal-pals"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Pedal Pals
+                    </Link>
+                    <Link
+                      href="/projects/mrs"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Miller Risk Solutions
+                    </Link>
+                    <Link
+                      href="/projects/kikits"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Kikits
+                    </Link>
+                    <Link
+                      href="/projects/maya-spark"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Maya & Spark
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
             <a
               href="#contact"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium"

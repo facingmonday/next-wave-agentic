@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
-import { PinnedHero } from "@/components/PinnedHero";
 import { VideoScroll } from "@/components/VideoScroll";
 import Image from "next/image";
 
@@ -34,11 +33,10 @@ export default function ExperiencesPage() {
         >
           <div className="text-center text-white z-20">
             <h2 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-              Bentonville Moves
+              Planet Good Times
             </h2>
             <p className="text-xl md:text-2xl opacity-90">
-              A celebration of movement, community, and the vibrant culture of
-              Bentonville
+              Bringing the community together through unforgettable experiences.
             </p>
           </div>
         </VideoScroll>
@@ -50,50 +48,58 @@ export default function ExperiencesPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-3xl md:text-4xl font-bold text-[#CFC8CF] mb-6">
-                  Bentonville Moves
+                  Bentonville Moves Celebration
                 </h3>
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  Bentonville Moves is an annual event that celebrates the
-                  active lifestyle and community spirit of Northwest Arkansas.
-                  The event brings together cyclists, runners, walkers, and
-                  outdoor enthusiasts for a day of movement, connection, and
-                  celebration.
-                </p>
-                <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  We planned and executed the event experience, including venue
-                  coordination, programming, vendor management, and attendee
-                  engagement activities. The event featured group rides,
-                  community gatherings, and interactive experiences that
-                  showcased Bentonville's commitment to active living.
+                  We brought together the Bentonville community for an evening
+                  of reflection, recognition, and joy at the iconic Bentonville
+                  Water Tower—complete with bike valet for those arriving in
+                  true Bentonville style—to honor the city&apos;s remarkable
+                  progress in completing 30 miles of the Connecting Bentonville
+                  Bike & Pedestrian Master Plan. Guests gathered to celebrate an
+                  achievement that few U.S. cities can claim, looking back on
+                  three years of collaboration while recognizing city leaders,
+                  staff, and community members for their dedication. The
+                  atmosphere buzzed with live music by House of Songs,
+                  accompanied by curated food, beverages, and laughter as
+                  attendees toasted to the collective effort that made
+                  Bentonville&apos;s 30 miles of connection a reality.
                 </p>
                 <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
                   <h4 className="text-xl font-semibold text-[#CFC8CF] mb-3">
-                    Event Features
+                    What We Created
                   </h4>
                   <ul className="space-y-2 text-gray-300">
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Group cycling and running activities</span>
+                      <span>
+                        Iconic venue experience at the Bentonville Water Tower
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Community vendor marketplace</span>
+                      <span>
+                        Bike valet service for community accessibility
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Live music and entertainment</span>
+                      <span>Live music by House of Songs</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Interactive experiences and activations</span>
+                      <span>
+                        A heartfelt moment honoring progress, partnership, and
+                        community spirit
+                      </span>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30">
                 <Image
-                  src="/images/bentonville-watertower/bentonville-watertower-drone-001.jpg"
-                  alt="Bentonville Moves"
+                  src="/images/bentonville-moves/BentonvilleMoves.jpg"
+                  alt="Bentonville Moves Celebration"
                   fill
                   className="object-cover"
                 />
@@ -119,49 +125,57 @@ export default function ExperiencesPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1 relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30">
                 <Image
-                  src="/images/projects/pedal-pals/crystal.jpg"
-                  alt="Stoic Lineup Concert Series"
+                  src="/images/lineup-booking/LineUpConcertSeries.jpg"
+                  alt="LineUp Concert Series"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="order-1 md:order-2">
                 <h3 className="text-3xl md:text-4xl font-bold text-[#CFC8CF] mb-6">
-                  Stoic Lineup Concert Series
+                  LineUp Concert Series
                 </h3>
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  The Stoic Lineup Concert Series brings live music experiences
-                  to Bentonville, featuring local and regional artists in
-                  intimate, community-focused settings. Each concert is designed
-                  to create connection between artists and audiences, fostering
-                  a vibrant local music scene.
-                </p>
-                <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  We handled event planning, artist coordination, venue
-                  management, and audience engagement. The series has become a
-                  cornerstone of Bentonville's cultural calendar, attracting
-                  music lovers and supporting local talent.
+                  We turned up the volume—and the spotlight—on three powerful
+                  players reshaping the rhythm of Bentonville with the LineUp
+                  Concert Series, an electrifying kickoff event for LineUp
+                  Booking held at Stoic Brews Alternative. This free community
+                  event brought together LineUp, Kikits, and Planet GoodTimes in
+                  one unforgettable evening, transforming Bentonville into a
+                  vibrant hub of creativity and camaraderie. The night featured
+                  live talent curated by LineUp, showcased the innovative Kikits
+                  ticketing platform built for creators, and embodied Planet
+                  GoodTimes&apos; mission to spread joy through wild, immersive
+                  experiences—proving how these homegrown brands work together
+                  to build &quot;The Town of GoodTimes.&quot;
                 </p>
                 <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
                   <h4 className="text-xl font-semibold text-[#CFC8CF] mb-3">
-                    Series Features
+                    What We Delivered
                   </h4>
                   <ul className="space-y-2 text-gray-300">
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Curated lineup of local and regional artists</span>
+                      <span>
+                        Electrifying kickoff event at Stoic Brews Alternative
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Intimate venue experiences</span>
+                      <span>
+                        Free community event showcasing three innovative brands
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Community networking and connection</span>
+                      <span>Live music and unforgettable vibes</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Seasonal programming and themes</span>
+                      <span>
+                        A night that proved Bentonville is better because of
+                        local innovation
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -178,50 +192,62 @@ export default function ExperiencesPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-3xl md:text-4xl font-bold text-[#CFC8CF] mb-6">
-                  Vampire Bar
+                  GoodTimes Halloween Crawl
                 </h3>
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  Vampire Bar is a themed pop-up event experience that
-                  transforms spaces into immersive, atmospheric environments.
-                  The event combines creative design, themed programming, and
-                  interactive elements to create memorable nights that blend
-                  entertainment, community, and unique experiences.
-                </p>
-                <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  We designed and executed the event concept, including venue
-                  transformation, themed decor, programming, and special
-                  activations. The event has become a popular recurring
-                  experience that draws crowds looking for something different
-                  and memorable.
+                  We created the 2nd Annual GoodTimes Halloween Crawl, a
+                  multi-venue experience that transformed three distinct
+                  locations into an immersive Halloween journey through
+                  Bentonville&apos;s nightlife. The evening kicked off at
+                  Loveless with meet-up and wristband pickup, featuring
+                  Theronious Chunk and GoodTimes specials, then moved to The
+                  Barber for DJ Sheep&apos;s set, before culminating at Lady
+                  Slipper with DJ Oplex and a private entrance dance party that
+                  went late into the night. We coordinated the entire
+                  experience, managing the flow between locations, curating the
+                  entertainment lineup, and creating special offerings at each
+                  stop, bringing together Halloween enthusiasts, music lovers,
+                  and community members for a night that embodied the
+                  &quot;GoodTimes or Better&quot; spirit.
                 </p>
                 <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
                   <h4 className="text-xl font-semibold text-[#CFC8CF] mb-3">
-                    Event Elements
+                    What We Built
                   </h4>
                   <ul className="space-y-2 text-gray-300">
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Themed venue transformation and design</span>
+                      <span>
+                        Multi-venue crawl experience across three locations
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Atmospheric lighting and sound design</span>
+                      <span>
+                        Curated entertainment lineup: Theronious Chunk, DJ
+                        Sheep, DJ Oplex
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Interactive experiences and activations</span>
+                      <span>
+                        Exclusive GoodTimes specials and private entrance access
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Special programming and entertainment</span>
+                      <span>
+                        A Halloween experience that embodied the &quot;GoodTimes
+                        or Better&quot; spirit
+                      </span>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30">
                 <Image
-                  src="/images/projects/kikits/MayaAndSpark.jpg"
-                  alt="Vampire Bar"
+                  src="/images/planet-goodtimes/VampireBarCrawl.jpg"
+                  alt="GoodTimes Halloween Crawl"
                   fill
                   className="object-cover"
                 />
@@ -250,8 +276,9 @@ export default function ExperiencesPage() {
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
                 Kikits demonstrates how experiences appear in our work. The
-                platform itself powers ticketed events, and we've created and
-                managed events that showcase the platform's capabilities.
+                platform itself powers ticketed events, and we&apos;ve created
+                and managed events that showcase the platform&apos;s
+                capabilities.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
@@ -270,9 +297,9 @@ export default function ExperiencesPage() {
                   Ticketed Experiences
                 </h3>
                 <p className="text-gray-300">
-                  We've created and managed ticketed events through the Kikits
-                  platform, from intimate concerts to large-scale community
-                  celebrations.
+                  We&apos;ve created and managed ticketed events through the
+                  Kikits platform, from intimate concerts to large-scale
+                  community celebrations.
                 </p>
               </div>
               <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
@@ -306,7 +333,7 @@ export default function ExperiencesPage() {
                   management, and event promotion.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Through Kikits, we've facilitated hundreds of events,
+                  Through Kikits, we&apos;ve facilitated hundreds of events,
                   connecting event creators with audiences and building a
                   vibrant community around shared experiences.
                 </p>
