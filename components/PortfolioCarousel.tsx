@@ -17,6 +17,7 @@ export interface PortfolioItem {
   image: string;
   url?: string;
   tags?: string[];
+  href?: string;
 }
 
 export interface PortfolioCarouselProps {
@@ -62,7 +63,16 @@ export function PortfolioCarousel({
           }}
         >
           {items.map((item) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide
+              key={item.id}
+              {...(item.href
+                ? {
+                    onClick: () => {
+                      if (item.href) window.location.href = item.href;
+                    },
+                  }
+                : {})}
+            >
               <div className="flex justify-center">
                 <div className="group relative h-[500px] w-[400px] max-w-full overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900 to-black shadow-none md:shadow-2xl transition-colors duration-300 hover:border-[#fc05b9]">
                   {/* Image */}

@@ -8,6 +8,7 @@ import { ServicesGrid } from "@/components/ServicesGrid";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
+import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
 
 const portfolioItems: PortfolioItem[] = [
   {
@@ -17,6 +18,7 @@ const portfolioItems: PortfolioItem[] = [
     description:
       "An emotionally uplifting animated short and event experience that blends AI storytelling with real-world interaction.",
     tags: ["AI Video", "Event Experience", "Storytelling"],
+    href: "/projects/maya-spark",
   },
   {
     id: "pedal-pals",
@@ -25,6 +27,16 @@ const portfolioItems: PortfolioItem[] = [
     description:
       "A community-driven cycling safety campaign featuring original characters, worldbuilding, and educational content.",
     tags: ["Community", "Campaign", "Character Design"],
+    href: "/projects/pedal-pals",
+  },
+  {
+    id: "MRS",
+    image: "/images/MRS/MRS.png",
+    title: "Miller Risk Solutions",
+    description:
+      "A comprehensive risk management platform that helps businesses identify, assess, and mitigate risks.",
+    tags: ["Risk Management", "Platform", "AI"],
+    href: "/projects/mrs",
   },
   {
     id: "uwp-guilty",
@@ -41,6 +53,7 @@ const portfolioItems: PortfolioItem[] = [
     description:
       "A suite of AI-powered spokesperson and product videos designed for high-performing social and web campaigns.",
     tags: ["Product Video", "Spokesperson", "AI Production"],
+    href: "/projects/kikits",
   },
 ] as const;
 
@@ -66,15 +79,14 @@ export default function Home() {
       {/* Services Section */}
       <section className="relative bg-black">
         <FuturisticBackground
-          pattern="waves"
-          intensity="moderate"
-          showOrbs={false}
           primaryColor="#fc05b9"
           secondaryColor="#4E79A7"
           tertiaryColor="#84596c"
-          lineCount={10}
+          lineCount={6}
+          lineThickness="medium"
+          intensity="moderate"
         />
-        <ServicesGrid
+        {/* <ServicesGrid
           heroTitle="AI Creativity "
           heroSubtitle="Meets Real-World Impact"
           heroDescription="Next Wave Agentic is your all-in-one studio for AI-generated video, brand strategy, web and app development, experiential events, and automated marketing systems. We build the technology and the stories that power the next generation of businesses."
@@ -131,6 +143,55 @@ export default function Home() {
               description:
                 "Enterprise AI solutions including internal tools, intelligent assistants, automated workflows, and custom model integrations. We engineer scalable solutions from apps to fully AI-powered operations.",
               ctaLabel: "Build Custom AI Tools",
+            },
+          ]}
+        /> */}
+        <HorizontalScrollCarousel
+          items={[
+            {
+              image: "/images/projects/kikits/MayaAndSpark.jpg",
+              title: "AI Video & Storytelling Studio",
+              body: "Cinematic AI-generated videos in Pixar-style 3D, comic-book animation, and realistic avatars. We craft full campaigns, episodic narratives, and brand films optimized for social, web, and advertising.",
+              buttonLabel: "Explore AI Video Styles",
+              buttonHref: "/contact",
+            },
+            {
+              image: "/images/projects/pedal-pals/crystal.jpg",
+              title: "Brand Identity & Creative Direction",
+              body: "Complete brand identity from logos and palettes to typography, voice, and visual language. AI accelerates exploration while human creative direction ensures consistency and long-term recognizability.",
+              buttonLabel: "Build a Cohesive Brand",
+              buttonHref: "/contact",
+            },
+            {
+              image: "/images/projects/kikits/KikitsPhone.jpg",
+              title: "AI-Enhanced Web & App Development",
+              body: "High-performance websites and mobile apps built with React, Next.js, and TypeScript. Features include AI search, automated content flows, dashboards, and custom integrations.",
+              buttonLabel: "View Development Capabilities",
+              buttonHref: "/contact",
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+              title: "Experiential Events & Interactive Media",
+              body: "AI-driven event experiences with dynamic QR systems, real-time visuals, and narrative-driven interactions. From VIP activations to festivals, we create adaptive event ecosystems.",
+              buttonLabel: "See Event Innovations",
+              buttonHref: "/contact",
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+              title: "Marketing Systems & Automation",
+              body: "Automated marketing systems that handle content creation, email flows, video generation, SEO, and social scheduling. Always-on systems that multiply output while reducing workload.",
+              buttonLabel: "Automate Your Marketing",
+              buttonHref: "/contact",
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+              title: "Enterprise AI Consulting & Custom Solutions",
+              body: "Enterprise AI solutions including internal tools, intelligent assistants, automated workflows, and custom model integrations. We engineer scalable solutions from apps to fully AI-powered operations.",
+              buttonLabel: "Build Custom AI Tools",
+              buttonHref: "/contact",
             },
           ]}
         />
