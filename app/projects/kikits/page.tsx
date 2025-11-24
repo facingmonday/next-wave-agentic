@@ -4,6 +4,7 @@ import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
+import { Footer } from "@/components/Footer";
 
 export default function KikitsPage() {
   return (
@@ -558,6 +559,7 @@ export default function KikitsPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

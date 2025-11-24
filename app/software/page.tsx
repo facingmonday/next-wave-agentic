@@ -4,6 +4,7 @@ import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import Image from "next/image";
 import Link from "next/link";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Software | Next Wave Agentic",
@@ -170,6 +171,7 @@ export default function SoftwarePage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

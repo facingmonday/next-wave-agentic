@@ -4,6 +4,7 @@ import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import Image from "next/image";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Engagement | Next Wave Agentic",
@@ -408,6 +409,7 @@ export default function EngagementPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

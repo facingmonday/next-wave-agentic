@@ -5,6 +5,7 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { PinnedHero } from "@/components/PinnedHero";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { VimeoVideo } from "@/components/VimeoVideo";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Stories | Next Wave Agentic",
@@ -320,6 +321,7 @@ export default function StorytellingPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

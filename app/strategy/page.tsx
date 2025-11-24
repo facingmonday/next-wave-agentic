@@ -3,6 +3,9 @@ import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { PinnedHero } from "@/components/PinnedHero";
+import { Footer } from "@/components/Footer";
+import StoryPath from "@/components/StoryPath";
+import { VideoScroll } from "@/components/VideoScroll";
 
 export const metadata: Metadata = {
   title: "Strategy | Next Wave Agentic",
@@ -16,10 +19,54 @@ export const metadata: Metadata = {
   },
 };
 
+const storySteps = [
+  {
+    title: "Step 1",
+    iconColor: "#45A4FF",
+    icon: <span className="text-xs font-bold">1</span>,
+  },
+  {
+    title: "Step 2",
+    iconColor: "#45A4FF",
+    icon: <span className="text-xs font-bold">2</span>,
+  },
+  {
+    title: "Step 3",
+    iconColor: "#45A4FF",
+    icon: <span className="text-xs font-bold">3</span>,
+  },
+  {
+    title: "Step 4",
+    iconColor: "#45A4FF",
+    icon: <span className="text-xs font-bold">4</span>,
+  },
+  {
+    title: "Step 5",
+    iconColor: "#45A4FF",
+    icon: <span className="text-xs font-bold">5</span>,
+  },
+];
+
 export default function StrategyPage() {
   return (
     <main className="min-h-screen bg-black">
       <Header />
+
+      {/* <VideoScroll
+        totalFrames={192}
+        framesPath="/frame1"
+        frameFilePattern="frame1-%03d.jpg"
+        scrollDistance={5000}
+        sticky={true}
+        contentAlignment="center"
+      >
+        <div className="text-center text-white z-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
+            Next Wave Agentic
+          </h1>
+          <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
+        </div>
+      </VideoScroll> */}
 
       <section className="relative z-30 py-16 md:py-24 bg-black">
         <div className="max-w-3xl mx-auto text-center text-white px-4">
@@ -32,6 +79,7 @@ export default function StrategyPage() {
           </p>
         </div>
       </section>
+      <StoryPath steps={storySteps} />
 
       {/* Lineup Software Architecture */}
       <section className="relative py-16 md:py-32">
@@ -249,6 +297,7 @@ export default function StrategyPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

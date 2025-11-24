@@ -4,6 +4,7 @@ import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
+import { Footer } from "@/components/Footer";
 
 export default function PedalPalsPage() {
   return (
@@ -555,6 +556,7 @@ export default function PedalPalsPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }
