@@ -452,7 +452,23 @@ export function PinnedHero({
               >
                 {body}
               </p>
-              {ctaLabel ? (
+              {ctaHref && ctaLabel ? (
+                <a
+                  ref={ctaRef as React.RefObject<HTMLAnchorElement>}
+                  href={ctaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
+                  style={{
+                    opacity: 0,
+                    transform: "translateY(50px) translateZ(0)",
+                    visibility: "hidden",
+                    willChange: "transform, opacity",
+                  }}
+                >
+                  {ctaLabel}
+                </a>
+              ) : ctaLabel ? (
                 <button
                   ref={ctaRef as React.RefObject<HTMLButtonElement>}
                   onClick={handleCtaClick}
@@ -466,20 +482,6 @@ export function PinnedHero({
                 >
                   {ctaLabel}
                 </button>
-              ) : ctaHref ? (
-                <a
-                  ref={ctaRef as React.RefObject<HTMLAnchorElement>}
-                  href={ctaHref}
-                  className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
-                  style={{
-                    opacity: 0,
-                    transform: "translateY(50px) translateZ(0)",
-                    visibility: "hidden",
-                    willChange: "transform, opacity",
-                  }}
-                >
-                  {ctaLabel}
-                </a>
               ) : null}
             </div>
           </div>

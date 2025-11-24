@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,16 +27,96 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="text-2xl md:text-3xl font-bold text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-heading"
             >
               NWA
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 md:gap-8">
+            <Link
+              href="/strategy"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Strategy
+            </Link>
+            <Link
+              href="/software"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Software
+            </Link>
+            <Link
+              href="/storytelling"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Stories
+            </Link>
+            <Link
+              href="/engagement"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Engagement
+            </Link>
+            <Link
+              href="/experiences"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Experiences
+            </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsProjectsOpen(true)}
+              onMouseLeave={() => setIsProjectsOpen(false)}
+            >
+              <button
+                type="button"
+                className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors flex items-center gap-1"
+                tabIndex={0}
+              >
+                Projects
+              </button>
+              {/* Dropdown menu */}
+              <div
+                className={`absolute left-0 top-full pt-2 min-w-[180px] transition-all duration-200 z-40 ${
+                  isProjectsOpen
+                    ? "opacity-100 visible pointer-events-auto"
+                    : "opacity-0 invisible pointer-events-none"
+                }`}
+              >
+                <div className="bg-[#2a2632] border border-[#4E79A7]/50 rounded-lg shadow-lg">
+                  <div className="flex flex-col py-2">
+                    <Link
+                      href="/projects/pedal-pals"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Pedal Pals
+                    </Link>
+                    <Link
+                      href="/projects/mrs"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Miller Risk Solutions
+                    </Link>
+                    <Link
+                      href="/projects/kikits"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Kikits
+                    </Link>
+                    <Link
+                      href="/projects/maya-spark"
+                      className="text-sm text-[#CFC8CF] px-4 py-2 rounded-md hover:bg-[#4E79A7]/20 hover:text-[#4E79A7] transition-colors"
+                    >
+                      Maya & Spark
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
             <a
               href="#contact"
               className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium"
@@ -78,27 +160,41 @@ export function Header() {
         }`}
       >
         <nav className="flex flex-col px-4 py-6 space-y-4">
-          <a
-            href="#what-we-do"
+          <Link
+            href="/strategy"
             onClick={closeMenu}
             className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
           >
-            What We Do
-          </a>
-          <a
-            href="#ecosystem"
+            Strategy
+          </Link>
+          <Link
+            href="/software"
             onClick={closeMenu}
             className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
           >
-            Ecosystem
-          </a>
-          <a
-            href="#work"
+            Software
+          </Link>
+          <Link
+            href="/storytelling"
             onClick={closeMenu}
             className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
           >
-            Work
-          </a>
+            Stories
+          </Link>
+          <Link
+            href="/engagement"
+            onClick={closeMenu}
+            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+          >
+            Engagement
+          </Link>
+          <Link
+            href="/experiences"
+            onClick={closeMenu}
+            className="text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+          >
+            Experiences
+          </Link>
           <a
             href="#contact"
             onClick={closeMenu}

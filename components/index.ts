@@ -2,6 +2,12 @@
 export { VideoScroll } from "./VideoScroll";
 export type { VideoScrollProps } from "./VideoScroll";
 
+export { HTMLVideoScroll } from "./HTMLVideoScroll";
+export type { HTMLVideoScrollProps } from "./HTMLVideoScroll";
+
+export { PreloadedHTMLVideoScroll } from "./PreloadedHTMLVideoScroll";
+export type { PreloadedHTMLVideoScrollProps } from "./PreloadedHTMLVideoScroll";
+
 export { ContentReveal } from "./ContentReveal";
 export type { ContentRevealProps, RevealDirection } from "./ContentReveal";
 
@@ -43,7 +49,16 @@ export { WhoWeAre } from "./WhoWeAre";
 export type { WhoWeAreProps, TeamMember } from "./WhoWeAre";
 
 export { PortfolioCarousel } from "./PortfolioCarousel";
-export type { PortfolioCarouselProps, PortfolioItem } from "./PortfolioCarousel";
+export type {
+  PortfolioCarouselProps,
+  PortfolioItem,
+} from "./PortfolioCarousel";
 
 export { Portfolio } from "./Portfolio";
 export type { PortfolioProps } from "./Portfolio";
+
+export { HorizontalScrollCarousel } from "./HorizontalScrollCarousel";
+export type {
+  HorizontalScrollCarouselProps,
+  HorizontalScrollCarouselItem,
+} from "./HorizontalScrollCarousel";
