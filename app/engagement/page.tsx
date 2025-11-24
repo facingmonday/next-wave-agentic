@@ -302,18 +302,21 @@ export default function EngagementPage() {
                 {
                   id: "social_uwp_2",
                   image: "/images/projects/uniting-wealth-partners/drain.jpeg",
+                  title: "Platform Adaptation",
                   description:
                     "Content was adapted for each platform's format and audience, maximizing reach and engagement across channels.",
                 },
                 {
                   id: "social_uwp_3",
                   image: "/images/projects/uniting-wealth-partners/deck.jpeg",
+                  title: "Community Engagement",
                   description:
                     "The campaign generated conversations and shares, building brand awareness and trust through social engagement.",
                 },
                 {
                   id: "social_uwp_4",
                   image: "/images/projects/uniting-wealth-partners/scott.jpeg",
+                  title: "Amplified Reach",
                   description:
                     "Social media distribution amplified the campaign's message, reaching audiences who might not have encountered the brand through traditional channels.",
                 },
