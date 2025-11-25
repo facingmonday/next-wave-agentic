@@ -5,6 +5,9 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import HighlightsScroller from "@/components/HighlightsScroller";
+import HighlightSlide from "@/components/HighlightsSlide";
+import VerticalScrollCarousel from "@/components/VerticalScrollCarousel";
 
 export const metadata: Metadata = {
   title: "Software | Next Wave Agentic",
@@ -71,12 +74,64 @@ const softwareProjects: SoftwareProject[] = [
   },
 ];
 
+const softwarehighlights = [
+  {
+    id: "kikits",
+    title: "Kikits",
+    subtitle: "An Ticketing Platform, powered by AI, built for the New Age",
+    href: "/projects/kikits",
+    defaultImage: "/images/kikits/kikits.png",
+    backgroundColor: "#F96f01",
+  },
+  {
+    id: "planet-good-times",
+    title: "Planet Good Times",
+    subtitle:
+      "A creative platform and event hub that showcases events, experiences, and creative content. ",
+    // href: "/projects/planet-good-times",
+    defaultImage: "/images/planet-goodtimes/damon.png",
+    backgroundColor: "#FDF4D2",
+  },
+  {
+    id: "okaynwa",
+    title: "OkayNWA",
+    subtitle: "An AI Powered Event Discovery Platform For NWA",
+    // href: "/projects/okay-nwa",
+    defaultImage: "/images/okay-nwa/okayNWAWhite.png",
+    backgroundColor: "#182618",
+  },
+  {
+    id: "lineup",
+    title: "Lineup",
+    subtitle:
+      "A comprehensive event management platform designed for bringing artists and venues together.",
+    // href: "/projects/lineup",
+    defaultImage: "/images/lineup-booking/thedudes.png",
+    backgroundColor: "#FFFFFF",
+  },
+  {
+    id: "mrs",
+    title: "Miller Risk Solutions",
+    subtitle:
+      "A risk management platform designed to help businesses identify, assess, and mitigate risks.",
+    href: "/projects/mrs",
+    defaultImage: "/images/mrs/mrs-dot.png",
+    backgroundColor: "#3F395B",
+  },
+];
+
 export default function SoftwarePage() {
   return (
     <main className="min-h-screen bg-black">
       <Header />
 
-      <section className="relative z-30 py-16 md:py-24 bg-black">
+      <section
+        className="relative z-30 py-24 md:py-48 lg:py-48 xl:py-64"
+        style={{
+          background:
+            "linear-gradient(to bottom, #000000 0%, #000000 75%, #F96f01 100%)",
+        }}
+      >
         <div className="max-w-3xl mx-auto text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
             Software
@@ -86,92 +141,10 @@ export default function SoftwarePage() {
           </p>
         </div>
       </section>
-
-      <section className="relative py-16 md:py-32">
-        <FuturisticBackground
-          pattern="flowing"
-          intensity="moderate"
-          showOrbs={false}
-          primaryColor="#fc05b9"
-          secondaryColor="#4E79A7"
-          tertiaryColor="#84596c"
-          lineCount={10}
-        />
-        <div className="max-w-7xl mx-auto px-4">
-          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
-            <div className="space-y-24">
-              {softwareProjects.map((project, index) => (
-                <div
-                  key={project.id}
-                  className={`grid md:grid-cols-2 gap-12 items-center ${
-                    index % 2 === 1 ? "md:flex-row-reverse" : ""
-                  }`}
-                >
-                  <div
-                    className={`${
-                      index % 2 === 1 ? "md:order-2" : ""
-                    } relative group`}
-                  >
-                    <div className="relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30 bg-[#3F395B]/30">
-                      <Image
-                        src={project.image}
-                        alt={project.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    </div>
-                  </div>
-                  <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#CFC8CF] mb-4">
-                      {project.name}
-                    </h2>
-                    <p className="text-lg text-gray-300 leading-relaxed mb-6">
-                      {project.description}
-                    </p>
-                    {project.technologies && (
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 bg-[#3F395B]/50 border border-[#4E79A7]/30 rounded-full text-sm text-gray-300"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    {project.link && (
-                      <Link
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-[#4E79A7] hover:text-[#4E79A7]/80 font-medium transition-colors"
-                      >
-                        Visit Site
-                        <svg
-                          className="ml-2 w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          />
-                        </svg>
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </ContentReveal>
-        </div>
+      <VerticalScrollCarousel items={softwarehighlights} />
+      <section className="relative z-50 bg-black">
+        <Footer />
       </section>
-      <Footer />
     </main>
   );
 }
