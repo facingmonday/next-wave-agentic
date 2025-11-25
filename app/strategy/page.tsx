@@ -79,7 +79,6 @@ export default function StrategyPage() {
           </p>
         </div>
       </section>
-      <StoryPath steps={storySteps} />
 
       {/* Lineup Software Architecture */}
       <section className="relative py-16 md:py-32">
