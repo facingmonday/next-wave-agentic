@@ -7,12 +7,10 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { Footer } from "@/components/Footer";
-import { PageLoader } from "@/components/PageLoader";
 
 export default function KikitsPage() {
   return (
     <>
-      <PageLoader minLoadTime={1500} />
       <main className="min-h-screen bg-black">
         <Header />
 

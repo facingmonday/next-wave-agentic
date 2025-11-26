@@ -101,7 +101,7 @@ export default function HeroCarousel({
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         onAutoplayStart={() => setIsPlaying(true)}
         onAutoplayStop={() => setIsPlaying(false)}
-        className="h-[90vh] min-h-[600px] lg:h-[90vh] lg:min-h-[600px]"
+        className="h-[90vh] min-h-[600px] lg:h-[100vh] lg:min-h-[600px]"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>

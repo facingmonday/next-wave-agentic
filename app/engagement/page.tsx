@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
-import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import Image from "next/image";
 import { Footer } from "@/components/Footer";
 
@@ -290,7 +289,7 @@ export default function EngagementPage() {
                 </ul>
               </div>
             </div>
-            <VideoThumbnailGrid
+            {/* <VideoThumbnailGrid
               vimeoUrl="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
               thumbnails={[
                 {
@@ -322,7 +321,7 @@ export default function EngagementPage() {
                     "Social media distribution amplified the campaign's message, reaching audiences who might not have encountered the brand through traditional channels.",
                 },
               ]}
-            />
+            />*/}
           </ContentReveal>
         </div>
       </section>
@@ -346,7 +345,7 @@ export default function EngagementPage() {
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
                 Kikits demonstrates how engagement appears across our work.
-                Here's how we engaged users with Kikits:
+                Here&apos;s how we engaged users with Kikits:
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
@@ -397,7 +396,7 @@ export default function EngagementPage() {
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
                   Kikits content was distributed across social media platforms,
                   including product videos, event highlights, and user-generated
-                  content that showcased the platform's value.
+                  content that showcased the platform&apos;s value.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
                   We managed social media accounts, created engaging posts, and

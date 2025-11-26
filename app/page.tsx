@@ -5,7 +5,6 @@ import { VimeoVideo } from "@/components/VimeoVideo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
-import { ServicesGrid } from "@/components/ServicesGrid";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
@@ -39,14 +38,14 @@ const portfolioItems: PortfolioItem[] = [
     tags: ["Risk Management", "Platform", "AI"],
     href: "/projects/mrs",
   },
-  {
-    id: "uwp-guilty",
-    image: "/images/projects/uniting-wealth-partners/oil.jpeg",
-    title: "Uniting Wealth Partners – Guilty",
-    description:
-      "A relatable, humor-forward campaign that reframes financial guilt and builds trust through storytelling.",
-    tags: ["Social Content", "Financial Services", "Campaign"],
-  },
+  // {
+  //   id: "uwp-guilty",
+  //   image: "/images/projects/uniting-wealth-partners/oil.jpeg",
+  //   title: "Uniting Wealth Partners – Guilty",
+  //   description:
+  //     "A relatable, humor-forward campaign that reframes financial guilt and builds trust through storytelling.",
+  //   tags: ["Social Content", "Financial Services", "Campaign"],
+  // },
   {
     id: "kikits-product",
     image: "/images/projects/kikits/spokesperson.jpeg",
@@ -87,66 +86,6 @@ export default function Home() {
           lineThickness="medium"
           intensity="moderate"
         />
-        {/* <ServicesGrid
-          heroTitle="AI Creativity "
-          heroSubtitle="Meets Real-World Impact"
-          heroDescription="Next Wave Agentic is your all-in-one studio for AI-generated video, brand strategy, web and app development, experiential events, and automated marketing systems. We build the technology and the stories that power the next generation of businesses."
-          primaryCtaLabel="Start a Project"
-          secondaryCtaLabel="Explore Our Work"
-          services={[
-            {
-              id: "1",
-              image: "/images/projects/kikits/MayaAndSpark.jpg",
-              title: "AI Video & Storytelling Studio",
-              description:
-                "Cinematic AI-generated videos in Pixar-style 3D, comic-book animation, and realistic avatars. We craft full campaigns, episodic narratives, and brand films optimized for social, web, and advertising.",
-              ctaLabel: "Explore AI Video Styles",
-            },
-            {
-              id: "2",
-              image: "/images/projects/pedal-pals/crystal.jpg",
-              title: "Brand Identity & Creative Direction",
-              description:
-                "Complete brand identity from logos and palettes to typography, voice, and visual language. AI accelerates exploration while human creative direction ensures consistency and long-term recognizability.",
-              ctaLabel: "Build a Cohesive Brand",
-            },
-            {
-              id: "3",
-              image: "/images/projects/kikits/KikitsPhone.jpg",
-              title: "AI-Enhanced Web & App Development",
-              description:
-                "High-performance websites and mobile apps built with React, Next.js, and TypeScript. Features include AI search, automated content flows, dashboards, and custom integrations.",
-              ctaLabel: "View Development Capabilities",
-            },
-            {
-              id: "4",
-              image:
-                "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
-              title: "Experiential Events & Interactive Media",
-              description:
-                "AI-driven event experiences with dynamic QR systems, real-time visuals, and narrative-driven interactions. From VIP activations to festivals, we create adaptive event ecosystems.",
-              ctaLabel: "See Event Innovations",
-            },
-            {
-              id: "5",
-              image:
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-              title: "Marketing Systems & Automation",
-              description:
-                "Automated marketing systems that handle content creation, email flows, video generation, SEO, and social scheduling. Always-on systems that multiply output while reducing workload.",
-              ctaLabel: "Automate Your Marketing",
-            },
-            {
-              id: "6",
-              image:
-                "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-              title: "Enterprise AI Consulting & Custom Solutions",
-              description:
-                "Enterprise AI solutions including internal tools, intelligent assistants, automated workflows, and custom model integrations. We engineer scalable solutions from apps to fully AI-powered operations.",
-              ctaLabel: "Build Custom AI Tools",
-            },
-          ]}
-        /> */}
         <HorizontalScrollCarousel
           items={[
             {
@@ -364,7 +303,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="relative py-16 md:py-32 bg-black">
+      {/* <section className="relative py-16 md:py-32 bg-black">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
           title="Guilty"
@@ -376,9 +315,9 @@ export default function Home() {
           textAlign="center"
           ctaLabel="Watch Video"
         />
-      </section>
+      </section> */}
 
-      <section className="relative">
+      {/* <section className="relative">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -428,7 +367,7 @@ export default function Home() {
             },
           ]}
         />
-      </section>
+      </section> */}
 
       {/* Product Promotion - PinnedHero */}
       <section className="relative">

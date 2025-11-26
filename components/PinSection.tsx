@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export interface PinSectionProps {
   children: React.ReactNode;
@@ -15,13 +15,12 @@ export interface PinSectionProps {
 export function PinSection({
   children,
   pinDuration = 1000,
-  startOffset = 'top top',
+  startOffset = "top top",
   endOffset,
-  className = '',
+  className = "",
   pinSpacer = true,
 }: PinSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const spacerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -49,4 +48,3 @@ export function PinSection({
     </div>
   );
 }
-

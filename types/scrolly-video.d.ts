@@ -6,9 +6,8 @@ declare module "scrolly-video/dist/ScrollyVideo.esm.jsx" {
     scrollDistance?: number;
     startOffset?: number;
     children?: React.ReactNode;
-    [key: string]: any;
+    [key: string]: unknown;
   }
 
   export default class ScrollyVideo extends Component<ScrollyVideoProps> {}
 }
-

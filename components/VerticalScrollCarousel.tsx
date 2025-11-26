@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import VerticalSlide, { VerticalSlideItem } from "./VerticalSlide";
 import Link from "next/link";
+import Image from "next/image";
 
 interface VerticalScrollCarouselProps {
   items: VerticalSlideItem[];
@@ -14,6 +15,9 @@ export default function VerticalScrollCarousel({
 }: VerticalScrollCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const throttleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastUpdateTimeRef = useRef<number>(0);
+  const snapTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const { scrollY } = useScroll();
 
@@ -22,8 +26,11 @@ export default function VerticalScrollCarousel({
     () => items.map(() => 0) // all images start fully faded out
   );
 
+  // Throttle delay in milliseconds (16ms ≈ 60fps, adjust as needed)
+  const THROTTLE_DELAY = 16;
+
   // ---------- CORE: VISIBILITY-BASED LOGIC ----------
-  const recomputeVisibility = () => {
+  const recomputeVisibility = useCallback(() => {
     if (typeof window === "undefined") return;
 
     const vh = window.innerHeight;
@@ -73,25 +80,53 @@ export default function VerticalScrollCarousel({
     });
 
     setImageOpacities(newOpacities);
-  };
+  }, [items]);
 
   // ---------- INITIAL: Run visibility computation on mount ----------
   useEffect(() => {
     // Run once on mount to set initial opacities
     recomputeVisibility();
-  }, []);
+
+    // Cleanup timeouts on unmount
+    return () => {
+      if (throttleTimeoutRef.current) {
+        clearTimeout(throttleTimeoutRef.current);
+      }
+      if (snapTimeoutRef.current) {
+        clearTimeout(snapTimeoutRef.current);
+      }
+    };
+  }, [recomputeVisibility]);
 
   // ---------- SCROLL: VISIBILITY + SNAP ON PAUSE ----------
   useMotionValueEvent(scrollY, "change", () => {
     if (!containerRef.current) return;
 
-    // Recompute visibility & image/background state
-    recomputeVisibility();
+    // Throttle visibility recomputation
+    const now = Date.now();
+    const timeSinceLastUpdate = now - lastUpdateTimeRef.current;
+
+    if (timeSinceLastUpdate >= THROTTLE_DELAY) {
+      // Update immediately if enough time has passed
+      recomputeVisibility();
+      lastUpdateTimeRef.current = now;
+    } else {
+      // Schedule update if throttled
+      if (throttleTimeoutRef.current) {
+        clearTimeout(throttleTimeoutRef.current);
+      }
+      throttleTimeoutRef.current = setTimeout(() => {
+        recomputeVisibility();
+        lastUpdateTimeRef.current = Date.now();
+      }, THROTTLE_DELAY - timeSinceLastUpdate);
+    }
 
     // Snap behavior (only when scrolling stops briefly)
-    clearTimeout((scrollY as any)._snapTimeout);
+    if (snapTimeoutRef.current) {
+      clearTimeout(snapTimeoutRef.current);
+    }
 
-    (scrollY as any)._snapTimeout = setTimeout(() => {
+    snapTimeoutRef.current = setTimeout(() => {
       const scrollPos = window.scrollY;
       const vh = window.innerHeight;
 
@@ -121,7 +156,7 @@ export default function VerticalScrollCarousel({
       />
 
       {/* FIXED CENTER IMAGE LAYER */}
-      <div className="pointer-events-none fixed inset-0 z-10 flex flex-col items-center justify-center">
+      <div className="pointer-events-none fixed inset-0 z-30 flex flex-col items-center justify-center">
         {items.map((item, index) => (
           <motion.div
             key={index}
@@ -129,17 +164,23 @@ export default function VerticalScrollCarousel({
             className="absolute flex flex-col items-center justify-center w-[260px] sm:w-[330px] lg:w-[420px]"
           >
             <div className="relative w-full aspect-square rounded-full bg-white/20 backdrop-blur-xl shadow-2xl pointer-events-none">
-              <img
+              <Image
                 src={item.defaultImage}
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-contain p-6"
+                width={100}
+                height={100}
               />
             </div>
             {item?.href && (
               <Link
                 href={item.href}
-                className="mt-6 px-8 py-3 bg-black text-white rounded-lg font-medium hover:bg-black/80 transition-colors pointer-events-auto"
-                style={{ opacity: imageOpacities[index] ?? 0 }}
+                className="mt-6 px-8 py-3 bg-black text-white rounded-lg font-medium hover:bg-black/80 transition-colors cursor-pointer"
+                style={{
+                  opacity: imageOpacities[index] ?? 0,
+                  pointerEvents:
+                    (imageOpacities[index] ?? 0) > 0.5 ? "auto" : "none",
+                }}
               >
                 View {item.title}
               </Link>

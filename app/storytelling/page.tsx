@@ -113,8 +113,8 @@ export default function StorytellingPage() {
                 <p className="text-lg text-gray-300 leading-relaxed">
                   The Maya & Spark campaign uses AI-generated character
                   archetypes and emotional journey mapping to create a story
-                  that resonates with anyone who's ever felt lost in a crowd,
-                  only to find their place through a simple interaction.
+                  that resonates with anyone who&apos;s ever felt lost in a
+                  crowd, only to find their place through a simple interaction.
                 </p>
               </div>
               <div>
@@ -249,7 +249,7 @@ export default function StorytellingPage() {
         </div>
       </section>
 
-      {/* Uniting Wealth Partners */}
+      {/* Uniting Wealth Partners
       <section className="relative py-16 md:py-32">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
@@ -262,9 +262,9 @@ export default function StorytellingPage() {
           textPosition="center"
           textAlign="center"
         />
-      </section>
+      </section> */}
 
-      <section className="relative py-16 md:py-32 bg-black">
+      {/* <section className="relative py-16 md:py-32 bg-black">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -320,7 +320,7 @@ export default function StorytellingPage() {
             />
           </ContentReveal>
         </div>
-      </section>
+      </section> */}
       <Footer />
     </main>
   );
