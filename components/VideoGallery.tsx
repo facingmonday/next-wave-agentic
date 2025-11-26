@@ -107,19 +107,6 @@ export function VideoGallery({
 
   if (!videos || videos.length === 0) return null;
 
-  const scrollThumbnails = (direction: "left" | "right") => {
-    const container = scrollerRef.current;
-    if (!container) return;
-
-    const amount = 286; // px to scroll per click (270px thumbnail + 16px gap)
-    const delta = direction === "left" ? -amount : amount;
-
-    container.scrollBy({
-      left: delta,
-      behavior: "smooth",
-    });
-  };
-
   const handleThumbnailClick = (index: number) => {
     if (index !== activeIndex) {
       setActiveIndex(index);

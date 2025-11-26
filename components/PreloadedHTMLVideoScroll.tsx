@@ -41,7 +41,6 @@ export function PreloadedHTMLVideoScroll({
         if (!cancelled) {
           // If we can't pre-download (e.g. due to CORS), fall back to streaming
           // directly from the remote URL.
-          // eslint-disable-next-line no-console
           console.warn(
             "PreloadedHTMLVideoScroll: falling back to streaming remoteSrc directly",
             remoteSrc
@@ -81,5 +80,3 @@ export function PreloadedHTMLVideoScroll({
   // remote URL into HTMLVideoScroll. It will handle both cases gracefully.
   return <HTMLVideoScroll videoSrc={objectUrl ?? remoteSrc} {...rest} />;
 }
-
-

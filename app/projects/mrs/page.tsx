@@ -3,11 +3,9 @@ import { PinnedHero } from "@/components/PinnedHero";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
-import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
-import { VimeoVideo } from "@/components/VimeoVideo";
 import Image from "next/image";
-import { ServicesGrid } from "@/components/ServicesGrid";
 import { Portfolio } from "@/components/Portfolio";
+import { Footer } from "@/components/Footer";
 
 export default function MRSProjectPage() {
   return (
@@ -498,6 +496,7 @@ export default function MRSProjectPage() {
           </ContentReveal>
         </div>
       </footer>
+      <Footer />
     </main>
   );
 }

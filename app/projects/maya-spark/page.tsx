@@ -4,6 +4,7 @@ import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { VimeoVideo } from "@/components/VimeoVideo";
+import { Footer } from "@/components/Footer";
 
 export default function MayaSparkPage() {
   return (
@@ -531,6 +532,7 @@ export default function MayaSparkPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

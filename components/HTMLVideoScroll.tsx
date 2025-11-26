@@ -12,7 +12,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export interface HTMLVideoScrollProps {
   videoSrc: string;
-  posterSrc?: string;
   scrollDistance?: number;
   virtualFps?: number;
   sticky?: boolean;
@@ -26,7 +25,6 @@ export interface HTMLVideoScrollProps {
 
 export function HTMLVideoScroll({
   videoSrc,
-  posterSrc,
   scrollDistance = 4000,
   virtualFps = 30,
   sticky = false,
@@ -84,7 +82,7 @@ export function HTMLVideoScroll({
   const contentX = useTransform(scrollYProgress, [0, 0.5, 1], slide);
 
   // Throttle logic (prevents Chrome freeze)
-  let lastSeek = 0;
+  const lastSeekRef = useRef(0);
 
   /**
    * Seek the video safely
@@ -94,8 +92,8 @@ export function HTMLVideoScroll({
     if (!video || !isReady || duration == null) return;
 
     const now = performance.now();
-    if (now - lastSeek < 40) return; // limit to 25 seeks per second
-    lastSeek = now;
+    if (now - lastSeekRef.current < 40) return; // limit to 25 seeks per second
+    lastSeekRef.current = now;
 
     if (!video.paused) video.pause();
 
@@ -140,9 +138,13 @@ export function HTMLVideoScroll({
   /**
    * Video loaded event listeners
    */
-  const onMetadata = useCallback((e: any) => {
-    setDuration(e.target.duration || null);
-  }, []);
+  const onMetadata = useCallback(
+    (e: React.SyntheticEvent<HTMLVideoElement>) => {
+      const target = e.target as HTMLVideoElement;
+      setDuration(target.duration || null);
+    },
+    []
+  );
 
   const onLoadedData = useCallback(() => {
     const video = videoRef.current;

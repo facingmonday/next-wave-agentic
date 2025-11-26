@@ -4,6 +4,7 @@ import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoScroll } from "@/components/VideoScroll";
 import Image from "next/image";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Experiences | Next Wave Agentic",
@@ -390,6 +391,7 @@ export default function ExperiencesPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }
