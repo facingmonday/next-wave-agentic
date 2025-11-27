@@ -30,7 +30,7 @@ const softwarehighlights = [
     title: "CityView CMS",
     subtitle:
       "An AI powered content management system for small to large cities",
-    // href: "/projects/okay-nwa",
+    href: "/projects/cityviewcms",
     defaultImage: "/images/cityview/cms_logo_black.png",
     backgroundColor: "#4178E1",
   },
@@ -48,7 +48,7 @@ const softwarehighlights = [
     title: "Lineup Booking",
     subtitle:
       "A comprehensive event management platform designed for bringing artists and venues together.",
-    // href: "/projects/lineup",
+    href: "/projects/lineup-booking",
     defaultImage: "/images/lineup-booking/thedudes.png",
     backgroundColor: "#FFFFFF",
   },
@@ -56,7 +56,7 @@ const softwarehighlights = [
     id: "okaynwa",
     title: "OkayNWA",
     subtitle: "An AI Powered Event Discovery Platform For NWA",
-    // href: "/projects/okay-nwa",
+    href: "/projects/okay-nwa",
     defaultImage: "/images/okay-nwa/okayNWAWhite.png",
     backgroundColor: "#182618",
   },

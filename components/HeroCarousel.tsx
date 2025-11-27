@@ -33,7 +33,7 @@ export interface HeroSlide {
   subtitle: string;
   description: string;
   backgroundImage: string;
-  mainImage: string;
+  mainImage?: string;
   button?: HeroSlideButton;
 }
 
@@ -61,7 +61,7 @@ export default function HeroCarousel({
 
   const getButtonClasses = (button: HeroSlideButton) => {
     const baseClasses =
-      "group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-500/50";
+      "group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50";
 
     if (button.variant === "secondary") {
       return `${baseClasses} bg-white/20 text-white border-2 border-white/50 hover:bg-white/30 hover:border-white/70 backdrop-blur-sm shadow-lg ${
@@ -69,7 +69,7 @@ export default function HeroCarousel({
       }`;
     }
 
-    return `${baseClasses} bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 shadow-xl hover:shadow-2xl ${
+    return `${baseClasses} bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-xl hover:shadow-2xl ${
       button.className || ""
     }`;
   };
@@ -134,7 +134,7 @@ export default function HeroCarousel({
                           data-swiper-parallax="-100"
                           data-swiper-parallax-delay="100"
                         >
-                          <span className="text-orange-400 text-sm font-semibold uppercase tracking-wider bg-orange-500/20 px-4 py-2 rounded-full backdrop-blur-sm border border-orange-500/30">
+                          <span className="text-blue-400 text-sm font-semibold uppercase tracking-wider bg-blue-500/20 px-4 py-2 rounded-full backdrop-blur-sm border border-blue-500/30">
                             {slide.subtitle}
                           </span>
                         </div>
@@ -190,15 +190,17 @@ export default function HeroCarousel({
                     >
                       <div className="relative">
                         {/* Main Image Container */}
-                        <div className="relative h-[50vh] lg:h-[90vh] w-full rounded-3xl overflow-visible flex items-center justify-center">
-                          <Image
-                            src={slide.mainImage}
-                            alt={slide.title}
-                            width={1000}
-                            height={1000}
-                            className="max-h-[50vh] lg:max-h-[90vh] w-auto hover:scale-110 transition-transform duration-1000"
-                          />
-                        </div>
+                        {slide.mainImage && (
+                          <div className="relative h-[50vh] lg:h-[90vh] w-full rounded-3xl overflow-visible flex items-center justify-center">
+                            <Image
+                              src={slide.mainImage}
+                              alt={slide.title}
+                              width={1000}
+                              height={1000}
+                              className="max-h-[50vh] lg:max-h-[90vh] w-auto hover:scale-110 transition-transform duration-1000"
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -245,7 +247,7 @@ export default function HeroCarousel({
       {/* Slide Progress Indicator */}
       <div className="absolute top-0 left-0 w-full h-[0.5px] bg-white/10 z-30">
         <div
-          className="h-full bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-100 ease-linear"
+          className="h-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-100 ease-linear"
           style={{
             width: `${((activeIndex + 1) / slides.length) * 100}%`,
           }}
@@ -264,7 +266,7 @@ export default function HeroCarousel({
         }
 
         .hero-bullet-active {
-          background: #f97316;
+          background: #4e79a7;
           transform: scale(1.3);
         }
 
