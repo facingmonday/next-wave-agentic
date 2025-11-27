@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { VideoScroll } from "@/components/VideoScroll";
 import { PreloadedHTMLVideoScroll } from "@/components/PreloadedHTMLVideoScroll";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Bentonville | Next Wave Agentic",
@@ -120,6 +121,7 @@ export default function BentonvillePage() {
           </div>
         </PreloadedHTMLVideoScroll>
       </section>
+      <Footer />
     </main>
   );
 }

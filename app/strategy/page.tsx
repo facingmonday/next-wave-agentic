@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
-import { PinnedHero } from "@/components/PinnedHero";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Strategy | Next Wave Agentic",
@@ -20,6 +20,22 @@ export default function StrategyPage() {
   return (
     <main className="min-h-screen bg-black">
       <Header />
+
+      {/* <VideoScroll
+        totalFrames={192}
+        framesPath="/frame1"
+        frameFilePattern="frame1-%03d.jpg"
+        scrollDistance={5000}
+        sticky={true}
+        contentAlignment="center"
+      >
+        <div className="text-center text-white z-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
+            Next Wave Agentic
+          </h1>
+          <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
+        </div>
+      </VideoScroll> */}
 
       <section className="relative z-30 py-16 md:py-24 bg-black">
         <div className="max-w-3xl mx-auto text-center text-white px-4">
@@ -92,7 +108,7 @@ export default function StrategyPage() {
       </section>
 
       {/* Uniting Wealth Partners Marketing Strategy */}
-      <section className="relative py-16 md:py-32 bg-black">
+      {/* <section className="relative py-16 md:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-4">
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -139,7 +155,7 @@ export default function StrategyPage() {
             </div>
           </ContentReveal>
         </div>
-      </section>
+      </section> */}
 
       {/* BMC Event Planning */}
       <section className="relative py-16 md:py-32">
@@ -240,8 +256,8 @@ export default function StrategyPage() {
                   broader marketing goals.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Each rollout strategy was customized to the brand's voice,
-                  target audience, and platform-specific best practices,
+                  Each rollout strategy was customized to the brand&apos;s
+                  voice, target audience, and platform-specific best practices,
                   ensuring consistent messaging across all touchpoints.
                 </p>
               </div>
@@ -249,6 +265,7 @@ export default function StrategyPage() {
           </ContentReveal>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

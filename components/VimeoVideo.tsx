@@ -72,6 +72,22 @@ export function VimeoVideo({
     return embedUrl + params.toString();
   }, [videoId, autoplay, loop, muted, controls, background]);
 
+  // Control playback via postMessage when pause/resume is requested
+  useEffect(() => {
+    if (typeof window === "undefined" || !videoId) return;
+    const iframe = iframeRef.current;
+    if (!iframe || !iframe.contentWindow) return;
+
+    const method = paused ? "pause" : autoplay ? "play" : null;
+    if (!method) return;
+
+    try {
+      iframe.contentWindow.postMessage(JSON.stringify({ method }), "*");
+    } catch {
+      // Fail silently if postMessage is not available
+    }
+  }, [paused, autoplay, videoId]);
+
   if (!videoId) {
     console.error("Invalid Vimeo URL:", vimeoUrl);
     return (
@@ -82,25 +98,6 @@ export function VimeoVideo({
       </div>
     );
   }
-
-  // Control playback via postMessage when pause/resume is requested
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const iframe = iframeRef.current;
-    if (!iframe || !iframe.contentWindow) return;
-
-    const method = paused ? "pause" : autoplay ? "play" : null;
-    if (!method) return;
-
-    try {
-      iframe.contentWindow.postMessage(
-        JSON.stringify({ method }),
-        "*"
-      );
-    } catch {
-      // Fail silently if postMessage is not available
-    }
-  }, [paused, autoplay, videoId]);
 
   // When used as background (not responsive), fill the full container
   if (!responsive || background) {
