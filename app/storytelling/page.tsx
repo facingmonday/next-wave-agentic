@@ -6,6 +6,8 @@ import { PinnedHero } from "@/components/PinnedHero";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { VimeoVideo } from "@/components/VimeoVideo";
 import { Footer } from "@/components/Footer";
+import HeroCarousel from "@/components/HeroCarousel";
+import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
 
 export const metadata: Metadata = {
   title: "Stories | Next Wave Agentic",
@@ -23,20 +25,22 @@ export default function StorytellingPage() {
   return (
     <main className="min-h-screen bg-black">
       <Header />
-
-      <section className="relative z-30 py-16 md:py-24 bg-black">
-        <div className="max-w-3xl mx-auto text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-            Stories
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">
-            AI-powered narratives that transform brands into compelling stories
-          </p>
-        </div>
+      <section className="relative bg-black">
+        <PinnedHero
+          backgroundVideo="https://vimeo.com/1136559533"
+          title="AI-Powered Storytelling"
+          subtitle="AI-powered storytelling and narrative experiences"
+          body="We use AI to craft stories that are not only engaging but also strategically aligned with business objectives. Each narrative is crafted to build connection, drive action, and leave lasting impressions."
+          ctaLabel="Explore Stories Below"
+          scrollDistance={2400}
+          startOffset="top top"
+          textPosition="left"
+          textAlign="left"
+        />
       </section>
 
       {/* AI Storytelling Intro */}
-      <section className="relative py-16 md:py-32">
+      <section className="relative bg-black">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -46,30 +50,55 @@ export default function StorytellingPage() {
           tertiaryColor="#84596c"
           lineCount={10}
         />
-        <div className="max-w-4xl mx-auto px-4">
-          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                How We Use AI to Tell Stories
-              </h2>
-              <p className="text-lg text-gray-300 leading-relaxed mb-6">
-                We leverage AI to analyze brand DNA, audience psychology, and
-                narrative structures, generating story frameworks that resonate
-                deeply. Our AI tools help us identify emotional touchpoints,
-                craft character arcs, and develop visual narratives that
-                transform abstract brand values into tangible, memorable
-                experiences.
-              </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                By combining AI-generated insights with human creative
-                direction, we create stories that feel authentic, emotionally
-                engaging, and strategically aligned with business objectives.
-                Each narrative is crafted to build connection, drive action, and
-                leave lasting impressions.
-              </p>
-            </div>
-          </ContentReveal>
-        </div>
+        <HorizontalScrollCarousel
+          items={[
+            {
+              image: "/images/projects/kikits/MayaAndSpark.jpg",
+              title: "AI Storytelling",
+              body: "We use AI to analyze brand identity, audience psychology, and emotional arcs. This allows us to build story engines that generate narratives designed to resonate, persuade, and convert — not just entertain.",
+              buttonLabel: "Explore Narrative AI",
+              buttonHref: "/contact",
+            },
+            {
+              image: "/images/projects/pedal-pals/crystal.jpg",
+              title: "AI-Generated Video Production",
+              body: "From Pixar-style characters to hyper-realistic avatars, our AI pipeline produces cinematic-quality video content in a fraction of the time and cost. Faster iterations mean sharper creative and stronger results.",
+              buttonLabel: "See AI Video Styles",
+              buttonHref: "/contact",
+            },
+            {
+              image: "/images/projects/kikits/KikitsPhone.jpg",
+              title: "Rapid Concept-to-Campaign Workflow",
+              body: "AI allows us to ideate, storyboard, animate, and edit at lightning speed. Instead of waiting weeks for production, brands can move from idea → script → video in hours — without sacrificing quality.",
+              buttonLabel: "Accelerate Your Production",
+              buttonHref: "/contact",
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+              title: "Emotion-Driven Character Creation",
+              body: "We use AI to develop characters that represent your audience’s emotions, fears, goals, and identity. From uplifting mascots to cinematic protagonists, each character is engineered for emotional impact.",
+              buttonLabel: "Build Your Characters",
+              buttonHref: "/contact",
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+              title: "AI-Powered Ads & Creative Automation",
+              body: "We generate endless content variations for social ads, video spots, and campaigns. A single concept becomes dozens of unique, tailored outputs — optimized per audience segment and platform.",
+              buttonLabel: "Automate Your Creative",
+              buttonHref: "/contact",
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+              title: "Scalable Story Systems",
+              body: "Our AI-driven frameworks let brands create episodic content, recurring characters, and narrative universes that can be infinitely expanded. Your brand doesn’t just tell one story — it builds a world.",
+              buttonLabel: "Build a Story Universe",
+              buttonHref: "/contact",
+            },
+          ]}
+        />
       </section>
 
       {/* Kikits: Maya & Spark */}
@@ -81,7 +110,7 @@ export default function StorytellingPage() {
           body="An emotionally uplifting animated short that tells the story of Maya, a quiet first-time attendee navigating a crowded event hall. Through AI-generated character design and narrative structure, we created a story that captures the universal experience of finding connection in unexpected moments. The campaign uses Pixar-style 3D animation to bring warmth and relatability to the brand experience."
           ctaLabel="Watch Video"
           scrollDistance={2400}
-          startOffset="top top"
+          startOffset="top 80%"
           textPosition="center"
           textAlign="center"
         />

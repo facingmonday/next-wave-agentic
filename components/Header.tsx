@@ -67,12 +67,12 @@ export function Header() {
             >
               Experiences
             </Link>
-            <a
-              href="#contact"
-              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium"
+            <Link
+              href="/#contact"
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
             >
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Hamburger Button */}
@@ -145,13 +145,13 @@ export function Header() {
           >
             Experiences
           </Link>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             onClick={closeMenu}
             className="text-base bg-[#fc05b9] text-[#CFC8CF] px-4 py-2 rounded-lg hover:bg-[#fc05b9]/90 transition-colors font-medium text-center"
           >
             Contact
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
