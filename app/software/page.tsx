@@ -27,7 +27,7 @@ const softwarehighlights = [
   },
   {
     id: "cv_cms",
-    title: "CityView CMS",
+    title: "CityView  CMS",
     subtitle:
       "An AI powered content management system for small to large cities",
     href: "/projects/cityviewcms",

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
@@ -6,26 +9,24 @@ import { PinnedHero } from "@/components/PinnedHero";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { VimeoVideo } from "@/components/VimeoVideo";
 import { Footer } from "@/components/Footer";
-import HeroCarousel from "@/components/HeroCarousel";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
-
-export const metadata: Metadata = {
-  title: "Stories | Next Wave Agentic",
-  description:
-    "AI-powered storytelling and narrative experiences crafted by Next Wave Agentic.",
-  openGraph: {
-    title: "Stories | Next Wave Agentic",
-    description:
-      "Explore our AI-powered storytelling and narrative experiences.",
-    type: "website",
-  },
-};
+import { ContactFormModal } from "@/components/ContactFormModal";
 
 export default function StorytellingPage() {
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+
+  const openContactForm = () => {
+    setIsContactFormOpen(true);
+  };
+
+  const closeContactForm = () => {
+    setIsContactFormOpen(false);
+  };
+
   return (
     <main className="min-h-screen bg-black">
       <Header />
-      <section className="relative bg-black">
+      <section className="relative">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1136559533"
           title="AI-Powered Storytelling"
@@ -57,52 +58,49 @@ export default function StorytellingPage() {
               title: "AI Storytelling",
               body: "We use AI to analyze brand identity, audience psychology, and emotional arcs. This allows us to build story engines that generate narratives designed to resonate, persuade, and convert — not just entertain.",
               buttonLabel: "Explore Narrative AI",
-              buttonHref: "/contact",
+              buttonOnClick: openContactForm,
             },
             {
-              image: "/images/projects/pedal-pals/crystal.jpg",
+              image: "/images/projects/pedal-pals/ricky.jpg",
               title: "AI-Generated Video Production",
               body: "From Pixar-style characters to hyper-realistic avatars, our AI pipeline produces cinematic-quality video content in a fraction of the time and cost. Faster iterations mean sharper creative and stronger results.",
               buttonLabel: "See AI Video Styles",
-              buttonHref: "/contact",
+              buttonOnClick: openContactForm,
             },
             {
-              image: "/images/projects/kikits/KikitsPhone.jpg",
+              image: "/images/projects/kikits/spokesperson.jpeg",
               title: "Rapid Concept-to-Campaign Workflow",
               body: "AI allows us to ideate, storyboard, animate, and edit at lightning speed. Instead of waiting weeks for production, brands can move from idea → script → video in hours — without sacrificing quality.",
               buttonLabel: "Accelerate Your Production",
-              buttonHref: "/contact",
+              buttonOnClick: openContactForm,
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+              image: "/images/projects/uniting-wealth-partners/drain.jpeg",
               title: "Emotion-Driven Character Creation",
-              body: "We use AI to develop characters that represent your audience’s emotions, fears, goals, and identity. From uplifting mascots to cinematic protagonists, each character is engineered for emotional impact.",
+              body: "We use AI to develop characters that represent your audience's emotions, fears, goals, and identity. From uplifting mascots to cinematic protagonists, each character is engineered for emotional impact.",
               buttonLabel: "Build Your Characters",
-              buttonHref: "/contact",
+              buttonOnClick: openContactForm,
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+              image: "/images/projects/uniting-wealth-partners/oil.jpeg",
               title: "AI-Powered Ads & Creative Automation",
               body: "We generate endless content variations for social ads, video spots, and campaigns. A single concept becomes dozens of unique, tailored outputs — optimized per audience segment and platform.",
               buttonLabel: "Automate Your Creative",
-              buttonHref: "/contact",
+              buttonOnClick: openContactForm,
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+              image: "/images/projects/pedal-pals/benny.jpg",
               title: "Scalable Story Systems",
-              body: "Our AI-driven frameworks let brands create episodic content, recurring characters, and narrative universes that can be infinitely expanded. Your brand doesn’t just tell one story — it builds a world.",
+              body: "Our AI-driven frameworks let brands create episodic content, recurring characters, and narrative universes that can be infinitely expanded. Your brand doesn't just tell one story — it builds a world.",
               buttonLabel: "Build a Story Universe",
-              buttonHref: "/contact",
+              buttonOnClick: openContactForm,
             },
           ]}
         />
       </section>
 
       {/* Kikits: Maya & Spark */}
-      <section className="relative py-16 md:py-32 bg-black">
+      <section className="relative">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci"
           title="Kikits: Maya & Spark"
@@ -110,7 +108,7 @@ export default function StorytellingPage() {
           body="An emotionally uplifting animated short that tells the story of Maya, a quiet first-time attendee navigating a crowded event hall. Through AI-generated character design and narrative structure, we created a story that captures the universal experience of finding connection in unexpected moments. The campaign uses Pixar-style 3D animation to bring warmth and relatability to the brand experience."
           ctaLabel="Watch Video"
           scrollDistance={2400}
-          startOffset="top 80%"
+          startOffset="top top"
           textPosition="center"
           textAlign="center"
         />
@@ -207,7 +205,7 @@ export default function StorytellingPage() {
       </section>
 
       {/* Pedal Pals */}
-      <section className="relative py-16 md:py-32">
+      <section className="relative">
         <PinnedHero
           backgroundVideo="https://vimeo.com/1126858733?fl=ip&fe=ec"
           title="Pedal Pals"
@@ -277,79 +275,7 @@ export default function StorytellingPage() {
           </ContentReveal>
         </div>
       </section>
-
-      {/* Uniting Wealth Partners
-      <section className="relative py-16 md:py-32">
-        <PinnedHero
-          backgroundVideo="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
-          title="Uniting Wealth Partners: Guilty"
-          subtitle="You Don't Have to Feel Guilty."
-          body="A relatable, humor-forward campaign that uses AI to analyze financial anxiety patterns and craft stories that reframe guilt through empathy. By showing everyday people confidently attempting DIY tasks they clearly don't understand, we created a perfect metaphor for financial confusion. The AI-generated narrative structure helps us move from comedic recognition to warm, sincere connection with the brand."
-          ctaLabel="Watch Video"
-          scrollDistance={2400}
-          startOffset="top top"
-          textPosition="center"
-          textAlign="center"
-        />
-      </section> */}
-
-      {/* <section className="relative py-16 md:py-32 bg-black">
-        <FuturisticBackground
-          pattern="flowing"
-          intensity="moderate"
-          showOrbs={false}
-          primaryColor="#fc05b9"
-          secondaryColor="#4E79A7"
-          tertiaryColor="#84596c"
-          lineCount={10}
-        />
-        <div className="max-w-7xl mx-auto px-4">
-          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6 text-center">
-              Reframing Financial Stories
-            </h2>
-            <p className="text-lg text-gray-400 leading-relaxed text-center mb-12 max-w-3xl mx-auto">
-              AI narrative analysis helped us identify that financial services
-              marketing often triggers anxiety. We used AI to craft stories that
-              disarm, relate, and then reframe, turning financial guilt into
-              understanding and trust.
-            </p>
-            <VideoThumbnailGrid
-              vimeoUrl="https://vimeo.com/1136702563?share=copy&fl=sv&fe=ci"
-              thumbnails={[
-                {
-                  id: "uwp_oil",
-                  image: "/images/projects/uniting-wealth-partners/oil.jpeg",
-                  title: "Financial Anxiety",
-                  description:
-                    "By showing Carol, Mike, and Brad confidently attempting DIY tasks they clearly don't understand, the video triggers immediate recognition and laughter.",
-                },
-                {
-                  id: "uwp_drain",
-                  image: "/images/projects/uniting-wealth-partners/drain.jpeg",
-                  title: "Universal Emotions",
-                  description:
-                    "Everyone has tried (and failed) to fix something they weren't qualified to fix. These relatable moments become a perfect metaphor for financial confusion.",
-                },
-                {
-                  id: "uwp_deck",
-                  image: "/images/projects/uniting-wealth-partners/deck.jpeg",
-                  title: "Reframing Guilt",
-                  description:
-                    "The core insight lands because the humor isn't mocking — it's empathetic. Each character is portrayed with confidence, pride, and charm.",
-                },
-                {
-                  id: "uwp_scott",
-                  image: "/images/projects/uniting-wealth-partners/scott.jpeg",
-                  title: "Building Trust",
-                  description:
-                    "The video strategically moves from quick comedic beats into a warm, sincere tone as the narrator introduces UWP, building trust through storytelling.",
-                },
-              ]}
-            />
-          </ContentReveal>
-        </div>
-      </section> */}
+      <ContactFormModal isOpen={isContactFormOpen} onClose={closeContactForm} />
       <Footer />
     </main>
   );
