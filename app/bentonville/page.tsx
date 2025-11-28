@@ -51,25 +51,23 @@ export default function BentonvillePage() {
         </div>
       </section>
       <section className="relative">
-        <VideoScroll
-          totalFrames={107}
-          framesPath="/images/tunnel"
-          frameFilePattern="tunnel-%03d.jpg"
-          scrollDistance={5000}
+        <PreloadedHTMLVideoScroll
+          remoteSrc="https://next-wave-agentic.nyc3.cdn.digitaloceanspaces.com/video/tunnel.mp4"
+          scrollDistance={12000}
           sticky={true}
           contentAlignment="center"
-          contentAnimationDirection="right"
+          contentAnimationDirection="down"
           contentFade
         >
           <div className="text-center text-white z-20">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-              World Class MTB Trails
+              Welcome to Bentonville
             </h1>
             <p className="text-xl md:text-2xl opacity-90">
               Over 300 miles of trails await you in the Ozark Mountains.
             </p>
           </div>
-        </VideoScroll>
+        </PreloadedHTMLVideoScroll>
       </section>
       <section className="relative z-30 py-16 md:py-24 bg-black">
         <div className="max-w-3xl mx-auto text-center text-white">
@@ -82,29 +80,8 @@ export default function BentonvillePage() {
         </div>
       </section>
       <section className="relative">
-        <VideoScroll
-          totalFrames={145}
-          framesPath="/images/catapult"
-          frameFilePattern="catapult-%03d.jpg"
-          scrollDistance={5000}
-          sticky={true}
-          contentAlignment="left"
-          contentAnimationDirection="up"
-          contentFade
-        >
-          <div className="text-center text-white z-20">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-              World Class MTB Trails
-            </h1>
-            <p className="text-xl md:text-2xl opacity-90">
-              Over 300 miles of trails await you in the Ozark Mountains.
-            </p>
-          </div>
-        </VideoScroll>
-      </section>
-      <section className="relative">
         <PreloadedHTMLVideoScroll
-          remoteSrc="/video/drone2.mp4"
+          remoteSrc="https://next-wave-agentic.nyc3.cdn.digitaloceanspaces.com/video/drone.mp4"
           scrollDistance={8000}
           sticky={true}
           contentAlignment="center"
@@ -117,6 +94,26 @@ export default function BentonvillePage() {
             </h1>
             <p className="text-xl md:text-2xl opacity-90">
               Scrub through the full HTML video experience by scrolling.
+            </p>
+          </div>
+        </PreloadedHTMLVideoScroll>
+      </section>
+      <section className="relative">
+        <PreloadedHTMLVideoScroll
+          remoteSrc="https://next-wave-agentic.nyc3.cdn.digitaloceanspaces.com/video/greenway.mp4"
+          scrollDistance={8000}
+          sticky={true}
+          contentAlignment="center"
+          contentAnimationDirection="down"
+          contentFade
+        >
+          <div className="text-center text-white z-20">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
+              Explore the Greenway
+            </h1>
+            <p className="text-xl md:text-2xl opacity-90">
+              The Bentonville Greenway is a 10-mile loop around the city that is
+              perfect for a bike ride or a walk.
             </p>
           </div>
         </PreloadedHTMLVideoScroll>
