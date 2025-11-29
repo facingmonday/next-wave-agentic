@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
+import { ContactFormModal } from "@/components/ContactFormModal";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -13,6 +14,14 @@ export function Header() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const openContactForm = () => {
+    setIsContactFormOpen(true);
+  };
+
+  const closeContactForm = () => {
+    setIsContactFormOpen(false);
   };
 
   return (
@@ -67,12 +76,14 @@ export function Header() {
             >
               Experiences
             </Link>
-            <a
-              href="#contact"
-              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium"
+            <button
+              onClick={() => {
+                openContactForm();
+              }}
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
             >
               Contact
-            </a>
+            </button>
           </nav>
 
           {/* Mobile Hamburger Button */}
@@ -145,15 +156,19 @@ export function Header() {
           >
             Experiences
           </Link>
-          <a
-            href="#contact"
-            onClick={closeMenu}
+          <Link
+            href="/#contact"
+            onClick={() => {
+              closeMenu();
+              openContactForm();
+            }}
             className="text-base bg-[#fc05b9] text-[#CFC8CF] px-4 py-2 rounded-lg hover:bg-[#fc05b9]/90 transition-colors font-medium text-center"
           >
             Contact
-          </a>
+          </Link>
         </nav>
       </div>
+      <ContactFormModal isOpen={isContactFormOpen} onClose={closeContactForm} />
     </header>
   );
 }
