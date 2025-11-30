@@ -89,6 +89,9 @@ const HeroSlides = [
     backgroundImage:
       "/images/bentonville-watertower/bentonville-watertower-drone-067.jpg",
     mainImage: "/images/kikits/kikits-phone-2.png",
+    button: {
+      text: "View Our Projects Below",
+    },
   },
 ];
 

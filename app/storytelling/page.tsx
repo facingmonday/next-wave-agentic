@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
@@ -11,6 +10,7 @@ import { VimeoVideo } from "@/components/VimeoVideo";
 import { Footer } from "@/components/Footer";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
 import { ContactFormModal } from "@/components/ContactFormModal";
+import { VideoGallery } from "@/components/VideoGallery";
 
 export default function StorytellingPage() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -44,13 +44,25 @@ export default function StorytellingPage() {
       <section className="relative bg-black">
         <FuturisticBackground
           pattern="flowing"
-          intensity="moderate"
+          intensity="minimal"
           showOrbs={false}
           primaryColor="#fc05b9"
           secondaryColor="#4E79A7"
           tertiaryColor="#84596c"
-          lineCount={10}
+          lineCount={8}
         />
+        <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
+          <div className="text-center pt-12 md:pt-32">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6">
+              The Benefits of AI Generation
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-4xl mx-auto">
+              AI doesn&apos;t replace creativity—it amplifies it. By combining
+              human insight with AI capabilities, we unlock new possibilities
+              for storytelling, production speed, and creative scale.
+            </p>
+          </div>
+        </ContentReveal>
         <HorizontalScrollCarousel
           items={[
             {
@@ -163,11 +175,43 @@ export default function StorytellingPage() {
               Kikits Product Storytelling
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed text-center mb-12 max-w-3xl mx-auto">
-              AI-powered spokesperson videos and product narratives that
-              explain, showcase, and connect with audiences through authentic
-              storytelling.
+              Kikits is more than a ticketing platform — it’s a new way for
+              events to operate. To launch it, we produced a series of
+              AI-generated videos that introduce the product, teach key
+              features, and empower users to get the most out of the system. By
+              leveraging AI for these videos, we were able to deliver
+              high-quality storytelling, faster iteration, and consistent brand
+              voice — all while reducing production time.
             </p>
-            <VideoThumbnailGrid
+            <VideoGallery
+              videos={[
+                {
+                  id: "kikits_spokesperson",
+                  videoUrl: "https://vimeo.com/1105184966?fl=ip&fe=ec",
+                  thumbnailUrl: "/images/projects/kikits/kikits-video.png",
+                  title: "Kikits Launch Announcement",
+                  subtitle:
+                    "A high-level launch announcement introducing Kikits to the world, highlighting the vision, core features, and the future of ticketing.",
+                },
+                {
+                  id: "kikits_explain",
+                  videoUrl: "https://vimeo.com/1110591196?fl=ip&fe=ec",
+                  thumbnailUrl: "/images/projects/kikits/explain.jpeg",
+                  title: "Creating QR Codes",
+                  subtitle:
+                    "An AI-generated walkthrough that teaches users how to create and customize QR codes in Kikits, helping them unlock the system’s most powerful tools.",
+                },
+                {
+                  id: "kikits_showcase",
+                  videoUrl: "https://vimeo.com/1111744640?fl=ip&fe=ec",
+                  thumbnailUrl: "/images/projects/kikits/show.jpeg",
+                  title: "Creating Drink Tickets",
+                  subtitle:
+                    "A clear, guided explanation showing how Kikits simplifies drink ticket creation using Facts and Scanner Actions — produced with AI for speed, clarity, and consistency.",
+                },
+              ]}
+            />
+            {/* <VideoThumbnailGrid
               vimeoUrl="https://vimeo.com/1110591196?fl=ip&fe=ec"
               thumbnails={[
                 {
@@ -199,7 +243,7 @@ export default function StorytellingPage() {
                     "Stories that connect product features to user emotions and needs, building relatability and trust.",
                 },
               ]}
-            />
+            /> */}
           </ContentReveal>
         </div>
       </section>
