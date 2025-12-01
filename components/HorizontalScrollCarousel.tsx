@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -24,6 +25,7 @@ export interface HorizontalScrollCarouselItem {
 }
 
 export interface HorizontalScrollCarouselProps {
+  MainTitle?: string;
   backgroundImage?: string;
   items: HorizontalScrollCarouselItem[];
   startOffset?: string;
@@ -34,6 +36,7 @@ export function HorizontalScrollCarousel({
   items,
   startOffset = "top top",
   className = "",
+  MainTitle,
 }: HorizontalScrollCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -392,6 +395,19 @@ export function HorizontalScrollCarousel({
       ref={containerRef}
       className={`relative w-full h-screen overflow-hidden ${className}`}
     >
+      {MainTitle && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="hidden sm:block absolute left-1/4 -translate-x-1/2 top-1/10"
+        >
+          <h1 className="text-white font-bold text-6xl md:text-8xl leading-[0.9]">
+            {MainTitle}
+          </h1>
+        </motion.div>
+      )}
       <div
         ref={wrapperRef}
         className="relative z-10 h-full flex"

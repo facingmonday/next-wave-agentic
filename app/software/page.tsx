@@ -27,7 +27,7 @@ const softwarehighlights = [
   },
   {
     id: "cv_cms",
-    title: "CityView CMS",
+    title: "CityView  CMS",
     subtitle:
       "An AI powered content management system for small to large cities",
     href: "/projects/cityviewcms",
@@ -89,6 +89,9 @@ const HeroSlides = [
     backgroundImage:
       "/images/bentonville-watertower/bentonville-watertower-drone-067.jpg",
     mainImage: "/images/kikits/kikits-phone-2.png",
+    button: {
+      text: "View Our Projects Below",
+    },
   },
 ];
 
