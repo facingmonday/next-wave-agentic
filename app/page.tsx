@@ -9,6 +9,7 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
+import { MissionStatementSection } from "@/components/MissionStatementSection";
 
 const portfolioItems: PortfolioItem[] = [
   {
@@ -76,8 +77,12 @@ export default function Home() {
           <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
         </div>
       </VideoScroll>
-      {/* Services Section */}
-      <section className="relative bg-black">
+
+      {/* Mission Statement Section - Optional: Remove this section if you do not want it to show, add back in HorizontalScrollCarousel section below*/}
+      <MissionStatementSection />
+
+      {/* Optional: Uncomment this section if removing MissionStatementSection*/}
+      {/* <section className="relative bg-black">
         <FuturisticBackground
           primaryColor="#fc05b9"
           secondaryColor="#4E79A7"
@@ -135,7 +140,7 @@ export default function Home() {
             },
           ]}
         />
-      </section>
+      </section> */}
 
       <section className="relative">
         <VideoScroll
