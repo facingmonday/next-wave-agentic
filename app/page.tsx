@@ -10,6 +10,7 @@ import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
 import { MissionStatementSection } from "@/components/MissionStatementSection";
+import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 
 const portfolioItems: PortfolioItem[] = [
   {
@@ -39,14 +40,6 @@ const portfolioItems: PortfolioItem[] = [
     tags: ["Risk Management", "Platform", "AI"],
     href: "/projects/mrs",
   },
-  // {
-  //   id: "uwp-guilty",
-  //   image: "/images/projects/uniting-wealth-partners/oil.jpeg",
-  //   title: "Uniting Wealth Partners – Guilty",
-  //   description:
-  //     "A relatable, humor-forward campaign that reframes financial guilt and builds trust through storytelling.",
-  //   tags: ["Social Content", "Financial Services", "Campaign"],
-  // },
   {
     id: "kikits-product",
     image: "/images/projects/kikits/spokesperson.jpeg",
@@ -58,25 +51,53 @@ const portfolioItems: PortfolioItem[] = [
   },
 ] as const;
 
+const HeroSlides: HeroSlide[] = [
+  {
+    title: "AI-Enhanced Web & App Development",
+    subtitle: "High-Performance Digital Products",
+    description:
+      "We design and build blazing-fast websites and mobile apps using React, Next.js, and TypeScript—powered by AI search, automated content flows, real-time dashboards, and custom system integrations.",
+    backgroundImage: "/images/projects/kikits/KikitsPhone.jpg",
+    button: {
+      text: "View Development Capabilities",
+      href: "/software",
+      variant: "primary",
+    },
+  },
+
+  {
+    title: "AI Video & Storytelling Studio",
+    subtitle: "Cinematic AI-Powered Content",
+    description:
+      "From Pixar-style 3D and comic-book animation to realistic avatars, we craft full AI-driven campaigns, episodic narratives, and brand films built for social, web, and advertising.",
+    backgroundImage: "/images/projects/kikits/MayaAndSpark.jpg",
+    button: {
+      text: "Explore AI Video Styles",
+      href: "/storytelling",
+      variant: "primary",
+    },
+  },
+
+  {
+    title: "Experiential Events, Automation & Enterprise AI",
+    subtitle: "Interactive Systems That Scale",
+    description:
+      "We build AI-driven event ecosystems, automated marketing engines, and enterprise-grade AI tools—combining real-time QR systems, dynamic media, intelligent assistants, and scalable workflows.",
+    backgroundImage:
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1600&q=80",
+    button: {
+      text: "Build With Us",
+      href: "/experiences",
+      variant: "primary",
+    },
+  },
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black">
       <Header />
-      <VideoScroll
-        totalFrames={192}
-        framesPath="/frame1"
-        frameFilePattern="frame1-%03d.jpg"
-        scrollDistance={5000}
-        sticky={true}
-        contentAlignment="center"
-      >
-        <div className="text-center text-white z-20">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-            Next Wave Agentic
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
-        </div>
-      </VideoScroll>
+      <HeroCarousel slides={HeroSlides} />
 
       {/* Mission Statement Section - Optional: Remove this section if you do not want it to show, add back in HorizontalScrollCarousel section below*/}
       <MissionStatementSection />
