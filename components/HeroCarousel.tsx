@@ -216,12 +216,38 @@ export default function HeroCarousel({
         <>
           <button className="hero-prev absolute left-6 top-1/2 -translate-y-1/2 z-20 group bg-transparent border-none hidden lg:block">
             <div className="flex items-center justify-center w-14 h-14 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all duration-300 group-hover:scale-110">
-              {/* <ArrowLeft className="w-5 h-5" /> */}
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
             </div>
           </button>
           <button className="hero-next absolute right-6 top-1/2 -translate-y-1/2 z-20 group bg-transparent border-none hidden lg:block">
             <div className="flex items-center justify-center w-14 h-14 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all duration-300 group-hover:scale-110">
-              {/* <ArrowRight className="w-5 h-5" /> */}
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </div>
           </button>
         </>
@@ -230,16 +256,8 @@ export default function HeroCarousel({
       {/* Custom Pagination */}
       {showIndicators && slides.length > 1 && (
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-          <div className="flex items-center space-x-4 bg-black/20 backdrop-blur-sm px-6 py-3 rounded-full">
+          <div className="flex items-center bg-black/20 backdrop-blur-sm px-6 py-3 rounded-full">
             <div className="swiper-pagination flex space-x-2"></div>
-            <div className="w-px h-6 bg-white/30"></div>
-            <div className="flex items-center space-x-2 text-white text-sm">
-              <span>{String(activeIndex + 1).padStart(2, "0")}</span>
-              <span className="text-white/60">/</span>
-              <span className="text-white/60">
-                {String(slides.length).padStart(2, "0")}
-              </span>
-            </div>
           </div>
         </div>
       )}
