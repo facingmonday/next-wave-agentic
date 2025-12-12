@@ -398,7 +398,7 @@ export default function Home() {
       {/* Product Promotion - PinnedHero */}
       <section className="relative">
         <PinnedHero
-          backgroundVideo="https://vimeo.com/1110591196?fl=ip&fe=ec"
+          backgroundVideo="https://vimeo.com/1105184966"
           title="Product Promotion"
           subtitle="AI-Powered Creative Campaigns"
           body="AI videos, explainers, brand stories, animation, and creative campaigns powered by Planet Goodtimes."
