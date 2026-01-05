@@ -9,7 +9,11 @@ const exo2 = Exo_2({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://nextwaveagentic.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Next Wave Agentic",
   description:
     "Where creativity, technology, and storytelling are built locally and launched globally.",
@@ -18,6 +22,7 @@ export const metadata: Metadata = {
     description:
       "Where creativity, technology, and storytelling are built locally and launched globally.",
     type: "website",
+    url: siteUrl,
     images: [
       {
         url: "/images/next-wave-agentic.jpeg",
