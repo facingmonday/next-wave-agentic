@@ -2,12 +2,15 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ContactFormModal } from "@/components/ContactFormModal";
 export function Header() {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,7 +28,7 @@ export function Header() {
     setIsContactFormOpen(false);
   };
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside (desktop)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -36,14 +39,15 @@ export function Header() {
       }
     };
 
-    if (isDropdownOpen) {
+    // Only handle desktop dropdown when menu is not open (desktop mode)
+    if (isDropdownOpen && !isMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isDropdownOpen]);
+  }, [isDropdownOpen, isMenuOpen]);
 
   return (
     <header
@@ -72,7 +76,7 @@ export function Header() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors flex items-center gap-2"
               >
-                Menu
+                Services
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${
                     isDropdownOpen ? "rotate-180" : ""
@@ -126,16 +130,16 @@ export function Header() {
                   >
                     Experiences
                   </Link>
-                  <Link
-                    href="/gallery"
-                    onClick={() => setIsDropdownOpen(false)}
-                    className="block text-sm md:text-base text-[#CFC8CF] px-4 py-2 hover:text-[#4E79A7] hover:bg-[#3f395b]/50 transition-colors"
-                  >
-                    Gallery
-                  </Link>
                 </div>
               )}
             </div>
+            <Link
+              href="/gallery"
+              onClick={() => setIsDropdownOpen(false)}
+              className="block text-sm md:text-base text-[#CFC8CF] px-4 py-2 hover:text-[#4E79A7] hover:bg-[#3f395b]/50 transition-colors"
+            >
+              Gallery
+            </Link>
             <button
               onClick={() => {
                 openContactForm();
@@ -174,19 +178,64 @@ export function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-16 left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-[#3f395b] transition-all duration-300 ease-in-out ${
+        className={`md:hidden fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-[#3f395b] transition-all duration-300 ease-in-out z-40 ${
           isMenuOpen
-            ? "opacity-100 visible translate-y-0"
-            : "opacity-0 invisible -translate-y-4"
+            ? "opacity-100 visible translate-y-0 pointer-events-auto"
+            : "opacity-0 invisible -translate-y-4 pointer-events-none"
         }`}
       >
-        <nav className="flex flex-col px-4 py-6 space-y-4">
-          <div className="relative">
+        <nav className="flex flex-col px-4 py-6 pt-4 space-y-4">
+          <div className="pb-4 border-b border-[#3f395b] mb-2 flex items-center justify-between">
+            <Link
+              href="/"
+              onClick={() => {
+                closeMenu();
+                setIsDropdownOpen(false);
+              }}
+              className="text-2xl font-bold text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-heading inline-block"
+            >
+              NWA
+            </Link>
+            <button
+              onClick={() => {
+                closeMenu();
+                setIsDropdownOpen(false);
+              }}
+              className="w-8 h-8 flex items-center justify-center text-[#CFC8CF] hover:text-[#4E79A7] transition-colors"
+              aria-label="Close menu"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              closeMenu();
+              setIsDropdownOpen(false);
+              router.push("/");
+            }}
+            className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
+          >
+            Home
+          </button>
+          <div className="relative" ref={mobileDropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="w-full text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 flex items-center justify-between"
             >
-              Menu
+              Services
               <svg
                 className={`w-4 h-4 transition-transform duration-200 ${
                   isDropdownOpen ? "rotate-180" : ""
@@ -205,75 +254,86 @@ export function Header() {
             </button>
             {isDropdownOpen && (
               <div className="mt-2 pl-4 space-y-2 border-l-2 border-[#3f395b]">
-                <Link
-                  href="/strategy"
-                  onClick={() => {
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     closeMenu();
                     setIsDropdownOpen(false);
+                    router.push("/strategy");
                   }}
-                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
                 >
                   Strategy
-                </Link>
-                <Link
-                  href="/software"
-                  onClick={() => {
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     closeMenu();
                     setIsDropdownOpen(false);
+                    router.push("/software");
                   }}
-                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
                 >
                   Software
-                </Link>
-                <Link
-                  href="/storytelling"
-                  onClick={() => {
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     closeMenu();
                     setIsDropdownOpen(false);
+                    router.push("/storytelling");
                   }}
-                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
                 >
                   Stories
-                </Link>
-                <Link
-                  href="/engagement"
-                  onClick={() => {
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     closeMenu();
                     setIsDropdownOpen(false);
+                    router.push("/engagement");
                   }}
-                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
                 >
                   Engagement
-                </Link>
-                <Link
-                  href="/experiences"
-                  onClick={() => {
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     closeMenu();
                     setIsDropdownOpen(false);
+                    router.push("/experiences");
                   }}
-                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
+                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
                 >
                   Experiences
-                </Link>
-                <Link
-                  href="/gallery"
-                  onClick={() => {
-                    closeMenu();
-                    setIsDropdownOpen(false);
-                  }}
-                  className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2"
-                >
-                  Gallery
-                </Link>
+                </button>
               </div>
             )}
           </div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              closeMenu();
+              setIsDropdownOpen(false);
+              router.push("/gallery");
+            }}
+            className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
+          >
+            Gallery
+          </button>
           <button
             onClick={() => {
               closeMenu();
               openContactForm();
             }}
-            className="text-base bg-[#fc05b9] text-[#CFC8CF] px-4 py-2 rounded-lg hover:bg-[#fc05b9]/90 transition-colors font-medium text-center"
+            className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
           >
             Contact
           </button>

@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VimeoVideo } from "@/components/VimeoVideo";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
-import Image from "next/image";
 
 interface VideoItem {
   id: string;
@@ -76,8 +74,6 @@ const allVideos: VideoItem[] = [
 ];
 
 export default function GalleryPage() {
-  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
-
   return (
     <main className="min-h-screen bg-black">
       <Header />
@@ -116,30 +112,47 @@ export default function GalleryPage() {
               {allVideos.map((video) => (
                 <div
                   key={video.id}
-                  className="group cursor-pointer bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20"
-                  onClick={() => setSelectedVideo(video)}
+                  className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20"
                 >
-                  <div className="relative aspect-video bg-slate-800 overflow-hidden">
-                    {video.thumbnailUrl ? (
-                      <Image
-                        src={video.thumbnailUrl}
-                        alt={video.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#3F395B] to-[#201E30]">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/20 border-2 border-[#4E79A7]">
-                          <div className="ml-1 h-0 w-0 border-y-[12px] border-y-transparent border-l-[20px] border-l-[#4E79A7]" />
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#4E79A7]/80 backdrop-blur-sm">
-                          <div className="ml-1 h-0 w-0 border-y-[12px] border-y-transparent border-l-[20px] border-l-white" />
-                        </div>
-                      </div>
+                  <div className="relative aspect-video bg-slate-800 overflow-hidden rounded-t-xl">
+                    <VimeoVideo
+                      vimeoUrl={video.videoUrl}
+                      controls={true}
+                      responsive={true}
+                      autoplay={false}
+                      muted={true}
+                      className="rounded-t-xl"
+                    />
+                    {/* Fullscreen Button Overlay */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          // Open Vimeo video in new tab for fullscreen experience
+                          window.open(
+                            video.videoUrl,
+                            "_blank",
+                            "noopener,noreferrer"
+                          );
+                        }}
+                        className="flex items-center justify-center w-10 h-10 rounded-full bg-[#3F395B]/90 hover:bg-[#4E79A7] text-[#CFC8CF] transition-all duration-300 backdrop-blur-sm hover:scale-110"
+                        aria-label={`Open ${video.title} fullscreen on Vimeo`}
+                        title="Open fullscreen on Vimeo"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                          />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                   <div className="p-4 md:p-6">
@@ -158,57 +171,6 @@ export default function GalleryPage() {
           </ContentReveal>
         </div>
       </section>
-
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
-          onClick={() => setSelectedVideo(null)}
-        >
-          <div
-            className="relative w-full max-w-5xl bg-[#201E30] rounded-xl overflow-hidden border border-[#4E79A7]/30"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#3F395B] hover:bg-[#4E79A7] text-[#CFC8CF] transition-colors"
-              aria-label="Close video"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <div className="p-4 md:p-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#CFC8CF] mb-4">
-                {selectedVideo.title}
-              </h2>
-              {selectedVideo.description && (
-                <p className="text-gray-400 mb-6">
-                  {selectedVideo.description}
-                </p>
-              )}
-              <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-800">
-                <VimeoVideo
-                  vimeoUrl={selectedVideo.videoUrl}
-                  controls={true}
-                  responsive={true}
-                  className="rounded-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       <Footer />
     </main>

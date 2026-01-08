@@ -164,21 +164,21 @@ export function MissionStatementSection() {
               title: "AI-Enhanced Web & App Development",
               body: "High-performance websites and mobile apps built with React, Next.js, and TypeScript. Features include AI search, automated content flows, dashboards, and custom integrations.",
               buttonLabel: "View Development Capabilities",
-              buttonHref: "/contact",
+              buttonHref: "/software",
             },
             {
               image: "/images/projects/kikits/MayaAndSpark.jpg",
               title: "AI Video & Storytelling Studio",
               body: "Cinematic AI-generated videos in Pixar-style 3D, comic-book animation, and realistic avatars. We craft full campaigns, episodic narratives, and brand films optimized for social, web, and advertising.",
               buttonLabel: "Explore AI Video Styles",
-              buttonHref: "/contact",
+              buttonHref: "/storytelling",
             },
             {
               image: "/images/projects/pedal-pals/crystal.jpg",
               title: "Brand Identity & Creative Direction",
               body: "Complete brand identity from logos and palettes to typography, voice, and visual language. AI accelerates exploration while human creative direction ensures consistency and long-term recognizability.",
               buttonLabel: "Build a Cohesive Brand",
-              buttonHref: "/contact",
+              buttonHref: "/strategy",
             },
             {
               image:
@@ -186,7 +186,7 @@ export function MissionStatementSection() {
               title: "Experiential Events & Interactive Media",
               body: "AI-driven event experiences with dynamic QR systems, real-time visuals, and narrative-driven interactions. From VIP activations to festivals, we create adaptive event ecosystems.",
               buttonLabel: "See Event Innovations",
-              buttonHref: "/contact",
+              buttonHref: "/experiences",
             },
             {
               image:
@@ -194,7 +194,7 @@ export function MissionStatementSection() {
               title: "Marketing Systems & Automation",
               body: "Automated marketing systems that handle content creation, email flows, video generation, SEO, and social scheduling. Always-on systems that multiply output while reducing workload.",
               buttonLabel: "Automate Your Marketing",
-              buttonHref: "/contact",
+              buttonHref: "/engagement",
             },
             {
               image:
