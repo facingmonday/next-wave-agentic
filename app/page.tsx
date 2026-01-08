@@ -8,7 +8,6 @@ import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Portfolio } from "@/components/Portfolio";
 import type { PortfolioItem } from "@/components/PortfolioCarousel";
-import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
 import { MissionStatementSection } from "@/components/MissionStatementSection";
 import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 
@@ -63,6 +62,7 @@ const HeroSlides: HeroSlide[] = [
       href: "/software",
       variant: "primary",
     },
+    mainImage: "/images/kikits/SmartPhone_Mockup_02_1.png",
   },
 
   {
@@ -119,21 +119,21 @@ export default function Home() {
               title: "AI Video & Storytelling Studio",
               body: "Cinematic AI-generated videos in Pixar-style 3D, comic-book animation, and realistic avatars. We craft full campaigns, episodic narratives, and brand films optimized for social, web, and advertising.",
               buttonLabel: "Explore AI Video Styles",
-              buttonHref: "/contact",
+              buttonHref: "/#contact",
             },
             {
               image: "/images/projects/pedal-pals/crystal.jpg",
               title: "Brand Identity & Creative Direction",
               body: "Complete brand identity from logos and palettes to typography, voice, and visual language. AI accelerates exploration while human creative direction ensures consistency and long-term recognizability.",
               buttonLabel: "Build a Cohesive Brand",
-              buttonHref: "/contact",
+              buttonHref: "/#contact",
             },
             {
               image: "/images/projects/kikits/KikitsPhone.jpg",
               title: "AI-Enhanced Web & App Development",
               body: "High-performance websites and mobile apps built with React, Next.js, and TypeScript. Features include AI search, automated content flows, dashboards, and custom integrations.",
               buttonLabel: "View Development Capabilities",
-              buttonHref: "/contact",
+              buttonHref: "/#contact",
             },
             {
               image:
@@ -141,7 +141,7 @@ export default function Home() {
               title: "Experiential Events & Interactive Media",
               body: "AI-driven event experiences with dynamic QR systems, real-time visuals, and narrative-driven interactions. From VIP activations to festivals, we create adaptive event ecosystems.",
               buttonLabel: "See Event Innovations",
-              buttonHref: "/contact",
+              buttonHref: "/#contact",
             },
             {
               image:
@@ -149,7 +149,7 @@ export default function Home() {
               title: "Marketing Systems & Automation",
               body: "Automated marketing systems that handle content creation, email flows, video generation, SEO, and social scheduling. Always-on systems that multiply output while reducing workload.",
               buttonLabel: "Automate Your Marketing",
-              buttonHref: "/contact",
+              buttonHref: "/#contact",
             },
             {
               image:
@@ -157,7 +157,7 @@ export default function Home() {
               title: "Enterprise AI Consulting & Custom Solutions",
               body: "Enterprise AI solutions including internal tools, intelligent assistants, automated workflows, and custom model integrations. We engineer scalable solutions from apps to fully AI-powered operations.",
               buttonLabel: "Build Custom AI Tools",
-              buttonHref: "/contact",
+              buttonHref: "/#contact",
             },
           ]}
         />
