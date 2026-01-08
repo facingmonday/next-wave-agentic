@@ -16,36 +16,12 @@ interface VideoItem {
 
 const allVideos: VideoItem[] = [
   {
-    id: "maya-spark",
-    videoUrl: "https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci",
-    thumbnailUrl: "/images/projects/kikits/MayaAndSpark.jpg",
-    title: "Maya & Spark",
-    description:
-      "Find Your Way. Light the Moment. An emotionally uplifting animated short.",
-  },
-  {
     id: "kikits-launch",
     videoUrl: "https://vimeo.com/1105184966?fl=ip&fe=ec",
     thumbnailUrl: "/images/projects/kikits/kikits-video.png",
     title: "Kikits Launch Announcement",
     description:
       "A high-level launch announcement introducing Kikits to the world.",
-  },
-  {
-    id: "kikits-qr-codes",
-    videoUrl: "https://vimeo.com/1110591196?fl=ip&fe=ec",
-    thumbnailUrl: "/images/projects/kikits/explain.jpeg",
-    title: "Creating QR Codes",
-    description:
-      "An AI-generated walkthrough that teaches users how to create and customize QR codes in Kikits.",
-  },
-  {
-    id: "kikits-drink-tickets",
-    videoUrl: "https://vimeo.com/1111744640?fl=ip&fe=ec",
-    thumbnailUrl: "/images/projects/kikits/show.jpeg",
-    title: "Creating Drink Tickets",
-    description:
-      "A clear, guided explanation showing how Kikits simplifies drink ticket creation.",
   },
   {
     id: "pedal-pals-main",
@@ -56,6 +32,38 @@ const allVideos: VideoItem[] = [
       "Join the Pedal Pals as they explore Bentonville and learn about bike safety together.",
   },
   {
+    id: "maya-spark",
+    videoUrl: "https://vimeo.com/1136697005?share=copy&fl=sv&fe=ci",
+    thumbnailUrl: "/images/projects/kikits/MayaAndSpark.jpg",
+    title: "Maya & Spark",
+    description:
+      "Find Your Way. Light the Moment. An emotionally uplifting animated short.",
+  },
+  {
+    id: "stewart-healthcare",
+    videoUrl: "https://vimeo.com/1152624059?share=copy&fl=sv&fe=ci",
+    thumbnailUrl: "/images/projects/kikits/MayaAndSpark.jpg",
+    title: "Stewart Gill - Healthcare Innovation",
+    description:
+      "Stewart Gill - Healthcare Innovation. A video that showcases the innovation and leadership of Stewart Gill in the healthcare industry.",
+  },
+  {
+    id: "stewart-gill-legacy",
+    videoUrl: "https://vimeo.com/1152629235?share=copy&fl=sv&fe=ci",
+    thumbnailUrl: "/images/projects/pedal-pals/benny.jpg",
+    title: "Stewart Gill - Legacy",
+    description:
+      "Stewart Gill - Legacy. A video that showcases the legacy of Stewart Gill in the healthcare industry.",
+  },
+  {
+    id: "kikits-qr-codes",
+    videoUrl: "https://vimeo.com/1110591196?fl=ip&fe=ec",
+    thumbnailUrl: "/images/projects/kikits/explain.jpeg",
+    title: "Creating QR Codes",
+    description:
+      "An AI-generated walkthrough that teaches users how to create and customize QR codes in Kikits.",
+  },
+  {
     id: "pedal-pals-safety",
     videoUrl: "https://vimeo.com/1140033869?share=copy&fl=sv&fe=ci",
     thumbnailUrl: "/images/projects/pedal-pals/benny.jpg",
@@ -64,12 +72,12 @@ const allVideos: VideoItem[] = [
       "Learn about the importance of safety in cold weather, and how to stay warm and safe while riding your bike.",
   },
   {
-    id: "product-promotion",
-    videoUrl: "https://vimeo.com/1105184966",
-    thumbnailUrl: "/images/projects/kikits/spokesperson.jpeg",
-    title: "Product Promotion",
+    id: "kikits-drink-tickets",
+    videoUrl: "https://vimeo.com/1111744640?fl=ip&fe=ec",
+    thumbnailUrl: "/images/projects/kikits/show.jpeg",
+    title: "Creating Drink Tickets",
     description:
-      "AI-Powered Creative Campaigns - AI videos, explainers, brand stories, animation, and creative campaigns.",
+      "A clear, guided explanation showing how Kikits simplifies drink ticket creation.",
   },
 ];
 
