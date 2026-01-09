@@ -416,7 +416,7 @@ export function PinnedHero({
             <div className={`max-w-2xl ${getTextAlignClasses()}`}>
               <h1
                 ref={titleRef}
-                className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
+                className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]"
                 style={{
                   opacity: 0,
                   transform: "translateY(50px) translateZ(0)",

@@ -103,15 +103,10 @@ export function VimeoVideo({
   if (!responsive || background) {
     return (
       <div className={`absolute inset-0 w-full h-full ${className}`}>
-        {/* Fallback while the Vimeo iframe loads/buffers */}
-        {!isLoaded && (
-          <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
-            {fallbackBackground ?? (
-              <div className="flex flex-col items-center justify-center gap-2 text-white/70 text-sm">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                <span>Loading background…</span>
-              </div>
-            )}
+        {/* Only show custom fallback if provided, otherwise let Vimeo show its native poster */}
+        {!isLoaded && fallbackBackground && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
+            {fallbackBackground}
           </div>
         )}
 
@@ -128,6 +123,7 @@ export function VimeoVideo({
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
+            zIndex: isLoaded || !fallbackBackground ? 1 : 0,
           }}
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
@@ -143,15 +139,10 @@ export function VimeoVideo({
   return (
     <div className={`relative w-full ${className}`}>
       <div className="relative w-full h-0 pb-[56.25%]">
-        {/* Fallback while the Vimeo iframe loads/buffers */}
-        {!isLoaded && (
-          <div className="absolute inset-0 z-0 flex items-center justify-center bg-black rounded-lg">
-            {fallbackBackground ?? (
-              <div className="flex flex-col items-center justify-center gap-2 text-white/70 text-sm">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                <span>Loading video…</span>
-              </div>
-            )}
+        {/* Only show custom fallback if provided, otherwise let Vimeo show its native poster */}
+        {!isLoaded && fallbackBackground && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg">
+            {fallbackBackground}
           </div>
         )}
 
@@ -160,6 +151,9 @@ export function VimeoVideo({
           src={iframeSrc}
           ref={iframeRef}
           className="absolute top-0 left-0 w-full h-full rounded-lg"
+          style={{
+            zIndex: isLoaded || !fallbackBackground ? 1 : 0,
+          }}
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
