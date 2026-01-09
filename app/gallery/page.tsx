@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { VimeoVideo } from "@/components/VimeoVideo";
+import Vimeo from "@u-wave/react-vimeo";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 
@@ -82,6 +83,8 @@ const allVideos: VideoItem[] = [
 ];
 
 export default function GalleryPage() {
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+
   return (
     <main className="min-h-screen bg-black">
       <Header />
@@ -120,32 +123,31 @@ export default function GalleryPage() {
               {allVideos.map((video) => (
                 <div
                   key={video.id}
-                  className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20"
+                  onClick={() => setSelectedVideo(video)}
+                  className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20 cursor-pointer"
                 >
                   <div className="relative aspect-video bg-slate-800 overflow-hidden rounded-t-xl">
-                    <VimeoVideo
-                      vimeoUrl={video.videoUrl}
-                      controls={true}
-                      responsive={true}
+                    <Vimeo
+                      video={video.videoUrl}
+                      controls
+                      responsive
                       autoplay={false}
-                      muted={true}
-                      className="rounded-t-xl"
+                      muted
+                      showTitle={false}
+                      showByline={false}
+                      showPortrait={false}
+                      className="rounded-t-xl w-full h-full"
                     />
                     {/* Fullscreen Button Overlay */}
                     <div className="absolute top-4 right-4 z-10">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          // Open Vimeo video in new tab for fullscreen experience
-                          window.open(
-                            video.videoUrl,
-                            "_blank",
-                            "noopener,noreferrer"
-                          );
+                          setSelectedVideo(video);
                         }}
                         className="flex items-center justify-center w-10 h-10 rounded-full bg-[#3F395B]/90 hover:bg-[#4E79A7] text-[#CFC8CF] transition-all duration-300 backdrop-blur-sm hover:scale-110"
-                        aria-label={`Open ${video.title} fullscreen on Vimeo`}
-                        title="Open fullscreen on Vimeo"
+                        aria-label={`Open ${video.title} in dialog`}
+                        title="Open video in dialog"
                       >
                         <svg
                           className="w-5 h-5"
@@ -179,6 +181,62 @@ export default function GalleryPage() {
           </ContentReveal>
         </div>
       </section>
+
+      {/* Video Dialog Modal */}
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl bg-[#201E30] rounded-xl overflow-hidden border border-[#4E79A7]/30"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedVideo(null)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#3F395B] hover:bg-[#4E79A7] text-[#CFC8CF] transition-colors"
+              aria-label="Close video"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <div className="p-4 md:p-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#CFC8CF] mb-4">
+                {selectedVideo.title}
+              </h2>
+              {selectedVideo.description && (
+                <p className="text-gray-400 mb-6">
+                  {selectedVideo.description}
+                </p>
+              )}
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-800">
+                <Vimeo
+                  video={selectedVideo.videoUrl}
+                  controls
+                  responsive
+                  autoplay={false}
+                  muted={false}
+                  showTitle={false}
+                  showByline={false}
+                  showPortrait={false}
+                  className="rounded-lg w-full h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </main>
