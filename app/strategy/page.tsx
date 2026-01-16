@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Footer } from "@/components/Footer";
+import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 
 export const metadata: Metadata = {
   title: "Strategy | Next Wave Agentic",
@@ -17,40 +18,105 @@ export const metadata: Metadata = {
 };
 
 export default function StrategyPage() {
+  const HeroSlides: HeroSlide[] = [
+    {
+      title: "Strategy",
+      subtitle: "Strategic Planning and Architecture",
+      description:
+        "We create strategic plans and architectures for software, marketing, and events. We identify real-world problems and brainstorm solutions to create impactful experiences.",
+      backgroundImage:
+        "/images/bentonville-watertower/bentonville-watertower-drone-047.jpg",
+    },
+    {
+      title: "Kikits: Strategic Problem-Solving",
+      subtitle: "Digital Ticketing Platform",
+      description:
+        "We created Kikits as a digital ticketing platform. View how we strategized this software and identified real-world problems through Planet Good Times events to create dynamic QR codes and seamless digital experiences.",
+      backgroundImage: "/images/kikits/kikits.jpg",
+      mainImage: "/images/kikits/kikits.png",
+      button: {
+        text: "View How We Strategized Kikits",
+        href: "#kikits-strategy",
+        variant: "primary",
+      },
+    },
+    {
+      title: "LineUp: Software Architecture",
+      subtitle: "Event Management Platform",
+      description:
+        "We created LineUp as an event management platform. View how we strategized this software by architecting the system architecture, user flows, and technical infrastructure from the ground up.",
+      backgroundImage: "/images/lineup-booking/LineUpDudes.png",
+      button: {
+        text: "View How We Strategized LineUp",
+        href: "#lineup-strategy",
+        variant: "primary",
+      },
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-black">
       <Header />
+      <HeroCarousel slides={HeroSlides} />
 
-      {/* <VideoScroll
-        totalFrames={192}
-        framesPath="/frame1"
-        frameFilePattern="frame1-%03d.jpg"
-        scrollDistance={5000}
-        sticky={true}
-        contentAlignment="center"
+      {/* Kikits Strategy */}
+      <section
+        id="kikits-strategy"
+        className="relative py-16 md:py-32 bg-black"
       >
-        <div className="text-center text-white z-20">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-            Next Wave Agentic
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">Scroll to explore</p>
-        </div>
-      </VideoScroll> */}
-
-      <section className="relative z-30 py-16 md:py-24 bg-black">
-        <div className="max-w-3xl mx-auto text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-            Strategy
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">
-            Planning and architecture that connects software, stories,
-            engagement, and experiences
-          </p>
+        <div className="max-w-7xl mx-auto px-4">
+          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
+                  Kikits: How Strategy Amplified the Platform
+                </h2>
+                <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                  We created Kikits as a digital ticketing platform. Our
+                  strategic approach identified real-world problems through
+                  Planet Good Times events: users struggling with paper tickets,
+                  lost ticket stubs, and event organizers needing better
+                  tracking systems.
+                </p>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Our strategy involved recognizing these pain points and
+                  brainstorming solutions that led to dynamic QR codes, digital
+                  ticket management, and seamless redemption systems. This
+                  strategic foundation shaped how Kikits operates today.
+                </p>
+              </div>
+              <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
+                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
+                  Strategic Elements
+                </h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>
+                      Problem identification through real event experiences
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>Dynamic QR code system architecture</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>Digital-first user experience design</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>Event organizer workflow optimization</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </ContentReveal>
         </div>
       </section>
 
       {/* Lineup Software Architecture */}
-      <section className="relative py-16 md:py-32">
+      <section id="lineup-strategy" className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -65,18 +131,19 @@ export default function StrategyPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Lineup Software Architecture
+                  LineUp: How Strategy Amplified the Platform
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  We worked with Lineup to architect their software platform,
-                  designing the system architecture, user flows, and technical
-                  infrastructure that would power their event management and
-                  ticketing platform.
+                  We created LineUp as an event management platform. Our
+                  strategic approach involved architecting the entire system
+                  from the ground up, designing how artists and venues would
+                  connect, how users would discover events, and how the platform
+                  would scale.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  The strategy involved mapping out how users would discover
-                  events, purchase tickets, and engage with the platform across
-                  web and mobile experiences.
+                  The strategy mapped out user flows, technical infrastructure,
+                  and system architecture that would power seamless event
+                  management and ticketing across web and mobile experiences.
                 </p>
               </div>
               <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
@@ -158,33 +225,25 @@ export default function StrategyPage() {
       </section> */}
 
       {/* BMC Event Planning */}
-      <section className="relative py-16 md:py-32">
-        <FuturisticBackground
-          pattern="flowing"
-          intensity="moderate"
-          showOrbs={false}
-          primaryColor="#fc05b9"
-          secondaryColor="#4E79A7"
-          tertiaryColor="#84596c"
-          lineCount={10}
-        />
+      <section className="relative py-16 md:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-4">
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  BMC Event Planning
+                  BMC: How Strategy Amplified the Event
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  We worked with BMC to plan their party, developing a
-                  comprehensive event strategy that included venue selection,
-                  programming, attendee experience design, and technical
-                  requirements.
+                  We created a comprehensive event strategy for BMC&apos;s
+                  party. Our strategic approach involved developing the entire
+                  event framework, from venue selection to attendee experience
+                  design.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  The planning process involved coordinating multiple vendors,
-                  designing the flow of the event, and ensuring all technical
-                  and logistical elements aligned with the brand experience.
+                  The strategy coordinated multiple vendors, designed the event
+                  flow, and ensured all technical and logistical elements
+                  aligned with the brand experience, creating a seamless and
+                  memorable event.
                 </p>
               </div>
               <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
@@ -215,51 +274,59 @@ export default function StrategyPage() {
         </div>
       </section>
 
-      {/* Social Media Rollout Strategy */}
-      <section className="relative py-16 md:py-32 bg-black">
+      {/* Astro Strategy */}
+      <section className="relative py-16 md:py-32">
+        <FuturisticBackground
+          pattern="flowing"
+          intensity="moderate"
+          showOrbs={false}
+          primaryColor="#fc05b9"
+          secondaryColor="#4E79A7"
+          tertiaryColor="#84596c"
+          lineCount={10}
+        />
         <div className="max-w-7xl mx-auto px-4">
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1">
-                <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
-                  <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                    Rollout Strategy
-                  </h3>
-                  <ul className="space-y-3 text-gray-300">
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Content calendar and posting schedule</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Platform-specific content adaptation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Engagement and community management</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#4E79A7] mr-2">•</span>
-                      <span>Performance tracking and optimization</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="order-1 md:order-2">
+              <div>
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Social Media Rollout
+                  Astro: How Strategy Amplified Operations
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  We planned social media rollouts for multiple clients,
-                  developing comprehensive strategies that aligned content
-                  creation, posting schedules, and engagement tactics with
-                  broader marketing goals.
+                  We created Astro as an app for tow truck companies. Our
+                  strategic approach focused on identifying operational
+                  inefficiencies and designing solutions that would simplify
+                  workflows and improve efficiency with law enforcement.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Each rollout strategy was customized to the brand&apos;s
-                  voice, target audience, and platform-specific best practices,
-                  ensuring consistent messaging across all touchpoints.
+                  The strategy involved mapping out how tow truck operations
+                  could be streamlined, creating seamless integrations, and
+                  building a platform that would transform how companies manage
+                  their operations.
                 </p>
+              </div>
+              <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
+                <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
+                  Strategic Elements
+                </h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>Operational workflow analysis</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>Law enforcement integration planning</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>System architecture for efficiency</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#4E79A7] mr-2">•</span>
+                    <span>User experience optimization</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </ContentReveal>

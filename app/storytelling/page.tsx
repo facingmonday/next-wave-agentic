@@ -11,6 +11,8 @@ import { Footer } from "@/components/Footer";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
 import { ContactFormModal } from "@/components/ContactFormModal";
 import { VideoGallery } from "@/components/VideoGallery";
+import HeroCarousel from "@/components/HeroCarousel";
+import { HeroSlide } from "@/components/HeroCarousel";
 
 export default function StorytellingPage() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -23,11 +25,50 @@ export default function StorytellingPage() {
     setIsContactFormOpen(false);
   };
 
+  const HeroSlides: HeroSlide[] = [
+    {
+      title: "AI-Powered Storytelling",
+      subtitle: "AI-powered storytelling and narrative experiences",
+      description:
+        "We use AI to craft stories that are not only engaging but also strategically aligned with business objectives. Each narrative is crafted to build connection, drive action, and leave lasting impressions.",
+      backgroundImage: "/images/projects/kikits/MayaAndSpark.jpg",
+      button: {
+        text: "View Our Stories",
+        href: "/gallery",
+        variant: "primary",
+      },
+    },
+    {
+      title: "Kikits: AI Powered Marketing",
+      subtitle: "Discover Events. Connect with Community.",
+      description:
+        "Through AI-powered video generation, we tell the story of Kikits—highlighting events, educating users, and creating engaging content that turns curiosity into participation and transactions on the platform.",
+      backgroundImage: "/images/projects/kikits/kikits-video.png",
+      button: {
+        text: "View Kikits Videos",
+        href: "/gallery",
+        variant: "primary",
+      },
+    },
+    {
+      title: "Pedal Pals: AI Powered Safety Education",
+      subtitle: "Ride Smart. Ride Safe. Ride Together.",
+      description:
+        "Through AI-powered video generation, we tell the story of Pedal Pals—creating character-driven safety narratives, building community connections, and crafting educational content that transforms important safety messages into memorable adventures for cyclists of all ages.",
+      backgroundImage: "/images/projects/pedal-pals/crystal.jpg",
+      button: {
+        text: "View Pedal Pals Videos",
+        href: "/gallery",
+        variant: "primary",
+      },
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-black">
       <Header />
       <section className="relative">
-        <PinnedHero
+        {/* <PinnedHero
           backgroundVideo="https://vimeo.com/1136559533"
           title="AI-Powered Storytelling"
           subtitle="AI-powered storytelling and narrative experiences"
@@ -37,7 +78,8 @@ export default function StorytellingPage() {
           startOffset="top top"
           textPosition="left"
           textAlign="left"
-        />
+        /> */}
+        <HeroCarousel slides={HeroSlides} />
       </section>
 
       {/* AI Storytelling Intro */}
