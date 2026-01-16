@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import Vimeo from "@u-wave/react-vimeo";
+import { VimeoVideo } from "@/components/VimeoVideo";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 
@@ -127,15 +127,12 @@ export default function GalleryPage() {
                   className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20 cursor-pointer"
                 >
                   <div className="relative aspect-video bg-slate-800 overflow-hidden rounded-t-xl">
-                    <Vimeo
-                      video={video.videoUrl}
-                      controls
-                      responsive
+                    <VimeoVideo
+                      vimeoUrl={video.videoUrl}
+                      controls={true}
+                      responsive={true}
                       autoplay={false}
-                      muted
-                      showTitle={false}
-                      showByline={false}
-                      showPortrait={false}
+                      muted={true}
                       className="rounded-t-xl w-full h-full"
                     />
                     {/* Fullscreen Button Overlay */}
@@ -221,15 +218,12 @@ export default function GalleryPage() {
                 </p>
               )}
               <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-800">
-                <Vimeo
-                  video={selectedVideo.videoUrl}
-                  controls
-                  responsive
+                <VimeoVideo
+                  vimeoUrl={selectedVideo.videoUrl}
+                  controls={true}
+                  responsive={true}
                   autoplay={false}
                   muted={false}
-                  showTitle={false}
-                  showByline={false}
-                  showPortrait={false}
                   className="rounded-lg w-full h-full"
                 />
               </div>

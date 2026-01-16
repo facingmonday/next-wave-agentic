@@ -4,6 +4,7 @@ import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import Image from "next/image";
 import { Footer } from "@/components/Footer";
+import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 
 export const metadata: Metadata = {
   title: "Engagement | Next Wave Agentic",
@@ -18,21 +19,58 @@ export const metadata: Metadata = {
 };
 
 export default function EngagementPage() {
+  const HeroSlides: HeroSlide[] = [
+    {
+      title: "Engagement",
+      subtitle: "Marketing, Community, Distribution, and Social Media",
+      description:
+        "We use engagement to connect brands with audiences through marketing, community building, distribution, and social media.",
+      backgroundImage:
+        "/images/bentonville-watertower/bentonville-watertower-drone-047.jpg",
+    },
+    {
+      title: "Kikits: Community Engagement",
+      subtitle: "Outreach & Partnerships",
+      description:
+        "We created Kikits as a ticketing platform. View how we used engagement to amplify it through partnerships with local organizations, outreach campaigns, and community building.",
+      backgroundImage: "/images/kikits/kikits.jpg",
+      mainImage: "/images/kikits/kikits.png",
+      button: {
+        text: "View How We Used Engagement to Amplify Kikits",
+        href: "#kikits-engagement",
+        variant: "primary",
+      },
+    },
+    {
+      title: "LineUp: Artist & Venue Engagement",
+      subtitle: "Community Building",
+      description:
+        "We created LineUp as an event management platform. View how we used engagement to amplify it by connecting artists with venues and building relationships within the music community.",
+      backgroundImage: "/images/lineup-booking/LineUpDudes.png",
+      button: {
+        text: "View How We Used Engagement to Amplify LineUp",
+        href: "#lineup-engagement",
+        variant: "primary",
+      },
+    },
+    {
+      title: "OkayNWA: Event Discovery Engagement",
+      subtitle: "Community Outreach",
+      description:
+        "We created OkayNWA as an AI-powered event discovery platform. View how we used engagement to amplify it by connecting with the NWA community and building awareness through local partnerships.",
+      backgroundImage: "/images/okay-nwa/OkayNWAWhite.png",
+      button: {
+        text: "View How We Used Engagement to Amplify OkayNWA",
+        href: "#okaynwa-engagement",
+        variant: "primary",
+      },
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-black">
       <Header />
-
-      <section className="relative z-30 py-16 md:py-24 bg-black">
-        <div className="max-w-3xl mx-auto text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] uppercase">
-            Engagement
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">
-            Marketing, community, distribution, and social media that connects
-            brands with audiences
-          </p>
-        </div>
-      </section>
+      <HeroCarousel slides={HeroSlides} className="z-40" />
 
       {/* Marketing Section */}
       <section className="relative py-16 md:py-32">
@@ -326,8 +364,8 @@ export default function EngagementPage() {
         </div>
       </section>
 
-      {/* Kikits Engagement Example */}
-      <section className="relative py-16 md:py-32">
+      {/* Kikits Engagement */}
+      <section id="kikits-engagement" className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -341,67 +379,215 @@ export default function EngagementPage() {
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Kikits: Engagement in Action
+                Kikits: How Engagement Amplified the Platform
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Kikits demonstrates how engagement appears across our work.
-                Here&apos;s how we engaged users with Kikits:
+                We created Kikits as a ticketing platform. Here&apos;s how we
+                used engagement to amplify it through outreach, partnerships,
+                and community building.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
                 <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Promotions & Campaigns
+                  Local Organization Partnerships
                 </h3>
                 <p className="text-gray-300">
-                  We developed promotional campaigns that drove awareness and
-                  user acquisition through targeted marketing, partnerships, and
-                  special offers.
+                  We built partnerships with local organizations throwing
+                  events, creating channels for communication and collaboration
+                  that expanded Kikits&apos; reach.
                 </p>
               </div>
               <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
                 <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Influencer Partnerships
+                  Community Outreach
                 </h3>
                 <p className="text-gray-300">
-                  We partnered with influencers and creators to showcase the
-                  platform, reach new audiences, and build credibility through
-                  authentic recommendations.
+                  We engaged with event creators and attendees through direct
+                  communication, social media campaigns, and community events
+                  that showcased the platform&apos;s value.
                 </p>
               </div>
               <div className="bg-[#3F395B]/50 p-6 rounded-xl border border-[#4E79A7]/30">
                 <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  User Onboarding
+                  Social Media Engagement
                 </h3>
                 <p className="text-gray-300">
-                  We designed onboarding experiences that guide new users
-                  through the platform, highlight key features, and encourage
-                  first-time event discovery and ticket purchases.
+                  We managed social media accounts, created engaging content,
+                  and fostered conversations that built brand awareness and
+                  drove platform adoption without relying on AI video
+                  generation.
                 </p>
               </div>
             </div>
             <div className="mt-12 grid md:grid-cols-2 gap-8 items-center">
               <div className="relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30">
                 <Image
-                  src="/images/projects/kikits/kikits-app.jpg"
-                  alt="Kikits App"
+                  src="/images/kikits/kikits.jpg"
+                  alt="Kikits Engagement"
                   fill
                   className="object-cover"
                 />
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-[#CFC8CF] mb-4">
-                  Social Media Distribution
+                  Building Community Connections
                 </h3>
                 <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  Kikits content was distributed across social media platforms,
-                  including product videos, event highlights, and user-generated
-                  content that showcased the platform&apos;s value.
+                  Our engagement strategy focused on building genuine
+                  connections with local organizations, event creators, and
+                  attendees. We created channels for ongoing communication and
+                  collaboration.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  We managed social media accounts, created engaging posts, and
-                  fostered community conversations that built brand awareness
-                  and drove platform adoption.
+                  Through partnerships, outreach campaigns, and community
+                  building, we amplified Kikits&apos; presence and created a
+                  network of engaged users and event organizers.
+                </p>
+              </div>
+            </div>
+          </ContentReveal>
+        </div>
+      </section>
+
+      {/* LineUp Engagement */}
+      <section
+        id="lineup-engagement"
+        className="relative py-16 md:py-32 bg-black"
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
+                LineUp: How Engagement Amplified the Platform
+              </h2>
+              <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                We created LineUp as an event management platform. Our
+                engagement strategy connected artists with venues and built
+                relationships within the music community.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30">
+                <Image
+                  src="/images/lineup-booking/LineUpConcertSeries.jpg"
+                  alt="LineUp Engagement"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-[#CFC8CF] mb-4">
+                  Artist & Venue Relationships
+                </h3>
+                <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                  We engaged with artists and venues directly, building
+                  relationships that created opportunities for collaboration and
+                  event creation.
+                </p>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Through community outreach and partnership building, we
+                  amplified LineUp&apos;s presence and created a network of
+                  engaged artists and venues.
+                </p>
+              </div>
+            </div>
+          </ContentReveal>
+        </div>
+      </section>
+
+      {/* Planet Good Times Engagement */}
+      <section
+        id="planet-goodtimes-engagement"
+        className="relative py-16 md:py-32 bg-black"
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
+                Planet Good Times: How Engagement Amplified the Brand
+              </h2>
+              <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                We created Planet Good Times as an event brand. Our engagement
+                strategy built communities around events, fostered connections
+                through social media, and created ongoing relationships.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-semibold text-[#CFC8CF] mb-4">
+                  Community Building Through Events
+                </h3>
+                <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                  Our engagement strategy focused on building genuine
+                  connections with event attendees and community members. We
+                  created channels for ongoing communication and relationship
+                  building.
+                </p>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Through community building and engagement, we amplified Planet
+                  Good Times&apos; presence and created a network of engaged
+                  event attendees and community members.
+                </p>
+              </div>
+              <div className="relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30">
+                <Image
+                  src="/images/planet-goodtimes/damon.png"
+                  alt="Planet Good Times Engagement"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </ContentReveal>
+        </div>
+      </section>
+
+      {/* OkayNWA Engagement */}
+      <section id="okaynwa-engagement" className="relative py-16 md:py-32">
+        <FuturisticBackground
+          pattern="flowing"
+          intensity="moderate"
+          showOrbs={false}
+          primaryColor="#fc05b9"
+          secondaryColor="#4E79A7"
+          tertiaryColor="#84596c"
+          lineCount={10}
+        />
+        <div className="max-w-7xl mx-auto px-4">
+          <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
+                OkayNWA: How Engagement Amplified the Platform
+              </h2>
+              <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                We created OkayNWA as an AI-powered event discovery platform.
+                Our engagement strategy connected with the NWA community and
+                built awareness through local partnerships.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative aspect-video rounded-xl overflow-hidden border border-[#4E79A7]/30">
+                <Image
+                  src="/images/okay-nwa/okay-nwa-dash.png"
+                  alt="OkayNWA Engagement"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-[#CFC8CF] mb-4">
+                  Community Outreach & Partnerships
+                </h3>
+                <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                  We engaged with the NWA community directly, building
+                  relationships with event organizers and creating channels for
+                  event discovery and community connection.
+                </p>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Through community outreach and event organizer engagement, we
+                  amplified OkayNWA&apos;s presence and created channels for
+                  event discovery and community connection.
                 </p>
               </div>
             </div>
