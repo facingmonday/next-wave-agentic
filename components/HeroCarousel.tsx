@@ -122,10 +122,10 @@ export default function HeroCarousel({
               {/* Content */}
               <div className="relative z-10 h-full flex items-center">
                 <div className="container mx-auto px-4 lg:px-8">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative pt-16 lg:pt-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative pt-16 lg:pt-0">
                     {/* Text Content */}
                     <div
-                      className="text-white space-y-8 max-w-2xl relative z-20"
+                      className="text-white space-y-8 relative z-20 lg:col-span-9"
                       data-swiper-parallax="-200"
                     >
                       <div className="space-y-6">
@@ -134,13 +134,13 @@ export default function HeroCarousel({
                           data-swiper-parallax="-100"
                           data-swiper-parallax-delay="100"
                         >
-                          <span className="text-blue-400 text-sm font-semibold uppercase tracking-wider bg-blue-500/20 px-4 py-2 rounded-full backdrop-blur-sm border border-blue-500/30">
+                          <span className="text-blue-400 text-xs md:text-base lg:text-lg font-semibold uppercase tracking-wider bg-blue-500/20 px-5 py-2.5 rounded-full backdrop-blur-sm border border-blue-500/30">
                             {slide.subtitle}
                           </span>
                         </div>
 
                         <h1
-                          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-shadow-lg"
+                          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] text-shadow-lg"
                           data-swiper-parallax="-300"
                           data-swiper-parallax-delay="200"
                         >
@@ -148,7 +148,7 @@ export default function HeroCarousel({
                         </h1>
 
                         <p
-                          className="text-xl md:text-2xl text-gray-200 leading-relaxed text-shadow"
+                          className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed text-shadow max-w-4xl"
                           data-swiper-parallax="-200"
                           data-swiper-parallax-delay="300"
                         >
@@ -184,7 +184,7 @@ export default function HeroCarousel({
 
                     {/* Featured Image */}
                     <div
-                      className="hidden sm:block relative lg:static absolute -top-[5vh] lg:top-auto"
+                      className="hidden sm:block relative lg:static absolute -top-[5vh] lg:top-auto lg:col-span-3"
                       data-swiper-parallax="100"
                       data-swiper-parallax-delay="200"
                     >
