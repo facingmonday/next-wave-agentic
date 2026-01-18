@@ -5,7 +5,9 @@ import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 import { ServiceFeatureSection } from "@/components/ServiceFeatureSection";
 import { LogoList } from "@/components/LogoList";
 import { VideoGallery } from "@/components/VideoGallery";
+import { PortfolioCarousel } from "@/components/PortfolioCarousel";
 import Link from "next/link";
+import { projects } from "@/lib/projects";
 
 const HeroSlides: HeroSlide[] = [
   {
@@ -131,18 +133,26 @@ export default function Home() {
       {/* Logos */}
       <LogoList
         logos={[
-          { src: "/images/kikits/kikits-logo2.png", alt: "Kikits" },
-          { src: "/images/okay-nwa/OkayNWAWhite.png", alt: "Okay NWA" },
+
           {
-            src: "/images/planet-goodtimes/GoodTimesLogo.png",
-            alt: "Planet Goodtimes",
+            src: "/images/logos/universityofarkansas.jpg",
+            alt: "University of Arkansas",
           },
           {
-            src: "/images/cityview/cms_logo_black.png",
-            alt: "Cityview CMS",
-            useLightCard: true,
+            src: "/images/logos/bentonvilleschools.jpg",
+            alt: "Bentonville Schools",
           },
-          { src: "/images/MRS/mrs-dot.png", alt: "MRS" },
+          { src: "/images/logos/lineupbooking.jpg", alt: "Lineup Booking" },
+          {
+            src: "/images/logos/novastonecapitaladvisors.jpg",
+            alt: "NovaStone Capital Advisors",
+          },
+          { src: "/images/logos/visitbentonville.jpg", alt: "Visit Bentonville" },
+          {
+            src: "/images/logos/discoverbellavista.jpg",
+            alt: "Discover Bella Vista",
+          },
+          
         ]}
       />
 
@@ -226,13 +236,20 @@ export default function Home() {
           tertiaryColor="#84596c"
           lineCount={10}
         />
-        <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
-          Our Projects
-        </h1>
-        <p className="text-lg text-gray-400 leading-relaxed text-center">
-          We are proud to be part of the Bentonville community and to have
-          worked on some amazing projects.
-        </p>
+        <div className="relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#CFC8CF] mb-6 text-center">
+            Our Projects
+          </h1>
+          <p className="text-lg text-gray-400 leading-relaxed text-center">
+            We are proud to be part of the Bentonville community and to have
+            worked on some amazing projects.
+          </p>
+
+          {/* Horizontal slider of project pages */}
+          <div className="mt-12">
+            <PortfolioCarousel items={projects} autoScrollSpeed={800} />
+          </div>
+        </div>
       </section>
       <Footer />
     </main>

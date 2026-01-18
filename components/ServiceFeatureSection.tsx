@@ -33,7 +33,9 @@ export function ServiceFeatureSection({
     <section className="relative py-16 md:py-24 bg-black overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-          <div className={isImageLeft ? "order-1" : "order-2"}>
+          <div
+            className={`order-1 ${isImageLeft ? "md:order-1" : "md:order-2"}`}
+          >
             <ContentReveal direction={isImageLeft ? "left" : "right"} duration={1.1}>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[#3f395b] bg-[#201E30] shadow-2xl">
                 <Image
@@ -48,7 +50,9 @@ export function ServiceFeatureSection({
             </ContentReveal>
           </div>
 
-          <div className={isImageLeft ? "order-2" : "order-1"}>
+          <div
+            className={`order-2 ${isImageLeft ? "md:order-2" : "md:order-1"}`}
+          >
             <ContentReveal direction={isImageLeft ? "right" : "left"} duration={1.1}>
               <div className="space-y-5">
                 <p className="text-sm font-semibold uppercase tracking-wider text-blue-400">

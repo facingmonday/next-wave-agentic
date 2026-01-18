@@ -6,10 +6,6 @@ import { ContentReveal } from "@/components/ContentReveal";
 export interface LogoItem {
   src: string;
   alt: string;
-  /**
-   * Some logos (e.g. black-on-transparent) need a light card behind them.
-   */
-  useLightCard?: boolean;
 }
 
 export interface LogoListProps {
@@ -41,20 +37,18 @@ export function LogoList({
           </div>
         </ContentReveal>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 items-center">
           {logos.map((logo) => (
             <div
               key={logo.src}
-              className={`flex items-center justify-center rounded-2xl border border-[#3f395b] ${
-                logo.useLightCard ? "bg-white" : "bg-[#201E30]"
-              } px-6 py-8`}
+              className="flex items-center justify-center w-full"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={240}
                 height={120}
-                className="max-h-12 w-auto object-contain"
+                className="w-full h-auto object-contain rounded-xl border border-[#3f395b]"
               />
             </div>
           ))}
