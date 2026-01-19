@@ -131,7 +131,7 @@ export default function Home() {
       />
 
       {/* Logos */}
-      <LogoList
+      {/* <LogoList
         logos={[
 
           {
@@ -154,7 +154,7 @@ export default function Home() {
           },
           
         ]}
-      />
+      /> */}
 
       {/* Gallery section */}
       <section className="relative py-16 md:py-24 bg-black">
