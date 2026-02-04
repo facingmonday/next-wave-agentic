@@ -15,7 +15,7 @@ const HeroSlides: HeroSlide[] = [
     subtitle: "Clarity, positioning, and a plan that moves",
     description:
       "We turn ambiguity into direction—defining the story, the audience, and the roadmap so every build and campaign has a clear purpose.",
-    backgroundImage: "/images/projects/uniting-wealth-partners/oil.jpeg",
+    backgroundImage: "/images/projects/kikits/spokesperson.jpeg",
     button: {
       text: "Explore Strategy",
       href: "/strategy",
@@ -85,7 +85,7 @@ export default function Home() {
         description="Placeholder: We clarify what you’re building, who it’s for, and why it matters—so every asset, feature, and campaign compounds toward the same outcome."
         ctaLabel="Learn about Strategy"
         ctaHref="/strategy"
-        imageSrc="/images/projects/uniting-wealth-partners/oil.jpeg"
+        imageSrc="/images/projects/uniting-wealth-partners/deck.jpeg"
         imageAlt="Strategy placeholder image"
         imageSide="left"
       />
@@ -131,7 +131,7 @@ export default function Home() {
       />
 
       {/* Logos */}
-      {/* <LogoList
+      <LogoList
         logos={[
 
           {
@@ -152,9 +152,20 @@ export default function Home() {
             src: "/images/logos/discoverbellavista.jpg",
             alt: "Discover Bella Vista",
           },
-          
+          {
+            src: "/images/logos/arkansasmoves.jpg",
+            alt: "Arkansas Move",
+          },
+          {
+            src: "/images/logos/ledger.jpg",
+            alt: "Ledger Bentonville",
+          },
+          {
+            src: "/images/logos/ropeswing.jpg",
+            alt: "Ropeswing",
+          },
         ]}
-      /> */}
+      />
 
       {/* Gallery section */}
       <section className="relative py-16 md:py-24 bg-black">
