@@ -11,6 +11,8 @@ export default function PedalPalsPage() {
     <main className="min-h-screen bg-black">
       <Header />
 
+      
+
       {/* Hero Section */}
       <PinnedHero
         backgroundVideo="https://vimeo.com/1126858733?fl=ip&fe=ec"

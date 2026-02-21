@@ -80,6 +80,13 @@ const allVideos: VideoItem[] = [
     description:
       "A clear, guided explanation showing how Kikits simplifies drink ticket creation.",
   },
+  {
+    id: "scale",
+    videoUrl: "https://vimeo.com/1153463822",
+    title: "Scale",
+    description:
+      "Scale — an exploration of growth and transformation by NWA Apps.",
+  },
 ];
 
 export default function GalleryPage() {
