@@ -17,6 +17,12 @@ interface VideoItem {
 
 const allVideos: VideoItem[] = [
   {
+    id: "gallery-vimeo-1168643448",
+    videoUrl: "https://vimeo.com/1168643448?share=copy&fl=sv&fe=ci",
+    title: "Goodtimes Bentonville",
+    description: "A video that showcases the Goodtimes Bentonville concierge service.",
+  },
+  {
     id: "kikits-launch",
     videoUrl: "https://vimeo.com/1105184966?fl=ip&fe=ec",
     thumbnailUrl: "/images/projects/kikits/kikits-video.png",
