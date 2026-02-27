@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/lib/smooth-scroll";
+import ChatModal from "@/components/chat-modal";
 
 const exo2 = Exo_2({
   variable: "--font-exo2",
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${exo2.variable} antialiased`}>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <ChatModal />
       </body>
     </html>
   );
