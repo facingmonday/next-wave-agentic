@@ -25,7 +25,8 @@ export default function KikitsPage() {
           startOffset="top top"
           textPosition="center"
           textAlign="center"
-          ctaLabel="Watch Video"
+          ctaLabel="Visit Kikits"
+          ctaHref="https://kikits.com/"
         />
 
         {/* What We Did */}

@@ -18,6 +18,8 @@ export default function AstroTowPage() {
         title="Astro Tow"
         subtitle="Simplifying Operations for Tow Truck Companies"
         body="An app built for tow truck companies to streamline their operations and improve efficiency with law enforcement. We designed and developed a mobile-first solution that helps tow operators manage jobs, communicate with dispatch, and integrate with law enforcement workflows."
+        ctaLabel="Visit Website"
+        ctaHref="https://www.appellatetech.com/"
         scrollDistance={2400}
         startOffset="top top"
         textPosition="center"

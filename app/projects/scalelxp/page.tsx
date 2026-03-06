@@ -15,6 +15,10 @@ const heroSlides: HeroSlide[] = [
       "ScaleLXP is an AI-powered learning platform designed to make supply chain education tangible, competitive, and memorable. Students run a simulated business, make weekly decisions, and experience real consequences under uncertainty—together.",
     backgroundImage:
       "/images/scalelxp/hero/Group_collaboration_scene_202601111653_jj9ed.jpg",
+    button: {
+      text: "Visit ScaleLXP",
+      href: "https://scalelxp.com/",
+    },
   },
   {
     title: "Learning Through Consequence",

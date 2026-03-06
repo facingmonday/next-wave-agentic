@@ -19,11 +19,12 @@ export default function GoodtimesBentonvillePage() {
         title="Goodtimes Bentonville"
         subtitle="The Town of GoodTimes"
         body="Concierge service and event storytelling for Bentonville—we created experiences and content that bring the GoodTimes spirit to life. From community engagement to platform integrations with Kikits and Planet GoodTimes, we helped build the connective tissue between local events and the people who discover them."
+        ctaLabel="Visit Goodtimes Bentonville"
+        ctaHref="https://goodtimes-bentonville.netlify.app/"
         scrollDistance={2400}
         startOffset="top top"
         textPosition="center"
         textAlign="center"
-        ctaLabel="Watch Video"
       />
 
       {/* What We Did */}
@@ -84,7 +85,9 @@ export default function GoodtimesBentonvillePage() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#4E79A7] mr-2">•</span>
-                    <span>Platform integrations with Kikits and Planet GoodTimes</span>
+                    <span>
+                      Platform integrations with Kikits and Planet GoodTimes
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#4E79A7] mr-2">•</span>
@@ -106,11 +109,11 @@ export default function GoodtimesBentonvillePage() {
                 How we did it
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
-                We combined event design, content creation, and platform strategy
-                to build a cohesive Goodtimes Bentonville experience. Our work
-                leveraged Kikits for ticketing and discovery, Planet GoodTimes
-                for creative direction, and AI-powered video to tell the story
-                of the community.
+                We combined event design, content creation, and platform
+                strategy to build a cohesive Goodtimes Bentonville experience.
+                Our work leveraged Kikits for ticketing and discovery, Planet
+                GoodTimes for creative direction, and AI-powered video to tell
+                the story of the community.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
