@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
@@ -8,13 +9,21 @@ import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { VimeoVideo } from "@/components/VimeoVideo";
 import { Footer } from "@/components/Footer";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
+import { ContactFormModal } from "@/components/ContactFormModal";
 import { VideoGallery } from "@/components/VideoGallery";
 import HeroCarousel from "@/components/HeroCarousel";
 import { HeroSlide } from "@/components/HeroCarousel";
-import { useRouter } from "next/navigation";
 
 export default function StorytellingPage() {
-  const router = useRouter();
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+
+  const openContactForm = () => {
+    setIsContactFormOpen(true);
+  };
+
+  const closeContactForm = () => {
+    setIsContactFormOpen(false);
+  };
 
   const HeroSlides: HeroSlide[] = [
     {
@@ -103,42 +112,42 @@ export default function StorytellingPage() {
               title: "AI Storytelling",
               body: "We use AI to analyze brand identity, audience psychology, and emotional arcs. This allows us to build story engines that generate narratives designed to resonate, persuade, and convert — not just entertain.",
               buttonLabel: "Explore Narrative AI",
-              buttonOnClick: () => router.push("/gallery"),
+              buttonOnClick: openContactForm,
             },
             {
               image: "/images/projects/pedal-pals/ricky.jpg",
               title: "AI-Generated Video Production",
               body: "From Pixar-style characters to hyper-realistic avatars, our AI pipeline produces cinematic-quality video content in a fraction of the time and cost. Faster iterations mean sharper creative and stronger results.",
               buttonLabel: "See AI Video Styles",
-              buttonOnClick: () => router.push("/gallery"),
+              buttonOnClick: openContactForm,
             },
             {
               image: "/images/projects/kikits/spokesperson.jpeg",
               title: "Rapid Concept-to-Campaign Workflow",
               body: "AI allows us to ideate, storyboard, animate, and edit at lightning speed. Instead of waiting weeks for production, brands can move from idea → script → video in hours — without sacrificing quality.",
               buttonLabel: "Accelerate Your Production",
-              buttonOnClick: () => router.push("/gallery"),
+              buttonOnClick: openContactForm,
             },
             {
               image: "/images/projects/uniting-wealth-partners/drain.jpeg",
               title: "Emotion-Driven Character Creation",
               body: "We use AI to develop characters that represent your audience's emotions, fears, goals, and identity. From uplifting mascots to cinematic protagonists, each character is engineered for emotional impact.",
               buttonLabel: "Build Your Characters",
-              buttonOnClick: () => router.push("/gallery"),
+              buttonOnClick: openContactForm,
             },
             {
               image: "/images/projects/uniting-wealth-partners/oil.jpeg",
               title: "AI-Powered Ads & Creative Automation",
               body: "We generate endless content variations for social ads, video spots, and campaigns. A single concept becomes dozens of unique, tailored outputs — optimized per audience segment and platform.",
               buttonLabel: "Automate Your Creative",
-              buttonOnClick: () => router.push("/gallery"),
+              buttonOnClick: openContactForm,
             },
             {
               image: "/images/projects/pedal-pals/benny.jpg",
               title: "Scalable Story Systems",
               body: "Our AI-driven frameworks let brands create episodic content, recurring characters, and narrative universes that can be infinitely expanded. Your brand doesn't just tell one story — it builds a world.",
               buttonLabel: "Build a Story Universe",
-              buttonOnClick: () => router.push("/gallery"),
+              buttonOnClick: openContactForm,
             },
           ]}
         />
@@ -352,6 +361,7 @@ export default function StorytellingPage() {
           </ContentReveal>
         </div>
       </section>
+      <ContactFormModal isOpen={isContactFormOpen} onClose={closeContactForm} />
       <Footer />
     </main>
   );

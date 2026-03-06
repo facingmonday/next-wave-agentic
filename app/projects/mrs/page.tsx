@@ -6,6 +6,7 @@ import { VideoGallery } from "@/components/VideoGallery";
 import Image from "next/image";
 import { Portfolio } from "@/components/Portfolio";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 
 export default function MRSProjectPage() {
   return (
@@ -41,7 +42,7 @@ export default function MRSProjectPage() {
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Who We Are
+                What we did for Miller Risk Solutions
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
                 Miller Risk Solutions provided a broad range of specialized
@@ -64,7 +65,7 @@ export default function MRSProjectPage() {
               </div>
               <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                 <h3 className="text-2xl font-semibold text-[#CFC8CF] mb-4">
-                  Key Challenges
+                  Deliverables
                 </h3>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
@@ -105,7 +106,7 @@ export default function MRSProjectPage() {
         <div className="max-w-7xl mx-auto px-4">
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6 text-center">
-              Our Solution
+              How we did it
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
               We delivered a comprehensive website redesign — creating intuitive
@@ -403,21 +404,80 @@ export default function MRSProjectPage() {
         autoScrollSpeed={4000}
       />
 
-      {/* Closing CTA */}
-      <section className="py-32 px-4 bg-[#201E30]">
+      {/* Closing / Contact CTA */}
+      <section id="contact" className="py-32 px-4 bg-[#201E30]">
         <div className="max-w-4xl mx-auto">
           <ContentReveal direction="up" duration={1.2}>
             <h2 className="text-5xl md:text-7xl font-bold text-[#CFC8CF] mb-4 text-center">
               Ready to elevate your digital presence?
             </h2>
-            <p className="text-xl text-gray-300 text-center">
+            <p className="text-xl text-gray-300 mb-12 text-center">
               Whether you’re targeting niche markets, building
               thought-leadership, or launching a full-scale brand redesign —
               we’re ready when you are.
             </p>
+            <ContentReveal direction="scale" duration={1}>
+              <form className="bg-[#3F395B] rounded-2xl p-8 md:p-12 shadow-2xl border border-[#201E30]">
+                <div className="space-y-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-semibold text-[#CFC8CF] mb-2"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="w-full px-4 py-3 bg-[#201E30] border border-[#3F395B] rounded-lg focus:ring-2 focus:ring-[#4E79A7] focus:border-[#4E79A7] text-[#CFC8CF] placeholder-gray-500"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-semibold text-[#CFC8CF] mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full px-4 py-3 bg-[#201E30] border border-[#3F395B] rounded-lg focus:ring-2 focus:ring-[#4E79A7] focus:border-[#4E79A7] text-[#CFC8CF] placeholder-gray-500"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="project"
+                      className="block text-sm font-semibold text-[#CFC8CF] mb-2"
+                    >
+                      What are you looking to build?
+                    </label>
+                    <textarea
+                      id="project"
+                      name="project"
+                      rows={4}
+                      className="w-full px-4 py-3 bg-[#201E30] border border-[#3F395B] rounded-lg focus:ring-2 focus:ring-[#4E79A7] focus:border-[#4E79A7] text-[#CFC8CF] placeholder-gray-500"
+                      placeholder="Tell us about your project…"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg py-4 px-8 rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
+                  >
+                    Let’s Build Something
+                  </button>
+                </div>
+              </form>
+            </ContentReveal>
           </ContentReveal>
         </div>
       </section>
+
+      <ProjectHelpCTA />
 
       {/* Footer */}
       <footer className="bg-black text-white py-16 px-4">

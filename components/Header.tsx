@@ -3,9 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ContactFormModal } from "@/components/ContactFormModal";
 export function Header() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
@@ -16,6 +18,14 @@ export function Header() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const openContactForm = () => {
+    setIsContactFormOpen(true);
+  };
+
+  const closeContactForm = () => {
+    setIsContactFormOpen(false);
   };
 
   // Close dropdown when clicking outside (desktop)
@@ -130,6 +140,14 @@ export function Header() {
             >
               Gallery
             </Link>
+            <button
+              onClick={() => {
+                openContactForm();
+              }}
+              className="text-sm md:text-base text-[#CFC8CF] px-4 py-2 rounded-lg font-medium hover:text-[#4E79A7] transition-colors"
+            >
+              Contact
+            </button>
           </nav>
 
           {/* Mobile Hamburger Button */}
@@ -310,8 +328,18 @@ export function Header() {
           >
             Gallery
           </button>
+          <button
+            onClick={() => {
+              closeMenu();
+              openContactForm();
+            }}
+            className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
+          >
+            Contact
+          </button>
         </nav>
       </div>
+      <ContactFormModal isOpen={isContactFormOpen} onClose={closeContactForm} />
     </header>
   );
 }

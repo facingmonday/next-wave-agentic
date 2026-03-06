@@ -120,16 +120,16 @@ export default function ChatModal() {
     }
   }, [isOpen]);
 
-  // Listen for open-with-prompt from other parts of the app
+  // Listen for open-with-prompt from other parts of the app (or open-only when no prompt)
   useEffect(() => {
-    const handler = (e: CustomEvent<{ prompt: string }>) => {
+    const handler = (e: CustomEvent<{ prompt?: string }>) => {
       const prompt = e.detail?.prompt;
       if (typeof prompt === "string" && prompt.trim()) {
         setInput(prompt.trim());
-        setIsOpen(true);
-        adjustHeight();
-        setTimeout(() => textareaRef.current?.focus(), 0);
       }
+      setIsOpen(true);
+      adjustHeight();
+      setTimeout(() => textareaRef.current?.focus(), 0);
     };
     window.addEventListener(
       CHAT_OPEN_WITH_PROMPT_EVENT,
