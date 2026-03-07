@@ -6,6 +6,7 @@ import { ServiceFeatureSection } from "@/components/ServiceFeatureSection";
 import { LogoList } from "@/components/LogoList";
 import { VideoGallery } from "@/components/VideoGallery";
 import { PortfolioCarousel } from "@/components/PortfolioCarousel";
+import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
 
@@ -259,6 +260,69 @@ export default function Home() {
           {/* Horizontal slider of project pages */}
           <div className="mt-12">
             <PortfolioCarousel items={projects} autoScrollSpeed={800} />
+          </div>
+        </div>
+      </section>
+
+      {/* Healthcare AI — Enterprise anchor section */}
+      <section className="relative py-24 md:py-32 border-t border-[#3F395B]/50">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0f1729]/50 to-transparent" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-[#3F395B]/50">
+              <Image
+                src="/images/healthcare/healthcare1.jpg"
+                alt="Healthcare technology and AI collaboration in action"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="text-center md:text-left">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#4E79A7] mb-4">
+                For Northwest Arkansas Health Systems
+              </p>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
+                From AI Pilot to Enterprise Impact in 90 Days
+              </h2>
+              <p className="text-lg text-gray-300 leading-relaxed mb-10 max-w-xl md:max-w-none">
+                Health systems are piloting AI across clinical and administrative
+                workflows. We help you harden, govern, scale, and operationalize
+                those pilots into enterprise-ready solutions.
+              </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-12">
+                <span className="px-4 py-2 rounded-lg bg-[#1e3a5f]/60 border border-[#4E79A7]/40 text-[#CFC8CF] text-sm font-medium">
+                  Governance-First
+                </span>
+                <span className="px-4 py-2 rounded-lg bg-[#1e3a5f]/60 border border-[#4E79A7]/40 text-[#CFC8CF] text-sm font-medium">
+                  Rapid Infrastructure
+                </span>
+                <span className="px-4 py-2 rounded-lg bg-[#1e3a5f]/60 border border-[#4E79A7]/40 text-[#CFC8CF] text-sm font-medium">
+                  Measurable ROI
+                </span>
+              </div>
+              <div className="flex justify-center md:justify-start">
+                <Link
+                  href="/healthcare-ai"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-[#4E79A7] text-[#CFC8CF] font-semibold hover:bg-[#4E79A7]/90 transition-colors"
+                >
+                  AI Pilot to Enterprise
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
