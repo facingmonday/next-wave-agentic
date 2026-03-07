@@ -17,7 +17,8 @@ export const projects: SiteProject[] = [
     title: "ScaleLXP",
     description:
       "An AI-powered learning platform that turns supply chain education into a competitive, consequence-driven simulation.",
-    image: "/images/scalelxp/hero/Group_collaboration_scene_202601111653_jj9ed.jpg",
+    image:
+      "/images/scalelxp/hero/Group_collaboration_scene_202601111653_jj9ed.jpg",
     href: "/projects/scalelxp",
     tags: ["Education", "Simulation", "AI"],
   },
@@ -66,15 +67,15 @@ export const projects: SiteProject[] = [
     href: "/projects/maya-spark",
     tags: ["Storytelling", "Experience", "AI"],
   },
-  {
-    id: "pedal-pals",
-    title: "Pedal Pals",
-    description:
-      "A character-driven bike safety initiative for kids—AI-powered storytelling built for community impact in Bentonville.",
-    image: "/images/projects/pedal-pals/crystal.jpg",
-    href: "/projects/pedal-pals",
-    tags: ["Community", "Education", "AI Video"],
-  },
+  // {
+  //   id: "pedal-pals",
+  //   title: "Pedal Pals",
+  //   description:
+  //     "A character-driven bike safety initiative for kids—AI-powered storytelling built for community impact in Bentonville.",
+  //   image: "/images/projects/pedal-pals/crystal.jpg",
+  //   href: "/projects/pedal-pals",
+  //   tags: ["Community", "Education", "AI Video"],
+  // },
   {
     id: "mrs",
     title: "Miller Risk Solutions",
@@ -93,14 +94,22 @@ export const projects: SiteProject[] = [
     href: "/projects/astro",
     tags: ["App", "Operations", "Law Enforcement"],
   },
+  // {
+  //   id: "nova-stone-capital-advisors",
+  //   title: "Nova Stone Capital Advisors",
+  //   description:
+  //     "A website redesign and social media strategy to modernize the brand and drive high-intent engagement.",
+  //   image: "/images/novastone/novastone-capital-advisors.jpg",
+  //   href: "/projects/nova-stone-capital-advisors",
+  //   tags: ["Web", "Brand", "Content"],
+  // },
   {
-    id: "nova-stone-capital-advisors",
-    title: "Nova Stone Capital Advisors",
+    id: "goodtimes-bentonville",
+    title: "Goodtimes Bentonville",
     description:
-      "A website redesign and social media strategy to modernize the brand and drive high-intent engagement.",
-    image: "/images/novastone/novastone-capital-advisors.jpg",
-    href: "/projects/nova-stone-capital-advisors",
-    tags: ["Web", "Brand", "Content"],
-  }
+      "Concierge service and event storytelling for The Town of GoodTimes—community engagement and experiences in Bentonville.",
+    image: "/images/planet-goodtimes/VampireBarCrawl.jpg",
+    href: "/projects/goodtimes-bentonville",
+    tags: ["Experience", "Events", "Engagement"],
+  },
 ];
-

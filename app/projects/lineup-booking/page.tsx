@@ -5,6 +5,7 @@ import { PinnedHero } from "@/components/PinnedHero";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 import Image from "next/image";
 import HeroCarousel from "@/components/HeroCarousel";
 
@@ -49,7 +50,7 @@ export default function LineupBookingPage() {
               {/* CHALLENGE */}
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Challenge: A Disconnected Booking World
+                  What we did for Lineup Booking
                 </h2>
                 <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
                   The live entertainment industry runs on relationships — but
@@ -92,7 +93,7 @@ export default function LineupBookingPage() {
 
                 <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                   <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                    Key Challenges We Addressed
+                    Deliverables
                   </h3>
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex">
@@ -130,7 +131,7 @@ export default function LineupBookingPage() {
               {/* HEADER */}
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl text-[#CFC8CF] font-bold mb-6">
-                  Solution: A Modern Platform for Booking & Payments
+                  How we did it
                 </h2>
                 <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
                   Lineup Booking is powered by a modern React + TypeScript stack
@@ -424,6 +425,7 @@ export default function LineupBookingPage() {
           </div>
         </section>
 
+        <ProjectHelpCTA />
         <Footer />
       </main>
     </>

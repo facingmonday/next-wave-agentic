@@ -2,6 +2,7 @@
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 import { ServiceFeatureSection } from "@/components/ServiceFeatureSection";
 import { ContentReveal } from "@/components/ContentReveal";
@@ -14,6 +15,10 @@ const heroSlides: HeroSlide[] = [
       "ScaleLXP is an AI-powered learning platform designed to make supply chain education tangible, competitive, and memorable. Students run a simulated business, make weekly decisions, and experience real consequences under uncertainty—together.",
     backgroundImage:
       "/images/scalelxp/hero/Group_collaboration_scene_202601111653_jj9ed.jpg",
+    button: {
+      text: "Visit ScaleLXP",
+      href: "https://scalelxp.com/",
+    },
   },
   {
     title: "Learning Through Consequence",
@@ -45,7 +50,7 @@ export default function ScaleLXPProjectPage() {
           <ContentReveal direction="up" duration={1.1}>
             <div className="space-y-4 text-center">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF]">
-                ScaleLXP
+                What we did for ScaleLXP
               </h2>
               <p className="text-base md:text-lg text-gray-300 leading-relaxed">
                 ScaleLXP is an applied learning environment where students
@@ -123,8 +128,8 @@ export default function ScaleLXPProjectPage() {
         />
       </div>
 
+      <ProjectHelpCTA />
       <Footer />
     </main>
   );
 }
-

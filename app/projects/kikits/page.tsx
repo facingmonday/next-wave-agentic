@@ -7,6 +7,7 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 
 export default function KikitsPage() {
   return (
@@ -24,10 +25,11 @@ export default function KikitsPage() {
           startOffset="top top"
           textPosition="center"
           textAlign="center"
-          ctaLabel="Watch Video"
+          ctaLabel="Visit Kikits"
+          ctaHref="https://kikits.com/"
         />
 
-        {/* Strategy Section - Platform Development */}
+        {/* What We Did */}
         <section className="relative py-16 md:py-32">
           <FuturisticBackground
             pattern="flowing"
@@ -42,7 +44,7 @@ export default function KikitsPage() {
             <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Strategy: Building Community Through Events
+                  What we did for Kikits
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                   Kikits was designed to solve a fundamental challenge: making
@@ -81,7 +83,7 @@ export default function KikitsPage() {
                 </div>
                 <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                   <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                    Strategic Elements
+                    Deliverables
                   </h3>
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start">
@@ -171,7 +173,7 @@ export default function KikitsPage() {
           </div>
         </section>
 
-        {/* Software Section - Technology Stack */}
+        {/* How We Did It */}
         <section className="relative py-16 md:py-32">
           <FuturisticBackground
             pattern="flowing"
@@ -186,7 +188,7 @@ export default function KikitsPage() {
             <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Software: Modern Platform Architecture
+                  How we did it
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                   Kikits is built on a modern technology stack that prioritizes
@@ -566,6 +568,7 @@ export default function KikitsPage() {
             </ContentReveal>
           </div>
         </section>
+        <ProjectHelpCTA />
         <Footer />
       </main>
     </>
