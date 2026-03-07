@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 import { PinnedHero } from "@/components/PinnedHero";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
@@ -7,10 +8,38 @@ import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 
+const HeroSlides: HeroSlide[] = [
+  {
+    title: "Pedal Pals",
+    subtitle: "Ride Smart. Ride Safe. Ride Together.",
+    description:
+      "A character-driven bike safety universe built for kids, families, and the Bentonville community—turning safety into stories they remember.",
+    backgroundImage: "/images/projects/pedal-pals/crystal.jpg",
+    mainImage: "/images/projects/pedal-pals/benny.jpg",
+  },
+  {
+    title: "Safety Through Story",
+    subtitle: "Meet the Characters",
+    description:
+      "Each Pedal Pal embodies a core safety lesson—from helmets and visibility to riding together—making learning fun and approachable.",
+    backgroundImage: "/images/projects/pedal-pals/ricky.jpg",
+    mainImage: "/images/projects/pedal-pals/carrie.jpg",
+  },
+  {
+    title: "Community Impact",
+    subtitle: "A safer cycling culture",
+    description:
+      "Built to reach young riders across Northwest Arkansas with memorable characters, engaging content, and real-world bike safety education.",
+    backgroundImage: "/images/projects/pedal-pals/sheldon.jpg",
+    mainImage: "/images/projects/pedal-pals/ricky.jpg",
+  },
+];
+
 export default function PedalPalsPage() {
   return (
     <main className="min-h-screen bg-black">
       <Header />
+      <HeroCarousel slides={HeroSlides} />
 
       {/* Hero Section */}
       <PinnedHero
