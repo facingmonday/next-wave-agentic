@@ -5,13 +5,12 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 
 export default function PedalPalsPage() {
   return (
     <main className="min-h-screen bg-black">
       <Header />
-
-      
 
       {/* Hero Section */}
       <PinnedHero
@@ -26,7 +25,7 @@ export default function PedalPalsPage() {
         ctaLabel="Watch Video"
       />
 
-      {/* Strategy Section - Character Development */}
+      {/* What We Did */}
       <section className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
@@ -41,7 +40,7 @@ export default function PedalPalsPage() {
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Strategy: Character-Driven Bike Safety
+                What we did for Pedal Pals
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                 Our strategic approach focused on creating memorable animal
@@ -78,7 +77,7 @@ export default function PedalPalsPage() {
               </div>
               <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                 <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Strategic Elements
+                  Deliverables
                 </h3>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
@@ -168,7 +167,7 @@ export default function PedalPalsPage() {
         </div>
       </section>
 
-      {/* Software Section - AI Technologies */}
+      {/* How We Did It */}
       <section className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
@@ -183,7 +182,7 @@ export default function PedalPalsPage() {
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Software: AI-Powered Creation
+                How we did it
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                 We leveraged the latest AI technologies to bring the Pedal Pals
@@ -558,6 +557,7 @@ export default function PedalPalsPage() {
           </ContentReveal>
         </div>
       </section>
+      <ProjectHelpCTA />
       <Footer />
     </main>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,11 +10,18 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+/** Dispatch when chat modal opens so Lenis can be stopped and modal scroll works */
+export const CHAT_MODAL_OPEN_EVENT = "nwa-chat-modal-open";
+/** Dispatch when chat modal closes so Lenis can be started again */
+export const CHAT_MODAL_CLOSE_EVENT = "nwa-chat-modal-close";
+
 export function SmoothScrollProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
@@ -27,6 +34,7 @@ export function SmoothScrollProvider({
       touchMultiplier: 2,
       infinite: false,
     });
+    lenisRef.current = lenis;
 
     // Connect Lenis to GSAP ScrollTrigger
     function raf(time: number) {
@@ -37,8 +45,18 @@ export function SmoothScrollProvider({
 
     requestAnimationFrame(raf);
 
+    // When chat modal opens, stop Lenis so wheel/touch scroll inside the modal
+    // goes to the messages container instead of the page
+    const onChatOpen = () => lenis.stop();
+    const onChatClose = () => lenis.start();
+    window.addEventListener(CHAT_MODAL_OPEN_EVENT, onChatOpen);
+    window.addEventListener(CHAT_MODAL_CLOSE_EVENT, onChatClose);
+
     // Cleanup
     return () => {
+      window.removeEventListener(CHAT_MODAL_OPEN_EVENT, onChatOpen);
+      window.removeEventListener(CHAT_MODAL_CLOSE_EVENT, onChatClose);
+      lenisRef.current = null;
       lenis.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };

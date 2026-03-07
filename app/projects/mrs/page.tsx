@@ -6,6 +6,7 @@ import { VideoGallery } from "@/components/VideoGallery";
 import Image from "next/image";
 import { Portfolio } from "@/components/Portfolio";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 
 export default function MRSProjectPage() {
   return (
@@ -41,7 +42,7 @@ export default function MRSProjectPage() {
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Who We Are
+                What we did for Miller Risk Solutions
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
                 Miller Risk Solutions provided a broad range of specialized
@@ -64,7 +65,7 @@ export default function MRSProjectPage() {
               </div>
               <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                 <h3 className="text-2xl font-semibold text-[#CFC8CF] mb-4">
-                  Key Challenges
+                  Deliverables
                 </h3>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
@@ -105,7 +106,7 @@ export default function MRSProjectPage() {
         <div className="max-w-7xl mx-auto px-4">
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6 text-center">
-              Our Solution
+              How we did it
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
               We delivered a comprehensive website redesign — creating intuitive
@@ -475,6 +476,8 @@ export default function MRSProjectPage() {
           </ContentReveal>
         </div>
       </section>
+
+      <ProjectHelpCTA />
 
       {/* Footer */}
       <footer className="bg-black text-white py-16 px-4">

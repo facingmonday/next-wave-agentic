@@ -6,6 +6,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 import Image from "next/image";
 
 const HeroSlides = [
@@ -56,7 +57,7 @@ export default function CityViewCMSPage() {
             <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Challenge: Fragmented City Communication
+                  What we did for CityView CMS
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-4">
                   Most cities try to manage digital communication across a maze
@@ -107,7 +108,7 @@ export default function CityViewCMSPage() {
 
                 <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                   <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                    Challenges We Set Out to Solve
+                    Deliverables
                   </h3>
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start">
@@ -158,7 +159,7 @@ export default function CityViewCMSPage() {
             <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Solution: A Modern, AI-Assisted City CMS
+                  How we did it
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                   Under the hood, CityView CMS is a modern React + TypeScript
@@ -493,6 +494,7 @@ export default function CityViewCMSPage() {
           </div>
         </section>
 
+        <ProjectHelpCTA />
         <Footer />
       </main>
     </>

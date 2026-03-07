@@ -6,6 +6,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 import Image from "next/image";
 
 export default function OkayNWAPage() {
@@ -57,7 +58,7 @@ export default function OkayNWAPage() {
             <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Strategy: Discovering NWA Through AI
+                  What we did for OkayNWA
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                   OkayNWA was designed to solve a fundamental challenge: making
@@ -96,7 +97,7 @@ export default function OkayNWAPage() {
                 </div>
                 <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                   <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                    Strategic Elements
+                    Deliverables
                   </h3>
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start">
@@ -144,7 +145,7 @@ export default function OkayNWAPage() {
             <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                  Software: AI-Enhanced Platform Architecture
+                  How we did it
                 </h2>
                 <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                   OkayNWA is built on a modern technology stack that prioritizes
@@ -466,6 +467,7 @@ export default function OkayNWAPage() {
             </ContentReveal>
           </div>
         </section>
+        <ProjectHelpCTA />
         <Footer />
       </main>
     </>

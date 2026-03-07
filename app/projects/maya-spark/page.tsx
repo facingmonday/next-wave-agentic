@@ -5,6 +5,7 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { VimeoVideo } from "@/components/VimeoVideo";
 import { Footer } from "@/components/Footer";
+import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 
 export default function MayaSparkPage() {
   return (
@@ -24,7 +25,7 @@ export default function MayaSparkPage() {
         ctaLabel="Watch Video"
       />
 
-      {/* Strategy Section - AI-Powered Storytelling */}
+      {/* What We Did */}
       <section className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
@@ -39,7 +40,7 @@ export default function MayaSparkPage() {
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Strategy: Human Connection Through Story
+                What we did for Maya & Spark
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                 Using AI narrative analysis, we identified that event discovery
@@ -78,7 +79,7 @@ export default function MayaSparkPage() {
               </div>
               <div className="bg-[#3F395B]/50 p-8 rounded-xl border border-[#4E79A7]/30">
                 <h3 className="text-xl font-semibold text-[#CFC8CF] mb-4">
-                  Strategic Elements
+                  Deliverables
                 </h3>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
@@ -144,7 +145,7 @@ export default function MayaSparkPage() {
         </div>
       </section>
 
-      {/* Software Section - AI Technologies */}
+      {/* How We Did It */}
       <section className="relative py-16 md:py-32">
         <FuturisticBackground
           pattern="flowing"
@@ -159,7 +160,7 @@ export default function MayaSparkPage() {
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6">
-                Software: AI-Powered Storytelling
+                How we did it
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
                 We leveraged AI technologies to analyze narrative structures,
@@ -532,6 +533,7 @@ export default function MayaSparkPage() {
           </ContentReveal>
         </div>
       </section>
+      <ProjectHelpCTA />
       <Footer />
     </main>
   );

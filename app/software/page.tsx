@@ -36,12 +36,32 @@ const softwarehighlights = [
   },
   {
     id: "planet-good-times",
-    title: "Planet Good Times",
+    title: "Planet GoodTimes",
     subtitle:
-      "A creative platform and event hub that showcases Planet Good Times events, experiences, and creative content.",
+      "A creative platform and event hub that showcases Planet GoodTimes events, experiences, and creative content.",
     // href: "/projects/planet-good-times",
     defaultImage: "/images/planet-goodtimes/damon.png",
     backgroundColor: "#FDF4D2",
+  },
+  {
+    id: "goodtimes-bentonville",
+    title: "GoodTimes Bentonville",
+    subtitle:
+      "A concierge service and event hub for GoodTimes events, experiences, and creative content in Bentonville, Arkansas.",
+    // href: "/projects/goodtimes-bentonville",
+    defaultImage:
+      "/images/goodtimes-bentonville/goodtimes-bentonville-logo.png",
+    backgroundColor: "#1F2A24",
+  },
+
+  {
+    id: "planet-good-times-cabo",
+    title: "Planet GoodTimes Cabo",
+    subtitle:
+      "A creative platform and event hub that showcases GoodTimes events, experiences, and creative content in Cabo San Lucas, Mexico.",
+    // href: "/projects/planet-good-times-cabo",
+    defaultImage: "/images/planet-goodtimes-cabo/GoodtimesCabo.png",
+    backgroundColor: "#0171bb",
   },
   {
     id: "lineup",
