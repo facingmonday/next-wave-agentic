@@ -112,4 +112,22 @@ export const projects: SiteProject[] = [
     href: "/projects/goodtimes-bentonville",
     tags: ["Experience", "Events", "Engagement"],
   },
+  {
+    id: "drop-in-displays",
+    title: "Drop In Displays",
+    description:
+      "Multi-screen broadcast for live events—manage queues of content for wall-mounted screens at conferences, expos, and trade shows. One admin, unlimited displays.",
+    image: "/images/drop-in-displays/drop-in-displays.jpg",
+    href: "/projects/drop-in-displays",
+    tags: ["Events", "Product", "App"],
+  },
+  {
+    id: "lytnt",
+    title: "lytnt",
+    description:
+      "AI image generation in bulk from ingredients and references—for brands, bars, restaurants, and anyone who needs to create images. Cartoon, lifelike, ads, social media, and more.",
+    image: "/images/lytnt/lytnt_black_icon.jpg",
+    href: "/projects/lytnt",
+    tags: ["Product", "App", "AI"],
+  },
 ];
