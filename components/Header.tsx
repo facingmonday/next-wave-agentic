@@ -134,6 +134,13 @@ export function Header() {
               )}
             </div>
             <Link
+              href="/blog"
+              onClick={() => setIsDropdownOpen(false)}
+              className="block text-sm md:text-base text-[#CFC8CF] px-4 py-2 hover:text-[#4E79A7] hover:bg-[#3f395b]/50 transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
               href="/gallery"
               onClick={() => setIsDropdownOpen(false)}
               className="block text-sm md:text-base text-[#CFC8CF] px-4 py-2 hover:text-[#4E79A7] hover:bg-[#3f395b]/50 transition-colors"
@@ -317,6 +324,17 @@ export function Header() {
               </div>
             )}
           </div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              closeMenu();
+              setIsDropdownOpen(false);
+              router.push("/blog");
+            }}
+            className="block text-base text-[#CFC8CF] hover:text-[#4E79A7] transition-colors font-medium py-2 w-full text-left"
+          >
+            Blog
+          </button>
           <button
             onClick={(e) => {
               e.preventDefault();
