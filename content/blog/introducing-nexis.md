@@ -1,15 +1,15 @@
 ---
-title: "Introducing Nexis: The Intelligence Layer Powering Everything We Build"
-slug: "introducing-nexis"
+title: "Introducing Nexie: The Intelligence Layer Powering Everything We Build"
+slug: "introducing-nexie"
 date: "2026-03-25"
-excerpt: "Most software works. Very little software thinks. Nexis is the intelligence layer behind your entire ecosystem — it doesn't just respond to inputs, it actively operates your business logic, content, and workflows in real time."
-coverImage: "/images/blogs/nexis.jpg"
+excerpt: "Most software works. Very little software thinks. Nexie is the intelligence layer behind your entire ecosystem — it doesn't just respond to inputs, it actively operates your business logic, content, and workflows in real time."
+coverImage: "/images/blogs/nexie.jpg"
 author:
   name: "Jason Price"
   role: "Founder & CEO"
   bio: "Jason Price is the founder of Next Wave Agentic, where he leads the intersection of creative technology and AI-driven software delivery. With over 15 years in software engineering and digital strategy, he helps organizations harness agentic AI to ship faster and smarter."
   avatar: "/images/team/jason-price.jpg"
-tags: ["Nexis", "AI", "Automation", "Product Launch"]
+tags: ["Nexie", "AI", "Automation", "Product Launch"]
 featured: true
 ---
 
@@ -20,11 +20,11 @@ At Next Wave Agentic, we've spent years building platforms, tools, and experienc
 Most software works.
 Very little software _thinks_.
 
-That's where **Nexis** comes in.
+That's where **Nexie** comes in.
 
-At its core, Nexis is powered by OpenClaw, but what we've built on top of it is something much bigger — a system that doesn't just respond to inputs, but actively **operates your business logic, content, and workflows in real time**.
+At its core, Nexie is powered by OpenClaw, but what we've built on top of it is something much bigger — a system that doesn't just respond to inputs, but actively **operates your business logic, content, and workflows in real time**.
 
-Nexis is not a feature.
+Nexie is not a feature.
 It's not a chatbot.
 It's the **intelligence layer** behind your entire ecosystem.
 
@@ -53,13 +53,13 @@ What's missing is something that can sit across all of it and say:
 
 > "Here's what's happening, here's what needs to be done, and I'll take care of it."
 
-That's Nexis.
+That's Nexie.
 
 ---
 
-## What Nexis Actually Does
+## What Nexie Actually Does
 
-Nexis connects to your apps, your data, and your workflows, then:
+Nexie connects to your apps, your data, and your workflows, then:
 
 - **observes** what's happening
 - **decides** what should happen next
@@ -67,7 +67,7 @@ Nexis connects to your apps, your data, and your workflows, then:
 
 It can generate, trigger, analyze, respond, and optimize — all without requiring constant human input.
 
-Think of Nexis as:
+Think of Nexie as:
 
 - a strategist
 - an operator
@@ -77,13 +77,13 @@ Think of Nexis as:
 
 ---
 
-## 6 Detailed Examples of Nexis in Action
+## 6 Detailed Examples of Nexie in Action
 
 ### 1. Content at Scale Without a Creative Bottleneck
 
 One of the biggest challenges for modern businesses is keeping up with content demand.
 
-With Nexis, that changes completely.
+With Nexie, that changes completely.
 
 Using structured inputs like:
 
@@ -92,7 +92,7 @@ Using structured inputs like:
 - event data
 - brand guidelines
 
-Nexis can:
+Nexie can:
 
 - generate ad creatives
 - create social media posts
@@ -113,7 +113,7 @@ You go from struggling to post consistently to running a **fully automated conte
 
 ### 2. Real-Time Event Intelligence and Operations
 
-For platforms like Kikits and live event environments, Nexis becomes the operational backbone.
+For platforms like Kikits and live event environments, Nexie becomes the operational backbone.
 
 It can:
 
@@ -122,7 +122,7 @@ It can:
 - trigger access control for VIP or restricted areas
 - send targeted notifications to attendees
 
-After the event, Nexis automatically:
+After the event, Nexie automatically:
 
 - generates performance reports
 - highlights insights
@@ -137,7 +137,7 @@ You're no longer reacting during events. You're running **intelligent, data-driv
 
 Traditional content management systems rely heavily on manual input.
 
-Nexis transforms that model entirely.
+Nexie transforms that model entirely.
 
 It can:
 
@@ -159,7 +159,7 @@ Your platform becomes a **content machine** — not just a content container.
 
 ### 4. Agency Workflow Automation and Client Delivery
 
-For agencies and service-based businesses, Nexis acts like an always-on team member.
+For agencies and service-based businesses, Nexie acts like an always-on team member.
 
 It can:
 
@@ -183,7 +183,7 @@ You reduce operational overhead and free up your team to focus on **strategy, cr
 
 Most websites today are static or reactive at best.
 
-Nexis enables experiences that feel **alive**.
+Nexie enables experiences that feel **alive**.
 
 It can:
 
@@ -192,7 +192,7 @@ It can:
 - recommend next steps based on user behavior
 - personalize interactions in real time
 
-Instead of a basic chatbot, Nexis acts as a:
+Instead of a basic chatbot, Nexie acts as a:
 
 - concierge
 - advisor
@@ -205,7 +205,7 @@ Higher engagement, better user experiences, and significantly improved conversio
 
 ### 6. Backend Automation That Actually Thinks
 
-Behind the scenes, Nexis uses OpenClaw to orchestrate complex workflows.
+Behind the scenes, Nexie uses OpenClaw to orchestrate complex workflows.
 
 It can:
 
@@ -216,18 +216,18 @@ It can:
 
 For example:
 
-- A user signs up → Nexis creates their profile, sends onboarding content, and assigns next steps
-- An event is created → Nexis generates marketing assets, schedules promotions, and notifies audiences
-- A campaign launches → Nexis monitors performance and adjusts outputs
+- A user signs up → Nexie creates their profile, sends onboarding content, and assigns next steps
+- An event is created → Nexie generates marketing assets, schedules promotions, and notifies audiences
+- A campaign launches → Nexie monitors performance and adjusts outputs
 
 **What this means:**
 Your backend becomes **proactive**, not just reactive.
 
 ---
 
-## 12 Additional Ways Nexis Adds Value
+## 12 Additional Ways Nexie Adds Value
 
-Beyond the core use cases, Nexis can also:
+Beyond the core use cases, Nexie can also:
 
 1. Automatically generate newsletters from recent activity
 2. Send SMS or email updates triggered by user behavior
@@ -246,7 +246,7 @@ Each of these on its own is useful. Together, they create a system that **runs a
 
 ---
 
-## Nexis Changes the Way Software Works
+## Nexie Changes the Way Software Works
 
 Most platforms are built like tools.
 
@@ -254,7 +254,7 @@ You open them.
 You use them.
 You close them.
 
-Nexis flips that model.
+Nexie flips that model.
 
 It runs continuously in the background:
 
@@ -271,7 +271,7 @@ It connects your tools into a **cohesive, intelligent system**.
 At Next Wave Agentic, we're not just building apps.
 We're building systems that **adapt, evolve, and operate**.
 
-Nexis is the foundation of that vision.
+Nexie is the foundation of that vision.
 
 It powers:
 
@@ -294,7 +294,7 @@ An era where:
 
 They **think, decide, and act**.
 
-That's Nexis.
+That's Nexie.
 
 And if you're building anything today, the question isn't whether you'll use something like it.
 
@@ -302,4 +302,4 @@ It's whether you'll build with it from the start.
 
 ---
 
-**Run it through Nexis.**
+**Run it through Nexie.**
