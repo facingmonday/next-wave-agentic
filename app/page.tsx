@@ -9,6 +9,7 @@ import { PortfolioCarousel } from "@/components/PortfolioCarousel";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
+import { getAllPosts } from "@/lib/blog";
 
 const HeroSlides: HeroSlide[] = [
   {
@@ -234,6 +235,85 @@ export default function Home() {
               },
             ]}
           />
+        </div>
+      </section>
+
+      {/* Latest from the Blog */}
+      <section className="relative py-16 md:py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+            <div>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-3">
+                Latest from the Blog
+              </h2>
+              <p className="text-base md:text-lg text-gray-400 max-w-3xl">
+                Insights on AI, software development, and the future of creative
+                technology.
+              </p>
+            </div>
+            <Link
+              href="/blog"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-lg bg-[#4E79A7] text-[#CFC8CF] font-semibold hover:bg-[#4E79A7]/90 transition-colors w-fit"
+            >
+              View all posts
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {getAllPosts()
+              .slice(0, 3)
+              .map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group block"
+                >
+                  <article className="h-full rounded-2xl border border-[#3f395b]/30 bg-[#201e30]/40 overflow-hidden transition-all duration-300 hover:border-[#fc05b9]/40 hover:bg-[#201e30]/60">
+                    <div className="aspect-[16/9] bg-gradient-to-br from-[#4e79a7]/15 via-[#fc05b9]/10 to-[#201e30] relative overflow-hidden">
+                      {post.coverImage && (
+                        <Image
+                          src={post.coverImage}
+                          alt={post.title}
+                          fill
+                          className="object-cover relative z-10"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {post.tags.slice(0, 2).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] font-semibold uppercase tracking-wider text-[#fc05b9]/80 bg-[#fc05b9]/10 px-2 py-0.5 rounded-full"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h3 className="text-lg font-bold text-[#CFC8CF] mb-2 group-hover:text-[#4E79A7] transition-colors leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="text-[#CFC8CF]/60 text-sm leading-relaxed mb-4 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-[#3f395b]">
+                          {new Date(post.date).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
+                        </span>
+                        <span className="text-xs font-medium text-[#fc05b9] group-hover:text-[#4E79A7] transition-colors">
+                          Read more →
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+          </div>
         </div>
       </section>
 

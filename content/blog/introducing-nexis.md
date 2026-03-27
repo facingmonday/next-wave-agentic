@@ -5,10 +5,10 @@ date: "2026-03-25"
 excerpt: "Most software works. Very little software thinks. Nexie is the intelligence layer behind your entire ecosystem — it doesn't just respond to inputs, it actively operates your business logic, content, and workflows in real time."
 coverImage: "/images/blogs/nexie.jpg"
 author:
-  name: "Jason Price"
+  name: "Jay Price"
   role: "Founder & CEO"
-  bio: "Jason Price is the founder of Next Wave Agentic, where he leads the intersection of creative technology and AI-driven software delivery. With over 15 years in software engineering and digital strategy, he helps organizations harness agentic AI to ship faster and smarter."
-  avatar: "/images/team/jason-price.jpg"
+  bio: "Jay Price is the founder of Next Wave Agentic, where he leads the intersection of creative technology and AI-driven software delivery. With over 25 years in software engineering and digital strategy, he helps organizations harness agentic AI to ship faster and smarter."
+  avatar: "/images/team/jay-price.jpg"
 tags: ["Nexie", "AI", "Automation", "Product Launch"]
 featured: true
 ---
