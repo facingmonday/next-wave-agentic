@@ -576,3 +576,59 @@ h6 {
 .blog-prose > *:first-child {
   margin-top: 0;
 }
+
+/* ========== Full-screen hero video (Vimeo background) ========== */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-video__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000000;
+}
+
+.hero-video__loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: #000000;
+}
+
+.hero-video--fallback .hero-video__fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #201e30 0%, #000000 50%, #0f0f0f 100%);
+}
+
+.hero-video__embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  background: #000000;
+  container-type: size;
+}
+
+.hero-video__iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 177.778cqh);
+  height: max(100%, 56.25cqw);
+  border: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

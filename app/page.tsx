@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
-import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
+import { HeroVideo } from "@/components/HeroVideo";
 import { ServiceFeatureSection } from "@/components/ServiceFeatureSection";
 import { LogoList } from "@/components/LogoList";
 import { VideoGallery } from "@/components/VideoGallery";
@@ -11,74 +11,11 @@ import Link from "next/link";
 import { projects } from "@/lib/projects";
 import { getAllPosts } from "@/lib/blog";
 
-const HeroSlides: HeroSlide[] = [
-  {
-    title: "Strategy",
-    subtitle: "Clarity, positioning, and a plan that moves",
-    description:
-      "We turn ambiguity into direction—defining the story, the audience, and the roadmap so every build and campaign has a clear purpose.",
-    backgroundImage: "/images/projects/kikits/spokesperson.jpeg",
-    button: {
-      text: "Explore Strategy",
-      href: "/strategy",
-      variant: "primary",
-    },
-  },
-  {
-    title: "Software",
-    subtitle: "Fast, modern product builds",
-    description:
-      "We design and build high-performance web apps and sites with Next.js and TypeScript—integrations, dashboards, and automation included.",
-    backgroundImage: "/images/cityview/cityview-dashboard.png",
-    button: {
-      text: "Explore Software",
-      href: "/software",
-      variant: "primary",
-    },
-  },
-  {
-    title: "Stories",
-    subtitle: "AI-powered video + narrative craft",
-    description:
-      "From cinematic shorts to product explainers, we create story systems that build connection, earn attention, and drive action.",
-    backgroundImage: "/images/projects/kikits/MayaAndSpark.jpg",
-    button: {
-      text: "Explore Stories",
-      href: "/storytelling",
-      variant: "primary",
-    },
-  },
-  {
-    title: "Engagement",
-    subtitle: "Community, distribution, and growth loops",
-    description:
-      "We help brands show up consistently—building campaigns, content systems, and partnerships that turn attention into momentum.",
-    backgroundImage: "/images/okay-nwa/okay-nwa-dash.png",
-    button: {
-      text: "Explore Engagement",
-      href: "/engagement",
-      variant: "primary",
-    },
-  },
-  {
-    title: "Experiences",
-    subtitle: "Real-world moments, built like products",
-    description:
-      "We create interactive experiences—events, activations, and systems that feel alive, scale operationally, and leave a lasting impression.",
-    backgroundImage: "/images/planet-goodtimes/VampireBarCrawl.jpg",
-    button: {
-      text: "Explore Experiences",
-      href: "/experiences",
-      variant: "primary",
-    },
-  },
-];
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
       <Header />
-      <HeroCarousel slides={HeroSlides} />
+      <HeroVideo />
 
       {/* 5 service feature sections (alternating layout) */}
       <ServiceFeatureSection
@@ -87,7 +24,7 @@ export default function Home() {
         description="Placeholder: We clarify what you’re building, who it’s for, and why it matters—so every asset, feature, and campaign compounds toward the same outcome."
         ctaLabel="Learn about Strategy"
         ctaHref="/strategy"
-        imageSrc="/images/projects/uniting-wealth-partners/deck.jpeg"
+        imageSrc="/images/services/software/teacher3.jpg"
         imageAlt="Strategy placeholder image"
         imageSide="left"
       />
@@ -97,7 +34,7 @@ export default function Home() {
         description="Placeholder: We ship modern products with strong UX, clean architecture, and measurable performance—then automate the workflows around them."
         ctaLabel="Learn about Software"
         ctaHref="/software"
-        imageSrc="/images/cityview/cityview-dashboard.png"
+        imageSrc="/images/services/software/teacher.jpg"
         imageAlt="Software placeholder image"
         imageSide="right"
       />
@@ -107,7 +44,7 @@ export default function Home() {
         description="Placeholder: We create story systems—campaign films, explainers, and episodic worlds that make your message memorable and your brand feel alive."
         ctaLabel="Learn about Stories"
         ctaHref="/storytelling"
-        imageSrc="/images/projects/kikits/MayaAndSpark.jpg"
+        imageSrc="/images/services/experiences/bikers.jpg"
         imageAlt="Stories placeholder image"
         imageSide="left"
       />
@@ -117,7 +54,7 @@ export default function Home() {
         description="Placeholder: We build engagement engines that keep momentum—content pipelines, social systems, and partnerships that connect with real communities."
         ctaLabel="Learn about Engagement"
         ctaHref="/engagement"
-        imageSrc="/images/okay-nwa/okay-nwa-dash.png"
+        imageSrc="/images/services/experiences/couple.jpg"
         imageAlt="Engagement placeholder image"
         imageSide="right"
       />
@@ -127,7 +64,7 @@ export default function Home() {
         description="Placeholder: We design experiences with real operational leverage—interactive moments, live systems, and story-driven environments people want to share."
         ctaLabel="Learn about Experiences"
         ctaHref="/experiences"
-        imageSrc="/images/planet-goodtimes/VampireBarCrawl.jpg"
+        imageSrc="/images/services/experiences/biker_pov.jpg"
         imageAlt="Experiences placeholder image"
         imageSide="left"
       />
@@ -168,6 +105,89 @@ export default function Home() {
           },
         ]}
       />
+
+      {/* Nexie — Intelligence Layer */}
+      <section className="relative py-24 md:py-32 border-t border-[#3F395B]/50">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/nexie/Glowing_orb_with_202603271806.jpeg"
+            alt="Nexie intelligence layer"
+            fill
+            className="object-cover opacity-20"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/60" />
+        </div>
+        <div className="relative z-10 max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div className="text-center md:text-left">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#fc05b9] mb-4">
+                The Intelligence Layer
+              </p>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-6 leading-tight">
+                Meet Nexie
+              </h2>
+              <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                Most software works. Very little software <em>thinks</em>.
+                Nexie is the intelligence layer that sits across your apps,
+                workflows, and content — observing, deciding, and acting
+                in real time.
+              </p>
+              <p className="text-lg text-gray-300 leading-relaxed mb-10">
+                Powered by OpenClaw, Nexie transforms disconnected tools into a
+                cohesive, autonomous system that runs alongside your business.
+              </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-10">
+                <span className="px-4 py-2 rounded-lg bg-[#fc05b9]/10 border border-[#fc05b9]/30 text-[#CFC8CF] text-sm font-medium">
+                  Content Generation
+                </span>
+                <span className="px-4 py-2 rounded-lg bg-[#fc05b9]/10 border border-[#fc05b9]/30 text-[#CFC8CF] text-sm font-medium">
+                  Workflow Automation
+                </span>
+                <span className="px-4 py-2 rounded-lg bg-[#fc05b9]/10 border border-[#fc05b9]/30 text-[#CFC8CF] text-sm font-medium">
+                  Event Intelligence
+                </span>
+              </div>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                <Link
+                  href="/nexie"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-[#fc05b9] text-white font-semibold hover:bg-[#fc05b9]/90 transition-colors"
+                >
+                  Explore Nexie
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+                <Link
+                  href="/blog/introducing-nexie"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-[#3F395B] text-[#CFC8CF] font-semibold hover:border-[#fc05b9]/40 hover:text-[#fc05b9] transition-colors"
+                >
+                  Read the Blog
+                </Link>
+              </div>
+            </div>
+            <div className="relative w-full aspect-[3/2] max-w-md mx-auto md:max-w-none">
+              <div className="absolute inset-0 rounded-full bg-[#fc05b9]/5 blur-3xl" />
+              <Image
+                src="/images/nexie/nexie.jpg"
+                alt="Nexie — the intelligence layer powering everything we build"
+                fill
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Gallery section */}
       <section className="relative py-16 md:py-24 bg-black">

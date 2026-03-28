@@ -15,6 +15,8 @@ featured: true
 
 ## The intelligence layer powering everything we build
 
+![Nexie — the intelligence orb](/images/nexie/Glowing_orb_with_202603271806.jpeg)
+
 At Next Wave Agentic, we've spent years building platforms, tools, and experiences for clients across events, media, and digital products. Along the way, one thing became clear:
 
 Most software works.
@@ -31,6 +33,8 @@ It's the **intelligence layer** behind your entire ecosystem.
 ---
 
 ## The Problem: Too Many Tools, Not Enough Intelligence
+
+![Disconnected systems converging into Nexie](/images/nexie/Data_nodes_and_202603271806.jpeg)
 
 Businesses today are drowning in tools:
 
@@ -59,6 +63,8 @@ That's Nexie.
 
 ## What Nexie Actually Does
 
+![Nexie scanning and connecting systems](/images/nexie/AI_orb_scanning_202603271806.jpeg)
+
 Nexie connects to your apps, your data, and your workflows, then:
 
 - **observes** what's happening
@@ -80,6 +86,8 @@ Think of Nexie as:
 ## 6 Detailed Examples of Nexie in Action
 
 ### 1. Content at Scale Without a Creative Bottleneck
+
+![AI-powered content generation at scale](/images/nexie/Futuristic_content_generation_202603271806.jpeg)
 
 One of the biggest challenges for modern businesses is keeping up with content demand.
 
@@ -113,6 +121,8 @@ You go from struggling to post consistently to running a **fully automated conte
 
 ### 2. Real-Time Event Intelligence and Operations
 
+![Nexie powering real-time event intelligence](/images/nexie/Night_event_crowds_202603271806.jpeg)
+
 For platforms like Kikits and live event environments, Nexie becomes the operational backbone.
 
 It can:
@@ -134,6 +144,8 @@ You're no longer reacting during events. You're running **intelligent, data-driv
 ---
 
 ### 3. A CMS That Writes, Organizes, and Publishes Itself
+
+![Nexie auto-generating and organizing content](/images/nexie/Floating_article_cards_202603271806.jpeg)
 
 Traditional content management systems rely heavily on manual input.
 
@@ -159,6 +171,8 @@ Your platform becomes a **content machine** — not just a content container.
 
 ### 4. Agency Workflow Automation and Client Delivery
 
+![Nexie assembling presentations and workflows](/images/nexie/Presentation_slides_assembling_202603271806.jpeg)
+
 For agencies and service-based businesses, Nexie acts like an always-on team member.
 
 It can:
@@ -180,6 +194,8 @@ You reduce operational overhead and free up your team to focus on **strategy, cr
 ---
 
 ### 5. Intelligent Customer Experiences on Websites and Apps
+
+![Nexie embedded in a website interface](/images/nexie/Website_interface_with_202603271806.jpeg)
 
 Most websites today are static or reactive at best.
 
@@ -204,6 +220,8 @@ Higher engagement, better user experiences, and significantly improved conversio
 ---
 
 ### 6. Backend Automation That Actually Thinks
+
+![Nexie orchestrating backend workflows](/images/nexie/Glowing_orb_activating_202603271806.jpeg)
 
 Behind the scenes, Nexie uses OpenClaw to orchestrate complex workflows.
 
@@ -248,6 +266,8 @@ Each of these on its own is useful. Together, they create a system that **runs a
 
 ## Nexie Changes the Way Software Works
 
+![Before and after — disconnected tools vs Nexie](/images/nexie/Systems_connecting_to_202603271806.jpeg)
+
 Most platforms are built like tools.
 
 You open them.
@@ -267,6 +287,8 @@ It connects your tools into a **cohesive, intelligent system**.
 ---
 
 ## Built for the Next Wave
+
+![The future of intelligent software](/images/nexie/Futuristic_workspace_with_202603271806.jpeg)
 
 At Next Wave Agentic, we're not just building apps.
 We're building systems that **adapt, evolve, and operate**.
