@@ -41,6 +41,15 @@ export const projects: SiteProject[] = [
     tags: ["Events", "Product", "AI Video"],
   },
   {
+    id: "chasinpayson",
+    title: "Chasin Payson",
+    description:
+      "A high-energy event microsite and registration experience for Red Bull-supported shakeout ride activation in Bentonville.",
+    image: "/images/chasinpayson/chasinpayson_home.jpeg",
+    href: "/projects/chasinpayson",
+    tags: ["Events", "Web", "Experience"],
+  },
+  {
     id: "okay-nwa",
     title: "OkayNWA",
     description:
