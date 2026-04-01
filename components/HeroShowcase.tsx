@@ -171,7 +171,7 @@ export default function HeroShowcase({
                       {slide.button.href ? (
                         <Link
                           href={slide.button.href}
-                          className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#fc05b9] text-white font-semibold transition-all duration-300 hover:bg-[#fc05b9]/85 hover:gap-5"
+                          className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#4E79A7] text-white font-semibold transition-all duration-300 hover:bg-[#4E79A7]/85 hover:gap-5"
                         >
                           {slide.button.text}
                           <svg
@@ -191,7 +191,7 @@ export default function HeroShowcase({
                       ) : (
                         <button
                           onClick={slide.button.onClick}
-                          className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#fc05b9] text-white font-semibold transition-all duration-300 hover:bg-[#fc05b9]/85 hover:gap-5"
+                          className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#4E79A7] text-white font-semibold transition-all duration-300 hover:bg-[#4E79A7]/85 hover:gap-5"
                         >
                           {slide.button.text}
                         </button>

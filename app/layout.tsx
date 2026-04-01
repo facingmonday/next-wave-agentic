@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Next Wave Agentic",
   description:
-    "Where creativity, technology, and storytelling are built locally and launched globally.",
+    "A creative technology agency for brands that need sharper strategy, stronger storytelling, and digital experiences built to perform.",
   openGraph: {
     title: "Next Wave Agentic",
     description:
-      "Where creativity, technology, and storytelling are built locally and launched globally.",
+      "A creative technology agency for brands that need sharper strategy, stronger storytelling, and digital experiences built to perform.",
     type: "website",
     url: siteUrl,
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Next Wave Agentic",
     description:
-      "Where creativity, technology, and storytelling are built locally and launched globally.",
+      "A creative technology agency for brands that need sharper strategy, stronger storytelling, and digital experiences built to perform.",
     images: ["/images/next-wave-agentic.jpeg"],
   },
 };

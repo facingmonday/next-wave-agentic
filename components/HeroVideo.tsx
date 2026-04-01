@@ -50,7 +50,8 @@ export type HeroVideoProps = {
 };
 
 const overlayStyles = {
-  dark: "bg-gradient-to-r from-black/70 via-black/40 to-black/20",
+  dark:
+    "bg-[linear-gradient(110deg,rgba(0,0,0,0.88)_5%,rgba(0,0,0,0.55)_42%,rgba(0,0,0,0.2)_100%)]",
   light:
     "bg-gradient-to-r from-white/55 via-white/35 to-white/12 md:from-white/60 md:via-white/38 md:to-white/15",
 };
@@ -62,7 +63,7 @@ const textStyles = {
     sub: "text-gray-300",
     secondaryLink: "text-[#CFC8CF] hover:text-[#fc05b9]",
     primaryBtn:
-      "bg-[#fc05b9] text-white shadow-lg hover:bg-[#fc05b9]/85",
+      "bg-[#4E79A7] text-white shadow-lg hover:bg-[#4E79A7]/85",
     statValue: "text-[#CFC8CF]",
     statLabel: "text-[#CFC8CF]/65",
     statBorder: "border-[#CFC8CF]/20",
@@ -82,25 +83,25 @@ const textStyles = {
 };
 
 const DEFAULT_STATS: Stat[] = [
-  { value: "5+", label: "Years building" },
-  { value: "30+", label: "Projects shipped" },
+  { value: "30+", label: "Projects launched" },
+  { value: "End-to-end", label: "Strategy through launch" },
   { value: "NWA", label: "Based in Bentonville" },
 ];
 
 export function HeroVideo({
   videoId = "1177961991",
   variant = "dark",
-  eyebrow = "Next Wave Agentic",
+  eyebrow = "Creative technology agency",
   title = (
     <>
-      Strategy. Software.
+      Strategy. Stories.
       <br />
-      Stories that move.
+      Digital experiences that move.
     </>
   ),
-  subtitle = "We build AI-powered products, campaigns, and experiences — from concept to launch — for brands ready to lead.",
-  primaryCta = { label: "See our work", href: "/gallery" },
-  secondaryCta = { label: "Learn more", href: "/strategy" },
+  subtitle = "We help ambitious brands clarify their message, launch stronger digital experiences, and build campaigns people actually remember.",
+  primaryCta = { label: "Start a project", href: "/?contact=1" },
+  secondaryCta = { label: "See selected work", href: "/#featured-work" },
   stats = DEFAULT_STATS,
   logoSrc,
 }: HeroVideoProps) {
@@ -267,19 +268,19 @@ export function HeroVideo({
 
       <div className="relative z-[2] flex min-h-screen flex-col justify-center px-6 pb-24 pt-28 md:min-h-0 md:h-full md:px-12 lg:px-16 xl:px-20">
         <div className="mx-auto w-full max-w-7xl">
-          <div className="max-w-2xl text-left">
+          <div className="max-w-3xl text-left">
             <p
-              className={`text-xs font-semibold uppercase tracking-[0.25em] md:text-sm ${t.eyebrow}`}
+              className={`agency-kicker ${t.eyebrow}`}
             >
               {eyebrow}
             </p>
             <h1
-              className={`mt-4 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl ${t.heading}`}
+              className={`font-heading mt-6 max-w-4xl text-5xl font-semibold leading-[0.96] tracking-tight sm:text-6xl md:text-3xl lg:text-6xl ${t.heading}`}
             >
               {title}
             </h1>
             <p
-              className={`mt-6 text-base leading-relaxed sm:text-lg md:max-w-lg ${t.sub}`}
+              className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg md:text-xl ${t.sub}`}
             >
               {subtitle}
             </p>
@@ -315,22 +316,20 @@ export function HeroVideo({
 
           {stats.length > 0 && (
             <div
-              className={`mt-16 flex max-w-3xl flex-wrap items-end gap-4 border-t pt-6 sm:gap-8 sm:pt-8 md:mt-24 md:gap-12 ${t.statDivider}`}
+              className="mt-16 grid max-w-4xl gap-4 sm:grid-cols-3 md:mt-24"
             >
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={
-                    i > 0 ? `border-l pl-4 sm:pl-8 md:pl-12 ${t.statBorder}` : ""
-                  }
+                  className={`agency-panel rounded-3xl p-6`}
                 >
                   <p
-                    className={`text-2xl font-bold sm:text-3xl md:text-4xl ${t.statValue}`}
+                    className={`text-3xl font-bold sm:text-4xl ${t.statValue}`}
                   >
                     {s.value}
                   </p>
                   <p
-                    className={`mt-1 text-[10px] uppercase tracking-wider sm:text-xs ${t.statLabel}`}
+                    className={`mt-3 text-[10px] uppercase tracking-[0.24em] sm:text-xs ${t.statLabel}`}
                   >
                     {s.label}
                   </p>

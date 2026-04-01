@@ -5,6 +5,9 @@ export type SiteProject = {
   image: string;
   href: string;
   tags?: string[];
+  client?: string;
+  impact?: string;
+  services?: string[];
 };
 
 /**
@@ -21,6 +24,7 @@ export const projects: SiteProject[] = [
       "/images/scalelxp/hero/Group_collaboration_scene_202601111653_jj9ed.jpg",
     href: "/projects/scalelxp",
     tags: ["Education", "Simulation", "AI"],
+    services: ["App", "AI", "Media"],
   },
   {
     id: "cityviewcms",
@@ -30,6 +34,7 @@ export const projects: SiteProject[] = [
     image: "/images/cityview/cityview-dashboard.png",
     href: "/projects/cityviewcms",
     tags: ["CMS", "Civic", "AI"],
+    services: ["Web", "App", "AI"],
   },
   {
     id: "kikits",
@@ -39,6 +44,10 @@ export const projects: SiteProject[] = [
     image: "/images/projects/kikits/spokesperson.jpeg",
     href: "/projects/kikits",
     tags: ["Events", "Product", "AI Video"],
+    client: "Event platform launch",
+    impact:
+      "Brought product UX, launch storytelling, and campaign assets into one rollout so the platform could launch with a stronger market presence.",
+    services: ["App", "Web", "Video", "Marketing"],
   },
   {
     id: "chasinpayson",
@@ -48,6 +57,10 @@ export const projects: SiteProject[] = [
     image: "/images/chasinpayson/chasinpayson_home.jpeg",
     href: "/projects/chasinpayson",
     tags: ["Events", "Web", "Experience"],
+    client: "Activation and registration campaign",
+    impact:
+      "Designed a high-energy microsite and registration flow that matched the pace of the event and made the experience easy to share.",
+    services: ["Web", "Marketing", "Media"],
   },
   {
     id: "okay-nwa",
@@ -57,6 +70,7 @@ export const projects: SiteProject[] = [
     image: "/images/okay-nwa/okay-nwa-dash.png",
     href: "/projects/okay-nwa",
     tags: ["Events", "Community", "AI"],
+    services: ["App", "AI", "Marketing"],
   },
   {
     id: "lineup-booking",
@@ -66,6 +80,7 @@ export const projects: SiteProject[] = [
     image: "/images/lineup-booking/LineUpDudes.png",
     href: "/projects/lineup-booking",
     tags: ["Payments", "Marketplace", "Music"],
+    services: ["App", "Web", "Marketing"],
   },
   {
     id: "maya-spark",
@@ -75,16 +90,18 @@ export const projects: SiteProject[] = [
     image: "/images/projects/kikits/MayaAndSpark.jpg",
     href: "/projects/maya-spark",
     tags: ["Storytelling", "Experience", "AI"],
+    services: ["Video", "Media", "Events"],
   },
-  // {
-  //   id: "pedal-pals",
-  //   title: "Pedal Pals",
-  //   description:
-  //     "A character-driven bike safety initiative for kids—AI-powered storytelling built for community impact in Bentonville.",
-  //   image: "/images/projects/pedal-pals/crystal.jpg",
-  //   href: "/projects/pedal-pals",
-  //   tags: ["Community", "Education", "AI Video"],
-  // },
+  {
+    id: "pedal-pals",
+    title: "Pedal Pals",
+    description:
+      "A character-driven bike safety initiative for kids—AI-powered storytelling built for community impact in Bentonville.",
+    image: "/images/projects/pedal-pals/crystal.jpg",
+    href: "/projects/pedal-pals",
+    tags: ["Community", "Education", "AI Video"],
+    services: ["Video", "Media", "Marketing"],
+  },
   {
     id: "mrs",
     title: "Miller Risk Solutions",
@@ -93,6 +110,10 @@ export const projects: SiteProject[] = [
     image: "/images/MRS/MRS.png",
     href: "/projects/mrs",
     tags: ["Web", "Brand", "Content"],
+    client: "Insurance and risk advisory brand",
+    impact:
+      "Modernized the brand with a sharper website and content strategy built to create more trust and attract higher-intent leads.",
+    services: ["Web", "Brand", "Marketing"],
   },
   {
     id: "astro",
@@ -102,24 +123,27 @@ export const projects: SiteProject[] = [
     image: "/images/astro/astro.png",
     href: "/projects/astro",
     tags: ["App", "Operations", "Law Enforcement"],
+    services: ["App", "Web", "Operations"],
   },
-  // {
-  //   id: "nova-stone-capital-advisors",
-  //   title: "Nova Stone Capital Advisors",
-  //   description:
-  //     "A website redesign and social media strategy to modernize the brand and drive high-intent engagement.",
-  //   image: "/images/novastone/novastone-capital-advisors.jpg",
-  //   href: "/projects/nova-stone-capital-advisors",
-  //   tags: ["Web", "Brand", "Content"],
-  // },
+  {
+    id: "nova-stone-capital-advisors",
+    title: "Nova Stone Capital Advisors",
+    description:
+      "A website redesign and social media strategy to modernize the brand and drive high-intent engagement.",
+    image: "/images/novastone/novastone-capital-advisors.jpg",
+    href: "/projects/nova-stone-capital-advisors",
+    tags: ["Web", "Brand", "Content"],
+    services: ["Web", "Brand", "Marketing"],
+  },
   {
     id: "goodtimes-bentonville",
     title: "Goodtimes Bentonville",
     description:
       "Concierge service and event storytelling for The Town of GoodTimes—community engagement and experiences in Bentonville.",
-    image: "/images/planet-goodtimes/VampireBarCrawl.jpg",
+    image: "/images/goodtimes-bentonville/goodtimes-bentonville-logo.png",
     href: "/projects/goodtimes-bentonville",
     tags: ["Experience", "Events", "Engagement"],
+    services: ["Events", "Media", "Marketing"],
   },
   {
     id: "drop-in-displays",
@@ -129,6 +153,7 @@ export const projects: SiteProject[] = [
     image: "/images/drop-in-displays/drop-in-displays.jpg",
     href: "/projects/drop-in-displays",
     tags: ["Events", "Product", "App"],
+    services: ["App", "Events", "Media"],
   },
   {
     id: "lytnt",
@@ -138,5 +163,6 @@ export const projects: SiteProject[] = [
     image: "/images/lytnt/lytnt_black_icon.jpg",
     href: "/projects/lytnt",
     tags: ["Product", "App", "AI"],
+    services: ["App", "AI", "Media"],
   },
 ];

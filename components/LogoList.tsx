@@ -16,19 +16,20 @@ export interface LogoListProps {
 }
 
 export function LogoList({
-  title = "People we’ve worked with",
-  subtitle = "A few teams and brands we’ve partnered with across strategy, software, storytelling, engagement, and experiences.",
+  title = "Trusted by teams with real stakes",
+  subtitle = "A selection of brands, schools, destinations, and operators we have supported across strategy, digital products, storytelling, and launch campaigns.",
   logos,
   className = "",
 }: LogoListProps) {
   return (
     <section
-      className={`relative py-16 md:py-24 bg-black overflow-x-hidden ${className}`}
+      className={`agency-shell relative overflow-x-hidden py-16 md:py-24 ${className}`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <ContentReveal direction="up" duration={1.1}>
           <div className="text-center mb-10 md:mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#CFC8CF] mb-4">
+            <p className="agency-kicker justify-center mb-4">Proof and partnerships</p>
+            <h2 className="font-heading text-4xl md:text-6xl font-semibold text-[#CFC8CF] mb-4">
               {title}
             </h2>
             <p className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto">
@@ -41,14 +42,14 @@ export function LogoList({
           {logos.map((logo) => (
             <div
               key={logo.src}
-              className="flex items-center justify-center w-full"
+              className="agency-panel flex items-center justify-center w-full rounded-[1.75rem] p-6"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={240}
                 height={120}
-                className="w-full h-auto object-contain rounded-xl border border-[#3f395b]"
+                className="h-auto w-full object-contain transition duration-300"
               />
             </div>
           ))}

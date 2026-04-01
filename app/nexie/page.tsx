@@ -120,7 +120,7 @@ export default function NexiePage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="#use-cases"
-                className="px-8 py-4 rounded-lg bg-[#fc05b9] text-white font-semibold hover:bg-[#fc05b9]/90 transition-colors"
+                className="px-8 py-4 rounded-lg bg-[#4E79A7] text-white font-semibold hover:bg-[#4E79A7]/90 transition-colors"
               >
                 See Nexie in Action
               </Link>
@@ -650,7 +650,7 @@ export default function NexiePage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/blog/introducing-nexie"
-                className="px-8 py-4 rounded-lg bg-[#fc05b9] text-white font-semibold hover:bg-[#fc05b9]/90 transition-colors"
+                className="px-8 py-4 rounded-lg bg-[#4E79A7] text-white font-semibold hover:bg-[#4E79A7]/90 transition-colors"
               >
                 Read the Full Story
               </Link>

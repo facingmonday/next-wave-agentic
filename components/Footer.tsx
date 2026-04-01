@@ -1,33 +1,40 @@
+import Link from "next/link";
 import { ContentReveal } from "./ContentReveal";
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white py-16 px-4">
-      <div className="max-w-6xl mx-auto">
+    <footer className="border-t border-white/8 bg-black px-4 py-16 text-white">
+      <div className="mx-auto max-w-6xl">
         <ContentReveal direction="opacity" duration={1}>
-          <div className="text-center">
-            <h3 className="text-3xl font-bold mb-4 font-accent">
+          <div className="agency-panel rounded-[2rem] px-8 py-12 text-center md:px-12">
+            <p className="agency-kicker justify-center mb-5">Next Wave Agentic</p>
+            <h3 className="mb-4 font-accent text-4xl font-semibold text-[#CFC8CF] md:text-5xl">
               Next Wave Agentic
             </h3>
-            <p className="text-gray-400 mb-6">
-              Where creativity, technology, and storytelling are built locally
-              and launched globally.
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-400">
+              Strategy, storytelling, and digital systems for brands that want
+              to launch sharper and grow with more momentum.
             </p>
-            <div className="flex flex-wrap justify-center gap-8 text-gray-300">
-              <div>
-                <p className="font-semibold mb-2">NWA Apps</p>
-                <p className="text-sm">Engineering & Development</p>
-              </div>
-              <div>
-                <p className="font-semibold mb-2">Planet Goodtimes</p>
-                <p className="text-sm">Creative & Storytelling</p>
-              </div>
-              <div>
-                <p className="font-semibold mb-2">Kikits</p>
-                <p className="text-sm">Events & Engagement</p>
-              </div>
+            <div className="mb-10 flex flex-wrap justify-center gap-3">
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-[#CFC8CF]/70">
+                Strategy
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-[#CFC8CF]/70">
+                Websites and products
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-[#CFC8CF]/70">
+                Campaign storytelling
+              </span>
             </div>
-            <p className="text-gray-500 text-sm mt-8">
+            <div className="mb-10 flex justify-center">
+              <Link
+                href="/?contact=1"
+                className="inline-flex items-center rounded-full bg-[#4E79A7] px-7 py-3 font-semibold text-white transition hover:bg-[#4E79A7]/90"
+              >
+                Start a project
+              </Link>
+            </div>
+            <p className="text-sm text-gray-500">
               © {new Date().getFullYear()} Next Wave Agentic. All rights
               reserved.
             </p>
