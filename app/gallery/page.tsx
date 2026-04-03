@@ -24,7 +24,7 @@ export default function GalleryPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative z-30 py-16 md:py-24 bg-black">
+      <section className="relative z-30 py-16 md:pt-24 pb-0 bg-black">
         <FuturisticBackground
           pattern="flowing"
           intensity="moderate"
@@ -50,7 +50,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Video Gallery Section */}
-      <section className="relative py-16 md:py-24 bg-black">
+      <section className="relative py-16 md:py-12 bg-black">
         <div className="max-w-7xl mx-auto px-4">
           <ContentReveal direction="up" duration={1.2} startOffset="top 80%">
             <h2 className="text-3xl md:text-4xl font-bold text-[#CFC8CF] mb-8 md:mb-12">
@@ -58,90 +58,89 @@ export default function GalleryPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {galleryVideos.map((video) => (
-                    <div
-                      key={video.id}
-                      onClick={() => setSelectedVideo(video)}
-                      className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20 cursor-pointer"
-                    >
-                      <div className="relative aspect-video bg-slate-800 overflow-hidden rounded-t-xl">
-                        <VimeoVideo
-                          vimeoUrl={video.videoUrl}
-                          controls={true}
-                          responsive={true}
-                          autoplay={false}
-                          muted={true}
-                          className="rounded-t-xl w-full h-full"
-                        />
-                        {/* Fullscreen Button Overlay */}
-                        <div className="absolute top-4 right-4 z-10">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setSelectedVideo(video);
-                            }}
-                            className="flex items-center justify-center w-10 h-10 rounded-full bg-[#3F395B]/90 hover:bg-[#4E79A7] text-[#CFC8CF] transition-all duration-300 backdrop-blur-sm hover:scale-110"
-                            aria-label={`Open ${video.title} in dialog`}
-                            title="Open video in dialog"
-                          >
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-                              />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="p-4 md:p-6">
-                        <h3 className="text-lg md:text-xl font-semibold text-[#CFC8CF] mb-2 group-hover:text-[#4E79A7] transition-colors">
-                          {video.title}
-                        </h3>
-                        {video.description && (
-                          <p
-                            className={`text-sm text-gray-400 line-clamp-2 ${
-                              video.teaser ? "mb-2" : "mb-3"
-                            }`}
-                          >
-                            {video.description}
-                          </p>
-                        )}
-                        {video.teaser && (
-                          <p className="text-xs text-[#4E79A7]/90 italic mb-3">
-                            {video.teaser}
-                          </p>
-                        )}
-                        {video.projectHref && (
-                          <Link
-                            href={video.projectHref}
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 text-sm font-medium text-[#4E79A7] hover:text-[#4E79A7]/80 transition-colors"
-                          >
-                            More Info
-                            <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                              />
-                            </svg>
-                          </Link>
-                        )}
-                      </div>
+                <div
+                  key={video.id}
+                  onClick={() => setSelectedVideo(video)}
+                  className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20 cursor-pointer"
+                >
+                  <div className="relative aspect-video bg-slate-800 overflow-hidden rounded-t-xl">
+                    <VimeoVideo
+                      vimeoUrl={video.videoUrl}
+                      controls={true}
+                      responsive={true}
+                      autoplay={false}
+                      muted={true}
+                      className="rounded-t-xl w-full h-full"
+                    />
+                    {/* Fullscreen Button Overlay */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedVideo(video);
+                        }}
+                        className="flex items-center justify-center w-10 h-10 rounded-full bg-[#3F395B]/90 hover:bg-[#4E79A7] text-[#CFC8CF] transition-all duration-300 backdrop-blur-sm hover:scale-110"
+                        aria-label={`Open ${video.title} in dialog`}
+                        title="Open video in dialog"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                          />
+                        </svg>
+                      </button>
                     </div>
-                  ))}
+                  </div>
+                  <div className="p-4 md:p-6">
+                    <h3 className="text-lg md:text-xl font-semibold text-[#CFC8CF] mb-2 group-hover:text-[#4E79A7] transition-colors">
+                      {video.title}
+                    </h3>
+                    {video.description && (
+                      <p
+                        className={`text-sm text-gray-400 line-clamp-2 ${video.teaser ? "mb-2" : "mb-3"
+                          }`}
+                      >
+                        {video.description}
+                      </p>
+                    )}
+                    {video.teaser && (
+                      <p className="text-xs text-[#4E79A7]/90 italic mb-3">
+                        {video.teaser}
+                      </p>
+                    )}
+                    {video.projectHref && (
+                      <Link
+                        href={video.projectHref}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-[#4E79A7] hover:text-[#4E79A7]/80 transition-colors"
+                      >
+                        More Info
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </ContentReveal>
         </div>

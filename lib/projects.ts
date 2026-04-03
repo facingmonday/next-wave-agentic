@@ -50,6 +50,19 @@ export const projects: SiteProject[] = [
     services: ["App", "Web", "Video", "Marketing"],
   },
   {
+    id: "arkansas-graveler",
+    title: "Arkansas Graveler",
+    description:
+      "A seven-day gravel ride through the Arkansas Delta—promo film blending AI cyclists, real Delta locations, and event kit for a grounded, cinematic sell.",
+    image: "/images/arkansas-graveler/gravel-road.jpg",
+    href: "/projects/arkansas-graveler",
+    tags: ["Storytelling", "AI Video", "Experience"],
+    client: "Multi-day gravel cycling event",
+    impact:
+      "Showcased the route and vibe with AI talent composited into authentic Arkansas scenery and rider uniforms—so the piece feels like the real event, not generic stock.",
+    services: ["Video", "AI", "Media"],
+  },
+  {
     id: "chasinpayson",
     title: "Chasin Payson",
     description:

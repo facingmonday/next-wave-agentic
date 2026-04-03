@@ -46,6 +46,18 @@ const APP_WEBSITE_TAGS = [
 export const galleryVideos: GalleryVideoItem[] = [
   {
     type: "video",
+    id: "arkansas-graveler-promo",
+    videoUrl: "https://vimeo.com/1170723192?share=copy&fl=sv&fe=ci",
+    thumbnailUrl: "/images/arkansas-graveler/gravel-road.jpg",
+    title: "Arkansas Graveler",
+    description:
+      "Seven days of gravel through the Arkansas Delta—AI cyclists placed in real locations with event uniforms for a promo that feels true to the ride.",
+    projectHref: "/projects/arkansas-graveler",
+    teaser:
+      "AI-meets-real-world cycling promo: Delta scenery, mud, fields, and kit that riders might wear on event week.",
+  },
+  {
+    type: "video",
     id: "gallery-vimeo-1168643448",
     videoUrl: "https://vimeo.com/1168643448?share=copy&fl=sv&fe=ci",
     title: "Goodtimes Bentonville",
