@@ -15,6 +15,16 @@ featured: false
 
 ## Seven Days Through the Delta
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; margin: 0 0 1.5rem 0;">
+  <iframe
+    src="https://player.vimeo.com/video/1170723192"
+    title="Arkansas Graveler promo video"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
 Arkansas Graveler is not a one-day ride.
 
 It is a seven-day gravel experience that moves through the Delta in Arkansas, carrying riders across long roads, open fields, mud, towns, and the kind of landscape that gives an event its identity.
