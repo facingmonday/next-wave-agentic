@@ -26,7 +26,6 @@ const homeLogos = [
     src: "/images/logos/novastonecapitaladvisors.jpg",
     alt: "NovaStone Capital Advisors",
   },
-  { src: "/images/logos/visitbentonville.jpg", alt: "Visit Bentonville" },
   {
     src: "/images/logos/discoverbellavista.jpg",
     alt: "Discover Bella Vista",
@@ -42,6 +41,19 @@ const homeLogos = [
   {
     src: "/images/logos/ropeswing.jpg",
     alt: "Ropeswing",
+  },
+  {
+    src: "/images/logos/threecolts.jpg",
+    alt: "Threecolts",
+  },
+  {
+    src: "/images/logos/colliers.jpg",
+    alt: "Colliers International",
+  },
+  { src: "/images/logos/red-bull.jpg", alt: "Red Bull" },
+  {
+    src: "/images/logos/appellatetech.jpg",
+    alt: "Appellate",
   },
 ];
 
