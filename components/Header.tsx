@@ -3,13 +3,12 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { ContactFormModal } from "@/components/ContactFormModal";
+import { useRouter } from "next/navigation";
+import { openStartProjectChat } from "@/components/chat-modal";
+
 export function Header() {
   const router = useRouter();
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
@@ -20,17 +19,6 @@ export function Header() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-  };
-
-  const openContactForm = () => {
-    setIsContactFormOpen(true);
-  };
-
-  const closeContactForm = () => {
-    setIsContactFormOpen(false);
-    if (typeof window !== "undefined" && window.location.search.includes("contact=1")) {
-      router.replace(pathname);
-    }
   };
 
   // Close dropdown when clicking outside (desktop)
@@ -53,16 +41,6 @@ export function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isDropdownOpen, isMenuOpen]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.location.search.includes("contact=1")) {
-      const timer = window.setTimeout(() => {
-        setIsContactFormOpen(true);
-      }, 0);
-
-      return () => window.clearTimeout(timer);
-    }
-  }, []);
 
   return (
     <header
@@ -166,9 +144,8 @@ export function Header() {
               Gallery
             </Link>
             <button
-              onClick={() => {
-                openContactForm();
-              }}
+              type="button"
+              onClick={() => openStartProjectChat()}
               className="inline-flex items-center rounded-full border border-[#4E79A7]/35 bg-[#4E79A7] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#4E79A7]/15 transition hover:bg-[#4E79A7]/90"
             >
               Start a project
@@ -368,9 +345,10 @@ export function Header() {
             Gallery
           </button>
           <button
+            type="button"
             onClick={() => {
               closeMenu();
-              openContactForm();
+              openStartProjectChat();
             }}
             className="w-full rounded-full bg-[#4E79A7] px-5 py-3 text-left text-base font-semibold text-white transition hover:bg-[#4E79A7]/90"
           >
@@ -378,7 +356,6 @@ export function Header() {
           </button>
         </nav>
       </div>
-      <ContactFormModal isOpen={isContactFormOpen} onClose={closeContactForm} />
     </header>
   );
 }

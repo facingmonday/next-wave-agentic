@@ -6,8 +6,34 @@ import {
   CHAT_MODAL_CLOSE_EVENT,
 } from "@/lib/smooth-scroll";
 
-/** Dispatch this event with { detail: { prompt: string } } to open chat with pre-filled prompt */
+/** Dispatch this event with { detail: { prompt?: string; autoSend?: boolean } } */
 export const CHAT_OPEN_WITH_PROMPT_EVENT = "nwa-open-chat";
+
+export type OpenChatModalOptions = {
+  /** When true (with a non-empty prompt), sends that message once the panel is ready. */
+  autoSend?: boolean;
+};
+
+/** Open the floating chat panel; optional prompt pre-fills the composer when non-empty. */
+export function openChatModal(prompt?: string, options?: OpenChatModalOptions) {
+  if (typeof window === "undefined") return;
+  const trimmed =
+    typeof prompt === "string" && prompt.trim() ? prompt.trim() : undefined;
+  const detail: { prompt?: string; autoSend?: boolean } = {};
+  if (trimmed) detail.prompt = trimmed;
+  if (trimmed && options?.autoSend) detail.autoSend = true;
+  window.dispatchEvent(
+    new CustomEvent(CHAT_OPEN_WITH_PROMPT_EVENT, { detail }),
+  );
+}
+
+export const START_PROJECT_CHAT_PROMPT =
+  "I'm interested in starting a project";
+
+/** Opens chat with the standard “start a project” message and submits it to begin the thread. */
+export function openStartProjectChat() {
+  openChatModal(START_PROJECT_CHAT_PROMPT, { autoSend: true });
+}
 
 type Message = { id: string; role: "user" | "assistant"; content: string };
 const CHAT_RESPONSE_ID_STORAGE_KEY = "nwa-chat-previous-response-id";
@@ -79,6 +105,7 @@ export default function ChatModal() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const sendRef = useRef<(preset?: string) => Promise<void>>(async () => {});
 
   const adjustHeight = useAutoResizeTextarea(textareaRef);
   const close = useCallback(() => {
@@ -122,14 +149,20 @@ export default function ChatModal() {
 
   // Listen for open-with-prompt from other parts of the app (or open-only when no prompt)
   useEffect(() => {
-    const handler = (e: CustomEvent<{ prompt?: string }>) => {
+    const handler = (e: CustomEvent<{ prompt?: string; autoSend?: boolean }>) => {
       const prompt = e.detail?.prompt;
-      if (typeof prompt === "string" && prompt.trim()) {
-        setInput(prompt.trim());
-      }
+      const trimmed =
+        typeof prompt === "string" && prompt.trim() ? prompt.trim() : "";
+      if (trimmed) setInput(trimmed);
       setIsOpen(true);
       adjustHeight();
       setTimeout(() => textareaRef.current?.focus(), 0);
+
+      if (e.detail?.autoSend && trimmed) {
+        window.setTimeout(() => {
+          void sendRef.current(trimmed);
+        }, 0);
+      }
     };
     window.addEventListener(
       CHAT_OPEN_WITH_PROMPT_EVENT,
@@ -298,6 +331,8 @@ export default function ChatModal() {
     }
   };
 
+  sendRef.current = send;
+
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -355,6 +390,36 @@ export default function ChatModal() {
         >
           <div className="chat-modal__panel">
             <header className="chat-modal__header">
+              {previousResponseId ? (
+                <button
+                  type="button"
+                  onClick={clearChatHistory}
+                  disabled={isLoading}
+                  className="chat-modal__clear-btn flex-shrink-0"
+                  aria-label="Clear chat history"
+                  title="Clear chat history"
+                >
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.25"
+                    aria-hidden
+                  >
+                    <path
+                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M10 11v6M14 11v6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              ) : null}
               <span className="chat-modal__title">Chat</span>
               <button
                 type="button"
@@ -408,36 +473,6 @@ export default function ChatModal() {
             </div>
 
             <div className="chat-modal__composer">
-              {previousResponseId && (
-                <button
-                  type="button"
-                  onClick={clearChatHistory}
-                  disabled={isLoading}
-                  className="chat-modal__clear-btn flex-shrink-0"
-                  aria-label="Clear chat history"
-                  title="Clear chat history"
-                >
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.25"
-                    aria-hidden
-                  >
-                    <path
-                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M10 11v6M14 11v6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              )}
               <textarea
                 ref={textareaRef}
                 id="concierge-chat-input"

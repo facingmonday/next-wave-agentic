@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/lib/smooth-scroll";
 import ChatModal from "@/components/chat-modal";
+import { ChatContactQuerySync } from "@/components/ChatContactQuerySync";
 
 const exo2 = Exo_2({
   variable: "--font-exo2",
@@ -50,7 +52,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${exo2.variable} antialiased`}>
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <Suspense fallback={null}>
+            <ChatContactQuerySync />
+          </Suspense>
+          {children}
+        </SmoothScrollProvider>
         <ChatModal />
       </body>
     </html>

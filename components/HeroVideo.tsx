@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { openStartProjectChat } from "@/components/chat-modal";
 import {
   useCallback,
   useEffect,
@@ -37,13 +38,23 @@ function isVimeoReadyMessage(e: MessageEvent): boolean {
 
 type Stat = { value: string; label: string };
 
+export type HeroPrimaryCta =
+  | { label: string; href: string }
+  | { label: string; openChat: true };
+
+function isChatPrimaryCta(
+  cta: HeroPrimaryCta,
+): cta is { label: string; openChat: true } {
+  return "openChat" in cta && cta.openChat === true;
+}
+
 export type HeroVideoProps = {
   videoId?: string;
   variant?: "dark" | "light";
   eyebrow?: string;
   title?: ReactNode;
   subtitle?: string;
-  primaryCta?: { label: string; href: string };
+  primaryCta?: HeroPrimaryCta;
   secondaryCta?: { label: string; href: string };
   stats?: Stat[];
   logoSrc?: string;
@@ -100,7 +111,7 @@ export function HeroVideo({
     </>
   ),
   subtitle = "We help ambitious brands clarify their message, launch stronger digital experiences, and build campaigns people actually remember.",
-  primaryCta = { label: "Start a project", href: "/?contact=1" },
+  primaryCta = { label: "Start a project", openChat: true },
   secondaryCta = { label: "See selected work", href: "/#featured-work" },
   stats = DEFAULT_STATS,
   logoSrc,
@@ -285,12 +296,22 @@ export function HeroVideo({
               {subtitle}
             </p>
             <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <Link
-                href={primaryCta.href}
-                className={`inline-flex h-12 items-center rounded-full px-8 text-sm font-semibold transition ${t.primaryBtn}`}
-              >
-                {primaryCta.label}
-              </Link>
+              {isChatPrimaryCta(primaryCta) ? (
+                <button
+                  type="button"
+                  onClick={() => openStartProjectChat()}
+                  className={`inline-flex h-12 items-center rounded-full px-8 text-sm font-semibold transition ${t.primaryBtn}`}
+                >
+                  {primaryCta.label}
+                </button>
+              ) : (
+                <Link
+                  href={primaryCta.href}
+                  className={`inline-flex h-12 items-center rounded-full px-8 text-sm font-semibold transition ${t.primaryBtn}`}
+                >
+                  {primaryCta.label}
+                </Link>
+              )}
               <Link
                 href={secondaryCta.href}
                 className={`group inline-flex items-center gap-2 text-sm font-medium transition ${t.secondaryLink}`}

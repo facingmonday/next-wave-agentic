@@ -1,7 +1,7 @@
 "use client";
 
 import { ContentReveal } from "@/components/ContentReveal";
-import { CHAT_OPEN_WITH_PROMPT_EVENT } from "@/components/chat-modal";
+import { openChatModal } from "@/components/chat-modal";
 
 const SERVICE_ITEMS = [
   "Strategy: Clarify your vision, positioning, and roadmap",
@@ -10,14 +10,6 @@ const SERVICE_ITEMS = [
   "Engagement: Content systems and community growth",
   "Experiences: Events and activations that connect",
 ];
-
-function openChat() {
-  if (typeof window !== "undefined") {
-    window.dispatchEvent(
-      new CustomEvent(CHAT_OPEN_WITH_PROMPT_EVENT, { detail: {} })
-    );
-  }
-}
 
 export function ProjectHelpCTA() {
   return (
@@ -48,7 +40,7 @@ export function ProjectHelpCTA() {
             <div className="text-center">
               <button
                 type="button"
-                onClick={openChat}
+                onClick={() => openChatModal()}
                 className="inline-block px-8 py-4 bg-[#4E79A7] text-[#CFC8CF] font-semibold text-lg rounded-lg hover:bg-[#4E79A7]/90 transition-colors"
               >
                 Let&apos;s talk about your project

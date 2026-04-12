@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ContentReveal } from "./ContentReveal";
+import { StartProjectChatButton } from "@/components/StartProjectChatButton";
 
 export function Footer() {
   return (
@@ -27,12 +27,7 @@ export function Footer() {
               </span>
             </div>
             <div className="mb-10 flex justify-center">
-              <Link
-                href="/?contact=1"
-                className="inline-flex items-center rounded-full bg-[#4E79A7] px-7 py-3 font-semibold text-white transition hover:bg-[#4E79A7]/90"
-              >
-                Start a project
-              </Link>
+              <StartProjectChatButton className="inline-flex items-center rounded-full bg-[#4E79A7] px-7 py-3 font-semibold text-white transition hover:bg-[#4E79A7]/90" />
             </div>
             <p className="text-sm text-gray-500">
               © {new Date().getFullYear()} Next Wave Agentic. All rights

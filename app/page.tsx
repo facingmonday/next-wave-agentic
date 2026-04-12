@@ -9,6 +9,7 @@ import { PortfolioCarousel } from "@/components/PortfolioCarousel";
 import { ViewMoreLink } from "@/components/ViewMoreLink";
 import Image from "next/image";
 import Link from "next/link";
+import { StartProjectChatButton } from "@/components/StartProjectChatButton";
 import { projects } from "@/lib/projects";
 import { getAllPosts } from "@/lib/blog";
 
@@ -116,7 +117,6 @@ export default function Home() {
           </>
         }
         subtitle="Next Wave Agentic brings strategy, storytelling, websites, campaigns, and intelligent systems together so ambitious teams can launch with clarity and grow with momentum."
-        primaryCta={{ label: "Start a project", href: "/?contact=1" }}
         secondaryCta={{ label: "See selected work", href: "/#featured-work" }}
         stats={[
           { value: "30+", label: "Projects launched across web, campaigns, and experiences" },
@@ -635,12 +635,7 @@ export default function Home() {
             or the campaign needs a stronger system behind it.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/?contact=1"
-              className="inline-flex items-center rounded-full bg-[#4E79A7] px-8 py-4 font-semibold text-white transition hover:bg-[#4E79A7]/90"
-            >
-              Start a project
-            </Link>
+            <StartProjectChatButton className="inline-flex items-center rounded-full bg-[#4E79A7] px-8 py-4 font-semibold text-white transition hover:bg-[#4E79A7]/90" />
             <Link
               href="/#featured-work"
               className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-8 py-4 font-semibold text-[#CFC8CF] transition hover:bg-white/10"
