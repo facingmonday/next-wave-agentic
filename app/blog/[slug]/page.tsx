@@ -28,15 +28,33 @@ export async function generateMetadata({
     return { title: "Post Not Found | Next Wave Agentic" };
   }
 
+  const pagePath = `/blog/${post.slug}`;
+
   return {
     title: `${post.title} | Next Wave Agentic`,
     description: post.excerpt,
+    alternates: {
+      canonical: pagePath,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: pagePath,
       type: "article",
       publishedTime: post.date,
       authors: [post.author.name],
+      images: [
+        {
+          url: post.coverImage,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.coverImage],
     },
   };
 }
