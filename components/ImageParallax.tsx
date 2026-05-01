@@ -62,6 +62,8 @@ export function ImageParallax({
         minHeight: "100vh",
       }}
     >
+      {/* Native img: GSAP targets this node for parallax transform */}
+      {/* eslint-disable-next-line @next/next/no-img-element -- ref + gsap.set require DOM img */}
       <img
         ref={imageRef}
         src={imageSrc}
