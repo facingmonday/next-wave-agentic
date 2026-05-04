@@ -17,7 +17,7 @@ featured: true
 
 Every parent who has ever watched their kid ride to school knows the same quiet worry:
 
-> *Is this the safe way? Are there enough adults? Will they make it there together?*
+> _Is this the safe way? Are there enough adults? Will they make it there together?_
 
 For decades, the answer has been the same: **walking school buses**. Groups of kids and adults walking together along a known route, picking up riders at designated stops along the way. Safer. More social. Less car traffic around schools.
 
@@ -41,7 +41,7 @@ Three things make a bike train work, and all three are exactly what the Bike Tra
 
 ![Crossing guard helping children bike safely through an intersection](/images/blogs/bike-train-ar/marketing/crossing-guard-with-202603301536.jpeg)
 
-The hard part has never been the *idea*. The hard part has been the **logistics** — drawing the route, agreeing on stops, getting families the schedule, and keeping it all up to date when something changes.
+The hard part has never been the _idea_. The hard part has been the **logistics** — drawing the route, agreeing on stops, getting families the schedule, and keeping it all up to date when something changes.
 
 That's the gap we set out to close.
 
@@ -51,7 +51,7 @@ That's the gap we set out to close.
 
 Bike Train AR is a web application for creating, managing, and sharing safe bike routes for schools and communities. It is intentionally simple on the surface — and that simplicity took a lot of work.
 
-![Bike Train AR home page](/images/blogs/bike-train-ar/screenshots/home.jpg)
+![Bike Train AR home page](/images/blogs/bike-train-ar/screenshots/bike-train-ar-homepage.jpg)
 
 A parent, teacher, or community organizer can:
 
@@ -69,9 +69,9 @@ Once a route is published, every family in the group has the same source of trut
 
 The flow is intentionally short. We tested a lot of ideas, and the four-step path below is the one that real organizers — not engineers — could finish in about five minutes.
 
-![How it works overview](/images/blogs/bike-train-ar/screenshots/how-it-works.jpg)
-
 **1. Sign up.** Create a free account in seconds. No setup fees, no contract.
+
+![Sign Up](/images/blogs/bike-train-ar/screenshots/profile.jpg)
 
 **2. Create a group.** Add your school, neighborhood, or bike train team. Invite other parents, teachers, and organizers.
 
@@ -106,7 +106,7 @@ Underneath the simple UI is a modern, type-safe stack chosen for reliability, sp
 ### Identity & Data
 
 - **[Auth.js v5](https://authjs.dev)** handles authentication with email/password credentials. Passwords are hashed; sessions are signed; nothing leaks into the client bundle.
-- **[MongoDB](https://www.mongodb.com)** with **[Mongoose](https://mongoosejs.com)** stores users, groups, maps, and invites. The schemas are intentionally small — the platform is about *routes and people*, not data warehousing.
+- **[MongoDB](https://www.mongodb.com)** with **[Mongoose](https://mongoosejs.com)** stores users, groups, maps, and invites. The schemas are intentionally small — the platform is about _routes and people_, not data warehousing.
 
 ![User profile in Bike Train AR](/images/blogs/bike-train-ar/screenshots/profile.jpg)
 
@@ -161,13 +161,13 @@ The hardest design problem with civic tech isn't the engineering. It's making so
 A few principles guided the build:
 
 - **Defaults that work.** Every new map starts private. Visibility upgrades are deliberate, not accidental.
-- **Plain-language labels.** No "geocoding," no "bbox," no "snap-to-roads radius." We say *Search address* and *Add stop*.
+- **Plain-language labels.** No "geocoding," no "bbox," no "snap-to-roads radius." We say _Search address_ and _Add stop_.
 - **Forgiving editing.** Drag a stop to fix it. Delete and redraw without losing the rest of the route. Undo when something goes wrong.
 - **Public viewer first.** The thing families see is the thing we polished hardest.
 
 ![Family biking toward school](/images/blogs/bike-train-ar/marketing/family-biking-toward-202603301607.jpeg)
 
-The result is software that disappears. Parents talk about *the route* and *the schedule*, not *the app*. That's the goal.
+The result is software that disappears. Parents talk about _the route_ and _the schedule_, not _the app_. That's the goal.
 
 ---
 
@@ -177,7 +177,7 @@ It's tempting to file Bike Train AR under "transportation app," but that underse
 
 When a school posts a route, it's not just publishing a map. It's:
 
-- Telling parents *we have a plan*
+- Telling parents _we have a plan_
 - Inviting families to ride together
 - Reducing car congestion at drop-off
 - Encouraging kids to be physically active
