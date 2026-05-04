@@ -132,26 +132,6 @@ With **[SendGrid](https://sendgrid.com)** configured, the app sends:
 
 ![Dashboard view](/images/blogs/bike-train-ar/screenshots/dashboard.jpg)
 
-### Project Structure
-
-The repo is organized around how the product actually works, not how the framework wants you to organize it:
-
-```text
-app/
-  (auth)/          # Login and signup pages
-  (dashboard)/     # Authenticated pages: dashboard, maps, groups, profile
-  map/[slug]/      # Public map viewer
-  api/             # API routes
-components/
-  layout/          # Header, footer, dashboard shell
-  map/             # Mapbox canvas, stop panel, geocoder, viewer
-  ui/              # Reusable UI components
-lib/               # Auth config, DB connection, validations
-models/            # Mongoose schemas (User, Group, Map, Invite)
-```
-
-That structure makes a real difference when a new contributor joins. They can find the public viewer in one place, the dashboard in another, and never have to wonder which `page.tsx` they're staring at.
-
 ---
 
 ## Designing for Non-Technical Users
