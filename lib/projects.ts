@@ -178,4 +178,17 @@ export const projects: SiteProject[] = [
     tags: ["Product", "App", "AI"],
     services: ["App", "AI", "Media"],
   },
+  {
+    id: "bike-train-ar",
+    title: "Bike Train AR",
+    description:
+      "A web app for schools, neighborhoods, and organizers to create, share, and manage safe bike routes for students and families. A project of Arkansas Moves.",
+    image: "/images/bike-train-ar/bike-train-ar-logo.png",
+    href: "/projects/bike-train-ar",
+    tags: ["Web", "App", "Civic", "Community"],
+    client: "Arkansas Moves",
+    impact:
+      "Gave schools, neighborhoods, and community organizers a single tool to plan, share, and manage safe bike routes—turning safer routes to school into something any parent or teacher can build in minutes.",
+    services: ["Web", "App", "Civic"],
+  },
 ];
