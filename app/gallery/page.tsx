@@ -30,17 +30,33 @@ function GalleryVideoCard({ video }: { video: GalleryVideoItem }) {
           className="rounded-t-xl w-full h-full"
         />
       </div>
-      <button
-        type="button"
-        onClick={() => {
-          void vimeoRef.current?.requestFullscreen().catch(() => {
-            /* Fullscreen may be blocked or unsupported (e.g. some mobile browsers) */
-          });
-        }}
-        className="w-full py-2.5 px-3 text-sm font-semibold text-[#CFC8CF] bg-[#3F395B]/70 hover:bg-[#4E79A7]/80 border-t border-[#4E79A7]/40 transition-colors"
-      >
-        Full screen
-      </button>
+      <div className="px-4 pt-3 pb-2 bg-black/15 border-t border-[#4E79A7]/25">
+        <button
+          type="button"
+          onClick={() => {
+            void vimeoRef.current?.requestFullscreen().catch(() => {
+              /* Fullscreen may be blocked or unsupported (e.g. some mobile browsers) */
+            });
+          }}
+          className="w-full inline-flex items-center justify-center gap-2 rounded-lg px-6 py-1.5 md:py-2 text-sm md:text-base font-semibold text-[#CFC8CF] bg-[#4E79A7]/90 hover:bg-[#4E79A7] border border-[#4E79A7]/80 hover:border-[#CFC8CF]/25 shadow-md hover:shadow-lg hover:shadow-[#4E79A7]/25 transition-all duration-200 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4E79A7] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+        >
+          <svg
+            className="w-5 h-5 shrink-0 opacity-90"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+            />
+          </svg>
+          Full screen
+        </button>
+      </div>
       <div className="p-4 md:p-6">
         <h3 className="text-lg md:text-xl font-semibold text-[#CFC8CF] mb-2 group-hover:text-[#4E79A7] transition-colors">
           {video.title}
