@@ -1,13 +1,86 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { VimeoVideo } from "@/components/VimeoVideo";
+import { VimeoVideo, type VimeoVideoHandle } from "@/components/VimeoVideo";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
-import { galleryVideos, galleryAppsWebsites } from "@/lib/gallery-content";
+import {
+  galleryVideos,
+  galleryAppsWebsites,
+  type GalleryVideoItem,
+} from "@/lib/gallery-content";
+
+function GalleryVideoCard({ video }: { video: GalleryVideoItem }) {
+  const vimeoRef = useRef<VimeoVideoHandle>(null);
+
+  return (
+    <div className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20">
+      <div className="relative aspect-video bg-slate-800 overflow-hidden rounded-t-xl">
+        <VimeoVideo
+          ref={vimeoRef}
+          vimeoUrl={video.videoUrl}
+          controls={true}
+          responsive={true}
+          autoplay={false}
+          muted={true}
+          className="rounded-t-xl w-full h-full"
+        />
+      </div>
+      <button
+        type="button"
+        onClick={() => {
+          void vimeoRef.current?.requestFullscreen().catch(() => {
+            /* Fullscreen may be blocked or unsupported (e.g. some mobile browsers) */
+          });
+        }}
+        className="w-full py-2.5 px-3 text-sm font-semibold text-[#CFC8CF] bg-[#3F395B]/70 hover:bg-[#4E79A7]/80 border-t border-[#4E79A7]/40 transition-colors"
+      >
+        Full screen
+      </button>
+      <div className="p-4 md:p-6">
+        <h3 className="text-lg md:text-xl font-semibold text-[#CFC8CF] mb-2 group-hover:text-[#4E79A7] transition-colors">
+          {video.title}
+        </h3>
+        {video.description && (
+          <p
+            className={`text-sm text-gray-400 line-clamp-2 ${video.teaser ? "mb-2" : "mb-3"
+              }`}
+          >
+            {video.description}
+          </p>
+        )}
+        {video.teaser && (
+          <p className="text-xs text-[#4E79A7]/90 italic mb-3">{video.teaser}</p>
+        )}
+        {video.projectHref && (
+          <Link
+            href={video.projectHref}
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#4E79A7] hover:text-[#4E79A7]/80 transition-colors"
+          >
+            More Info
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function GalleryPage() {
   return (
@@ -49,60 +122,7 @@ export default function GalleryPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {galleryVideos.map((video) => (
-                <div
-                  key={video.id}
-                  className="group relative bg-[#3F395B]/30 rounded-xl overflow-hidden border border-[#4E79A7]/30 hover:border-[#4E79A7] transition-all duration-300 hover:shadow-lg hover:shadow-[#4E79A7]/20"
-                >
-                  <div className="relative aspect-video bg-slate-800 overflow-hidden rounded-t-xl">
-                    <VimeoVideo
-                      vimeoUrl={video.videoUrl}
-                      controls={true}
-                      responsive={true}
-                      autoplay={false}
-                      muted={true}
-                      className="rounded-t-xl w-full h-full"
-                    />
-                  </div>
-                  <div className="p-4 md:p-6">
-                    <h3 className="text-lg md:text-xl font-semibold text-[#CFC8CF] mb-2 group-hover:text-[#4E79A7] transition-colors">
-                      {video.title}
-                    </h3>
-                    {video.description && (
-                      <p
-                        className={`text-sm text-gray-400 line-clamp-2 ${video.teaser ? "mb-2" : "mb-3"
-                          }`}
-                      >
-                        {video.description}
-                      </p>
-                    )}
-                    {video.teaser && (
-                      <p className="text-xs text-[#4E79A7]/90 italic mb-3">
-                        {video.teaser}
-                      </p>
-                    )}
-                    {video.projectHref && (
-                      <Link
-                        href={video.projectHref}
-                        className="inline-flex items-center gap-2 text-sm font-medium text-[#4E79A7] hover:text-[#4E79A7]/80 transition-colors"
-                      >
-                        More Info
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </Link>
-                    )}
-                  </div>
-                </div>
+                <GalleryVideoCard key={video.id} video={video} />
               ))}
             </div>
           </ContentReveal>

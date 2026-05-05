@@ -40,7 +40,7 @@ export { ScrollCarouselItem } from "./ScrollCarouselItem";
 export type { ScrollCarouselItemProps } from "./ScrollCarouselItem";
 
 export { VimeoVideo } from "./VimeoVideo";
-export type { VimeoVideoProps } from "./VimeoVideo";
+export type { VimeoVideoProps, VimeoVideoHandle } from "./VimeoVideo";
 
 export { ServicesGrid } from "./ServicesGrid";
 export type { ServicesGridProps, Service } from "./ServicesGrid";

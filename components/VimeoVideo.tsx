@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export interface VimeoVideoProps {
   vimeoUrl: string;
@@ -15,6 +22,47 @@ export interface VimeoVideoProps {
   paused?: boolean;
   /** Optional React node to show while the Vimeo iframe is loading/buffering */
   fallbackBackground?: React.ReactNode;
+}
+
+export type VimeoVideoHandle = {
+  /** Requests fullscreen for the Vimeo iframe (browser Fullscreen API). */
+  requestFullscreen: () => Promise<void>;
+};
+
+async function requestIframeFullscreen(
+  iframe: HTMLIFrameElement
+): Promise<void> {
+  const el = iframe as HTMLIFrameElement & {
+    webkitRequestFullscreen?: () => Promise<void> | void;
+    mozRequestFullScreen?: () => Promise<void> | void;
+    msRequestFullscreen?: () => Promise<void> | void;
+  };
+
+  if (iframe.requestFullscreen) {
+    await iframe.requestFullscreen();
+    return;
+  }
+  if (el.webkitRequestFullscreen) {
+    await Promise.resolve(el.webkitRequestFullscreen());
+    return;
+  }
+  if (el.mozRequestFullScreen) {
+    await Promise.resolve(el.mozRequestFullScreen());
+    return;
+  }
+  if (el.msRequestFullscreen) {
+    await Promise.resolve(el.msRequestFullscreen());
+    return;
+  }
+
+  try {
+    iframe.contentWindow?.postMessage(
+      JSON.stringify({ method: "requestFullscreen" }),
+      "https://player.vimeo.com"
+    );
+  } catch {
+    // Ignore — older browsers / restricted contexts
+  }
 }
 
 /**
@@ -37,130 +85,149 @@ function extractVimeoId(url: string): string | null {
   return null;
 }
 
-export function VimeoVideo({
-  vimeoUrl,
-  className = "",
-  autoplay = false,
-  loop = false,
-  muted = true,
-  controls = true,
-  responsive = true,
-  background = false,
-  paused = false,
-  fallbackBackground,
-}: VimeoVideoProps) {
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const videoId = useMemo(() => extractVimeoId(vimeoUrl), [vimeoUrl]);
-  const [isLoaded, setIsLoaded] = useState(false);
+export const VimeoVideo = forwardRef<VimeoVideoHandle, VimeoVideoProps>(
+  function VimeoVideo(
+    {
+      vimeoUrl,
+      className = "",
+      autoplay = false,
+      loop = false,
+      muted = true,
+      controls = true,
+      responsive = true,
+      background = false,
+      paused = false,
+      fallbackBackground,
+    },
+    ref
+  ) {
+    const iframeRef = useRef<HTMLIFrameElement | null>(null);
+    const videoId = useMemo(() => extractVimeoId(vimeoUrl), [vimeoUrl]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
-  // Build embed URL - memoized to prevent unnecessary recalculations
-  // The stable key={videoId} on the iframe prevents React from recreating it
-  // unless the videoId actually changes
-  const iframeSrc = useMemo(() => {
-    if (!videoId) return "";
+    useImperativeHandle(
+      ref,
+      () => ({
+        async requestFullscreen() {
+          const iframe = iframeRef.current;
+          if (!iframe) {
+            throw new Error("Vimeo player is not ready");
+          }
+          await requestIframeFullscreen(iframe);
+        },
+      }),
+      []
+    );
 
-    const embedUrl = `https://player.vimeo.com/video/${videoId}?`;
-    const params = new URLSearchParams();
+    // Build embed URL - memoized to prevent unnecessary recalculations
+    // The stable key={videoId} on the iframe prevents React from recreating it
+    // unless the videoId actually changes
+    const iframeSrc = useMemo(() => {
+      if (!videoId) return "";
 
-    if (autoplay) params.append("autoplay", "1");
-    if (loop) params.append("loop", "1");
-    if (muted) params.append("muted", "1");
-    if (!controls) params.append("controls", "0");
-    if (background) params.append("background", "1");
-    if (autoplay) params.append("playsinline", "1");
+      const embedUrl = `https://player.vimeo.com/video/${videoId}?`;
+      const params = new URLSearchParams();
 
-    return embedUrl + params.toString();
-  }, [videoId, autoplay, loop, muted, controls, background]);
+      if (autoplay) params.append("autoplay", "1");
+      if (loop) params.append("loop", "1");
+      if (muted) params.append("muted", "1");
+      if (!controls) params.append("controls", "0");
+      if (background) params.append("background", "1");
+      if (autoplay) params.append("playsinline", "1");
 
-  // Control playback via postMessage when pause/resume is requested
-  useEffect(() => {
-    if (typeof window === "undefined" || !videoId) return;
-    const iframe = iframeRef.current;
-    if (!iframe || !iframe.contentWindow) return;
+      return embedUrl + params.toString();
+    }, [videoId, autoplay, loop, muted, controls, background]);
 
-    const method = paused ? "pause" : autoplay ? "play" : null;
-    if (!method) return;
+    // Control playback via postMessage when pause/resume is requested
+    useEffect(() => {
+      if (typeof window === "undefined" || !videoId) return;
+      const iframe = iframeRef.current;
+      if (!iframe || !iframe.contentWindow) return;
 
-    try {
-      iframe.contentWindow.postMessage(JSON.stringify({ method }), "*");
-    } catch {
-      // Fail silently if postMessage is not available
+      const method = paused ? "pause" : autoplay ? "play" : null;
+      if (!method) return;
+
+      try {
+        iframe.contentWindow.postMessage(JSON.stringify({ method }), "*");
+      } catch {
+        // Fail silently if postMessage is not available
+      }
+    }, [paused, autoplay, videoId]);
+
+    if (!videoId) {
+      console.error("Invalid Vimeo URL:", vimeoUrl);
+      return (
+        <div
+          className={`bg-gray-200 flex items-center justify-center ${className}`}
+        >
+          <p className="text-gray-500">Invalid Vimeo URL</p>
+        </div>
+      );
     }
-  }, [paused, autoplay, videoId]);
 
-  if (!videoId) {
-    console.error("Invalid Vimeo URL:", vimeoUrl);
+    // When used as background (not responsive), fill the full container
+    if (!responsive || background) {
+      return (
+        <div className={`absolute inset-0 w-full h-full ${className}`}>
+          {/* Only show custom fallback if provided, otherwise let Vimeo show its native poster */}
+          {!isLoaded && fallbackBackground && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center">
+              {fallbackBackground}
+            </div>
+          )}
+
+          <iframe
+            key={videoId}
+            src={iframeSrc}
+            ref={iframeRef}
+            className="absolute inset-0 w-full h-full"
+            style={{
+              width: "100vw",
+              height: "56.25vw", // 16:9 aspect ratio based on width
+              minHeight: "100vh", // Ensure it covers full height on mobile
+              minWidth: "177.77vh", // Ensure it covers full width when height is constraint
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: isLoaded || !fallbackBackground ? 1 : 0,
+            }}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title="Vimeo video player"
+            onLoad={() => setIsLoaded(true)}
+          />
+        </div>
+      );
+    }
+
+    // Responsive version (original behavior)
     return (
-      <div
-        className={`bg-gray-200 flex items-center justify-center ${className}`}
-      >
-        <p className="text-gray-500">Invalid Vimeo URL</p>
+      <div className={`relative w-full ${className}`}>
+        <div className="relative w-full h-0 pb-[56.25%]">
+          {/* Only show custom fallback if provided, otherwise let Vimeo show its native poster */}
+          {!isLoaded && fallbackBackground && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg">
+              {fallbackBackground}
+            </div>
+          )}
+
+          <iframe
+            key={videoId}
+            src={iframeSrc}
+            ref={iframeRef}
+            className="absolute top-0 left-0 w-full h-full rounded-lg"
+            style={{
+              zIndex: isLoaded || !fallbackBackground ? 1 : 0,
+            }}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title="Vimeo video player"
+            onLoad={() => setIsLoaded(true)}
+          />
+        </div>
       </div>
     );
   }
-
-  // When used as background (not responsive), fill the full container
-  if (!responsive || background) {
-    return (
-      <div className={`absolute inset-0 w-full h-full ${className}`}>
-        {/* Only show custom fallback if provided, otherwise let Vimeo show its native poster */}
-        {!isLoaded && fallbackBackground && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center">
-            {fallbackBackground}
-          </div>
-        )}
-
-        <iframe
-          key={videoId}
-          src={iframeSrc}
-          ref={iframeRef}
-          className="absolute inset-0 w-full h-full"
-          style={{
-            width: "100vw",
-            height: "56.25vw", // 16:9 aspect ratio based on width
-            minHeight: "100vh", // Ensure it covers full height on mobile
-            minWidth: "177.77vh", // Ensure it covers full width when height is constraint
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: isLoaded || !fallbackBackground ? 1 : 0,
-          }}
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          title="Vimeo video player"
-          onLoad={() => setIsLoaded(true)}
-        />
-      </div>
-    );
-  }
-
-  // Responsive version (original behavior)
-  return (
-    <div className={`relative w-full ${className}`}>
-      <div className="relative w-full h-0 pb-[56.25%]">
-        {/* Only show custom fallback if provided, otherwise let Vimeo show its native poster */}
-        {!isLoaded && fallbackBackground && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg">
-            {fallbackBackground}
-          </div>
-        )}
-
-        <iframe
-          key={videoId}
-          src={iframeSrc}
-          ref={iframeRef}
-          className="absolute top-0 left-0 w-full h-full rounded-lg"
-          style={{
-            zIndex: isLoaded || !fallbackBackground ? 1 : 0,
-          }}
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          title="Vimeo video player"
-          onLoad={() => setIsLoaded(true)}
-        />
-      </div>
-    </div>
-  );
-}
+);
