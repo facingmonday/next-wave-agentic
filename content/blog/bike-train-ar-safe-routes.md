@@ -3,7 +3,7 @@ title: "Bike Train AR: Building Safer Routes to School, One Map at a Time"
 slug: "bike-train-ar-safe-routes"
 date: "2026-04-15"
 excerpt: "How we built the Bike Train Map Builder for Arkansas Moves — a Next.js + Mapbox app that lets any parent, teacher, or community organizer plan, share, and manage safe bike routes for students and families."
-coverImage: "/images/blogs/bike-train-ar/marketing/children-and-parents-202603301458.jpeg"
+coverImage: "/images/blogs/bike-train-ar/marketing/children-and-parents-202603301542.jpeg"
 author:
   name: "Jason Price"
   role: "Founder & CEO"

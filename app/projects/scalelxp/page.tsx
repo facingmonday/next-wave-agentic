@@ -1,11 +1,12 @@
-"use client";
-
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 import { ServiceFeatureSection } from "@/components/ServiceFeatureSection";
 import { ContentReveal } from "@/components/ContentReveal";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("scalelxp");
 
 const heroSlides: HeroSlide[] = [
   {

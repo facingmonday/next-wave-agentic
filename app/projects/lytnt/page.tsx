@@ -1,11 +1,12 @@
-"use client";
-
 import { Header } from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("lytnt");
 import Image from "next/image";
 
 const HeroSlides = [

@@ -7,6 +7,9 @@ import { VideoGallery } from "@/components/VideoGallery";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("pedal-pals");
 
 const HeroSlides: HeroSlide[] = [
   {

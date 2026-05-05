@@ -1,5 +1,3 @@
-"use client";
-
 import { Header } from "@/components/Header";
 import { PinnedHero } from "@/components/PinnedHero";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -8,6 +6,9 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 import Image from "next/image";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("cityviewcms");
 
 const HeroSlides = [
   {

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { Header } from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -8,6 +6,9 @@ import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("arkansas-graveler");
 
 const VIMEO_URL = "https://vimeo.com/1170723192?share=copy&fl=sv&fe=ci";
 

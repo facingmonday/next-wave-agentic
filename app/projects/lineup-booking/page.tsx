@@ -1,5 +1,3 @@
-"use client";
-
 import { Header } from "@/components/Header";
 import { PinnedHero } from "@/components/PinnedHero";
 import { ContentReveal } from "@/components/ContentReveal";
@@ -8,6 +6,9 @@ import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
 import Image from "next/image";
 import HeroCarousel from "@/components/HeroCarousel";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("lineup-booking");
 
 export default function LineupBookingPage() {
   return (

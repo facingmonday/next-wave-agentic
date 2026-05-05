@@ -7,6 +7,9 @@ import Image from "next/image";
 import { Portfolio } from "@/components/Portfolio";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("mrs");
 
 export default function MRSProjectPage() {
   return (

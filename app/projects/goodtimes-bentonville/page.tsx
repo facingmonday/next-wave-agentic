@@ -1,12 +1,27 @@
-"use client";
-
 import { Header } from "@/components/Header";
-import { PinnedHero } from "@/components/PinnedHero";
+import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { VideoGallery } from "@/components/VideoGallery";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("goodtimes-bentonville");
+
+const heroSlides: HeroSlide[] = [
+  {
+    title: "Goodtimes Bentonville",
+    subtitle: "The Town of GoodTimes",
+    description:
+      "Concierge service and event storytelling for Bentonville-we created experiences and content that bring the GoodTimes spirit to life. From community engagement to platform integrations with Kikits and Planet GoodTimes, we helped build the connective tissue between local events and the people who discover them.",
+    backgroundImage: "/images/goodtimes-bentonville/goodtimes-bentonville-logo.png",
+    button: {
+      text: "Visit Goodtimes Bentonville",
+      href: "https://goodtimes-bentonville.netlify.app/",
+    },
+  },
+];
 
 export default function GoodtimesBentonvillePage() {
   return (
@@ -14,18 +29,7 @@ export default function GoodtimesBentonvillePage() {
       <Header />
 
       {/* Hero Section */}
-      <PinnedHero
-        backgroundVideo="https://vimeo.com/1168643448?share=copy&fl=sv&fe=ci"
-        title="Goodtimes Bentonville"
-        subtitle="The Town of GoodTimes"
-        body="Concierge service and event storytelling for Bentonville—we created experiences and content that bring the GoodTimes spirit to life. From community engagement to platform integrations with Kikits and Planet GoodTimes, we helped build the connective tissue between local events and the people who discover them."
-        ctaLabel="Visit Goodtimes Bentonville"
-        ctaHref="https://goodtimes-bentonville.netlify.app/"
-        scrollDistance={2400}
-        startOffset="top top"
-        textPosition="center"
-        textAlign="center"
-      />
+      <HeroCarousel slides={heroSlides} />
 
       {/* What We Did */}
       <section className="relative py-16 md:py-32">

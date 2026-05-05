@@ -1,5 +1,3 @@
-"use client";
-
 import { Header } from "@/components/Header";
 import { PinnedHero } from "@/components/PinnedHero";
 import { ContentReveal } from "@/components/ContentReveal";
@@ -8,6 +6,9 @@ import { VideoGallery } from "@/components/VideoGallery";
 import { VideoThumbnailGrid } from "@/components/VideoThumbnailGrid";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("kikits");
 
 export default function KikitsPage() {
   return (

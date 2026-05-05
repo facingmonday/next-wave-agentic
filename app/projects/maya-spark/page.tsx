@@ -6,6 +6,9 @@ import { VideoGallery } from "@/components/VideoGallery";
 import { VimeoVideo } from "@/components/VimeoVideo";
 import { Footer } from "@/components/Footer";
 import { ProjectHelpCTA } from "@/components/ProjectHelpCTA";
+import { buildProjectMetadata } from "@/lib/project-metadata";
+
+export const metadata = buildProjectMetadata("maya-spark");
 
 export default function MayaSparkPage() {
   return (
