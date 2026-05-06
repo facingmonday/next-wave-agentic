@@ -1,5 +1,4 @@
 import { Header } from "@/components/Header";
-import { PinnedHero } from "@/components/PinnedHero";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";
 import { Footer } from "@/components/Footer";

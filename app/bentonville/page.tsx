@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
-import { VideoScroll } from "@/components/VideoScroll";
 import { PreloadedHTMLVideoScroll } from "@/components/PreloadedHTMLVideoScroll";
 import { Footer } from "@/components/Footer";
 

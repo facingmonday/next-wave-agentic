@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import sgMail from "@sendgrid/mail";
 
 type ContactEmailRequestBody = {
   name?: string;
@@ -13,26 +12,19 @@ function basicEmailFormat(email: string): boolean {
 }
 
 export async function POST(request: Request) {
-  const sendgridKey = process.env.SENDGRID_API_KEY;
-  const toEmail = process.env.SENDGRID_TO_EMAIL;
-  const fromEmail = process.env.SENDGRID_FROM_EMAIL;
-  const fromName = process.env.SENDGRID_FROM_NAME?.trim();
+  const openclawWebhookUrl = process.env.OPENCLAW_CONTACT_WEBHOOK_URL;
+  const openclawWebhookToken = process.env.OPENCLAW_CONTACT_WEBHOOK_TOKEN;
 
-  if (!sendgridKey?.trim()) {
+  if (!openclawWebhookUrl?.trim()) {
     return NextResponse.json(
-      { error: "SENDGRID_API_KEY is not configured" },
+      { error: "OPENCLAW_CONTACT_WEBHOOK_URL is not configured" },
       { status: 500 },
     );
   }
-  if (!toEmail?.trim()) {
+
+  if (!openclawWebhookToken?.trim()) {
     return NextResponse.json(
-      { error: "SENDGRID_TO_EMAIL is not configured" },
-      { status: 500 },
-    );
-  }
-  if (!fromEmail?.trim()) {
-    return NextResponse.json(
-      { error: "SENDGRID_FROM_EMAIL is not configured" },
+      { error: "OPENCLAW_CONTACT_WEBHOOK_TOKEN is not configured" },
       { status: 500 },
     );
   }
@@ -60,40 +52,58 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "message is required" }, { status: 400 });
   }
 
-  const fromLines: string[] = [];
-  if (name) {
-    fromLines.push(name);
-  }
-  if (phone) fromLines.push(phone);
-  fromLines.push(email);
-
-  const text = [
-    "Next Wave Agentic – Contact Form Message",
+  const leadText = [
+    "New Next Wave Agentic Contact Form Lead",
     "",
-    "--- Message ---",
+    `Name: ${name ?? "Not provided"}`,
+    `Email: ${email}`,
+    `Phone: ${phone || "Not provided"}`,
+    "",
+    "Message:",
     message,
-    "",
-    "--- Contact Details ---",
-    ...fromLines,
   ].join("\n");
 
-  sgMail.setApiKey(sendgridKey);
-
-  const msg = {
-    to: toEmail.trim(),
-    from: fromName
-      ? { email: fromEmail.trim(), name: fromName }
-      : fromEmail.trim(),
-    replyTo: email,
-    subject: "Next Wave Agentic – Contact Form",
-    text,
+  const webhookPayload = {
+    message: leadText,
+    data: {
+      type: "nextwaveagentic.contact_form.submitted",
+      source: "nextwaveagentic.com",
+      submittedAt: new Date().toISOString(),
+      contact: { name: name ?? null, phone: phone || null, email },
+      message,
+    },
   };
 
   try {
-    await sgMail.send(msg);
-    return NextResponse.json({ success: true });
+    const res = await fetch(openclawWebhookUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${openclawWebhookToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(webhookPayload),
+    });
+
+    const text = await res.text().catch(() => "");
+
+    if (!res.ok) {
+      return NextResponse.json(
+        { error: `OpenClaw webhook failed (${res.status})`, details: text },
+        { status: 502 },
+      );
+    }
+
+    // Return runId to help debugging
+    let parsed: unknown = null;
+    try {
+      parsed = text ? JSON.parse(text) : null;
+    } catch {
+      parsed = text;
+    }
+
+    return NextResponse.json({ success: true, openclaw: parsed });
   } catch (e) {
-    const err = e instanceof Error ? e.message : "Failed to send email";
+    const err = e instanceof Error ? e.message : "OpenClaw webhook failed";
     return NextResponse.json({ error: err }, { status: 502 });
   }
 }

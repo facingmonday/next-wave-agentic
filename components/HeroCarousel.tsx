@@ -53,7 +53,6 @@ export default function HeroCarousel({
   className = "",
 }: HeroCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
 
   if (!slides || slides.length === 0) {
     return null;
@@ -99,8 +98,6 @@ export default function HeroCarousel({
         }}
         loop={true}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        onAutoplayStart={() => setIsPlaying(true)}
-        onAutoplayStop={() => setIsPlaying(false)}
         className="h-[90vh] min-h-[600px] lg:h-[100vh] lg:min-h-[600px]"
       >
         {slides.map((slide, index) => (
