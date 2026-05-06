@@ -76,9 +76,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const allPosts = getAllPosts();
-  const relatedPosts = allPosts
-    .filter((p) => p.slug !== post.slug)
-    .slice(0, 2);
+  const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
@@ -139,7 +137,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="flex items-center gap-4 text-sm text-muted-indigo">
             <time dateTime={post.date}>{formatDate(post.date)}</time>
             <span className="w-1 h-1 rounded-full bg-muted-indigo" />
-            <span>{Math.ceil(post.content.split(/\s+/).length / 200)} min read</span>
+            <span>
+              {Math.ceil(post.content.split(/\s+/).length / 200)} min read
+            </span>
           </div>
         </div>
       </div>
@@ -150,7 +150,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Article Content */}
           <article className="min-w-0">
             <div className="blog-prose">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+              >
                 {post.content}
               </ReactMarkdown>
             </div>

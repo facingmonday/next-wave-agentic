@@ -1,5 +1,4 @@
 import { Header } from "@/components/Header";
-import { PinnedHero } from "@/components/PinnedHero";
 import HeroCarousel from "@/components/HeroCarousel";
 import { ContentReveal } from "@/components/ContentReveal";
 import { FuturisticBackground } from "@/components/FuturisticBackground";

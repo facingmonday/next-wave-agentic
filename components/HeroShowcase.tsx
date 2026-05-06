@@ -20,7 +20,7 @@ export default function HeroShowcase({
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const startTimeRef = useRef<number>(Date.now());
+  const startTimeRef = useRef(0);
 
   const goTo = useCallback(
     (index: number) => {
@@ -62,8 +62,8 @@ export default function HeroShowcase({
   return (
     <section
       className={`relative h-[100vh] min-h-[700px] bg-black overflow-hidden ${className}`}
-    // onMouseEnter={() => setIsPaused(true)}
-    // onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background images — all mounted, only active one visible */}
       {slides.map((slide, i) => (

@@ -339,7 +339,7 @@ export function HeroVideo({
             <div
               className="mt-16 grid max-w-4xl gap-4 sm:grid-cols-3 md:mt-24"
             >
-              {stats.map((s, i) => (
+              {stats.map((s) => (
                 <div
                   key={s.label}
                   className={`agency-panel rounded-3xl p-6`}
