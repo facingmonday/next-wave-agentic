@@ -3,7 +3,7 @@ title: "The Future Belongs to Small AI-Native Teams"
 slug: "the-future-belongs-to-small-ai-native-teams"
 date: "2026-05-05"
 excerpt: "AI is changing the economics of execution. The teams that win next will not just be bigger, they will be smaller, faster, and built around smarter systems."
-coverImage: "/images/blogs/future-belongs-to-small-ai-native-teams/hero-small-ai-native-team.jpg"
+coverImage: "/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model-hero.jpg"
 author:
   name: "Jason Price"
   role: "Founder & CEO"
@@ -27,8 +27,6 @@ And for us at Next Wave Agentic, it reinforces something we have believed for a 
 
 > The future does not belong only to the biggest companies. It belongs to the smallest teams with the smartest systems.
 
-![Small AI-native team collaborating with live dashboards and AI systems](/images/blogs/future-belongs-to-small-ai-native-teams/hero-small-ai-native-team.jpg)
-
 ## AI Is Changing What Small Teams Can Do
 
 For a long time, growth usually meant adding more people.
@@ -46,6 +44,8 @@ It means the right people matter more than ever.
 The companies that win will be the ones that combine human taste, strategy, creativity, and judgment with intelligent systems that remove friction and multiply output.
 
 That is the opportunity.
+
+![Four professionals collaborating at a large holographic display with analytics and network diagrams](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model-2.jpg)
 
 ## What AI-Native Really Means
 
@@ -69,7 +69,7 @@ The goal is not to make people less important.
 
 The goal is to help people spend more time on the work that actually matters.
 
-![Workflow diagram showing fragmented manual work transforming into an AI-native operating system](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-workflow-operating-system.jpg)
+![Hands interacting with a floating workflow diagram above a laptop and tablet on a smart desk](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model-5.jpg)
 
 ## Why This Matters for Small Businesses
 
@@ -92,6 +92,8 @@ They need tools that help their small team operate like a much larger one.
 
 That is exactly where Next Wave Agentic fits.
 
+![Night city skyline overlaid with flowing data streams and a glowing network grid](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model-4.jpg)
+
 ## What We Are Building at Next Wave Agentic
 
 At Next Wave Agentic, we help companies become more AI-native through software, automation, video, and creative systems. We are not interested in AI as a gimmick. We are interested in AI as an operating layer.
@@ -110,6 +112,8 @@ Not adding another tool nobody uses.
 
 But building smarter workflows that make the business faster, more creative, and more capable.
 
+![Small creative team working across monitors, camera gear, and holographic interfaces in a dim studio](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model-3.jpg)
+
 ## The Rise of the AI-Native Pod
 
 One of the ideas in Armstrong's message that matters most is the rise of the AI-native pod.
@@ -126,7 +130,7 @@ They may need one focused partner that can bring those capabilities together.
 
 That is the kind of partner we are building Next Wave Agentic to be.
 
-![Compact cross-functional AI-native pod moving from strategy to build to content launch](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model.jpg)
+![Three colleagues gathered around a table reviewing a glowing 3D holographic model](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model-1.jpg)
 
 ## What This Looks Like in Practice
 
@@ -151,6 +155,8 @@ The key is that every recommendation should tie back to a business outcome.
 AI by itself is not the goal.
 
 Leverage is the goal.
+
+![Focused practitioner at a laptop with floating dashboards and agent-style panels against a night city view](/images/blogs/future-belongs-to-small-ai-native-teams/ai-native-pod-execution-model-6.jpg)
 
 ## Small Teams Are No Longer a Disadvantage
 
