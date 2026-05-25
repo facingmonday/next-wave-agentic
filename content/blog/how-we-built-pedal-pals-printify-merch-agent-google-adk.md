@@ -3,7 +3,7 @@ title: "How We Built the Pedal Pals Printify Merch Agent (with Google ADK)"
 slug: "how-we-built-pedal-pals-printify-merch-agent-google-adk"
 date: "2026-05-25"
 excerpt: "Learn how we built an autonomous merch creation assistant for Pedal Pals using Google's Agent Development Kit (ADK) and Next.js, incorporating a robust tool loop and human-in-the-loop approvals."
-coverImage: "/images/blogs/printify-agent/step-1-overview.jpg"
+coverImage: "/images/blogs/printify-agent/hero.jpg"
 author:
   name: "Jason Price"
   role: "Founder & CEO"
