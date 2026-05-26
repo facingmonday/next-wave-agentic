@@ -168,34 +168,6 @@ export const rootAgent = new LlmAgent({
 });
 ```
 
-### Why delegate to Next.js instead of calling Printify from ADK?
-
-1. **Secrets stay in one place** — `PRINTIFY_API_KEY`, `GEMINI_API_KEY`, DigitalOcean Spaces for the design vault.  
-2. **Auth** — admin routes use `adminGuard()`; the sidecar can pass `PRINTIFY_ADMIN_COOKIE` when developing.  
-3. **Reuse** — catalog cache, color matching, placement math, and rate limiting already live in `lib/printify/`.
-
-So ADK is the **brain in a lab coat**; Next.js is the **hands**.
-
-### Running the ADK agent locally
-
-```bash
-# Terminal 1 — Next app (Pedal Pals uses port 3020 in dev)
-npm run dev
-
-# Terminal 2 — ADK dev UI
-cd agents/printify
-npm install
-export GEMINI_API_KEY=...
-export PRINTIFY_APP_URL=http://localhost:3020
-# Optional: session cookie from logged-in admin browser
-export PRINTIFY_ADMIN_COOKIE="your-session-cookie"
-npx adk web
-```
-
-`adk web` gives you a chat UI to poke the agent without building React first. Great for tool debugging.
-
----
-
 ## The production path: `agentRunner.js` (Gemini + tool loop)
 
 Inside the app, we don’t require ADK at runtime. `lib/printify/agentRunner.js` implements the classic **tool loop** with `@google/genai`:
