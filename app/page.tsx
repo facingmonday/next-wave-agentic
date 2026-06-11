@@ -64,40 +64,40 @@ const featuredProjects = ["kikits", "chasinpayson", "goodtimes-bentonville"]
 
 const proofCards = [
   {
-    title: "Positioning with a point of view",
+    title: "Intelligent AI Systems",
     description:
-      "We help brands sharpen the message before they spend time and budget making assets that do not connect.",
+      "We build and deploy practical AI solutions, automated workflows, and agentic layers that transform operations.",
   },
   {
-    title: "Creative built for launch",
+    title: "Cinematic Storytelling",
     description:
-      "From campaign films to product pages, we shape the visuals and story around the moments that matter most.",
+      "From launch films to campaign experiences, we craft compelling visual narratives that capture attention and build trust.",
   },
   {
-    title: "Digital systems that keep working",
+    title: "Custom Technology & Software",
     description:
-      "Sites, apps, and automations are designed to support growth after the launch push is over.",
+      "We engineer high-performance websites, apps, and internal integrations designed to scale and support continuous growth.",
   },
 ];
 
 const processSteps = [
   {
     step: "01",
-    title: "Clarify the story",
+    title: "Find the Story",
     description:
-      "We align the offer, audience, and message so the work has a strong strategic spine.",
+      "We align your brand strategy, message, and audience to create a strong foundation for storytelling and technology.",
   },
   {
     step: "02",
-    title: "Build the launch system",
+    title: "Build the Tech & AI",
     description:
-      "We design the campaign, website, content, or product experience around the specific conversion moment.",
+      "We engineer high-performance platforms, custom tools, and automated workflows optimized for execution and speed.",
   },
   {
     step: "03",
-    title: "Create momentum",
+    title: "Tell & Automate",
     description:
-      "We extend the launch with content, automations, and measurement so the work compounds instead of fading.",
+      "We launch campaign videos and deploy agentic intelligence, keeping your audience engaged and operations automated.",
   },
 ];
 
@@ -117,15 +117,15 @@ export default function Home() {
         subtitle="Northwest Arkansas and Beyond."
         secondaryCta={{ label: "See selected work", href: "/#featured-work" }}
         stats={[
-          { value: "30+", label: "Projects launched across web, campaigns, and experiences" },
-          { value: "End-to-end", label: "Strategy, creative, software, and launch support" },
+          { value: "30+", label: "Projects in AI, storytelling, and custom technology" },
+          { value: "End-to-end", label: "Strategy, content production, and software engineering" },
           { value: "NWA", label: "Based in Bentonville and built for teams beyond it" },
         ]}
       />
 
       <LogoList
         title="Trusted by teams that need more than a pretty launch"
-        subtitle="We support brands, schools, destinations, and operators with strategy, websites, campaigns, and experiences designed to create momentum."
+        subtitle="We support ambitious brands and operators across Northwest Arkansas and beyond with intelligent technology, immersive storytelling, and launch systems."
         logos={homeLogos}
       />
 
@@ -155,34 +155,34 @@ export default function Home() {
           <div>
             <p className="agency-kicker mb-5">Capabilities</p>
             <h2 className="font-heading max-w-3xl text-4xl font-semibold text-[#CFC8CF] md:text-6xl">
-              One partner for brand story, digital execution, and launch momentum.
+              At the intersection of AI, storytelling, and custom technology.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-gray-300 md:text-lg">
-              The site already showed the range. This version makes the range
-              easier to understand: we clarify the message, make the work look
-              stronger, and build the systems that carry it forward.
+              Based in Northwest Arkansas, we help ambitious teams grow. We combine
+              cinematic video, custom software engineering, and intelligent AI systems
+              into a single launch and operations engine.
             </p>
           </div>
           <div className="grid gap-4">
             <div className="agency-panel rounded-[1.75rem] p-6">
-              <p className="agency-kicker mb-4">Strategy</p>
+              <p className="agency-kicker mb-4">Artificial Intelligence</p>
               <p className="text-sm leading-relaxed text-gray-300">
-                Positioning, narrative, launch planning, and the decision-making
-                needed to keep creative and technical work aligned.
+                LLM deployments, custom agentic workflows, internal operations automation,
+                and the governance needed to adopt AI safely.
               </p>
             </div>
             <div className="agency-panel rounded-[1.75rem] p-6">
-              <p className="agency-kicker mb-4">Creative</p>
+              <p className="agency-kicker mb-4">Storytelling</p>
               <p className="text-sm leading-relaxed text-gray-300">
-                Campaign storytelling, video, visuals, and experiences built to
-                make the brand feel memorable rather than generic.
+                Cinematic launch films, animated explainer videos, campaign narratives,
+                and visual branding designed to build trust.
               </p>
             </div>
             <div className="agency-panel rounded-[1.75rem] p-6">
-              <p className="agency-kicker mb-4">Systems</p>
+              <p className="agency-kicker mb-4">Technology</p>
               <p className="text-sm leading-relaxed text-gray-300">
-                Websites, products, automations, and AI-enabled workflows that
-                turn a strong launch into something scalable.
+                Next.js web applications, scalable platforms, high-performance websites,
+                and custom system integrations built to last.
               </p>
             </div>
           </div>
@@ -254,7 +254,7 @@ export default function Home() {
             <div>
               <p className="agency-kicker mb-4">Featured work</p>
               <h2 className="font-heading text-4xl font-semibold text-[#CFC8CF] md:text-6xl">
-                The work gets stronger when strategy, story, and systems move together.
+                The work gets stronger when AI, storytelling, and technology move together.
               </h2>
             </div>
             <Link
@@ -380,7 +380,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <p className="agency-kicker mb-4">How we work</p>
             <h2 className="font-heading text-4xl font-semibold text-[#CFC8CF] md:text-6xl">
-              A simple process for making the work sharper and easier to ship.
+              A simple process for building, telling, and automating.
             </h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -626,11 +626,11 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-4 text-center md:px-8">
           <p className="agency-kicker justify-center mb-5">Ready when you are</p>
           <h2 className="font-heading text-5xl font-semibold text-[#CFC8CF] md:text-7xl">
-            If the brand needs to feel sharper, the next launch should too.
+            Let's build the future of AI, storytelling, and technology.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-300 md:text-lg">
-            Bring us in when the story is muddy, the website undersells the work,
-            or the campaign needs a stronger system behind it.
+            Partner with us to tell your brand story, engineer custom technology,
+            and deploy intelligent AI systems. Based in Bentonville, Arkansas, built for teams beyond.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <StartProjectChatButton className="inline-flex items-center rounded-full bg-[#4E79A7] px-8 py-4 font-semibold text-white transition hover:bg-[#4E79A7]/90" />
