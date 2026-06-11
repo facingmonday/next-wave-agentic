@@ -109,7 +109,7 @@ export default function Home() {
         eyebrow="Creative technology agency"
         title={
           <>
-            Leaders of AI,
+            Leaders of AI
             <br />
             Storytelling & Technology
           </>
