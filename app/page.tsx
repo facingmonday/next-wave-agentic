@@ -109,14 +109,12 @@ export default function Home() {
         eyebrow="Creative technology agency"
         title={
           <>
-            We make brands
+            Leaders of AI,
             <br />
-            feel sharper, bolder,
-            <br />
-            and easier to trust.
+            Storytelling & Technology
           </>
         }
-        subtitle="Next Wave Agentic brings strategy, storytelling, websites, campaigns, and intelligent systems together so ambitious teams can launch with clarity and grow with momentum."
+        subtitle="Northwest Arkansas and Beyond."
         secondaryCta={{ label: "See selected work", href: "/#featured-work" }}
         stats={[
           { value: "30+", label: "Projects launched across web, campaigns, and experiences" },
