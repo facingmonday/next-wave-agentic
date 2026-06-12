@@ -1,3 +1,4 @@
+import Airtable from "airtable";
 import { NextResponse } from "next/server";
 
 type ContactEmailRequestBody = {
@@ -7,28 +8,21 @@ type ContactEmailRequestBody = {
   message?: string;
 };
 
+function getConsultationTable() {
+  const apiKey = process.env.AIRTABLE_API_PAT;
+  const baseId = process.env.AIRTABLE_BASE_ID;
+  const tableId = process.env.AIRTABLE_CONSULTATION_TABLE_ID;
+  if (!apiKey || !baseId || !tableId) {
+    return null;
+  }
+  return new Airtable({ apiKey }).base(baseId)(tableId);
+}
+
 function basicEmailFormat(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email?.trim() ?? "");
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
 export async function POST(request: Request) {
-  const openclawWebhookUrl = process.env.OPENCLAW_CONTACT_WEBHOOK_URL;
-  const openclawWebhookToken = process.env.OPENCLAW_CONTACT_WEBHOOK_TOKEN;
-
-  if (!openclawWebhookUrl?.trim()) {
-    return NextResponse.json(
-      { error: "OPENCLAW_CONTACT_WEBHOOK_URL is not configured" },
-      { status: 500 },
-    );
-  }
-
-  if (!openclawWebhookToken?.trim()) {
-    return NextResponse.json(
-      { error: "OPENCLAW_CONTACT_WEBHOOK_TOKEN is not configured" },
-      { status: 500 },
-    );
-  }
-
   let body: ContactEmailRequestBody;
   try {
     body = await request.json();
@@ -36,8 +30,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  const name = body.name?.trim();
-  const phone = body.phone?.trim();
+  const name = body.name?.trim() ?? "";
+  const phone = body.phone?.trim() ?? "";
   const email = body.email?.trim() ?? "";
   const message = body.message?.trim() ?? "";
 
@@ -52,58 +46,30 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "message is required" }, { status: 400 });
   }
 
-  const leadText = [
-    "New Next Wave Agentic Contact Form Lead",
-    "",
-    `Name: ${name ?? "Not provided"}`,
-    `Email: ${email}`,
-    `Phone: ${phone || "Not provided"}`,
-    "",
-    "Message:",
-    message,
-  ].join("\n");
+  const table = getConsultationTable();
+  if (!table) {
+    return NextResponse.json(
+      { error: "Consultation requests are not configured" },
+      { status: 503 },
+    );
+  }
 
-  const webhookPayload = {
-    message: leadText,
-    data: {
-      type: "nextwaveagentic.contact_form.submitted",
-      source: "nextwaveagentic.com",
-      submittedAt: new Date().toISOString(),
-      contact: { name: name ?? null, phone: phone || null, email },
-      message,
-    },
+  const fields = {
+    Name: name || "Not provided",
+    Message: message,
+    Email: email,
+    Phone: phone,
   };
 
   try {
-    const res = await fetch(openclawWebhookUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${openclawWebhookToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(webhookPayload),
-    });
+    await table.create([{ fields }]);
 
-    const text = await res.text().catch(() => "");
-
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: `OpenClaw webhook failed (${res.status})`, details: text },
-        { status: 502 },
-      );
-    }
-
-    // Return runId to help debugging
-    let parsed: unknown = null;
-    try {
-      parsed = text ? JSON.parse(text) : null;
-    } catch {
-      parsed = text;
-    }
-
-    return NextResponse.json({ success: true, openclaw: parsed });
-  } catch (e) {
-    const err = e instanceof Error ? e.message : "OpenClaw webhook failed";
-    return NextResponse.json({ error: err }, { status: 502 });
+    return NextResponse.json({ success: true, message: "Requested Consultation" });
+  } catch (error) {
+    console.error("Airtable error:", error);
+    return NextResponse.json(
+      { error: "Failed to save consultation request" },
+      { status: 500 },
+    );
   }
 }
