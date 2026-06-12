@@ -15,6 +15,7 @@
     "@react-three/fiber": "^9.4.0",
     "@sendgrid/mail": "^8.1.6",
     "@u-wave/react-vimeo": "^0.9.12",
+    "airtable": "^0.12.2",
     "framer-motion": "^12.23.24",
     "gray-matter": "^4.0.3",
     "gsap": "^3.13.0",
