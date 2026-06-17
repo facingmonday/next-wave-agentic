@@ -105,6 +105,21 @@ If the silent flag is enabled or an error is encountered, the registry handles i
 
 ---
 
+## Unified Codebase: Sharing Components Across Layouts (Mobile Chat vs. Desktop Dashboard)
+
+A massive advantage of this pattern is that since cards are fully self-contained React components, they are not locked to the chat window. We can share the exact same UI cards between the mobile chat view and our desktop dashboard layouts.
+
+For example, when a user accesses the client list or a client's detail page on their desktop dashboard, the application renders the exact same `ClientCard` and `ClientListCard` components that the AI assistant injects dynamically into the mobile chat bubble.
+
+This unified approach brings several key benefits:
+1. **Consistency**: Any visual styling updates, theme variables, or animations (such as status transitions) automatically apply to both the chat agent's feed and the core CRM pages.
+2. **Interactive Synchronization**: Click handlers, checklist toggles, and unified `PATCH` updates behave identically. When a reminder is checked off in the desktop dashboard, it triggers the exact same optimistic UI updates and network serialization logic as it does when toggled in the chat list.
+3. **Zero Redundancy**: Developers only build, test, and style a component once. It is registered in the frontend's widget registry for Generative UI use, and simultaneously imported in traditional Next.js routes.
+
+![Shared Components Mockup](/images/blogs/rendering-rich-react-cards/shared-components-mockup.png)
+
+---
+
 ## Frontend UI Setup & Assistant Runtimes
 
 The user-facing chat client is built using headless primitives designed for chat-based interactions.
