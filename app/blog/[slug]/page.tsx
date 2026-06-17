@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import Mermaid from "@/components/Mermaid";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 
 interface BlogPostPageProps {
@@ -153,6 +154,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
+                components={{
+                  code(props) {
+                    const { children, className, node, ...rest } = props;
+                    const match = /language-mermaid/.exec(className || '');
+                    if (match) {
+                      return <Mermaid chart={String(children).replace(/\n$/, '')} />;
+                    }
+                    return (
+                      <code {...rest} className={className}>
+                        {children}
+                      </code>
+                    );
+                  }
+                }}
               >
                 {post.content}
               </ReactMarkdown>
