@@ -29,10 +29,21 @@ export function Footer() {
             <div className="mb-10 flex justify-center">
               <StartProjectChatButton className="inline-flex items-center rounded-full bg-[#4E79A7] px-7 py-3 font-semibold text-white transition hover:bg-[#4E79A7]/90" />
             </div>
-            <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Next Wave Agentic. All rights
-              reserved.
-            </p>
+            <div className="flex flex-col items-center justify-center gap-2 text-sm text-gray-500 sm:flex-row sm:gap-4">
+              <span>
+                © {new Date().getFullYear()} Next Wave Agentic. All rights
+                reserved.
+              </span>
+              <span className="hidden sm:inline">•</span>
+              <a
+                href="https://qr-code-nexus.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                QR Nexus
+              </a>
+            </div>
           </div>
         </ContentReveal>
       </div>
