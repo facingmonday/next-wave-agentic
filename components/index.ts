@@ -62,3 +62,5 @@ export type {
   HorizontalScrollCarouselProps,
   HorizontalScrollCarouselItem,
 } from "./HorizontalScrollCarousel";
+
+export { FaqSection } from "./FaqSection";

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { HealthcareAIPageContent } from "./HealthcareAIPageContent";
+import {
+  getHealthcareServiceSchema,
+  getHealthcareFAQSchema,
+} from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "AI Pilot to Enterprise | Healthcare AI | NWA Apps",
@@ -14,5 +18,21 @@ export const metadata: Metadata = {
 };
 
 export default function HealthcareAIPage() {
-  return <HealthcareAIPageContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getHealthcareServiceSchema()),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getHealthcareFAQSchema()),
+        }}
+      />
+      <HealthcareAIPageContent />
+    </>
+  );
 }

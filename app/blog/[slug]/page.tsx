@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Mermaid from "@/components/Mermaid";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getArticleSchema } from "@/lib/schema";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -81,6 +82,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getArticleSchema(post)),
+        }}
+      />
       <Header />
 
       {/* Article Header */}

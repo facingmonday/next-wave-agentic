@@ -5,6 +5,11 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/lib/smooth-scroll";
 import ChatModal from "@/components/chat-modal";
 import { ChatContactQuerySync } from "@/components/ChatContactQuerySync";
+import {
+  getOrganizationSchema,
+  getServicesSchema,
+  getProductSchema,
+} from "@/lib/schema";
 
 const exo2 = Exo_2({
   variable: "--font-exo2",
@@ -51,6 +56,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getOrganizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getServicesSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getProductSchema()),
+          }}
+        />
+      </head>
       <body className={`${exo2.variable} antialiased`}>
         <SmoothScrollProvider>
           <Suspense fallback={null}>

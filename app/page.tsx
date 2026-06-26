@@ -12,6 +12,8 @@ import Link from "next/link";
 import { StartProjectChatButton } from "@/components/StartProjectChatButton";
 import { projects } from "@/lib/projects";
 import { getAllPosts } from "@/lib/blog";
+import { FaqSection, faqs } from "@/components/FaqSection";
+import { getFAQSchema } from "@/lib/schema";
 
 const homeLogos = [
   {
@@ -622,11 +624,19 @@ export default function Home() {
         </div>
       </section>
 
+      <FaqSection />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getFAQSchema(faqs)),
+        }}
+      />
+
       <section className="agency-shell py-20 md:py-28">
         <div className="mx-auto max-w-5xl px-4 text-center md:px-8">
           <p className="agency-kicker justify-center mb-5">Ready when you are</p>
           <h2 className="font-heading text-5xl font-semibold text-[#CFC8CF] md:text-7xl">
-            Let's build the future of AI, storytelling, and technology.
+            Let&apos;s build the future of AI, storytelling, and technology.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-300 md:text-lg">
             Partner with us to tell your brand story, engineer custom technology,
