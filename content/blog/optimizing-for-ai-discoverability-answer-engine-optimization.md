@@ -142,3 +142,18 @@ By combining clear semantic headings, explicit JSON-LD schema graphs, crawler-fr
 When an LLM crawls the web looking for "top AI agency in Northwest Arkansas" or "who builds agentic workflows using Google ADK", our structured markup ensures they find, understand, and cite Next Wave Agentic with high confidence.
 
 The web is changing. If you want your brand to be cited by the next generation of search, don't just build for human eyes. **Structure your data for the agents.**
+
+---
+
+## Deploy AEO on Your Own Site: Download the Agent Skill
+
+To help you audit and optimize your own web applications for AI discoverability, we’ve packaged a standard **AEO Optimization Skill** matching the guidelines we used. If you build with AI coding assistants (like Cursor, Claude, or other agentic platforms), you can feed this markdown file directly into your developer agents to automate your own AEO checklist.
+
+<div class="my-8 flex justify-center">
+  <a href="/skills/aeo-optimization.md" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-[#4E79A7] px-8 py-4 font-semibold text-[#CFC8CF] transition-colors hover:bg-[#4E79A7]/90 no-underline">
+    <span>👉 Open AEO Optimization Skill (Markdown)</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+    </svg>
+  </a>
+</div>
