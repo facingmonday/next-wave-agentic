@@ -64,3 +64,5 @@ export type {
 } from "./HorizontalScrollCarousel";
 
 export { FaqSection } from "./FaqSection";
+
+export { BlogImageGallery } from "./BlogImageGallery";

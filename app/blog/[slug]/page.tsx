@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import Mermaid from "@/components/Mermaid";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { getArticleSchema } from "@/lib/schema";
+import { BlogImageGallery } from "@/components/BlogImageGallery";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -90,7 +91,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       />
       <Header />
 
-      {/* Article Header */}
+      <BlogImageGallery>
+        {/* Article Header */}
       <div className="pt-32 md:pt-40 pb-8">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
           <Link
@@ -248,6 +250,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </aside>
         </div>
       </div>
+      </BlogImageGallery>
 
       <Footer />
     </main>
