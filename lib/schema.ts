@@ -206,3 +206,75 @@ export function getHealthcareFAQSchema() {
     ],
   };
 }
+
+export function getStrategyServiceSchema() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://nextwaveagentic.com";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Strategy & Agentic Operating System Design",
+    "description":
+      "Designing organizational intelligence, agent architectures, MCP integrations, structured data pipelines, and search discoverability strategies for the AI era.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Next Wave Agentic",
+      "url": baseUrl,
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Agentic Operating System Strategy Deliverables",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Readiness Assessment",
+            "description": "Evaluating current infrastructure, compliance risk exposure, and fast-value AI opportunities."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Agent Architecture Design",
+            "description": "Mapping multi-agent workflows, tool registries, model selections, and human-in-the-loop approvals."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Generative Engine Optimization (GEO)",
+            "description": "Optimizing entity relationships, LLMs.txt, structured JSON-LD schemas, and discoverability in AI search engines."
+          }
+        }
+      ]
+    }
+  };
+}
+
+export function getStrategyFAQSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an Agentic Operating System?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An Agentic Operating System is the strategic design of how a business compiles its knowledge, exposes internal systems via protocols like Model Context Protocol (MCP), and deploys autonomous AI agents to execute workflow tasks while maintaining human oversight."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does GEO (Generative Engine Optimization) differ from traditional SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional SEO focuses on keyword density, backlinks, and optimization for human clicks on search engine result pages. Generative Engine Optimization (GEO) ensures your business data, documentation, and entities are structured semantically, using formats like structured schemas and LLMs.txt, so that large language models (LLMs) and AI search agents can discover, synthesize, and accurately recommend your business."
+        }
+      }
+    ]
+  };
+}
