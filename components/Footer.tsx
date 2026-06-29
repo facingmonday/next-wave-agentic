@@ -43,6 +43,14 @@ export function Footer() {
               >
                 QR Nexus
               </a>
+              <a
+                href="https://nexus-invoice-generator.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                Nexus Invoice Generator
+              </a>
             </div>
           </div>
         </ContentReveal>
