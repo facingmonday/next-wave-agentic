@@ -127,7 +127,7 @@ export default function Home() {
 
       <LogoList
         title="Trusted by teams that need more than a pretty launch"
-        subtitle="We support ambitious brands and operators across Northwest Arkansas and beyond with intelligent technology, immersive storytelling, and launch systems."
+        subtitle="Next Wave Agentic brings AI, storytelling, and custom software together to help ambitious teams build what’s next. We create the websites and applications customers use, the films and campaigns that bring them in, and the automation that keeps business moving. From the first idea through launch and daily operations, we connect the pieces so your team can move faster with a clear purpose."
         logos={homeLogos}
       />
 

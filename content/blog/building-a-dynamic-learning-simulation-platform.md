@@ -3,7 +3,7 @@ title: "Building a Dynamic Learning Simulation Platform: What’s New in ScaleLX
 slug: "building-a-dynamic-learning-simulation-platform"
 date: "2026-08-30"
 excerpt: "A look at how we evolved ScaleLXP’s web app and API around dynamic challenges, profiles, metrics, and reliable AI batch processing—without losing clarity for instructors or students."
-coverImage: "/images/blogs/building-a-dynamic-learning-simulation-platform/hero.png"
+coverImage: "/images/blogs/building-a-dynamic-learning-simulation-platform/hero.jpg"
 author:
   name: "Jason Price"
   role: "Founder & CEO"
@@ -23,13 +23,13 @@ Challenges can change. Business profiles can change. The inputs students work wi
 
 The platform adapts with them.
 
-![A dynamic learning simulation connecting instructors, business profiles, metrics, and student outcomes](/images/blogs/building-a-dynamic-learning-simulation-platform/hero.png)
+![A dynamic learning simulation connecting instructors, business profiles, metrics, and student outcomes](/images/blogs/building-a-dynamic-learning-simulation-platform/hero.jpg)
 
 ---
 
 ## From Fixed Screens to Shared Definitions
 
-![One shared definition system powering forms, APIs, AI evaluation, and dashboards](/images/blogs/building-a-dynamic-learning-simulation-platform/shared-definitions.png)
+![One shared definition system powering forms, APIs, AI evaluation, and dashboards](/images/blogs/building-a-dynamic-learning-simulation-platform/shared-definitions.jpg)
 
 A configurable product creates a deceptively difficult engineering problem: every part of the system has to agree on what the configuration means.
 
@@ -50,7 +50,7 @@ That is what makes the platform dynamic without making it unpredictable.
 
 ## Challenges That Fit the Lesson
 
-![An instructor assembling a dynamic business challenge from modular scenario elements](/images/blogs/building-a-dynamic-learning-simulation-platform/dynamic-challenges.png)
+![An instructor assembling a dynamic business challenge from modular scenario elements](/images/blogs/building-a-dynamic-learning-simulation-platform/dynamic-challenges.jpg)
 
 A traditional case study is usually static. The setup, questions, and expected outcomes are written in advance. That works for presenting a concept, but it can limit how an instructor responds to a class.
 
@@ -66,7 +66,7 @@ We have also made challenge states clearer. Accepting submissions, locking decis
 
 ## Profiles as Part of the Simulation
 
-![Different business profiles responding to the same decision under different conditions](/images/blogs/building-a-dynamic-learning-simulation-platform/dynamic-profiles.png)
+![Different business profiles responding to the same decision under different conditions](/images/blogs/building-a-dynamic-learning-simulation-platform/dynamic-profiles.jpg)
 
 In the real world, two businesses can make the same decision and still get different results. They may begin with different resources, cost structures, operating models, or constraints.
 
@@ -87,7 +87,7 @@ The technology becomes a way to reveal tradeoffs rather than hide them.
 
 ## Metrics That Define Success
 
-![A flexible metric engine producing charts, rankings, comparisons, and exports](/images/blogs/building-a-dynamic-learning-simulation-platform/dynamic-metrics.png)
+![A flexible metric engine producing charts, rankings, comparisons, and exports](/images/blogs/building-a-dynamic-learning-simulation-platform/dynamic-metrics.jpg)
 
 Once challenges and profiles became configurable, fixed reporting stopped making sense.
 
@@ -111,7 +111,7 @@ This is one of the most meaningful architectural shifts in the recent work. Metr
 
 ## Using AI for Explanation, Not Mystery
 
-![Structured rules and student decisions becoming validated metrics and understandable AI explanations](/images/blogs/building-a-dynamic-learning-simulation-platform/explainable-ai.png)
+![Structured rules and student decisions becoming validated metrics and understandable AI explanations](/images/blogs/building-a-dynamic-learning-simulation-platform/explainable-ai.jpg)
 
 ScaleLXP combines structured business rules with AI-generated evaluation and explanation.
 
@@ -125,7 +125,7 @@ We have also added class-level summaries that help instructors see patterns acro
 
 ## Why OpenAI Batch Processing Matters
 
-![Student decisions moving through an orderly asynchronous AI batch-processing system](/images/blogs/building-a-dynamic-learning-simulation-platform/batch-processing.png)
+![Student decisions moving through an orderly asynchronous AI batch-processing system](/images/blogs/building-a-dynamic-learning-simulation-platform/batch-processing.jpg)
 
 Evaluating one decision is an interactive request. Evaluating an entire classroom is a workflow.
 
@@ -151,7 +151,7 @@ That may sound like a small wording change. It is actually a product-level expre
 
 ## Reliability Is Part of the Experience
 
-![A resilient simulation pipeline protected by validation, recovery, and observability layers](/images/blogs/building-a-dynamic-learning-simulation-platform/reliability.png)
+![A resilient simulation pipeline protected by validation, recovery, and observability layers](/images/blogs/building-a-dynamic-learning-simulation-platform/reliability.jpg)
 
 Dynamic systems need stronger guardrails than fixed ones.
 
@@ -173,7 +173,7 @@ That is the standard we care about. Reliability is not separate from user experi
 
 ## What We Learned
 
-![The connected layers of a dynamic learning simulation platform](/images/blogs/building-a-dynamic-learning-simulation-platform/connected-architecture.png)
+![The connected layers of a dynamic learning simulation platform](/images/blogs/building-a-dynamic-learning-simulation-platform/connected-architecture.jpg)
 
 The biggest lesson from this phase of ScaleLXP is that flexibility cannot live in only one layer.
 
@@ -201,7 +201,7 @@ That is what we have been building: not simply more options, but a stronger syst
 
 ## The Platform Is Becoming the Curriculum Engine
 
-![An instructor and students exploring choices and consequences in an interactive supply-chain simulation](/images/blogs/building-a-dynamic-learning-simulation-platform/curriculum-engine.png)
+![An instructor and students exploring choices and consequences in an interactive supply-chain simulation](/images/blogs/building-a-dynamic-learning-simulation-platform/curriculum-engine.jpg)
 
 ScaleLXP began with a focused goal: help students experience supply chain decisions instead of only reading about them.
 
